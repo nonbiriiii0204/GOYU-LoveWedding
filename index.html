@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="color-scheme" content="light">
 <title>婚禮庭院探索</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+TC:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap">
 <style>
   /* 配色：白 / 粉（偏紅）/ 淺橘 / 淺藍 / 天藍（偏紫） */
   :root{
     --white:#fffdfb; --pink:#f4a0aa; --pink-deep:#e8798a; --pink-pale:#fde3e6;
     --orange:#fbd2a6; --orange-pale:#fdebd6; --blue:#cde8f6; --blue-pale:#eaf4fb;
     --sky:#92aaf2; --sky-deep:#6a82d8; --ink:#3e4478; --ink-dim:#6f76a8;
-    --font:'DotGothic16','Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif;
+    --font:'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif;
     color-scheme:light;
   }
   *{box-sizing:border-box}
@@ -117,72 +117,104 @@
   .res button.go{align-self:center}
   #toast{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--white);border:2px solid var(--sky);border-radius:12px;padding:8px 14px;font-size:14px;max-width:90%;z-index:9}
 
-  /* ===== 像素 RPG 風格 ===== */
-  :root{--notch:polygon(0 4px,4px 4px,4px 0,calc(100% - 4px) 0,calc(100% - 4px) 4px,100% 4px,100% calc(100% - 4px),calc(100% - 4px) calc(100% - 4px),calc(100% - 4px) 100%,4px 100%,4px calc(100% - 4px),0 calc(100% - 4px));
-        --notch3:polygon(0 3px,3px 3px,3px 0,calc(100% - 3px) 0,calc(100% - 3px) 3px,100% 3px,100% calc(100% - 3px),calc(100% - 3px) calc(100% - 3px),calc(100% - 3px) 100%,3px 100%,3px calc(100% - 3px),0 calc(100% - 3px))}
+  /* ===== 全站：Noto Sans TC、和紙感的細緻介面 ===== */
+  :root{--line:rgba(217,100,126,.32);--rose:#d9647e}
+  html,body,button,input{font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif}
   html,body{font-size:16px;font-weight:400}
-  b,h2,.card button.go,.lab,.ribbon,.big,.board .rk,.board .sc,#title{font-weight:400}
-  #title{font-size:16px;letter-spacing:.04em}
-  #stage{border:4px solid var(--ink);border-radius:0;box-shadow:none;background:var(--blue-pale)}
-  .overlay{background:rgba(62,68,120,.55)}
-  .card{border:4px solid var(--ink);border-radius:0;clip-path:var(--notch);box-shadow:inset 0 0 0 4px var(--white),inset 0 0 0 6px var(--pink);padding:26px 24px;gap:14px}
-  .card h2{font-size:24px;letter-spacing:.06em}
-  .card p{font-size:16px;line-height:1.9}
-  .lab{font-size:14px}
-  .card img.pic,.board,.namebox input{border:4px solid var(--ink);border-radius:0}
-  .card img.pic{image-rendering:pixelated}
-  .card button.go,.card button.ghost,#again,.x{border:4px solid var(--ink);border-radius:0;clip-path:var(--notch3);cursor:pointer;font:inherit;font-size:16px;color:var(--ink);transition:none}
-  .card button.go{background:var(--pink);box-shadow:inset 0 -4px 0 var(--pink-deep);padding:8px 24px 12px}
-  .card button.ghost{background:var(--white);box-shadow:inset 0 -4px 0 var(--blue);padding:8px 18px 12px}
-  #again{background:var(--white);box-shadow:inset 0 -3px 0 var(--blue);padding:3px 12px 6px}
-  .x{width:44px;height:44px;background:var(--white);box-shadow:inset 0 -4px 0 var(--blue);padding:0 0 4px}
-  .card button.go:hover{transform:none;box-shadow:inset 0 -4px 0 var(--pink-deep)}
-  .card button.go:active,.card button.ghost:active,.x:active,#again:active{transform:translateY(3px);box-shadow:none}
-  .opt{border:4px solid var(--blue);border-radius:0;clip-path:var(--notch3);transition:none;font-size:14px}
-  .opt[aria-pressed="true"]{border-color:var(--ink);background:var(--pink-pale);box-shadow:inset 0 0 0 3px var(--pink)}
-  .opt:active{transform:none}
-  .slip{border:4px solid var(--ink);border-radius:0;box-shadow:inset 0 0 0 3px var(--orange-pale),inset 0 0 0 5px var(--orange);padding:22px 16px 18px}
-  .slip h2{color:var(--pink-deep)}
-  .namebox input{font-size:16px}
-  .board{max-height:min(46vh,340px)}
-  .board li{font-size:16px}
-  #pad button{border:3px solid var(--ink);border-radius:0;background:rgba(255,253,251,.9);font-size:14px}
-  #pad button.on{background:var(--pink)}
-  #toast{border:3px solid var(--ink);border-radius:0;background:var(--white)}
-  #cCv,#lotCv{image-rendering:pixelated;image-rendering:crisp-edges;border:4px solid var(--ink);border-radius:0}
+  #title{font-size:16px;font-weight:700;letter-spacing:.1em}
+  #hud b{font-weight:700}
+  #stage{border:0;border-radius:16px;background:var(--blue-pale);box-shadow:0 18px 40px -20px rgba(44,48,86,.5),0 0 0 5px #fffdfb,0 0 0 6px var(--line)}
+  #again{height:36px;padding:0 18px;font-size:14px;letter-spacing:.12em;color:#4a5080;background:#fff;border:1px solid var(--line);border-radius:999px;box-shadow:0 4px 10px -6px rgba(44,48,86,.4)}
+  #again:hover{background:#fff0f3}
+  .opt{border:1px solid var(--line);border-radius:16px;background:#fff;font-size:14px;letter-spacing:.08em;padding:10px 8px;box-shadow:0 6px 14px -10px rgba(44,48,86,.45)}
+  .opt:hover{transform:translateY(-2px)}
+  .opt[aria-pressed="true"]{border-color:var(--rose);background:#fff0f3;box-shadow:0 0 0 3px rgba(240,143,162,.35),0 8px 16px -10px rgba(212,96,122,.6)}
+  #pad button{border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.85);color:#4a5080;font-size:15px;box-shadow:0 4px 10px -4px rgba(44,48,86,.35)}
+  #pad button.on{background:#f08fa2;color:#fff}
+  #toast{border:1px solid var(--line);border-radius:14px;background:#fff;color:#4a5080;box-shadow:0 10px 24px -12px rgba(44,48,86,.5)}
   .tw .rest{visibility:hidden}
   #lotCv{display:block;width:100%;height:auto;aspect-ratio:170/193}
   #lotCv:focus-visible{outline:3px solid var(--sky-deep);outline-offset:2px}
-  #lResult .flw{height:96px;width:auto;image-rendering:pixelated}
   .bouquet{max-width:320px}
+  #sText{text-align:center}
 
-  /* ===== 小遊戲（抽籤、接捧花）：平滑、圓角的畫風 ===== */
-  #lot,#catch{--sf:'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif;font-family:var(--sf)}
-  #lot .card,#catch .card{border:3px solid var(--pink);border-radius:16px;clip-path:none;box-shadow:0 8px 0 var(--blue);padding:18px;gap:12px}
-  #lot .card h2,#catch .card h2{font-size:24px;font-weight:700;letter-spacing:0}
-  #lot .card p,#catch .card p{font-size:17px;line-height:1.75}
-  #lot .lab,#catch .lab{font-size:14px;font-weight:400;letter-spacing:.08em}
-  #lot .card button.go,#catch .card button.go{border:0;border-radius:999px;clip-path:none;font-size:17px;font-weight:700;padding:9px 26px;background:var(--pink);box-shadow:0 3px 0 var(--pink-deep);transition:transform .12s ease-out,box-shadow .12s ease-out}
-  #lot .card button.go:hover,#catch .card button.go:hover{box-shadow:0 5px 0 var(--pink-deep);transform:translateY(-1px)}
-  #lot .card button.go:active,#catch .card button.go:active{transform:scale(.93);box-shadow:0 3px 0 var(--pink-deep)}
-  #catch .card button.ghost{border:2px solid var(--pink);border-radius:999px;clip-path:none;font-size:16px;padding:8px 18px;background:var(--white);box-shadow:none;transition:transform .12s ease-out}
-  #catch .card button.ghost:active{transform:scale(.93);box-shadow:none}
-  #lot .x,#catch .x{border:2px solid var(--pink);border-radius:50%;clip-path:none;box-shadow:none;padding:0;background:var(--white);font-size:20px;transition:transform .12s ease-out}
-  #lot .x:active,#catch .x:active{transform:scale(.93);box-shadow:none}
-  #lot .slip,#catch .slip{border:2px solid var(--orange);border-top:7px solid var(--pink-deep);border-radius:6px;box-shadow:0 4px 0 var(--blue);padding:16px 16px 14px}
-  #lot .card img.pic,#catch .card img.pic,#catch .board,#catch .namebox input{border:2px solid var(--blue);border-radius:10px;image-rendering:auto}
-  #catch .namebox input{font-size:18px;padding:10px 12px}
-  #catch .board li{font-size:16px}
-  #catch .board .rk,#catch .board .sc,#catch .big,#catch .chud b,#catch .chud{font-weight:700}
-  #cCv,#lotCv{image-rendering:auto;border:2px solid var(--blue);border-radius:10px}
-  #lResult .flw{image-rendering:auto}
+  /* ===== 互動視窗（鳥居／神社抽籤／接捧花）：和紙＋細線框的精緻風格 ===== */
+  #start,#modal,#lot,#catch{--serif:'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif;--sf:'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif;--rose:#d9647e;--rose-lt:#f08fa2;--line:rgba(217,100,126,.32);--gold:#c9a24a;
+    font-family:var(--sf);background:rgba(44,48,86,.5);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+  #start .card,#modal .card,#lot .card,#catch .card{position:relative;border:0;border-radius:22px;clip-path:none;padding:34px 30px 28px;gap:16px;
+    background:radial-gradient(130% 55% at 50% 0%,#fff0f3 0,rgba(255,240,243,0) 65%),linear-gradient(180deg,#fffefd,#fff8f5);
+    box-shadow:0 30px 70px -18px rgba(44,48,86,.55),0 2px 6px rgba(44,48,86,.12),inset 0 0 0 1px rgba(255,255,255,.9),inset 0 0 0 9px #fffdfb,inset 0 0 0 10px var(--line)}
+  #start .card::before,#modal .card::before,#lot .card::before,#catch .card::before{content:"";position:sticky;top:-20px;display:block;height:0;margin:-10px auto 0;pointer-events:none}
+  #start .card h2,#modal .card h2,#lot .card h2,#catch .card h2{font-family:var(--serif);font-weight:700;font-size:25px;letter-spacing:.16em;color:#3e4478;margin:0}
+  #start .card h2,#modal .card h2{text-align:center;padding-left:.16em}
+  #start .card h2::after,#modal .card h2::after{content:"";display:block;height:9px;margin:14px auto 2px;width:150px;
+    background:radial-gradient(circle,var(--rose) 0 2.6px,transparent 3.2px) center/9px 9px no-repeat,
+      radial-gradient(circle,var(--gold) 0 1.4px,transparent 2px) calc(50% - 15px) center/5px 5px no-repeat,
+      radial-gradient(circle,var(--gold) 0 1.4px,transparent 2px) calc(50% + 15px) center/5px 5px no-repeat,
+      linear-gradient(90deg,transparent,var(--line)) left center/calc(50% - 24px) 1px no-repeat,
+      linear-gradient(270deg,transparent,var(--line)) right center/calc(50% - 24px) 1px no-repeat}
+  #start .card h2:empty,#modal .card h2:empty{display:none}
+  #start .card p,#modal .card p,#lot .card p,#catch .card p{font-size:16px;line-height:2;letter-spacing:.04em;color:#4a5080;font-weight:400}
+  #start .card p,#modal .card p{text-align:center}
+  #lot .lab,#catch .lab{font-size:13px;font-weight:400;letter-spacing:.14em;color:#8087b3}
+  .topbar{padding-bottom:14px;border-bottom:1px solid var(--line)}
+  #lot .card button.go,#catch .card button.go,#start .card button.go,#modal .card button.go{align-self:center;border:0;border-radius:999px;clip-path:none;min-width:150px;padding:0 34px;height:48px;line-height:48px;
+    font-family:var(--sf);font-size:16px;font-weight:700;letter-spacing:.24em;text-indent:.24em;color:#fff;
+    background:linear-gradient(180deg,#ec8398 0,#d4607a 100%);box-shadow:0 8px 18px -6px rgba(212,96,122,.65),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -2px 0 rgba(150,40,70,.18);
+    transition:transform .15s ease-out,box-shadow .15s ease-out,filter .15s}
+  #lot .card button.go:hover,#catch .card button.go:hover,#start .card button.go:hover,#modal .card button.go:hover{transform:translateY(-1px);filter:brightness(1.05);box-shadow:0 12px 22px -6px rgba(212,96,122,.7),inset 0 1px 0 rgba(255,255,255,.5)}
+  #lot .card button.go:active,#catch .card button.go:active,#start .card button.go:active,#modal .card button.go:active{transform:translateY(1px) scale(.98);box-shadow:0 4px 10px -4px rgba(212,96,122,.6),inset 0 1px 0 rgba(255,255,255,.4)}
+  #catch .card button.ghost{border:1px solid var(--line);border-radius:999px;clip-path:none;height:44px;padding:0 24px;font-family:var(--sf);font-size:14px;letter-spacing:.16em;color:#4a5080;background:rgba(255,255,255,.7);box-shadow:none;transition:background .15s,transform .15s}
+  #catch .card button.ghost:hover{background:#fff0f3}
+  #catch .card button.ghost:active{transform:scale(.96);box-shadow:none}
+  #lot .x,#catch .x{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;clip-path:none;box-shadow:none;padding:0;background:#fff;color:#6b72a6;font-size:15px;transition:background .15s,transform .15s}
+  #lot .x:hover,#catch .x:hover{background:#fff0f3}
+  #lot .x:active,#catch .x:active{transform:scale(.92);box-shadow:none}
+  .slip{position:relative}
+  #lot .slip,#catch .slip{border:0;border-radius:10px;padding:26px 22px 20px;gap:12px;
+    background:linear-gradient(180deg,#fffaf0,#fdf0e0);
+    box-shadow:0 14px 28px -14px rgba(120,80,40,.45),inset 0 0 0 1px rgba(201,162,74,.55),inset 0 0 0 6px #fffaf0,inset 0 0 0 7px rgba(201,162,74,.35)}
+  #lot .slip::before,#catch .slip::before{content:"";position:absolute;left:50%;top:-1px;width:64px;height:7px;transform:translateX(-50%);border-radius:0 0 8px 8px;background:linear-gradient(90deg,#e8798a,#f4a0aa)}
+  #lot .slip h2,#catch .slip h2{text-align:center;color:var(--rose);letter-spacing:.4em;padding-left:.4em}
+  #lot .card img.pic,#catch .card img.pic,#start .card img.pic,#modal .card img.pic{border:0;border-radius:14px;image-rendering:auto;background:#eaf4fb;box-shadow:0 10px 24px -12px rgba(44,48,86,.5),0 0 0 1px rgba(62,68,120,.1)}
+  #catch .namebox input{height:50px;font-family:var(--sf);font-size:17px;letter-spacing:.06em;text-align:center;color:#3e4478;background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 16px;box-shadow:inset 0 2px 4px rgba(62,68,120,.06);transition:border-color .15s,box-shadow .15s}
+  #catch .namebox input:focus{outline:0;border-color:var(--rose-lt);box-shadow:0 0 0 4px rgba(240,143,162,.22)}
+  #catch .namebox .lab{text-align:center}
+  #catch .board{border:1px solid var(--line);border-radius:14px;background:#fff;max-height:min(46vh,330px)}
+  #catch .board li{grid-template-columns:2.4em 1fr auto;padding:11px 16px;font-size:15px;border-bottom:1px solid rgba(217,100,126,.12);color:#3e4478}
+  #catch .board .rk{font-family:var(--serif);font-weight:700;color:#8087b3}
+  #catch .board li:nth-child(-n+3) .rk{width:26px;height:26px;line-height:26px;border-radius:50%;color:#fff;font-size:14px;justify-self:center;background:linear-gradient(180deg,#e6c46a,#c9a24a)}
+  #catch .board li:nth-child(2) .rk{background:linear-gradient(180deg,#cfd3e0,#9aa1b8)}
+  #catch .board li:nth-child(3) .rk{background:linear-gradient(180deg,#e0a27c,#b87650)}
+  #catch .board .sc{font-family:var(--serif);font-weight:700;color:var(--rose)}
+  #catch .board li.me{background:#fff0f3;box-shadow:inset 3px 0 0 var(--rose)}
+  #catch .chud{padding:0 2px 10px;font-weight:400}
+  #catch .chud>span{display:inline-flex;align-items:baseline;gap:6px;height:34px;padding:0 14px;align-items:center;border-radius:999px;background:#fff;box-shadow:0 0 0 1px var(--line);font-size:13px;letter-spacing:.1em;color:#6b72a6}
+  #catch .chud b{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--rose)}
+  #catch #cLives{min-width:0;letter-spacing:3px;color:var(--rose);font-size:15px}
+  #catch #cTime{color:#4a5080;font-family:var(--serif);font-size:16px;font-weight:700}
+  #cCv,#lotCv{image-rendering:auto;border:0;border-radius:16px;box-shadow:0 12px 26px -14px rgba(44,48,86,.55),0 0 0 1px rgba(62,68,120,.12)}
+  #catch .big{font-family:var(--serif);font-weight:700;font-size:54px;letter-spacing:.04em;color:var(--rose)}
+  #catch .ctip{font-size:12px;letter-spacing:.14em;color:#8d93bb}
+  #lResult .flw{image-rendering:auto;filter:drop-shadow(0 10px 14px rgba(217,100,126,.35))}
+  .tw .rest{visibility:hidden}
+  .mrow{display:flex;align-items:center;justify-content:center;gap:12px;cursor:pointer;font-size:15px;color:#4a5080;letter-spacing:.1em}
+  .mrow input{position:absolute;opacity:0;pointer-events:none}
+  .mrow .sw{position:relative;width:46px;height:26px;border-radius:999px;background:#cfd3e6;box-shadow:inset 0 1px 3px rgba(44,48,86,.25);transition:background .2s}
+  .mrow .sw::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 2px 5px rgba(44,48,86,.35);transition:transform .2s}
+  .mrow input:checked+.sw{background:#e07a92}
+  .mrow input:checked+.sw::after{transform:translateX(20px)}
+  .mrow input:focus-visible+.sw{outline:3px solid var(--sky-deep);outline-offset:2px}
+  .credit{text-align:center;font-size:11px;letter-spacing:.04em;color:#9aa0c4;line-height:1.6}
+  #musicBtn{font:inherit;font-size:14px;color:var(--ink);background:var(--white);border:1px solid #e3b9c3;border-radius:999px;padding:4px 12px;cursor:pointer}
+  #musicBtn[aria-pressed="false"]{color:#9aa0c4;background:#f3f4fa;border-color:#d8dbea}
 </style>
 </head>
 <body>
 <div id="app">
   <div id="hud">
     <span id="title">婚禮庭院探索</span>
-    <span class="r"><button id="again" type="button">換角色</button></span>
+    <span class="r"><button id="musicBtn" type="button" aria-pressed="true">音樂：開</button><button id="again" type="button">換角色</button></span>
   </div>
   <div id="stage">
     <canvas id="cv"></canvas>
@@ -202,7 +234,9 @@
     <p id="sText"></p>
     <div id="charLab" class="lab">選擇角色</div>
     <div id="charPick" class="pick"></div>
-    <button id="sBtn" class="go" type="button">開始</button>
+    <label id="musicRow" class="mrow"><input id="musicChk" type="checkbox" checked><span class="sw" aria-hidden="true"></span><span class="mt">開啟遊戲音樂</span></label>
+    <button id="sBtn" class="go" type="button">進入庭院</button>
+    <div class="credit">音樂：Kevin MacLeod（incompetech.com）〈Senbazuru〉〈Ripples〉，CC BY 4.0</div>
   </div>
 </div>
 
@@ -375,11 +409,11 @@ NPC,虎杖,10,4,,,,,"你終於來了！
 
 /* 接捧花排行榜：把 Google Apps Script「網頁應用程式」的網址（結尾是 /exec）貼在這裡。
    留空＝不顯示名字輸入和排行榜（遊戲照常玩）。也可以用 ?board=網址 臨時測試。 */
-const LEADERBOARD_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnRlV_U89zMKz0AzqMaShx0LGFJKxS3eCC9DULwneXVdeiyFitbkJP_RFaN6xkJqZn7qpyvTfvKYxpd4NausNwkuNhX6618DvW7huA6i0VxV5W-CBGO7hYTPUe50mi3tFjnArjNNIocpSdsplrhEhRcvQcJA05l2wYidlAHcC2C-qkyckgib5nAUAg8vft3i_AvjMY7AI9Wre17jDzNxzOYy6XRi8Ltw0leWL5j_b2QtOQ28XgOS6LOQ_OJD4ieHKFe50QCS6SldJ1V8s4ax4XSpkC1LTydQinge1oJo&lib=MZvEEVv2oUwKwbuuzJSeKPS0ESDH7UdTN";
+const LEADERBOARD_URL = "https://script.google.com/macros/s/AKfycby3DQYID5ydaT4Ig5ePkeLg5idW4Qk2M-TN0KjCATXiSQjohcj_zMAuB4n6agfZq60T/exec";
 
-const COLS = 20, ROWS = 19, T = 48;
-const Y_ADD = 6;                        // 屋內往上加了 6 排；試算表裡的 y 座標（第 2 排以下）自動加上這個數字，表格不用改
-const yShift = y => y>=2 ? y+Y_ADD : y;
+const COLS = 20, ROWS = 21, T = 48;
+const YMAP=[[0,0],[1,1],[2,3],[4,5],[7,11],[9,15],[10,18],[12,20]];   // 試算表的 y → 地圖的哪一排（房子縮窄、庭院加大後自動換算，表格不用改）
+const yShift = y => { if(!isFinite(y)) return y; if(y<=0) return y; for(let i=1;i<YMAP.length;i++){ if(y<=YMAP[i][0]||i===YMAP.length-1){ const a=YMAP[i-1], b=YMAP[i]; return a[1]+(y-a[0])*(b[1]-a[1])/(b[0]-a[0]); } } return y; };
 const SPEED = 4.2;
 const EVENT_DIST = 0.85, NPC_DIST = 1.25, NPC_RADIUS = 0.55;
 
@@ -413,28 +447,30 @@ const rnd = (x,y,i) => { const v=Math.sin(x*127.1+y*311.7+i*74.7)*43758.5453; re
    H 屋頂  M 紙門牆  h 壁龕木地板  w 木廊  t 榻榻米  Z 矮桌  K 鳥居柱  k 鳥居中間 */
 const GRID = [
   "####################",
-  "#SgHHHHHHHHHHHHHHgS#",
-  "#ggMDBBRhhhhVUUQMgg#",
+  "#ggHHHHHHHHHHHHHHgg#",
+  "#SgMDBBRhhhhVUUQMgS#",
   "#ggMtCCtXttXeeeeMgg#",
   "#ggMttttXTTXeeeeMgg#",
-  "#ggMttttXttXeeeeMgg#",
-  "#ggMttttttttttttMgg#",
-  "#ggMttttttttttttMgg#",
   "#ggMttttttttttttMgg#",
   "#ggMttZttttttZttMgg#",
-  "#ggMttttttttttttMgg#",
   "#ggMMMMMwwwwMMMMMgg#",
   "#ggwwwwwwwwwwwwwwgg#",
   "#gSggggL.PP.LggggSg#",
-  "#gWWbWW..PP..ffffgg#",
-  "#gWWbWW..PP.Jffffgg#",
-  "#gWWbWW..PP..ffffgg#",
+  "#gggggg..PP..gggggg#",
+  "#gggggg..PP..gggggg#",
+  "#gWWbWW..PP..gffffg#",
+  "#gWWbWW..PP.Jgffffg#",
+  "#gWWbWW..PP..gffffg#",
+  "#gWWbWW..PP..gffffg#",
+  "#gWWbWW..PP..gggggg#",
+  "#gggggg..PP..gggggg#",
+  "#gggggg..PP..gggggg#",
   "#gSggg..KkkK..gggSg#",
   "#########PP#########"
 ];
 const SOLID = "#WSLHMKZfJBCDRUVQXT";
-const START = [9,18];
-const TREE = {"1,1":"pink","18,1":"orange","2,13":"blue","17,13":"pink","2,17":"orange","17,17":"blue"};
+const START = [9,20];
+const TREE = {"1,2":"pink","18,2":"orange","2,9":"blue","17,9":"pink","2,19":"orange","17,19":"blue"};
 const TREE_COL = {   // [葉色, 亮部, 暗部]：pink＝櫻、orange＝楓、blue／sky＝松
   pink:[N.sakura,N.sakuraLt,N.sakuraDk], orange:[N.maple,N.mapleLt,N.redDk], blue:[N.pine,N.pineLt,N.pineDk], sky:[N.pine,N.pineLt,N.pineDk]
 };
@@ -474,7 +510,7 @@ const $ = id => document.getElementById(id);
 const cv = $("cv"), mctx = cv.getContext("2d");
 /* 像素風：世界先畫在一張小畫布（每格 20 像素），量化成固定調色盤，再用整數倍放大到螢幕 */
 const low = document.createElement("canvas"), ctx = low.getContext("2d",{willReadFrequently:true});
-const LT = 16, MM = LT/48;     // LT＝每格幾個像素；MM＝每個地圖單位對應幾個像素
+let LT = 32; const MM = 32/48;     // LT＝每格幾個像素；MM＝每個地圖單位對應幾個像素
 let toastTimer;
 function toast(msg){ const t=$("toast"); t.textContent=msg; t.hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.hidden=true,5000); }
 
@@ -630,7 +666,7 @@ function shadeUnder(g,x,y,px,py,c){       // 屋簷／木廊下面：兩排網�
   const a=at(x,y-1);
   if(a==="w"||a==="H"||a==="M"){ R(g,c,px,py,LT,1); dith(g,c,px,py+1,LT,0); }
 }
-function grassBase(g,x,y,px,py){
+function grassBaseOld(g,x,y,px,py){
   R(g,N.grass,px,py,LT,LT);
   for(let i=0;i<3;i++) R(g, rnd(x,y,i)<.5?N.grassLt:N.grassDk, px+ri(rnd(x,y,i+3)*11), py+ri(rnd(x,y,i+6)*14), 3+ri(rnd(x,y,i+9)*2), 1);
   for(let i=0;i<3;i++){ const bx=px+1+ri(rnd(x,y,20+i)*12), by=py+2+ri(rnd(x,y,30+i)*11);   // 小草
@@ -638,7 +674,7 @@ function grassBase(g,x,y,px,py){
   if(rnd(x,y,40)<.3){ const fx=px+2+ri(rnd(x,y,41)*11), fy=py+2+ri(rnd(x,y,42)*10); R(g,rnd(x,y,43)<.5?N.white:N.goldLt,fx,fy,1,1); R(g,N.blade,fx,fy+1,1,1); }
   shadeUnder(g,x,y,px,py,N.grassDk);
 }
-function gravelBase(g,x,y,px,py){
+function gravelBaseOld(g,x,y,px,py){
   R(g,N.gravel,px,py,LT,LT);
   for(let k=0;k<4;k++){ const by=py+2+k*4; for(let u=0;u<LT;u++){ const w=ri(Math.sin((px+u)/3.2+k*.9)*.9); R(g,N.rake,px+u,by+w,1,1); } }   // 枯山水耙紋
   for(let i=0;i<4;i++) R(g,N.gravelDk,px+ri(rnd(x,y,50+i)*15),py+ri(rnd(x,y,60+i)*15),1,1);
@@ -649,7 +685,7 @@ function gravelBase(g,x,y,px,py){
   if(at(x,y+1)==="g") R(g,N.gravelDk,px,py+LT-1,LT,1);
   shadeUnder(g,x,y,px,py,N.gravelDk);
 }
-function pathBase(g,x,y,px,py){          // 踏石小徑
+function pathBaseOld(g,x,y,px,py){          // 踏石小徑
   gravelBase(g,x,y,px,py);
   [[1,1,6,6],[9,1,6,5],[2,9,6,6],[9,8,5,6]].forEach(([a,b,w,h],i)=>{
     const jx=ri((rnd(x,y,80+i)-.5)*2), jy=ri((rnd(x,y,90+i)-.5)*2);
@@ -657,7 +693,7 @@ function pathBase(g,x,y,px,py){          // 踏石小徑
     if(rnd(x,y,100+i)<.3) R(g,N.moss,px+a+jx+w-3,py+b+jy+h-2,1,1);
   });
 }
-function woodFloor(g,x,y,px,py,base,lt){
+function woodFloorOld(g,x,y,px,py,base,lt){
   R(g,base,px,py,LT,LT);
   for(let k=0;k<4;k++){ const yy=py+k*4;
     R(g,lt,px,yy,LT,1); R(g,N.woodDk,px,yy+3,LT,1);
@@ -691,7 +727,7 @@ function waterTile(g,x,y,px,py,t){
 /* 榻榻米：兩格一張，對齊成整齊的格子（每一段連續的地板從左邊開始數） */
 const FLOORCH="tZTBCDRY";
 const isFloor = c => !!c && FLOORCH.includes(c);
-function tatamiBase(g,x,y,px,py){
+function tatamiBaseOld(g,x,y,px,py){
   R(g,N.tatami,px,py,LT,LT);
   let s0=x; while(isFloor(at(s0-1,y))) s0--;
   const Lf=((x-s0)%2===0);
@@ -699,7 +735,7 @@ function tatamiBase(g,x,y,px,py){
   R(g,N.tea,px,py,LT,1); R(g,N.tea,px,py+LT-1,LT,1);                 // 榻榻米邊的布條
   R(g,N.tatamiDk,Lf?px:px+LT-1,py+1,1,LT-2);
 }
-function bathFloor(g,x,y,px,py){
+function bathFloorOld(g,x,y,px,py){
   R(g,"#cde8f6",px,py,LT,LT); R(g,N.waterLt,px+7,py,1,LT); R(g,N.waterLt,px,py+7,LT,1);
   R(g,N.white,px+1,py+1,2,1); R(g,N.white,px+9,py+9,2,1);
   if(y===2){ R(g,N.waterLt,px,py,LT,1); dith(g,N.waterLt,px,py+1,LT,0); }
@@ -713,7 +749,7 @@ function bridgeTop(g,x,y){      // 橋面：畫在魚的上面，魚才會從橋
   R(g,N.redDk,px+12,py,3,LT); R(g,N.red,px+12,py,2,LT);
   [1,13].forEach(b=>{ R(g,N.gold,px+1,py+b,3,2); R(g,N.goldLt,px+1,py+b,1,1); R(g,N.gold,px+12,py+b,3,2); R(g,N.goldLt,px+12,py+b,1,1); });
 }
-function tile(g,x,y,t){
+function tileOld(g,x,y,t){
   const ch=at(x,y), px=x*LT, py=y*LT;
   switch(ch){
     case "#": {
@@ -737,20 +773,20 @@ function tile(g,x,y,t){
     case "W": waterTile(g,x,y,px,py,t); break;
     case "b": waterTile(g,x,y,px,py,t); break;                      // 橋面另外畫
     case "S": grassBase(g,x,y,px,py); break;                      // 樹（樹本身另外畫，才能和角色前後遮擋）
-    case "f": {
-      grassBase(g,x,y,px,py);
+    case "f": {                  // 花圃：石頭圍邊的花床，花排得整整齊齊（一排一個顏色）
+      R(g,N.soil,px,py,LT,LT);
       const nL=at(x-1,y)==="f", nR=at(x+1,y)==="f", nU=at(x,y-1)==="f", nD=at(x,y+1)==="f";
-      const l=nL?0:1, r=nR?0:1, u=nU?0:1, d=nD?0:1;
-      R(g,N.stoneDk,px+l,py+u,LT-l-r,LT-u-d);
-      if(!nU) R(g,N.stoneLt,px+l,py+u,LT-l-r,1);
-      const l2=nL?0:2, r2=nR?0:2, u2=nU?0:2, d2=nD?0:2;
-      R(g,N.soil,px+l2,py+u2,LT-l2-r2,LT-u2-d2);
-      const FC=[N.sakura,N.white,N.lav,N.sakuraDk,N.lav];
-      for(let i=0;i<2;i++){
-        const cx=px+4+((i*7+x*5+y*3)%9), cy=py+5+((i*5+y*7+x)%7);
-        D(g,N.leafDk,cx,cy+1,3); D(g,N.leaf,cx,cy,3);
-        for(let k=0;k<3;k++) R(g,FC[(x+y+i+k)%FC.length],cx-2+k*2,cy-2+(k%2)*3,1,1);
-      }
+      for(let k=1;k<LT;k+=4) dith(g,N.dark,px+(nL?0:2),py+k+1,LT-(nL?0:2)-(nR?0:2),(x+k)&1);     // 翻過的土
+      const FC=[N.sakura,N.white,N.goldLt,N.lav];
+      [[4,4],[12,4],[4,12],[12,12]].forEach(([cx,cy],i)=>{
+        const gr=y*2+(cy>8?1:0), pc=FC[gr%4];
+        R(g,N.leafDk,px+cx,py+cy+1,1,3); R(g,N.leaf,px+cx-1,py+cy+2,1,1); R(g,N.leaf,px+cx+1,py+cy+3,1,1);   // 莖和葉子
+        R(g,pc,px+cx,py+cy-2,1,1); R(g,pc,px+cx-1,py+cy-1,3,1); R(g,pc,px+cx,py+cy,1,1); R(g,N.gold,px+cx,py+cy-1,1,1);  // 花
+      });
+      if(!nU){ R(g,N.stoneDk,px,py,LT,3); R(g,N.stone,px,py,LT,2); R(g,N.stoneLt,px,py,LT,1); for(let k=4;k<LT;k+=5) R(g,N.stoneDk,px+k,py,1,2); }      // 石框
+      if(!nD){ R(g,N.stoneDk,px,py+LT-3,LT,3); R(g,N.stone,px,py+LT-3,LT,2); for(let k=4;k<LT;k+=5) R(g,N.stoneDk,px+k,py+LT-3,1,2); }
+      if(!nL){ R(g,N.stoneDk,px,py,3,LT); R(g,N.stone,px,py,2,LT); R(g,N.stoneLt,px,py,1,LT); for(let k=4;k<LT;k+=5) R(g,N.stoneDk,px,py+k,2,1); }
+      if(!nR){ R(g,N.stoneDk,px+LT-3,py,3,LT); R(g,N.stone,px+LT-3,py,2,LT); for(let k=4;k<LT;k+=5) R(g,N.stoneDk,px+LT-3,py+k,2,1); }
       break; }
     case "L": {
       gravelBase(g,x,y,px,py);
@@ -909,9 +945,564 @@ function tile(g,x,y,t){
     default: gravelBase(g,x,y,px,py);
   }
 }
+/* ---------- 細緻像素地圖：一格 32×32 像素，光從左上來 ---------- */
+const S = 32;
+const ph = (X,Y,k) => { const v=Math.sin(X*12.9898+Y*78.233+k*37.719)*43758.5453; return v-Math.floor(v); };   // 每個像素固定的亂數
+const wallish = c => c==="w"||c==="H"||c==="M"||c==="h";
+function shadeTop(g,px,py,col,rows){          // 屋簷下的陰影：越往下網點越稀
+  for(let j=0;j<(rows||4);j++) for(let i=0;i<S;i++){ const keep=[1,.75,.5,.25][j]; if(ph(px+i,py+j,9)<keep) R(g,col,px+i,py+j,1,1); }
+}
+function speck(g,px,py,dark,light,pd,pl,k){ for(let j=0;j<S;j++) for(let i=0;i<S;i++){ const r=ph(px+i,py+j,k||1); if(r<pd) R(g,dark,px+i,py+j,1,1); else if(r>1-pl) R(g,light,px+i,py+j,1,1); } }
+function tuft(g,x,y,c,hi){ R(g,c,x,y+1,1,2); R(g,c,x+1,y,1,3); R(g,c,x+2,y+1,1,2); R(g,hi,x+1,y,1,1); }
+function stone32(g,x,y,w,h){                   // 一顆有外框、有亮面暗面的石頭
+  RR(g,N.stoneDk,x,y,w,h); RR(g,N.stone,x+1,y+1,w-2,h-3);
+  R(g,N.stoneLt,x+2,y+1,Math.max(1,w-6),1); R(g,N.stoneLt,x+1,y+2,1,Math.max(1,h-6));
+  R(g,N.stoneDk,x+2,y+h-3,w-4,1);
+  for(let i=0;i<3;i++) R(g,i%2?N.stoneLt:N.stoneDk,x+2+((i*5+w)%(w-4)),y+2+((i*3+h)%Math.max(1,h-5)),1,1);
+}
+function grass32(g,x,y,px,py){
+  R(g,N.grass,px,py,S,S);
+  speck(g,px,py,N.grassDk,N.grassLt,.07,.05,1);
+  for(let i=0;i<3;i++){ const bx=px+ri(ph(x,y,i)*22), by=py+ri(ph(x,y,i+4)*24), w=4+ri(ph(x,y,i+8)*5);   // 明暗色塊
+    R(g,i%2?N.grassLt:N.grassDk,bx,by,w,1); R(g,i%2?N.grassLt:N.grassDk,bx+1,by+1,w-2,1); }
+  for(let i=0;i<5;i++) tuft(g,px+1+ri(ph(x,y,20+i)*27),py+2+ri(ph(x,y,30+i)*26),N.blade,N.grassHi);
+  const nf=ph(x,y,40)<.45?1+(ph(x,y,41)<.4?1:0):0;
+  for(let i=0;i<nf;i++){ const fx=px+3+ri(ph(x,y,42+i)*24), fy=py+3+ri(ph(x,y,45+i)*24), c=[N.white,N.goldLt,N.sakura,N.lav][ri(ph(x,y,48+i)*3)];
+    R(g,c,fx+1,fy,1,1); R(g,c,fx,fy+1,1,1); R(g,c,fx+2,fy+1,1,1); R(g,c,fx+1,fy+2,1,1); R(g,N.gold,fx+1,fy+1,1,1); R(g,N.blade,fx+1,fy+3,1,2); }
+  const up=at(x,y-1); if(wallish(up)) shadeTop(g,px,py,N.grassDk,4);
+  [[-1,0,0,0,1,S],[1,0,S-1,0,1,S],[0,-1,0,0,S,1],[0,1,0,S-1,S,1]].forEach(([dx,dy,ox,oy,w,h])=>{ const c=at(x+dx,y+dy); if(c==="."||c==="P"||c==="k"||c==="K"||c==="L"||c==="J") R(g,N.grassDk,px+ox,py+oy,w,h); });
+}
+function gravel32(g,x,y,px,py){
+  R(g,N.gravel,px,py,S,S);
+  speck(g,px,py,N.gravelDk,N.gravelLt,.03,.05,2);
+  for(let k=0;k<5;k++){ const by=py+3+k*6; for(let u=0;u<S;u++){ const w=ri(Math.sin((px+u)/4.6+k*.9)*1.4); R(g,N.rake,px+u,by+w,1,1); R(g,N.gravelLt,px+u,by+w+1,1,1); } }   // 枯山水耙紋
+  if(ph(x,y,70)<.12) stone32(g,px+6+ri(ph(x,y,71)*10),py+8+ri(ph(x,y,72)*8),11,8);
+  [[-1,0,0,0,1,S],[1,0,S-1,0,1,S],[0,-1,0,0,S,1],[0,1,0,S-1,S,1]].forEach(([dx,dy,ox,oy,w,h])=>{ if(at(x+dx,y+dy)==="g") R(g,N.gravelDk,px+ox,py+oy,w,h); });
+  if(wallish(at(x,y-1))) shadeTop(g,px,py,N.gravelDk,4);
+}
+function path32(g,x,y,px,py){
+  gravel32(g,x,y,px,py);
+  [[1,1,14,13],[17,1,14,12],[2,17,13,13],[17,16,13,14]].forEach(([a,b,w,h],i)=>{
+    const jx=ri((ph(x,y,80+i)-.5)*3), jy=ri((ph(x,y,90+i)-.5)*3);
+    stone32(g,px+a+jx,py+b+jy,w,h);
+    if(ph(x,y,100+i)<.4){ R(g,N.moss,px+a+jx+w-5,py+b+jy+h-4,2,1); R(g,N.leaf,px+a+jx+w-4,py+b+jy+h-5,1,1); }
+  });
+}
+function water32(g,x,y,px,py){
+  R(g,N.water,px,py,S,S);
+  speck(g,px,py,N.waterDk,N.waterLt,.03,.03,3);
+  const wn=isWater(x-1,y), we=isWater(x+1,y), wu=isWater(x,y-1), wd=isWater(x,y+1);
+  const deep=(ox,oy,w,h)=>{ R(g,N.waterDk,px+ox,py+oy,w,h); };
+  if(!wn){ deep(0,0,4,S); dith(g,N.waterDk,px+4,py,S,0); for(let j=0;j<S;j+=2) R(g,N.waterDk,px+4,py+j,1,1); }
+  if(!we){ deep(S-4,0,4,S); for(let j=1;j<S;j+=2) R(g,N.waterDk,px+S-5,py+j,1,1); }
+  if(!wu){ deep(0,0,S,4); for(let i=0;i<S;i+=2) R(g,N.waterDk,px+i,py+4,1,1); }
+  if(!wd){ deep(0,S-4,S,4); for(let i=1;i<S;i+=2) R(g,N.waterDk,px+i,py+S-5,1,1); }
+  for(let k=0;k<3;k++){ const wx=px+3+ri(ph(x,y,60+k)*18), wy=py+6+k*9+ri(ph(x,y,63+k)*3), wl=4+ri(ph(x,y,66+k)*5); R(g,N.waterLt,wx,wy,wl,1); }   // 水波紋路
+  if(ph(x,y,110)<.45){                        // 睡蓮
+    const lx=px+6+ri(ph(x,y,111)*14), ly=py+9+ri(ph(x,y,112)*12);
+    E(g,N.leafDk,lx+5,ly+2,6,3); E(g,N.leaf,lx+5,ly+1,6,3); R(g,N.water,lx+6,ly+1,6,2); R(g,N.leafDk,lx+3,ly+2,1,1);
+    if(ph(x,y,113)<.55){ D(g,N.sakuraLt,lx+3,ly-1,2); D(g,N.sakura,lx+3,ly,1); R(g,N.goldLt,lx+3,ly,1,1); }
+  }
+  if(at(x,y)==="W"){                          // 岸邊的石頭
+    const rim=(ax,ay,w,h)=>stone32(g,ax,ay,w,h);
+    if(!wu) for(let i=0;i<4;i++) rim(px+i*8-1,py-3+(i%2)*2,9,8);
+    if(!wd) for(let i=0;i<4;i++) rim(px+i*8-1,py+S-5-(i%2)*2,9,8);
+    if(!wn) for(let i=0;i<4;i++) rim(px-3+(i%2)*2,py+i*8-1,8,9);
+    if(!we) for(let i=0;i<4;i++) rim(px+S-5-(i%2)*2,py+i*8-1,8,9);
+  }
+}
+function wood32(g,x,y,px,py,base,lt){
+  R(g,base,px,py,S,S);
+  for(let k=0;k<4;k++){ const yy=py+k*8;
+    R(g,lt,px,yy,S,1);
+    for(let i=0;i<S;i++) if(ph(px+i,yy+3,5)<.2) R(g,N.grain,px+i,yy+2+ri(ph(px+i,yy,6)*4),1,1);          // 木紋
+    const gx=px+ri(ph(x,y,k)*20), gy=yy+3+ri(ph(x,y,k+9)*3); R(g,N.grain,gx,gy,6+ri(ph(x,y,k+3)*5),1);
+    R(g,N.woodDk,px,yy+7,S,1);
+    const jx=px+4+((x*13+y*7+k*11)%24); R(g,N.woodDk,jx,yy+1,1,6); R(g,lt,jx+1,yy+1,1,1);                  // 接縫
+    R(g,N.woodDk,jx-2,yy+3,1,1); R(g,N.woodDk,jx+3,yy+3,1,1);                                              // 釘頭
+  }
+}
+function tatami32(g,x,y,px,py){
+  R(g,N.tatami,px,py,S,S);
+  let s0=x; while(isFloor(at(s0-1,y))) s0--;
+  const Lf=((x-s0)%2===0);
+  for(let j=3;j<S-2;j+=2){ for(let i=0;i<S;i++) if(ph(px+i,py+j,7)<.55) R(g,N.tatamiDk,px+i,py+j,1,1); }     // 燈心草的紋路
+  speck(g,px,py,N.tatamiDk,N.paper,.01,.02,8);
+  R(g,N.heri,px,py,S,2); R(g,N.tea,px,py+2,S,1); R(g,N.heri,px,py+S-2,S,2); R(g,N.tea,px,py+S-3,S,1);     // 榻榻米邊的布條
+  R(g,N.tatamiDk,Lf?px:px+S-2,py+2,2,S-4); R(g,N.paper,Lf?px+2:px+S-3,py+3,1,S-6);
+  if(wallish(at(x,y-1))) shadeTop(g,px,py+2,N.tatamiDk,3);
+}
+function bath32(g,x,y,px,py){
+  R(g,"#cde8f6",px,py,S,S);
+  for(let a=0;a<S;a+=8){ R(g,N.waterLt,px+a,py,1,S); R(g,N.waterLt,px,py+a,S,1); R(g,N.white,px+a+2,py+2,3,1); R(g,N.white,px+a+2,py+3,1,2); }
+  speck(g,px,py,N.waterLt,N.white,.02,.02,11);
+  if(y===2) shadeTop(g,px,py,N.waterLt,3);
+}
+function wood32porch(g,x,y,px,py,base,lt){
+  wood32(g,x,y,px,py,base,lt);
+  if(at(x,y-1)==="M") shadeTop(g,px,py,N.woodDk,4);
+  if(at(x-1,y)==="M") R(g,N.woodDk,px,py,3,S);
+  if(at(x+1,y)==="M") R(g,N.woodDk,px+S-3,py,3,S);
+}
+function roof32(g,x,y,px,py){
+  R(g,N.roof,px,py,S,S);
+  R(g,N.roofDk,px,py,S,5); R(g,N.roofLt,px,py+5,S,1); R(g,N.roofDk,px,py+6,S,1);                     // 棟瓦
+  for(let i=0;i<S;i+=4){ R(g,N.roofLt,px+i+1,py+1,2,1); }
+  for(let r=0;r<3;r++){ const yy=py+8+r*6, off=(r%2)*4;                                                  // 一排排的瓦
+    for(let c=-1;c<5;c++){ const cx=px+c*8+off;
+      R(g,N.roofLt,cx+1,yy,6,1); R(g,N.roof,cx,yy+1,8,3); R(g,N.roofLt,cx+1,yy+1,2,1);
+      R(g,N.roofDk,cx,yy+4,8,1); R(g,N.roofDk,cx+1,yy+5,6,1); R(g,N.roofDk,cx+8,yy,1,5); } }
+  R(g,N.woodDk,px,py+S-7,S,1); R(g,N.wood,px,py+S-6,S,5); R(g,N.woodLt,px,py+S-6,S,1); R(g,N.woodDk,px,py+S-1,S,1);   // 軒下木板
+  for(let u=0;u<S;u+=8){ D(g,N.roofDk,px+u+4,py+S-9,3); D(g,N.roofLt,px+u+4,py+S-10,2); D(g,N.roof,px+u+4,py+S-10,1); }  // 軒丸瓦
+}
+function shoji32(g,x,y,px,py){
+  R(g,N.lattice,px,py,S,S); R(g,N.woodDk,px,py,S,1); R(g,N.woodLt,px,py+1,S,1);
+  R(g,N.paper,px+2,py+3,S-4,20);
+  for(const u of [10,21]) R(g,N.lattice,px+u,py+3,1,20);
+  for(const v of [9,16]) R(g,N.lattice,px+2,py+v,S-4,1);
+  R(g,N.plasterDk,px+2,py+3,S-4,1); R(g,N.plasterDk,px+2,py+3,1,20);
+  speck(g,px+2,py+3,N.plasterDk,N.white,.015,.0,12);
+  R(g,N.wood,px+2,py+24,S-4,6); R(g,N.woodLt,px+2,py+24,S-4,1); R(g,N.woodDk,px+2,py+29,S-4,1); R(g,N.woodDk,px,py+S-1,S,1);
+  for(let i=0;i<3;i++) R(g,N.grain,px+4+i*9,py+26+(i%2)*2,5,1);
+  if(at(x,y-1)==="H"){ shadeTop(g,px,py+1,N.plasterDk,3); }
+}
+function wall32(g,x,y,px,py){
+  const side=(x===0||x===COLS-1)&&y>0&&y<ROWS-1;
+  const cap=(cx,cy,w,h,vert)=>{
+    R(g,N.roof,cx,cy,w,h);
+    if(!vert){ for(let i=0;i<w;i+=8){ R(g,N.roofDk,cx+i,cy+1,1,h-3); R(g,N.roofLt,cx+i+1,cy+1,2,1); } R(g,N.roofLt,cx,cy,w,1); R(g,N.roofDk,cx,cy+h-2,w,2); }
+    else { for(let j=0;j<h;j+=8){ R(g,N.roofDk,cx,cy+j+6,w,1); R(g,N.roofLt,cx+1,cy+j,1,5); } }
+  };
+  if(!side){
+    R(g,N.plaster,px,py,S,S); speck(g,px,py,N.plasterDk,N.white,.04,.03,13);
+    cap(px,py,S,10,false);
+    shadeTop(g,px,py+10,N.plasterDk,3);
+    R(g,N.plasterDk,px,py+S-5,S,5); R(g,N.stoneDk,px,py+S-1,S,1);
+  } else {
+    R(g,N.roof,px,py,S,S); cap(px,py,S,S,true);
+    if(x===0){ R(g,N.plasterDk,px+S-6,py,1,S); R(g,N.plaster,px+S-5,py,5,S); } else { R(g,N.plasterDk,px+5,py,1,S); R(g,N.plaster,px,py,5,S); }
+  }
+}
+function bed32dummy(){}
+function flower32(g,x,y,px,py){          // 整齊的花圃：木框、一排一排的花
+  grass32(g,x,y,px,py);
+  const nL=at(x-1,y)==="f", nR=at(x+1,y)==="f", nU=at(x,y-1)==="f", nD=at(x,y+1)==="f";
+  const l=nL?0:2, r=nR?0:2, u=nU?0:2, d=nD?0:2;
+  R(g,N.woodDk,px+l,py+u,S-l-r,S-u-d);                                          // 外框
+  const l2=nL?0:5, r2=nR?0:5, u2=nU?0:5, d2=nD?0:5;
+  R(g,N.soil,px+l2,py+u2,S-l2-r2,S-u2-d2);
+  if(!nU){ R(g,N.woodLt,px+l,py+u,S-l-r,2); R(g,N.wood,px+l,py+u+2,S-l-r,3); }
+  if(!nD){ R(g,N.wood,px+l,py+S-d-5,S-l-r,3); R(g,N.woodDk,px+l,py+S-d-2,S-l-r,2); }
+  if(!nL){ R(g,N.wood,px+l,py+u,5,S-u-d); R(g,N.woodLt,px+l,py+u,2,S-u-d); }
+  if(!nR){ R(g,N.wood,px+S-r-5,py+u,5,S-u-d); R(g,N.woodDk,px+S-r-2,py+u,2,S-u-d); }
+  const FC=[[N.sakura,N.sakuraLt],[N.white,N.paper],[N.lav,N.white],[N.goldLt,N.white]];
+  for(let j=0;j<4;j++) R(g,"#6a4d38",px+l2,py+4+j*8+7,S-l2-r2,1);
+  for(let cj=0;cj<2;cj++) for(let ci=0;ci<2;ci++){
+    const cx=px+8+ci*16, cy=py+9+cj*16, col=FC[((y-12)*2+cj)%4];
+    if(cx-4<px+l2||cx+4>px+S-r2||cy-5<py+u2||cy+9>py+S-d2) continue;
+    R(g,N.leafDk,cx,cy+3,1,6); R(g,N.leaf,cx-4,cy+5,4,2); R(g,N.leaf,cx+1,cy+6,4,2); R(g,N.leafDk,cx-4,cy+7,4,1);
+    R(g,col[0],cx-1,cy-4,3,9); R(g,col[0],cx-4,cy-1,9,3); R(g,col[0],cx-3,cy-3,7,7);
+    R(g,col[1],cx-3,cy-3,3,2); R(g,col[1],cx-4,cy-1,1,1);
+    R(g,N.gold,cx-1,cy-1,3,3); R(g,N.goldLt,cx-1,cy-1,1,1);
+  }
+}
+/* ---- 32 格的樹、鳥居、石燈籠、神社、橋 ---- */
+function fillTri(g,c,pts){ P(g,c,pts); }
+function mkTreeSprite(kind,seed){
+  const col=TREE_COL[kind];
+  return mk(72,96,g=>{
+    g.translate(0,16); const cx=36, by=74;
+    E(g,N.grassDk,cx,by,15,4); E(g,N.grass,cx-1,by-1,12,3);                                  // 樹影
+    if(kind==="blue"||kind==="sky"){
+      R(g,N.dark,cx-4,by-14,8,14); R(g,N.trunk,cx-3,by-14,5,14); R(g,N.woodLt,cx-3,by-14,1,13);
+      const tiers=[[8,34,10],[24,24,15],[40,16,20],[56,8,24]];       // [頂 y, 底 y, 半寬] 由上到下
+      tiers.forEach(([ty,by2,hw],i)=>{
+        const top=[cx,ty-6+i*0], b=ty+ [20,22,24,26][i];
+      });
+      const T3=[[4,22,12],[16,36,17],[30,50,22],[44,64,25]];
+      T3.forEach(([y0,y1,hw])=>{
+        P(g,col[2],[[cx,y0-1],[cx-hw-1,y1+1],[cx+hw+1,y1+1]]);
+        P(g,col[0],[[cx,y0],[cx-hw,y1],[cx+hw,y1]]);
+        P(g,col[1],[[cx,y0+1],[cx-hw+1,y1-1],[cx-hw+6,y1-1],[cx-1,y0+7]]);                       // 左邊受光
+        P(g,col[2],[[cx+2,y0+8],[cx+hw-4,y1-1],[cx+hw,y1-1],[cx+3,y0+5]]);
+        for(let i=0;i<=hw*2;i+=4){ R(g,col[2],cx-hw+i,y1-1,2,1); }
+        for(let k=0;k<10;k++){ const yy=y0+4+ri(ph(seed,k,1)*(y1-y0-6)), half=(yy-y0)/(y1-y0)*hw; const xx=cx-half+2+ri(ph(seed,k,2)*(half*2-4)); R(g,k%2?col[1]:col[2],xx,yy,2,1); }
+      });
+      R(g,N.white,cx-1,2,2,2);
+    } else {
+      R(g,N.dark,cx-5,by-38,10,38); R(g,N.trunk,cx-4,by-38,7,38); R(g,N.woodLt,cx-4,by-36,1,34); R(g,N.dark,cx+3,by-36,1,36);
+      R(g,N.dark,cx-8,by-3,16,3); R(g,N.trunk,cx-7,by-3,14,2);                         // 樹根
+      R(g,N.dark,cx-10,by-30,6,2); R(g,N.trunk,cx-9,by-31,5,2); R(g,N.dark,cx+5,by-33,7,2); R(g,N.trunk,cx+5,by-34,6,2);   // 樹枝
+      const blobs=[[-17,22,12],[17,22,12],[0,12,15],[-9,6,11],[10,6,11],[0,28,13],[-20,12,9],[20,12,9],[0,0,10]];
+      blobs.forEach(([dx,y,r])=>D(g,col[2],cx+dx,y+1,r+1));
+      blobs.forEach(([dx,y,r])=>D(g,col[0],cx+dx,y,r));
+      blobs.forEach(([dx,y,r])=>{ D(g,col[1],cx+dx-3,y-4,Math.max(2,ri(r*.55))); });
+      blobs.forEach(([dx,y,r])=>{ D(g,col[0],cx+dx-1,y-2,Math.max(1,ri(r*.3))); });
+      for(let k=0;k<70;k++){                                                          // 葉簇的細節
+        const ax=ph(seed,k,3)*60-30, ay=ph(seed,k,4)*40-2;
+        const inside=blobs.some(([dx,y,r])=>Math.hypot(ax-dx,ay-y)<r-2);
+        if(!inside) continue;
+        const x=cx+ri(ax), y=ri(ay);
+        if(k%3===0){ R(g,col[1],x,y,2,1); } else if(k%3===1){ R(g,col[2],x,y+1,2,1); } else { R(g,N.white,x,y,1,1); }
+      }
+      blobs.forEach(([dx,y,r])=>{ for(let a=0;a<6;a++){ const ang=.3+a*.45, px2=cx+dx+ri(Math.cos(ang)*(r-1)), py2=y+ri(Math.sin(ang)*(r-1)); R(g,col[2],px2,py2,2,1); } });   // 右下的暗邊
+    }
+  });
+}
+function drawTree32(g,x,y,t){
+  const kind=TREE[x+","+y]||"pink", key="tree"+kind+x+"_"+y;
+  const sp=SPR[key]||(SPR[key]=mkTreeSprite(kind,x*7+y*3));
+  const sw=reduceMotion()?0:ri(Math.sin(t*1.2+x)*.8);
+  g.drawImage(sp,x*32+16-36+sw,y*32+30-74-16);
+}
+/* 鳥居：四格寬、兩根柱子，用像素一層層畫 */
+function torii32(g,x,y,px,py,ch){
+  const RD="#d5503b", RDL="#e8765f";
+  if(ch==="K"){ const left=(at(x-1,y)!=="K"&&at(x-1,y)!=="k"); gravel32(g,x,y,px,py); } else path32(g,x,y,px,py);
+  const first=at(x-1,y)!=="k"&&at(x-1,y)!=="K", last=at(x+1,y)!=="k"&&at(x+1,y)!=="K";
+  // 笠木（黑色上梁，兩端微翹）和島木（紅）
+  R(g,N.black,px,py+2,32,5); R(g,N.roofLt,px,py+2,32,1); R(g,"#4a4340",px,py+6,32,1);
+  if(first){ R(g,N.black,px,py,6,3); R(g,N.roofLt,px,py,6,1); }
+  if(last){ R(g,N.black,px+26,py,6,3); R(g,N.roofLt,px+26,py,6,1); }
+  R(g,N.redDk,px,py+7,32,1); R(g,RD,px,py+8,32,4); R(g,RDL,px,py+8,32,1); R(g,N.redDk,px,py+12,32,1);
+  // 貫（下梁）
+  R(g,N.redDk,px,py+15,32,1); R(g,RD,px,py+16,32,4); R(g,RDL,px,py+16,32,1); R(g,N.redDk,px,py+20,32,1);
+  if(ch==="k" && at(x+1,y)==="k" ){ R(g,N.gold,px+27,py+8,5,12); R(g,N.goldLt,px+27,py+8,5,1); }   // 額束（中間的小牌子）
+  if(ch==="K"){
+    const L=(at(x-1,y)!=="K"&&at(x-1,y)!=="k"), x0=px+(L?4:20);
+    R(g,N.redDk,x0,py+12,9,20); R(g,RD,x0,py+12,6,20); R(g,RDL,x0+1,py+12,2,20);
+    R(g,N.black,x0-1,py+26,11,6); R(g,N.roofLt,x0-1,py+26,11,1);                      // 柱腳的黑基座
+    R(g,N.redDk,x0-1,py+11,11,2);
+  }
+}
+function lantern32(g,x,y,px,py,t){
+  gravel32(g,x,y,px,py);
+  E(g,N.gravelDk,px+16,py+29,10,2);
+  R(g,N.stoneDk,px+7,py+25,18,5); R(g,N.stone,px+8,py+25,16,3); R(g,N.stoneLt,px+8,py+25,16,1);   // 基座
+  R(g,N.stoneDk,px+11,py+13,10,12); R(g,N.stone,px+12,py+13,7,12); R(g,N.stoneLt,px+12,py+13,1,12);   // 竿
+  R(g,N.stoneDk,px+8,py+11,16,3); R(g,N.stone,px+9,py+11,14,2);
+  R(g,N.stoneDk,px+9,py+3,14,9); R(g,N.stone,px+10,py+3,12,8); R(g,N.stoneLt,px+10,py+3,1,8);      // 火袋
+  const lit=(reduceMotion()||Math.sin(t*2+x)>-.4);
+  R(g,lit?N.goldLt:N.gold,px+12,py+5,8,5); R(g,N.gold,px+12,py+9,8,1); R(g,N.white,px+13,py+5,2,1);
+  R(g,N.stoneDk,px+15,py+5,2,5);
+  P(g,N.stoneDk,[[px+4,py+4],[px+28,py+4],[px+16,py-5]]);                                           // 笠
+  P(g,N.stone,[[px+6,py+3],[px+26,py+3],[px+16,py-3]]);
+  P(g,N.stoneLt,[[px+7,py+3],[px+16,py-3],[px+14,py+3]]);
+  R(g,N.stoneDk,px+14,py-8,4,4); R(g,N.stoneLt,px+15,py-8,1,3);
+}
+function bridge32(g,x,y){
+  const px=x*32, py=y*32;
+  R(g,N.woodDk,px+5,py,22,32);
+  for(let k=0;k<8;k++){ R(g,N.wood,px+6,py+k*4,20,3); R(g,N.woodLt,px+6,py+k*4,20,1); R(g,N.woodDk,px+6,py+k*4+3,20,1); R(g,N.woodDk,px+8+(k*5)%10,py+k*4+1,1,1); }
+  for(const rx of [0,26]){
+    R(g,N.redDk,px+rx,py,6,32); R(g,"#d5503b",px+rx,py,4,32); R(g,"#e8765f",px+rx,py,1,32);
+    for(const b of [1,15,29]){ R(g,N.gold,px+rx,py+b-1,6,3); R(g,N.goldLt,px+rx,py+b-1,6,1); }
+  }
+}
+function drawShrine32(g,x,y){
+  const cx=x*32+16, by=y*32+31, RD="#d5503b", RDL="#e8765f";
+  const t=(c,xx,yy,w,h)=>R(g,c,cx+xx,by+yy,w,h);
+  E(g,N.gravelDk,cx,by-1,24,4);
+  t(N.stoneDk,-16,-8,32,8); t(N.stone,-16,-8,32,6); t(N.stoneLt,-16,-8,32,1); t(N.stoneDk,-12,-14,24,6); t(N.stone,-12,-14,24,4); t(N.stoneLt,-12,-14,24,1);   // 石階
+  t(N.woodDk,-18,-22,36,8); t(N.wood,-18,-22,36,6); t(N.woodLt,-18,-22,36,1);                        // 木台
+  t(N.plasterDk,-14,-42,28,20); t(N.plaster,-14,-42,28,18);
+  t(N.red,-16,-44,4,24); t(N.redDk,-13,-44,1,24); t(N.red,12,-44,4,24); t(N.redDk,15,-44,1,24);      // 柱
+  t(N.woodDk,-6,-38,12,16); t(N.wood,-5,-38,10,14); t(N.woodLt,-5,-38,10,1); t(N.woodDk,0,-38,1,16);  // 門
+  t(N.gold,-3,-30,1,3); t(N.gold,2,-30,1,3);
+  t(N.straw,-14,-40,28,2); for(const dx of [-10,-2,6]){ t(N.white,dx,-38,3,5); t(N.plasterDk,dx,-34,3,1); }   // 注連繩＋紙垂
+  P(g,N.roofDk,[[cx-26,by-42],[cx+26,by-42],[cx+17,by-62],[cx-17,by-62]]);                           // 屋頂
+  P(g,N.roof,[[cx-24,by-43],[cx+24,by-43],[cx+16,by-61],[cx-16,by-61]]);
+  for(let r=0;r<4;r++){ const yy=by-60+r*4; R(g,N.roofDk,cx-24+r*2,yy+3,48-r*4,1); }
+  R(g,N.roofLt,cx-16,by-61,32,2); R(g,N.woodDk,cx-26,by-43,52,2); R(g,N.wood,cx-26,by-44,52,1);
+  t(N.plaster,-12,-70,3,10); t(N.plaster,9,-70,3,10); t(N.plasterDk,-12,-70,1,10); t(N.plasterDk,9,-70,1,10);   // 千木
+  t(N.woodDk,-4,-47,8,5); t(N.gold,-3,-46,6,3); t(N.goldLt,-3,-46,6,1);                              // 鈴
+}
+
+const nat=fn=>(g,x,y,px,py,...a)=>{ g.save(); g.scale(.5,.5); fn(g,x,y,px*2,py*2,...a); g.restore(); };   // 16 格的舊畫法呼叫 → 改用 32 格的新畫法
+const grassBase=nat(grass32), gravelBase=nat(gravel32), pathBase=nat(path32), woodFloor=nat(wood32), tatamiBase=nat(tatami32), bathFloor=nat(bath32);
+function leg(g,fn){ g.save(); g.scale(2,2); LT=16; try{ fn(); } finally { LT=32; g.restore(); } }     // 舊的 16 格小物件放大一倍畫
+function tile(g,x,y,t){
+  const ch=at(x,y), px=x*32, py=y*32;
+  switch(ch){
+    case "#": wall32(g,x,y,px,py); break;
+    case "g": case "S": grass32(g,x,y,px,py); break;
+    case ".": case "J": gravel32(g,x,y,px,py); break;
+    case "P": path32(g,x,y,px,py); break;
+    case "W": case "b": water32(g,x,y,px,py); break;
+    case "f": if(at(x-1,y)!=="f"&&at(x,y-1)!=="f") flowerbedFull(g,x,y); break;
+    case "H": roof32(g,x,y,px,py); break;
+    case "M": shoji32(g,x,y,px,py); break;
+    case "w": wood32porch(g,x,y,px,py,N.wood,N.woodLt); break;
+    case "K": case "k": torii32(g,x,y,px,py,ch); break;
+    case "L": lantern32(g,x,y,px,py,t); break;
+    case "Z": case "T": case "B": case "C": case "D": case "R": case "V": case "U": case "Q": case "X": case "h": case "t": case "e":
+      if(ch==="t") tatami32(g,x,y,px,py); else if(ch==="e") bath32(g,x,y,px,py); else furnTile(g,x,y,px,py,ch,t); break;
+    default: gravel32(g,x,y,px,py);
+  }
+}
+/* ---- 32 格的家具與小物件 ---- */
+function shadowRow(g,c,x,y,w){ R(g,c,x,y,w,2); }
+function tableTop(g,x0,y0,w,h){           // 矮桌：外框、桌面、亮邊、前緣
+  R(g,N.woodDk,x0,y0,w,h); R(g,N.wood,x0+1,y0+1,w-2,h-5); R(g,N.woodLt,x0+1,y0+1,w-2,1);
+  R(g,N.woodLt,x0+1,y0+2,1,h-7); R(g,N.grain,x0+4,y0+5,Math.max(2,w-12),1); R(g,N.grain,x0+8,y0+8,Math.max(2,w-18),1);
+  R(g,N.woodDk,x0+1,y0+h-4,w-2,3); R(g,N.wood,x0+1,y0+h-4,w-2,1);
+}
+function cup(g,x,y,body,dk,tea){ R(g,dk,x,y+1,8,7); R(g,body,x+1,y+1,6,6); R(g,N.white,x+1,y+1,2,1); R(g,tea,x+2,y+2,4,1); R(g,dk,x+8,y+3,2,3); R(g,N.white,x+9,y+4,1,1); }
+function furnTile(g,x,y,px,py,ch,t){
+  const L=at(x-1,y)!==ch;
+  if(ch==="Z"){ tatami32(g,x,y,px,py); shadowRow(g,N.tatamiDk,px+5,py+27,24); tableTop(g,px+3,py+8,26,18);
+    cup(g,px+7,py+11,N.white,N.stoneLt,N.tea); cup(g,px+18,py+11,N.sakura,N.sakuraDk,N.tea); }
+  else if(ch==="T"){ tatami32(g,x,y,px,py); shadowRow(g,N.tatamiDk,px,py+27,32);
+    const x0=px+(L?3:0), w=L?29:29; tableTop(g,x0,py+8,w,18);
+    if(L) cup(g,px+14,py+11,N.waterLt,N.waterDk,N.tea); else cup(g,px+8,py+11,N.mapleLt,N.maple,N.tea);
+    if(!reduceMotion()){ const s=Math.floor(t*4)%3, mx=px+(L?18:12); R(g,N.white,mx,py+7-(s%2),1,2); R(g,N.white,mx+2,py+5-((s+1)%2),1,2); } }
+  else if(ch==="B"||ch==="C"){
+    tatami32(g,x,y,px,py); const fx=px+(L?1:0), fw=L?31:31;
+    R(g,N.woodDk,fx,py,fw,32);
+    if(ch==="B"){
+      R(g,N.wood,fx,py,fw,9); R(g,N.woodLt,fx,py,fw,2); R(g,N.woodDk,fx,py+9,fw,1); R(g,N.grain,fx+4,py+4,8,1);
+      R(g,N.paper,fx+(L?2:0),py+10,fw-(L?2:0)-(L?0:2),22); R(g,N.plasterDk,fx+(L?2:0),py+10,fw-(L?2:0)-(L?0:2),1);
+      const pc=L?N.white:N.sakura, ps=L?N.plasterDk:N.sakuraDk, pl=L?N.paper:N.sakuraLt, qx=px+(L?5:3);
+      RR(g,ps,qx,py+13,24,15); RR(g,pc,qx,py+12,24,14); R(g,pl,qx+2,py+13,20,2); R(g,ps,qx+6,py+22,12,1);
+    } else {
+      R(g,N.paper,fx+(L?2:0),py,fw-(L?2:0)-(L?0:2),26);
+      const bc=L?N.waterLt:N.sakura, bd=L?N.waterDk:N.sakuraDk, bl=L?"#cde8f6":N.sakuraLt, bx=px+(L?3:0), bw=L?28:29;
+      R(g,bd,bx,py+1,bw,25); R(g,bc,bx,py+1,bw,23); R(g,bl,bx,py+1,bw,6); R(g,bd,bx,py+7,bw,1);   // 摺起來的被緣
+      for(let j=0;j<3;j++) for(let i=0;i<bw;i+=4) R(g,bl,bx+i+(j%2)*2,py+11+j*4,2,1);                 // 縫線花紋
+      R(g,bd,bx,py+23,bw,1);
+      R(g,N.wood,fx,py+26,fw,5); R(g,N.woodLt,fx,py+26,fw,1); R(g,N.woodDk,fx,py+31,fw,1);
+    } }
+  else if(ch==="D"){ tatami32(g,x,y,px,py);
+    R(g,N.woodDk,px+1,py,30,32); R(g,N.wood,px+3,py+2,26,26); R(g,N.woodLt,px+3,py+2,26,2); R(g,N.woodDk,px+15,py+2,2,26);
+    R(g,N.woodDk,px+5,py+6,9,19); R(g,N.woodLt,px+6,py+7,7,17); R(g,N.woodDk,px+18,py+6,9,19); R(g,N.woodLt,px+19,py+7,7,17);
+    R(g,N.grain,px+7,py+10,1,10); R(g,N.grain,px+21,py+10,1,10);
+    R(g,N.gold,px+12,py+14,2,5); R(g,N.gold,px+18,py+14,2,5); R(g,N.goldLt,px+12,py+14,1,1);
+    R(g,N.indigo,px+7,py+25,5,6); R(g,N.indigoDk,px+7,py+30,5,1); R(g,N.red,px+20,py+25,5,6); R(g,N.redDk,px+20,py+30,5,1);
+    R(g,N.woodDk,px+1,py+28,30,4); R(g,N.wood,px+2,py+28,28,1); }
+  else if(ch==="R"){ tatami32(g,x,y,px,py); shadowRow(g,N.tatamiDk,px+6,py+29,20);
+    R(g,N.woodDk,px+14,py+2,4,28); R(g,N.wood,px+14,py+2,2,28); R(g,N.woodLt,px+14,py+2,1,28); R(g,N.gold,px+13,py,6,3); R(g,N.goldLt,px+14,py,2,1);
+    R(g,N.woodDk,px+5,py+7,22,2); R(g,N.wood,px+5,py+7,22,1);
+    R(g,N.indigoDk,px+3,py+9,10,18); R(g,N.indigo,px+4,py+9,8,16); R(g,"#5f6fa0",px+4,py+9,2,16); R(g,N.white,px+7,py+9,2,3); R(g,N.indigoDk,px+4,py+19,8,1);
+    R(g,N.redDk,px+19,py+9,10,18); R(g,N.red,px+20,py+9,8,16); R(g,"#d9654f",px+20,py+9,2,16); R(g,N.white,px+23,py+9,2,3); R(g,N.redDk,px+20,py+19,8,1);
+    R(g,N.woodDk,px+8,py+28,16,4); R(g,N.wood,px+9,py+28,14,2); }
+  else if(ch==="V"){ bath32(g,x,y,px,py);
+    R(g,N.woodDk,px+5,py+1,22,13); R(g,N.waterLt,px+7,py+3,18,9); R(g,N.white,px+9,py+4,5,1); R(g,N.white,px+9,py+5,1,3);        // 鏡子
+    R(g,N.plasterDk,px+1,py+15,30,17); R(g,N.plaster,px+1,py+14,30,16); R(g,N.white,px+1,py+14,30,1);
+    R(g,N.stoneDk,px+5,py+16,14,8); R(g,N.waterLt,px+7,py+17,10,5); R(g,N.white,px+8,py+17,3,1); R(g,N.stoneLt,px+11,py+11,3,6); R(g,N.stoneDk,px+10,py+11,5,1);
+    R(g,N.waterLt,px+22,py+8,4,7); R(g,N.waterDk,px+22,py+14,4,1); R(g,N.sakura,px+27,py+8,3,7); R(g,N.sakuraDk,px+27,py+14,3,1); R(g,N.white,px+22,py+14,8,0);   // 牙刷杯
+    R(g,N.white,px+22,py+16,8,8); R(g,N.waterLt,px+22,py+16,8,2); }
+  else if(ch==="U"){ bath32(g,x,y,px,py);
+    const fx=px+(L?1:0), fw=31;
+    R(g,N.woodDk,fx,py+4,fw,28); R(g,N.wood,fx,py+4,fw,24); R(g,N.woodLt,fx,py+4,fw,2);
+    for(let i=4;i<fw;i+=8) R(g,N.woodDk,fx+i,py+6,1,22);
+    const wx=L?px+5:px, ww=L?26:27; R(g,N.woodDk,wx,py+8,ww,18); R(g,N.water,wx+1,py+9,ww-1,16); R(g,N.waterLt,wx+3,py+11,10,1); R(g,N.waterLt,wx+14,py+17,8,1); R(g,N.waterLt,wx+6,py+22,12,1);
+    if(!L){ R(g,N.goldLt,px+7,py+12,9,6); R(g,N.gold,px+7,py+17,9,2); R(g,N.mapleLt,px+16,py+14,4,2); R(g,N.black,px+11,py+13,1,1); R(g,N.white,px+8,py+13,2,1); }
+    R(g,N.woodDk,fx,py+28,fw,4); R(g,N.wood,fx,py+28,fw,1);
+    if(!reduceMotion()){ const s=Math.floor(t*3+x)%3; R(g,N.white,px+8+s*3,py+2-(s%2),2,2); R(g,N.white,px+22-s*2,py+3-s%2,2,2); } }
+  else if(ch==="Q"){ bath32(g,x,y,px,py);
+    R(g,N.woodDk,px+4,py+2,24,30); R(g,N.wood,px+6,py+4,20,26); R(g,N.woodLt,px+6,py+4,20,1);
+    R(g,N.woodDk,px+6,py+14,20,2); R(g,N.woodDk,px+6,py+24,20,2);
+    R(g,N.waterLt,px+7,py+6,9,8); R(g,N.waterDk,px+7,py+13,9,1); R(g,N.sakura,px+16,py+6,9,8); R(g,N.sakuraDk,px+16,py+13,9,1);
+    R(g,N.sakuraLt,px+7,py+17,9,7); R(g,N.sakura,px+7,py+23,9,1); R(g,"#cde8f6",px+16,py+17,9,7); R(g,N.waterLt,px+16,py+23,9,1);
+    R(g,N.waterLt,px+8,py+27,16,3); R(g,N.white,px+8,py+27,16,1); }
+  else if(ch==="X"){ tatami32(g,x,y,px,py);
+    R(g,N.woodDk,px,py,32,32); R(g,N.paper,px+2,py+2,28,28); R(g,N.lattice,px+14,py,4,32); R(g,N.woodLt,px+14,py,1,32);
+    R(g,N.gold,px+10,py+14,2,5); R(g,N.gold,px+20,py+14,2,5);
+    for(let i=0;i<5;i++){ R(g,N.waterLt,px+3+i*2,py+24+(i%2),2,1); R(g,N.sakura,px+19+i*2,py+25-(i%2),2,1); }
+    R(g,N.plasterDk,px+2,py+2,28,1); }
+  else if(ch==="h"){ wood32(g,x,y,px,py,N.woodLt,N.woodPale);
+    if(x===8) R(g,N.woodDk,px,py,2,32); if(x===11) R(g,N.woodDk,px+30,py,2,32);
+    if(x===8||x===11){
+      R(g,N.waterDk,px+11,py+18,10,11); R(g,N.waterLt,px+12,py+18,3,11); R(g,N.waterDk,px+13,py+14,6,4); R(g,N.white,px+13,py+20,1,4);
+      R(g,N.trunk,px+15,py+7,2,8); R(g,N.trunk,px+10,py+5,2,5); R(g,N.trunk,px+20,py+7,2,4); R(g,N.trunk,px+12,py+9,3,1);
+      D(g,N.sakura,px+11,py+5,3); D(g,N.sakuraLt,px+21,py+6,2); D(g,N.sakuraDk,px+16,py+9,2); D(g,N.sakuraLt,px+12,py+4,1); D(g,N.sakura,px+18,py+4,2);
+    }
+    if(at(x,y-1)==="H") shadeTop(g,px,py,N.woodDk,4); }
+}
+/* ---- 小物件（座標 px,py 是物件中心；單位是 32 格的像素） ---- */
+function heart32(c,d,l){ return mk(22,20,g=>{
+  const body=col=>{ D(g,col,6,6,5); D(g,col,15,6,5); P(g,col,[[1,8],[20,8],[10.5,19]]); };
+  body(d); g.save(); g.translate(0,0); D(g,c,6,6,4); D(g,c,15,6,4); P(g,c,[[2,8],[19,8],[10.5,17]]); g.restore();
+  R(g,l,4,3,3,2); R(g,l,3,5,2,2); }); }
+const HEARTS={a:heart32("#e8798a","#b84a62","#fde3e6"), b:heart32("#c3cdf5","#8a96d8","#eaf4fb")};
+function drawSpot32(s){
+  if(s.kind==="npc") return; const g=ctx, cx=ri(s.x*32+16), cy=ri(s.y*32+16), bob=reduceMotion()?0:ri(Math.sin(time*3+s.id)*2), p=reduceMotion()?0:(Math.sin(time*3+s.id)>0?1:0);
+  if(!s.seen) ringDots32(g,cx,cy+8,12+p*2,5+p,10,N.gold); else ringDots32(g,cx,cy+8,12,5,8,"#c3cdf5");
+  if(ready(s.sprite)){ const h=30, w=ri(h*s.sprite.naturalWidth/s.sprite.naturalHeight); g.globalAlpha=s.seen?.65:1; g.drawImage(s.sprite,cx-ri(w/2),cy-h+6+bob,w,h); g.globalAlpha=1; }
+  else g.drawImage(s.seen?HEARTS.b:HEARTS.a,cx-11,cy-18+bob);
+}
+function ringDots32(g,cx,cy,rx,ry,n,col){ for(let i=0;i<n;i++){ const a=i*Math.PI*2/n+(reduceMotion()?0:time*.9); R(g,col,cx+ri(Math.cos(a)*rx),cy+ri(Math.sin(a)*ry),2,2); } }
+function sleepCat32(k){ const c=CATS[k%CATS.length]; return mk(28,18,g=>{
+  const ed=c.edge, bd=c.body, st=c.stripe;
+  E(g,ed,12,12,7,4); E(g,bd,12,11,6,3); R(g,st,9,8,1,2); R(g,st,12,7,1,2); R(g,st,15,8,1,2);   // 小小的身體
+  R(g,ed,3,12,3,2); R(g,bd,3,12,2,1); R(g,ed,1,10,2,3); R(g,bd,1,10,1,2);                          // 尾巴
+  D(g,ed,20,11,5); D(g,bd,20,10,4);                                                                  // 頭
+  P(g,ed,[[16,7],[17,1],[21,6]]); P(g,ed,[[24,7],[24,1],[20,6]]); R(g,C.pink,18,3,1,2); R(g,C.pink,23,3,1,2);
+  R(g,C.ink,17,10,3,1); R(g,C.ink,21,10,3,1); R(g,C.pinkDeep,20,12,1,1);
+}); }
+const sleepCatS=k=>SPR["sc32"+k]||(SPR["sc32"+k]=sleepCat32(k));
+function paw32(g,px,py,col,dir){ g.fillStyle=col; const pts=[[0,-5],[-4,-3],[4,-3],[-6,0],[6,0]];
+  const rot=({r:Math.PI/2,l:-Math.PI/2,d:Math.PI}[dir])||0, cs=Math.cos(rot), sn=Math.sin(rot);
+  const T=(x,y)=>[ri(px+x*cs-y*sn),ri(py+x*sn+y*cs)];
+  [[-2,-6],[2,-6],[-5,-3],[5,-3]].forEach(([x,y])=>{ const q=T(x,y); g.fillRect(q[0]-1,q[1]-1,3,3); });
+  [[-3,0],[-2,-1],[2,-1],[3,0],[-3,1],[-2,1],[-1,1],[0,1],[1,1],[2,1],[3,1],[-2,2],[-1,2],[0,2],[1,2],[2,2],[-1,3],[0,3],[1,3]].forEach(([x,y])=>{ const q=T(x,y+1); g.fillRect(q[0],q[1],1,1); }); }
+function drawDecor32(d){
+  const g=ctx;
+  if(d.k==="koi"){
+    const a=time*d.sp+d.ph, x=ri((d.cx+Math.cos(a)*d.rx)*32+16), y=ri((d.cy+Math.sin(a)*d.ry)*32+16);
+    const f=(-Math.sin(a)*d.rx*Math.sign(d.sp))>=0?1:-1, fl=reduceMotion()?0:(Math.floor(time*6)%2);
+    E(g,d.col,x,y,8,3); R(g,N.white,x-f*3-2,y-2,3,1); R(g,d.pc,x-f*2-1,y-1,4,2); R(g,d.pc,x+f*3-1,y,2,1);
+    P(g,d.col,[[x-f*7,y],[x-f*13,y-3+fl*2],[x-f*13,y+3+fl*2]]); R(g,N.black,x+f*5,y-1,1,1);
+    R(g,N.waterLt,x-9,y+4,18,1); return; }
+  const px=ri(d.x*32+16), py=ri(d.y*32+16);
+  if(d.k==="ema"){
+    R(g,N.woodDk,px-17,py-10,4,24); R(g,N.woodDk,px+13,py-10,4,24); R(g,N.woodDk,px-19,py-12,38,4); R(g,N.wood,px-19,py-12,38,2);
+    [[-13,-6,N.woodPale],[-3,-6,N.woodLt],[7,-6,N.woodPale],[-9,5,N.woodLt],[3,5,N.woodPale]].forEach(([dx,dy,c],i)=>{
+      const sw=reduceMotion()?0:ri(Math.sin(time*2+i)*1);
+      R(g,N.red,px+dx+4+sw,py+dy-6,1,6); R(g,N.woodDk,px+dx+sw,py+dy,10,10); R(g,c,px+dx+1+sw,py+dy+1,8,7); R(g,N.woodDk,px+dx+2+sw,py+dy+3,5,1); R(g,N.red,px+dx+3+sw,py+dy+6,3,1); R(g,N.red,px+dx+4+sw,py+dy-1,2,2);
+    });
+  } else if(d.k==="flag"){
+    R(g,N.woodDk,px-2,py-32,3,44); R(g,N.gold,px-3,py-35,5,4); R(g,N.goldLt,px-3,py-35,2,1);
+    for(let c=0;c<14;c++){ const w=reduceMotion()?0:ri(Math.sin(time*2.4+d.x+c*.45)*1.6); R(g,c>=12?d.dk:d.col,px+1+c,py-30+w,1,26); }
+    const w0=reduceMotion()?0:ri(Math.sin(time*2.4+d.x+3)*1.6);
+    R(g,N.white,px+4,py-22+w0,7,7); R(g,d.col,px+6,py-20+w0,3,3); R(g,N.white,px+1,py-30,14,2); R(g,d.dk,px+1,py-5,14,1);
+  } else if(d.k==="cushion"){
+    R(g,N.plasterDk,px-12,py+8,24,2); RR(g,d.dk,px-13,py-7,26,15); RR(g,d.col,px-12,py-8,24,14); R(g,N.white,px-9,py-6,18,1);
+    R(g,N.white,px-1,py-2,3,3); [[-12,-8],[10,-8],[-12,5],[10,5]].forEach(([a,b])=>R(g,N.goldLt,px+a,py+b,2,2));
+  } else if(d.k==="sleepcat"){
+    g.drawImage(sleepCatS(d.cat),px-14,py-11);
+    const ph=reduceMotion()?0:Math.floor(time*1.6)%4;
+    [[10,-12],[15,-18]].forEach(([a,b],i)=>{ const o=((ph+i*2)%4)*2; if(o===6&&!reduceMotion()) return;
+      R(g,N.white,px+a,py+b-o,5,1); R(g,N.white,px+a+3,py+b+1-o,1,2); R(g,N.white,px+a+1,py+b+3-o,1,1); R(g,N.white,px+a,py+b+4-o,5,1); });
+  } else if(d.k==="paw"){
+    paw32(g,px,py,PAWCOL(at(Math.floor(d.x+.5),Math.floor(d.y+.5))),d.dir);
+  } else if(d.k==="furin"){
+    const sw=reduceMotion()?0:ri(Math.sin(time*2.2)*2);
+    R(g,N.woodDk,px,py-20,2,5); R(g,N.plasterDk,px,py-15,1,7);
+    E(g,N.waterDk,px+sw+1,py-5,6,5); E(g,N.waterLt,px+sw+1,py-6,5,4); R(g,N.white,px+sw-2,py-8,2,2); R(g,N.waterDk,px+sw-5,py-1,12,2);
+    R(g,N.red,px+sw,py+1,2,2); R(g,N.sakura,px+sw+1,py+3,2,9); R(g,N.sakuraLt,px+sw+1,py+9,4,4);
+  } else if(d.k==="pot"){
+    shadowAt32(g,px,py+11,8,2);
+    R(g,N.terra,px-7,py+1,14,10); R(g,N.redDk,px-8,py,16,3); R(g,N.terra,px-7,py+3,14,1); R(g,"#cf7d60",px-6,py+3,2,7); R(g,N.redDk,px-5,py+11,10,1);
+    D(g,N.leafDk,px-3,py-3,4); D(g,N.leaf,px+3,py-4,4); D(g,N.leaf,px,py-7,4); D(g,N.leafDk,px+5,py-1,3);
+    D(g,N.sakura,px-4,py-8,2); D(g,N.white,px+4,py-9,2); D(g,N.lav,px+7,py-5,1); D(g,N.sakuraDk,px,py-7,1); D(g,N.goldLt,px-6,py-3,1);
+  } else if(d.k==="bowl"){
+    E(g,N.waterDk,px,py+4,9,5); E(g,N.waterLt,px,py+2,9,4); E(g,N.leafDk,px,py+2,6,2); R(g,N.white,px-3,py+1,2,1); R(g,N.woodDk,px-7,py+8,14,1); R(g,N.sakuraDk,px-1,py+5,2,2);
+  } else if(d.k==="yarn"){
+    D(g,N.sakuraDk,px,py,6); D(g,N.sakura,px-1,py-1,5); D(g,N.sakuraLt,px-2,py-3,2); R(g,N.sakuraDk,px-4,py-1,9,1); R(g,N.sakuraDk,px-3,py+2,8,1); R(g,N.sakuraDk,px+5,py+5,10,1); R(g,N.sakuraDk,px+13,py+6,3,1);
+  } else if(d.k==="shoes"){
+    [[-11,N.indigo,N.indigoDk],[2,N.red,N.redDk]].forEach(([dx,c,dk])=>{
+      RR(g,dk,px+dx,py+1,10,9); RR(g,c,px+dx,py,10,8); R(g,N.white,px+dx,py+7,10,2); R(g,N.white,px+dx+2,py+2,2,1); R(g,N.white,px+dx+5,py+2,2,1); R(g,dk,px+dx+2,py+5,6,1); });
+  } else if(d.k==="bonsai"){
+    shadowAt32(g,px,py+13,10,2);
+    R(g,N.terra,px-9,py+2,18,9); R(g,N.redDk,px-10,py+1,20,3); R(g,"#cf7d60",px-8,py+4,2,6); R(g,N.redDk,px-7,py+11,14,2);
+    R(g,N.trunk,px-2,py-8,4,11); R(g,N.woodLt,px-2,py-8,1,10); R(g,N.trunk,px-8,py-8,8,2); R(g,N.trunk,px+1,py-10,8,2);
+    [[-8,-12,6],[8,-13,6],[0,-18,7],[-4,-6,5],[5,-6,5]].forEach(([dx,dy,r])=>D(g,N.pineDk,px+dx,py+dy+1,r));
+    [[-8,-12,6],[8,-13,6],[0,-18,7],[-4,-6,5],[5,-6,5]].forEach(([dx,dy,r])=>D(g,N.pine,px+dx,py+dy,r));
+    [[-8,-12,6],[8,-13,6],[0,-18,7]].forEach(([dx,dy,r])=>D(g,N.pineLt,px+dx-2,py+dy-3,2));
+    R(g,N.sakura,px-8,py-15,2,2); R(g,N.sakura,px+9,py-10,2,2); R(g,N.sakuraLt,px,py-22,2,2); R(g,N.white,px+5,py-18,1,1);
+  }
+}
+function shadowAt32(g,cx,fy,rx,ry){
+  const ch=at(Math.floor(cx/32),Math.floor((fy-1)/32));
+  const col=ch==="t"||ch==="Z"||ch==="T"?N.tatamiDk:ch==="w"||ch==="h"||ch==="b"?N.woodDk:ch==="g"||ch==="f"||ch==="S"?N.grassDk:ch==="W"?N.waterDk:N.gravelDk;
+  E(g,col,cx,fy-1,rx,ry);
+}
+
+/* ---- Q 版細像素角色：大頭、小身體 ---- */
+function catPix(k,fr){ const c=CATS[k%CATS.length];
+  return mk(40,38,g=>{ const ed=c.edge, bd=c.body, st=c.stripe, cx=20;
+    // 尾巴
+    for(const [x,y] of [[29,32],[32,31],[34,28],[35,24],[34,20]]){ D(g,ed,x,y,2); }
+    for(const [x,y] of [[29,32],[32,31],[34,28],[35,24],[34,20]]){ D(g,bd,x,y,1); }
+    R(g,st,34,21,2,1);
+    // 身體
+    E(g,ed,cx,31,9,6); E(g,bd,cx,30,8,5); E(g,N.white,cx,32,4,3); R(g,st,cx-6,27,2,3); R(g,st,cx+4,27,2,3);
+    // 前腳
+    const a=fr?1:0; R(g,ed,cx-7,35+a,5,3); R(g,bd,cx-6,35+a,3,2); R(g,ed,cx+2,35+(1-a),5,3); R(g,bd,cx+3,35+(1-a),3,2);
+    // 耳朵
+    P(g,ed,[[8,11],[9,1],[18,7]]); P(g,ed,[[32,11],[31,1],[22,7]]);
+    P(g,bd,[[10,10],[10,4],[16,8]]); P(g,bd,[[30,10],[30,4],[24,8]]);
+    P(g,C.pink,[[11,9],[11,6],[14,8]]); P(g,C.pink,[[29,9],[29,6],[26,8]]);
+    // 頭
+    E(g,ed,cx,17,13,11); E(g,bd,cx,17,12,10); E(g,N.white,cx-5,10,3,1);
+    R(g,st,cx-4,7,2,3); R(g,st,cx,6,2,4); R(g,st,cx+4,7,2,3);
+    // 臉
+    R(g,C.ink,cx-8,16,3,5); R(g,C.ink,cx+5,16,3,5); R(g,N.white,cx-8,16,1,2); R(g,N.white,cx+5,16,1,2);
+    R(g,C.pink,cx-11,21,3,2); R(g,C.pink,cx+8,21,3,2);
+    R(g,C.pinkDeep,cx-1,21,2,1); R(g,C.ink,cx-2,23,1,1); R(g,C.ink,cx+1,23,1,1); R(g,C.ink,cx-1,24,2,1);
+    R(g,ed,1,20,5,1); R(g,ed,2,23,4,1); R(g,ed,34,20,5,1); R(g,ed,34,23,4,1);
+  }); }
+const catSp=(k,fr)=>SPR["cp"+k+"_"+fr]||(SPR["cp"+k+"_"+fr]=catPix(k,fr));
+function personPix(k,fr){ const robe=ROBES[k%ROBES.length], hair=HAIRS[k%2], skin="#fbe0cf", dk={[N.indigo]:N.indigoDk,[N.crimson]:N.redDk,[N.pine]:N.pineDk,[N.plum]:N.plumDk}[robe]||N.dark;
+  return mk(34,48,g=>{ const cx=17;
+    P(g,dk,[[cx-9,47],[cx+9,47],[cx+7,28],[cx-7,28]]); P(g,robe,[[cx-8,46],[cx+8,46],[cx+6,29],[cx-6,29]]);
+    R(g,dk,cx-12,30,5,12); R(g,robe,cx-11,30,4,11); R(g,dk,cx+7,30,5,12); R(g,robe,cx+7,30,4,11);
+    R(g,skin,cx-11,41,4,3); R(g,skin,cx+7,41,4,3);
+    P(g,N.white,[[cx-3,28],[cx+3,28],[cx,35]]); R(g,N.white,cx-5,28,2,1); R(g,N.white,cx+3,28,2,1);
+    R(g,N.gold,cx-7,38,14,4); R(g,N.goldLt,cx-7,38,14,1); R(g,N.gold,cx-1,42,3,4);
+    R(g,N.woodDk,cx-6,46,5,2); R(g,N.woodDk,cx+1,46,5,2);
+    // 頭髮（後）
+    E(g,hair[0],cx,15,12,12);
+    E(g,skin,cx,17,10,9); R(g,"#eeb8a0",cx-8,22,16,1);
+    // 瀏海
+    P(g,hair[0],[[cx-13,17],[cx-12,5],[cx,0],[cx+12,5],[cx+13,17],[cx+9,11],[cx+5,15],[cx,10],[cx-5,15],[cx-9,11]]);
+    R(g,hair[1],cx-6,3,5,1); R(g,hair[1],cx-9,5,3,1); R(g,hair[0],cx-13,15,3,9); R(g,hair[0],cx+10,15,3,9);
+    R(g,C.ink,cx-6,17,2,4); R(g,C.ink,cx+4,17,2,4); R(g,N.white,cx-6,17,1,1); R(g,N.white,cx+4,17,1,1);
+    R(g,C.pink,cx-8,22,3,1); R(g,C.pink,cx+5,22,3,1); R(g,C.pinkDeep,cx-1,23,2,1);
+  }); }
+const personSp=k=>SPR["pp"+k]||(SPR["pp"+k]=personPix(k));
+const BUB32=mk(26,22,g=>{ RR(g,"#f4a0aa",1,0,24,16); RR(g,"#fffdfb",2,1,22,14); P(g,"#f4a0aa",[[10,15],[16,15],[13,21]]); P(g,"#fffdfb",[[11,14],[15,14],[13,19]]);
+  for(const dx of [7,12,17]) R(g,"#e8798a",dx,7,2,2); });
+function drawNpc32(g,s){
+  const cx=ri(s.x*32+16), fy=ri(s.y*32+28), bob=reduceMotion()?0:ri(Math.sin(time*3+s.id)*1.2);
+  shadowAt32(g,cx,fy+1,10,3);
+  if(ready(s.sprite)){ const h=44,w=h*s.sprite.naturalWidth/s.sprite.naturalHeight; g.save(); g.imageSmoothingEnabled=true; g.drawImage(s.sprite,cx-w/2,fy-h,w,h); g.restore(); }
+  else g.drawImage(personSp(s.robe),cx-17,fy-47);
+  if(!s.seen) g.drawImage(BUB32,cx-13,fy-70+bob);
+}
+function drawPlayer32(g){
+  const cx=ri(player.x*32+16), fy=ri(player.y*32+28), fr=player.moving?(Math.floor(time*8)%2):0, bob=(player.moving&&fr)?-1:0;
+  shadowAt32(g,cx,fy+1,11,3);
+  if(ready(player.img)){ const h=40,w=h*player.img.naturalWidth/player.img.naturalHeight; g.save(); g.imageSmoothingEnabled=true; g.translate(cx,0); g.scale(player.face,1); g.drawImage(player.img,-w/2,fy-h+bob,w,h); g.restore(); }
+  else { g.save(); g.translate(cx,0); g.scale(player.face,1); g.drawImage(catSp(player.cat,fr),-20,fy-37+bob); g.restore(); }
+}
+function flowerbedFull(g,x,y){
+  let w=0,h=0; while(at(x+w,y)==="f") w++; while(at(x,y+h)==="f") h++;
+  const px=x*32, py=y*32, W=w*32, H=h*32;
+  for(let j=0;j<h;j++) for(let i=0;i<w;i++) grass32(g,x+i,y+j,px+i*32,py+j*32);
+  R(g,N.woodDk,px+1,py+1,W-2,H-2); R(g,N.wood,px+2,py+2,W-4,H-4); R(g,N.woodLt,px+2,py+2,W-4,2); R(g,N.woodLt,px+2,py+2,2,H-4);
+  R(g,N.woodDk,px+W-4,py+3,2,H-6); R(g,N.woodDk,px+3,py+H-4,W-6,2);
+  for(let i=8;i<W-8;i+=12) R(g,N.grain,px+i,py+3,5,1);
+  const sx=px+7, sy=py+7, sw=W-14, sh=H-14;
+  R(g,N.woodDk,sx-1,sy-1,sw+2,sh+2); R(g,N.soil,sx,sy,sw,sh); R(g,"#5f4733",sx,sy,sw,3);
+  for(const [cx2,cy2] of [[0,0],[sw-7,0],[0,sh-7],[sw-7,sh-7]]){ R(g,N.woodDk,sx+cx2-1,sy+cy2-1,9,9); R(g,N.woodLt,sx+cx2,sy+cy2,7,7); R(g,N.wood,sx+cx2+1,sy+cy2+2,6,5); }   // 四角的木樁
+  const FC=[[N.sakuraDk,N.sakura,N.sakuraLt],["#5f86d6","#8fb4ef","#d3e3fb"],["#e08a3c","#f2a65a","#fbd2a6"],["#d9d4c6",N.white,N.paper]];   // 粉、藍、橘、白
+  const rows=Math.floor((sh-6)/14), cols=Math.floor((sw-6)/14), per=Math.max(1,Math.floor(rows/4));
+  for(let r=0;r<rows;r++){
+    const col=FC[Math.min(3,Math.floor(r*4/rows))], cy=sy+10+r*14;
+    for(let i=sx+4;i<sx+sw-4;i+=2) if(ph(i,cy,7)<.5) R(g,"#6a4d38",i,cy+7,1,1);
+    for(let c=0;c<cols;c++){ const cx=sx+10+c*14;
+      R(g,N.leafDk,cx-1,cy+3,2,6); R(g,N.leaf,cx-4,cy+5,4,2); R(g,N.leafDk,cx-4,cy+6,2,1); R(g,N.leaf,cx+1,cy+6,4,2);
+      R(g,col[0],cx-3,cy-2,7,5); R(g,col[0],cx-2,cy-3,5,7);                    // 花瓣（暗）
+      R(g,col[1],cx-3,cy-3,6,5); R(g,col[1],cx-4,cy-1,8,3); R(g,col[2],cx-3,cy-3,2,1);
+      R(g,N.goldLt,cx-1,cy-1,2,2); R(g,N.gold,cx-1,cy,2,1);
+    }
+  }
+}
+
+let BASE=null; const ANIMC=[];
+for(let y=0;y<ROWS;y++) for(let x=0;x<COLS;x++){ const c=GRID[y][x]; if("LTU".includes(c)) ANIMC.push([x,y]); }
+function drawBase(g,t){
+  if(!BASE){ BASE=document.createElement("canvas"); BASE.width=COLS*32; BASE.height=ROWS*32; const b=BASE.getContext("2d"); b.imageSmoothingEnabled=false;
+    for(let y=0;y<ROWS;y++) for(let x=0;x<COLS;x++) tile(b,x,y,0); }
+  g.drawImage(BASE,0,0);
+  for(const [x,y] of ANIMC) tile(g,x,y,t);
+}
+const SHRINES=[]; for(let y=0;y<ROWS;y++) for(let x=0;x<COLS;x++) if(GRID[y][x]==="J") SHRINES.push({x,y});
 /* ---------- 樹：另外畫，這樣角色走到樹後面會被擋住 ---------- */
 const TREES=[]; for(let y=0;y<ROWS;y++) for(let x=0;x<COLS;x++) if(GRID[y][x]==="S") TREES.push({x,y});
-function drawTree(g,x,y,t){
+function drawTreeOld(g,x,y,t){
   const kind=TREE[x+","+y]||"pink", col=TREE_COL[kind], px=x*LT, py=y*LT, sw=reduceMotion()?0:ri(Math.sin(t*1.2+x)*.7);
   E(g,N.grassDk,px+8,py+14,7,2);
   if(kind==="blue"||kind==="sky"){          // 松：三層
@@ -1063,29 +1654,30 @@ function drawSpot(s){          // 只畫愛心（NPC 在別的地方用平滑畫
 function ringDots(g,cx,cy,rx,ry,n,col){ for(let i=0;i<n;i++){ const a=i*Math.PI*2/n+(reduceMotion()?0:time*.9); R(g,col,cx+ri(Math.cos(a)*rx),cy+ri(Math.sin(a)*ry),1,1); } }
 /* ---------- 純裝飾（不能互動、不擋路；位置用格子座標） ---------- */
 const DECOR = [
-  {k:"koi", cx:4.0, cy:15.0, rx:1.5, ry:0.55, sp:0.55, ph:0, col:N.white, pc:N.sakuraDk},
-  {k:"koi", cx:4.2, cy:15.25, rx:1.25, ry:0.5, sp:-0.7, ph:2.5, col:N.sakura, pc:N.white},
-  {k:"ema", x:11.0, y:14.6},
-  {k:"flag", x:6.6, y:17.2, col:N.indigo, dk:N.indigoDk},
-  {k:"flag", x:13.4, y:17.2, col:N.red, dk:N.redDk},
-  {k:"cushion", x:5.0, y:9.0, col:N.crimson, dk:N.redDk},
-  {k:"cushion", x:14.0, y:9.0, col:N.indigo, dk:N.indigoDk},
-  {k:"sleepcat", x:14.0, y:9.0, cat:1},
-  {k:"sleepcat", x:6.2, y:1.6, cat:0},
-  {k:"sleepcat", x:12.7, y:1.6, cat:3},
-  {k:"sleepcat", x:14.7, y:12.55, cat:2},
-  {k:"bonsai", x:2.2, y:11.3},
-  {k:"bonsai", x:17.3, y:11.3},
-  {k:"pot", x:3.5, y:12.45},
-  {k:"pot", x:15.6, y:12.45},
-  {k:"furin", x:7.3, y:11.95},
-  {k:"bowl", x:13.2, y:12.6},
-  {k:"yarn", x:12.4, y:12.7},
-  {k:"shoes", x:7.4, y:12.6},
-  // 貓咪腳印
+  {k:"koi", cx:4.0, cy:14.0, rx:1.7, ry:0.85, sp:0.55, ph:0, col:N.white, pc:N.sakuraDk},
+  {k:"koi", cx:4.2, cy:14.3, rx:1.4, ry:0.7, sp:-0.7, ph:2.5, col:N.sakura, pc:N.white},
+  {k:"ema", x:11.0, y:14.9},
+  {k:"flag", x:6.6, y:19.2, col:N.indigo, dk:N.indigoDk},
+  {k:"flag", x:13.4, y:19.2, col:N.red, dk:N.redDk},
+  {k:"cushion", x:5.0, y:6.0, col:N.crimson, dk:N.redDk},
+  {k:"cushion", x:14.0, y:6.0, col:N.indigo, dk:N.indigoDk},
+  {k:"sleepcat", x:14.0, y:6.0, cat:3},
+  {k:"sleepcat", x:5.5, y:3.25, cat:0},
+  {k:"bonsai", x:2.2, y:7.3},
+  {k:"bonsai", x:17.3, y:7.3},
+  {k:"pot", x:3.5, y:8.45},
+  {k:"pot", x:15.6, y:8.45},
+  {k:"furin", x:6.2, y:7.9},
+  {k:"bowl", x:13.7, y:8.45},
+  {k:"yarn", x:14.6, y:8.55},
+  {k:"shoes", x:8.7, y:8.5},
+  {k:"pot", x:13.2, y:17.2},
+  {k:"pot", x:6.2, y:17.2},
+  {k:"bonsai", x:16.2, y:17.0},
+  {k:"bonsai", x:2.8, y:17.2},
   {k:"paw", x:8.3, y:1.55, dir:"r"},{k:"paw", x:9.0, y:1.3, dir:"r"},{k:"paw", x:9.7, y:1.55, dir:"r"},{k:"paw", x:10.4, y:1.3, dir:"r"},{k:"paw", x:11.1, y:1.55, dir:"r"},
-  {k:"paw", x:4.1, y:12.35, dir:"r"},{k:"paw", x:4.8, y:12.1, dir:"r"},{k:"paw", x:5.5, y:12.35, dir:"r"},{k:"paw", x:6.2, y:12.1, dir:"r"},
-  {k:"paw", x:9.8, y:6.6, dir:"l"},{k:"paw", x:9.1, y:6.35, dir:"l"},{k:"paw", x:8.4, y:6.6, dir:"l"},{k:"paw", x:7.7, y:6.35, dir:"l"}
+  {k:"paw", x:4.1, y:8.35, dir:"r"},{k:"paw", x:4.8, y:8.1, dir:"r"},{k:"paw", x:5.5, y:8.35, dir:"r"},{k:"paw", x:6.2, y:8.1, dir:"r"},
+  {k:"paw", x:9.8, y:5.6, dir:"l"},{k:"paw", x:9.1, y:5.35, dir:"l"},{k:"paw", x:8.4, y:5.6, dir:"l"},{k:"paw", x:7.7, y:5.35, dir:"l"}
 ];
 function drawDecor(d){
   const g=ctx;
@@ -1166,7 +1758,7 @@ function drawGround(){     // 地面層：水面閃光、腳步塵（在人物�
   if(reduceMotion()) return;
   for(const q of POND){
     const k=(Math.sin(time*2.2+q.ph)+1)/2; if(k<.8) continue;
-    const x=q.x*LT+3+ri(q.ph*13%10), y=q.y*LT+3+ri(q.ph*7%10);
+    const x=q.x*LT+5+ri(q.ph*13%22), y=q.y*LT+5+ri(q.ph*7%22);
     R(g,N.white,x,y,1,1); if(k>.9){ R(g,N.waterLt,x-1,y,1,1); R(g,N.waterLt,x+1,y,1,1); R(g,N.waterLt,x,y-1,1,1); R(g,N.waterLt,x,y+1,1,1); }
   }
   for(const d of DUST){ const r=d.t<.25?1:2; R(g,"rgba(225,210,180,.85)",ri(d.x*MM)-r,ri((d.y-d.t*8)*MM),r*2,1); R(g,"rgba(225,210,180,.85)",ri(d.x*MM)-r+1,ri((d.y-d.t*8)*MM)-1,r*2-2,1); }
@@ -1180,16 +1772,16 @@ function draw(){
   const tx=Math.round(cam.x*MM), ty=Math.round(cam.y*MM), g=ctx;
   g.setTransform(1,0,0,1,0,0); g.clearRect(0,0,low.width,low.height); g.imageSmoothingEnabled=false;
   g.setTransform(1,0,0,1,-tx,-ty);
-  drawTiles(g,time);
-  DECOR.filter(d=>d.k==="koi").forEach(drawDecor);
-  BRIDGES.forEach(b=>bridgeTop(g,b.x,b.y));
+  drawBase(g,time);
+  DECOR.filter(d=>d.k==='koi').forEach(d=>drawDecor32(d));
+  BRIDGES.forEach(b=>bridge32(g,b.x,b.y));
   drawGround();
-  const items=spots.map(s=>({y:s.y,f:()=>drawSpot(s)}))
-    .concat(DECOR.filter(d=>d.k!=="koi").map(d=>({y:d.y-.2,f:()=>drawDecor(d)})),
-      TREES.map(tr=>({y:tr.y+.08,f:()=>drawTree(g,tr.x,tr.y,time)}))).sort((a,b)=>a.y-b.y);
+  const items=spots.map(s=>({y:s.y,f:()=>drawSpot32(s)}))
+    .concat(DECOR.filter(d=>d.k!=="koi").map(d=>({y:d.y-.2,f:()=>drawDecor32(d)})),SHRINES.map(s=>({y:s.y+.9,f:()=>drawShrine32(g,s.x,s.y)})),spots.filter(s=>s.kind==="npc").map(s=>({y:s.y+.05,f:()=>drawNpc32(g,s)})),[{y:player.y+.05,f:()=>drawPlayer32(g)}],
+      TREES.map(tr=>({y:tr.y+.08,f:()=>drawTree32(g,tr.x,tr.y,time)}))).sort((a,b)=>a.y-b.y);
   items.forEach(i=>i.f());
   drawAir();
-  g.setTransform(1,0,0,1,0,0); pixelize(g,low.width,low.height);
+  g.setTransform(1,0,0,1,0,0);
   // 放大到螢幕（最近鄰，不模糊）
   mctx.setTransform(1,0,0,1,0,0); mctx.imageSmoothingEnabled=false;
   mctx.fillStyle=C.bluePale; mctx.fillRect(0,0,cv.width,cv.height);
@@ -1200,22 +1792,16 @@ function draw(){
     gr.addColorStop(0,`rgba(255,214,150,${(.28*a).toFixed(2)})`); gr.addColorStop(1,"rgba(255,214,150,0)");
     mctx.fillStyle=gr; mctx.fillRect(sx-r,sy-r,r*2,r*2);
   }
-  // 人物（NPC 和玩家的貓咪）用平滑的畫法，直接畫在放大後的畫面上
-  const kk=MM*view.gpE*view.dpr;
-  mctx.setTransform(kk,0,0,kk,view.dpr*(view.ox-tx*view.gpE),view.dpr*(view.oy-ty*view.gpE));
-  mctx.imageSmoothingEnabled=true;
-  spots.filter(s=>s.kind==="npc").map(s=>({y:s.y,f:()=>drawNpcS(mctx,s)})).concat([{y:player.y,f:()=>drawPlayerS(mctx)}]).sort((a,b)=>a.y-b.y).forEach(i=>i.f());
-  mctx.setTransform(view.dpr,0,0,view.dpr,0,0);
   drawLabels(); drawArrows();
 }
 const PIXFONT=()=>getComputedStyle(document.body).fontFamily;
-function pixBox(g,x,y,w,h,fill,edge){ g.fillStyle=edge; g.fillRect(x-2,y,w+4,h); g.fillRect(x,y-2,w,h+4); g.fillStyle=fill; g.fillRect(x,y,w,h); }
+function pixBox(g,x,y,w,h,fill,edge){ g.save(); g.shadowColor="rgba(44,48,86,.25)"; g.shadowBlur=8; g.shadowOffsetY=2; g.fillStyle=fill; g.beginPath(); g.roundRect(x,y,w,h,h/2); g.fill(); g.restore(); g.strokeStyle="rgba(217,100,126,.45)"; g.lineWidth=1; g.beginPath(); g.roundRect(x+.5,y+.5,w-1,h-1,h/2); g.stroke(); }
 function drawLabels(){      // 靠近互動點時的名字牌（用像素字體，畫在放大後的畫面上）
-  const g=mctx; g.font="16px "+PIXFONT(); g.textAlign="center"; g.textBaseline="middle";
+  const g=mctx; g.font="700 14px "+PIXFONT(); g.textAlign="center"; g.textBaseline="middle";
   for(const s of spots){
     if(Math.hypot(player.x-s.x,player.y-s.y)>=2.4) continue;
     const [sx,sy]=toScreen(s.x*T+T/2,s.y*T+T/2+31), w=Math.ceil(g.measureText(s.name).width)+16;
-    pixBox(g,Math.round(sx-w/2),Math.round(sy-11),w,22,C.white,C.ink);
+    pixBox(g,Math.round(sx-w/2),Math.round(sy-12),w,24,C.white,C.ink);
     g.fillStyle=C.ink; g.fillText(s.name,Math.round(sx),Math.round(sy+1));
   }
 }
@@ -1245,7 +1831,10 @@ function resize(){
   const dpr=Math.min(window.devicePixelRatio||1,3);
   // 手機：每個像素約 3 css 像素（一格約 48）；電腦／平板：約 2.4（比之前小 0.8 倍）。一個像素一定是整數個螢幕點，才不會糊
   const big=Math.min(innerWidth,innerHeight)>=560;
-  const sc=Math.max(1,Math.round((big?2.4:3)*dpr)), gpE=sc/dpr;
+  const fits=s=>{ const q=s/dpr; return COLS*LT*q+8<=aw && ROWS*LT*q+8<=ah; };
+  let sc=Math.max(1,Math.round(1.5*dpr));                         // 手機：一個像素約 1.5 css 像素（一格約 48）
+  if(big){ sc=0; for(let s=Math.max(1,Math.round(1.6*dpr)); s>=1; s--) if(fits(s)){ sc=s; break; } if(!sc) sc=Math.max(1,Math.round(1.2*dpr)); }   // 電腦：挑放得下整張地圖的最大倍數
+  const gpE=sc/dpr;
   const mw=COLS*LT*gpE, mh=ROWS*LT*gpE, bw=8;
   const fit=mw+bw<=aw && mh+bw<=ah;                       // 整張地圖放得下就整張顯示，否則跟著角色捲動
   stage.classList.toggle("fit",fit);
@@ -1274,6 +1863,7 @@ function update(dt){
   if(player.moving){
     const l=Math.hypot(dx,dy); dx=dx/l*SPEED*dt; dy=dy/l*SPEED*dt;
     if(dx) player.face=dx>0?1:-1;
+    stepT-=dt; if(stepT<=0){ stepT=.46; playStep(); }
     dustT-=dt; if(dustT<=0 && !reduceMotion()){ dustT=.13; DUST.push({x:player.x*T+T/2+(Math.random()-.5)*8,y:player.y*T+T/2+16,t:0}); }
     if(!solidAt(player.x+dx,player.y)) player.x+=dx;
     if(!solidAt(player.x,player.y+dy)) player.y+=dy;
@@ -1508,6 +2098,39 @@ function catchEndings(){
 }
 function pickEnding(score){ const l=catchEndings(); return l.find(e=>score>=e.th)||l[l.length-1]; }
 function catchView(v){ $("cIntro").hidden=v!=="intro"; $("cPlay").hidden=v!=="play"; $("cEnd").hidden=v!=="end"; $("cBoard").hidden=v!=="board"; }
+
+/* ---------- 音樂與腳步聲 ----------
+   把檔案放在網頁旁邊的 audio 資料夾：Senbazuru.mp3、Ripples.mp3、step.mp3（或 .ogg / .wav）。
+   沒有放步聲檔的話，會用內建的小氣泡聲代替；沒有放音樂檔就單純沒有音樂。 */
+const MUSIC={on:false,list:["audio/Senbazuru.mp3","audio/Ripples.mp3"],i:0,el:null,vol:.35};
+let stepT=0, actx=null, stepBuf=null, stepTried=false;
+function audioCtx(){ if(!actx){ try{ actx=new (window.AudioContext||window.webkitAudioContext)(); }catch(_){ } } if(actx&&actx.state==="suspended") actx.resume(); return actx; }
+async function loadStep(){
+  if(stepTried) return; stepTried=true; const c=audioCtx(); if(!c) return;
+  for(const u of ["audio/step.mp3","audio/step.ogg","audio/step.wav"]){
+    try{ const r=await fetch(u); if(!r.ok) continue; stepBuf=await c.decodeAudioData(await r.arrayBuffer()); return; }catch(_){ }
+  }
+}
+function playStep(){
+  if(!MUSIC.on) return; const c=audioCtx(); if(!c) return; loadStep();
+  const g=c.createGain(); g.connect(c.destination); const now=c.currentTime;
+  if(stepBuf){ const s=c.createBufferSource(); s.buffer=stepBuf; s.playbackRate.value=.92+Math.random()*.16; g.gain.value=.5; s.connect(g); s.start(); return; }
+  const o=c.createOscillator(); o.type="sine"; const f=380+Math.random()*120;           // 內建的小氣泡聲
+  o.frequency.setValueAtTime(f,now); o.frequency.exponentialRampToValueAtTime(f*2.1,now+.07);
+  g.gain.setValueAtTime(.0001,now); g.gain.exponentialRampToValueAtTime(.16,now+.01); g.gain.exponentialRampToValueAtTime(.0001,now+.11);
+  o.connect(g); o.start(now); o.stop(now+.12);
+}
+function bgmNext(){
+  if(!MUSIC.on) return; const el=MUSIC.el||(MUSIC.el=new Audio()); el.volume=MUSIC.vol; el.onended=()=>{ MUSIC.i=(MUSIC.i+1)%MUSIC.list.length; bgmNext(); };
+  let fails=0; el.onerror=()=>{ if(++fails>=MUSIC.list.length) return; MUSIC.i=(MUSIC.i+1)%MUSIC.list.length; el.src=MUSIC.list[MUSIC.i]; el.play().catch(()=>{}); };
+  el.src=MUSIC.list[MUSIC.i]; el.play().catch(()=>{});
+}
+function setMusic(on){
+  MUSIC.on=on; const b=$("musicBtn"); b.setAttribute("aria-pressed",String(on)); b.textContent=on?"音樂：開":"音樂：關";
+  if(on){ audioCtx(); loadStep(); if(MUSIC.el&&MUSIC.el.src) MUSIC.el.play().catch(()=>{}); else bgmNext(); } else if(MUSIC.el) MUSIC.el.pause();
+}
+document.addEventListener("visibilitychange",()=>{ if(!MUSIC.el) return; if(document.hidden) MUSIC.el.pause(); else if(MUSIC.on) MUSIC.el.play().catch(()=>{}); });
+
 /* ---- 排行榜（Google Apps Script）：每次成績都列，取前 50 名 ---- */
 const lbUrl = () => new URLSearchParams(location.search).get("board") || LEADERBOARD_URL;
 const lbOn = () => !!lbUrl();
@@ -1524,23 +2147,22 @@ async function lbCall(params){
     const j=await r.json(); if(!j||!j.ok) throw new Error("bad response"); return j;
   } finally { clearTimeout(to); }
 }
-async function submitScore(score){
+let lbPending=null;
+function submitScore(score){      // 得到結果就直接送出，不顯示「送出中」；排行榜按鈕馬上出現
   const id=++lbRun, rank=$("cRank"), retry=$("cRetry"), board=$("cBoardBtn2");
-  lbMine={name:lbName,score}; retry.hidden=true; board.hidden=true; rank.textContent="成績上傳中…";
-  try{ await lbCall({action:"add",name:lbName,score}); }
-  catch(_){ if(id===lbRun){ rank.textContent="成績沒有送出去，可能是網路不穩"; retry.hidden=false; } return; }
-  if(id!==lbRun) return;
-  board.hidden=false;
-  try{
-    const j=await lbCall({action:"list"}); if(id!==lbRun) return;
-    const i=j.list.findIndex(r=>r.name===lbName&&Number(r.score)===score);
-    rank.textContent = i>=0 ? `這次成績排第 ${i+1} 名` : "成績已送出，這次沒進前 50 名";
-  }catch(_){ if(id===lbRun) rank.textContent="成績已送出"; }
+  lbMine={name:lbName,score}; retry.hidden=true; board.hidden=false; rank.textContent="";
+  lbPending=(async()=>{
+    try{ await lbCall({action:"add",name:lbName,score}); }
+    catch(_){ try{ await lbCall({action:"add",name:lbName,score}); }catch(__){ if(id===lbRun){ rank.textContent="成績沒有送出去，可能是網路不穩"; retry.hidden=false; } return false; } }
+    return true;
+  })();
+  return lbPending;
 }
 async function showBoard(from){
   lbBack=from; catchView("board");
   const msg=$("cBoardMsg"), ol=$("cList"); ol.innerHTML=""; msg.textContent="載入中…";
   try{
+    if(lbPending) await lbPending;          // 剛送出的成績先送完，再讀榜單，才看得到自己
     const j=await lbCall({action:"list"}); if($("cBoard").hidden) return;
     const list=(j.list||[]).slice(0,50);
     msg.textContent = list.length ? "" : "還沒有人上榜，當第一個吧！";
@@ -1684,7 +2306,7 @@ function buildPicker(){
     const b=document.createElement("button"); b.type="button"; b.className="opt"; b.setAttribute("aria-pressed",String(i===chosen));
     let vis; const src=p.icon;
     if(src){ vis=document.createElement("img"); vis.referrerPolicy="no-referrer"; vis.alt=""; vis.src=src; vis.onerror=()=>{vis.style.visibility="hidden"}; }
-    else { vis=document.createElement("canvas"); vis.width=70; vis.height=76; drawCatS(vis.getContext("2d"),35,72,1,i); }
+    else { vis=document.createElement("canvas"); vis.width=80; vis.height=76; { const vg=vis.getContext("2d"); vg.imageSmoothingEnabled=false; vg.drawImage(catSp(i,0),0,0,40,38,0,0,80,76); } }
     const s=document.createElement("span"); s.textContent=p.name||("角色"+(i+1));
     b.append(vis,s);
     b.onclick=()=>{ chosen=i; [...cp.children].forEach(x=>x.setAttribute("aria-pressed",String(x===b))); };
@@ -1735,7 +2357,8 @@ $("modal").addEventListener("pointerdown",ev=>{ if(ev.target===$("modal")) close
 $("lClose").addEventListener("click",closeLot);
 $("lOk").addEventListener("click",showBouquet);
 $("lAgain").addEventListener("click",()=>{ lotSpot.lot=newDeck(); showBouquet(); });
-$("sBtn").addEventListener("click",()=>{ buildWorld(); hideOv($("start")); paused=false; });
+$("sBtn").addEventListener("click",()=>{ buildWorld(); hideOv($("start")); paused=false; setMusic($("musicChk").checked); });
+$("musicBtn").addEventListener("click",()=>setMusic(!MUSIC.on));
 $("again").addEventListener("click",()=>{ paused=true; clearKeys(); showOv($("start")); });
 addEventListener("resize",resize); addEventListener("orientationchange",()=>setTimeout(resize,200));
 
