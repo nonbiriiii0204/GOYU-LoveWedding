@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="color-scheme" content="light">
-<title>婚禮庭院探索</title>
+<title>五悠日和 — 今日、ふたりの日</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap">
 <style>
   /* 配色：白 / 粉（偏紅）/ 淺橘 / 淺藍 / 天藍（偏紫） */
@@ -175,7 +175,7 @@
     background:linear-gradient(180deg,#fffaf0,#fdf0e0);
     box-shadow:0 14px 28px -14px rgba(120,80,40,.45),inset 0 0 0 1px rgba(201,162,74,.55),inset 0 0 0 6px #fffaf0,inset 0 0 0 7px rgba(201,162,74,.35)}
   #lot .slip::before,#catch .slip::before{content:"";position:absolute;left:50%;top:-1px;width:64px;height:7px;transform:translateX(-50%);border-radius:0 0 8px 8px;background:linear-gradient(90deg,#e8798a,#f4a0aa)}
-  #lot .slip h2,#catch .slip h2{text-align:center;color:var(--rose);letter-spacing:.4em;padding-left:.4em}
+  #lot .slip h2,#catch .slip h2{text-align:center;color:var(--rose);letter-spacing:.14em;padding-left:.14em;font-size:22px;line-height:1.5}
   #lot .card img.pic,#catch .card img.pic,#start .card img.pic,#modal .card img.pic{border:0;border-radius:14px;image-rendering:auto;background:#eaf4fb;box-shadow:0 10px 24px -12px rgba(44,48,86,.5),0 0 0 1px rgba(62,68,120,.1)}
   #catch .namebox input{height:50px;font-family:var(--sf);font-size:17px;letter-spacing:.06em;text-align:center;color:#3e4478;background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 16px;box-shadow:inset 0 2px 4px rgba(62,68,120,.06);transition:border-color .15s,box-shadow .15s}
   #catch .namebox input:focus{outline:0;border-color:var(--rose-lt);box-shadow:0 0 0 4px rgba(240,143,162,.22)}
@@ -208,12 +208,14 @@
   .credit{text-align:center;font-size:11px;letter-spacing:.04em;color:#9aa0c4;line-height:1.6}
   #musicBtn{font:inherit;font-size:14px;color:var(--ink);background:var(--white);border:1px solid #e3b9c3;border-radius:999px;padding:4px 12px;cursor:pointer}
   #musicBtn[aria-pressed="false"]{color:#9aa0c4;background:#f3f4fa;border-color:#d8dbea}
+  #start .howlab{text-align:center;margin-top:2px;letter-spacing:.3em}
+  #start .how{font-size:14px!important;color:#6f76a8!important;line-height:1.9!important}
 </style>
 </head>
 <body>
 <div id="app">
   <div id="hud">
-    <span id="title">婚禮庭院探索</span>
+    <span id="title">五悠日和 — 今日、ふたりの日</span>
     <span class="r"><button id="musicBtn" type="button" aria-pressed="true">音樂：開</button><button id="again" type="button">換角色</button></span>
   </div>
   <div id="stage">
@@ -230,8 +232,10 @@
 <div id="start" class="overlay">
   <div class="card">
     <img id="sCover" class="pic" alt="" hidden>
-    <h2 id="sTitle">婚禮庭院探索</h2>
+    <h2 id="sTitle">歡迎來到五條與悠仁的婚禮！</h2>
     <p id="sText"></p>
+    <div class="lab howlab">操作說明</div>
+    <p id="sHow" class="how"></p>
     <div id="charLab" class="lab">選擇角色</div>
     <div id="charPick" class="pick"></div>
     <label id="musicRow" class="mrow"><input id="musicChk" type="checkbox" checked><span class="sw" aria-hidden="true"></span><span class="mt">開啟遊戲音樂</span></label>
@@ -362,42 +366,59 @@
 const SHEET_CSV_URL = "";
 /* 不想用試算表時，也可以把整份 CSV 內容直接貼在這兩個反引號中間（並把上面網址清空） */
 const EMBEDDED_CSV = `類型,名稱,x,y,數值,權重,扣命,觸發遊戲,文字,圖片網址,圖示網址
-設定,婚禮庭院探索,,,,,,,"歡迎來到我們的婚禮！
-先選一隻貓咪，再用方向鍵或 WASD 走動。靠近發亮的愛心或站著的人，就能看到內容。
-這是範例內容，換成你的試算表就能改成自己的。",,
+設定,五悠日和 — 今日、ふたりの日,,,,,,,"今天是個特別的日子。
+謝謝你來參加五條和悠仁的婚禮！
+庭院裡準備了不少小驚喜，典禮開始前，不妨四處逛逛吧。",,
 角色,白貓,,,,,,,,,
 角色,橘貓,,,,,,,,,
 角色,藍貓,,,,,,,,,
 角色,粉貓,,,,,,,,,
-NPC,新郎・五條,9,4,,,,,"歡迎來參加婚禮。
-（這裡可以寫他想對來賓說的話。）",,
-NPC,虎杖,10,4,,,,,"你終於來了！
-（這裡可以寫他想對來賓說的話。）",,
-事件,鳥居,9,10,,,,,"穿過鳥居，就是儀式的開始。
-請放慢腳步，深呼吸。","data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22640%22%20height%3D%22400%22%3E%3Crect%20width%3D%22640%22%20height%3D%22400%22%20fill%3D%22%23fde3e6%22%2F%3E%3Ccircle%20cx%3D%22480%22%20cy%3D%22120%22%20r%3D%2256%22%20fill%3D%22%23e8798a%22%20opacity%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M0%20340%20Q160%20200%20300%20290%20T640%20250%20V400%20H0Z%22%20fill%3D%22%23e8798a%22%20opacity%3D%22.45%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2268%22%20font-size%3D%2236%22%20fill%3D%22%233e4478%22%20font-family%3D%22sans-serif%22%3E%E9%B3%A5%E5%B1%85%3C%2Ftext%3E%3C%2Fsvg%3E",
-事件,神社,12,9,,,,抽籤,"神明準備了一束捧花。
+NPC,五條,9,4,,,,,五條似乎正在尋找下一份甜點。,,
+NPC,悠仁,10,4,,,,,悠仁正在確認婚禮一切順利！,,
+事件,鳥居,9,10,,,,,"踏過鳥居，便是今日的良緣之地。
+願這條小徑，通往兩人往後每一個幸福的日子。",,
+事件,結緣花籤,12,9,,,,抽籤,"神明準備了一束捧花。
 點一朵花，看看今天的運勢吧！",,
-事件,接捧花,10,7,,,,接捧花,"新郎要丟捧花了！
-接好——（可以改成他的台詞）",,
-籤,大吉,,,,,,,悟遇到一生的伴侶，在今天和他結婚了。,,
-籤,中吉,,,,,,,（範例）今天的捧花剛好落在你手上。,,
-籤,小吉,,,,,,,午餐被悟請吃牛排，好好吃。,,
-籤,末吉,,,,,,,（範例）喜糖多拿了一顆，沒有被發現。,,
-籤,小凶,,,,,,,悠仁出門採到手指跌倒了。,,
-籤,吉,,,,,,,（範例）庭院裡的風剛好很舒服。,,
-籤,半吉,,,,,,,（範例）宴席的點心多拿到一份。,,
-籤,凶,,,,,,,（範例）喜糖掉在地上，被虎杖撿起來還你。,,
-籤,大凶,,,,,,,（範例）一轉頭，被拍到了很可愛的表情。,,
-籤,末凶,,,,,,,（範例）想吃的甜點剛好賣完，但有人幫你留了一個。,,
-掉落物,金紅包,,,3,1,,,,,
-掉落物,紅包,,,1,5,,,,,
-掉落物,粉花,,,2,3,,,,,
-掉落物,天藍花,,,2,3,,,,,
-掉落物,白花,,,3,1,,,,,
-掉落物,空酒瓶,,,-2,3,1,,,,
-結局,滿載而歸,,,50,,,,（範例）高分結局的文字。,,
-結局,還不錯,,,25,,,,（範例）中間結局的文字。,,
-結局,手滑了,,,0,,,,（範例）低分結局的文字。,,
+事件,幸福接接樂,10,7,,,,接捧花,"五條已經拿好捧花了。
+至於他會往哪裡丟嘛……誰知道呢？",,
+籤,大吉・花開並蒂,,,,,,,"今日良緣，百年好合。
+五條今天牽著悠仁的手，似乎打算一輩子都不放開。",,
+籤,中吉・心心相印,,,,,,,"所思之人，就在身旁。
+悠仁今天被五條摸頭的次數，比平常多了三倍。",,
+籤,小吉・歲月靜好,,,,,,,"平凡日子，亦是珍寶。
+今天的晚餐有兩人份，明天也是，往後每一天都是。",,
+籤,吉・心想事成,,,,,,,"所求之事，終將如願。
+五條想吃的甜點，悠仁已經偷偷幫他買好了。",,
+籤,中吉・甜蜜良緣,,,,,,,"有人相伴，甜意自來。
+五條今天的喜久福份額，被悠仁限制在三個。五條表示抗議。",,
+籤,末吉・情有所歸,,,,,,,"歸途有伴，無須徬徨。
+五條又把悠仁拉進懷裡了。看來今天也沒有要放人的意思。",,
+籤,小凶・出門不利,,,,,,,"今日行路，務必小心。
+悠仁出門踩到五條掉在地上的喜久福，華麗地跌了一跤。",,
+籤,末凶・好事多磨,,,,,,,"想要之物，未必如期而至。
+五條想吃的甜點剛好賣完了……幸好悠仁幫忙留了一個。",,
+籤,吉・桃花滿開,,,,,,,"良緣已定，桃花不必再開。
+五條今天收到好多祝福，不過他最在意的，還是悠仁有沒有稱讚他今天很帥。",,
+籤,大吉・永結同心,,,,,,,"此生相遇，三生有幸。
+從今以後，春夏秋冬，身邊都有彼此。",,
+掉落物,金紅包,,,3,1,,,大大的祝福！,,
+掉落物,紅包,,,1,5,,,收下小小心意！,,
+掉落物,粉花,,,2,3,,,粉色的幸福！,,
+掉落物,天藍花,,,2,3,,,藍色的祝福！,,
+掉落物,白花,,,3,1,,,純白的好運！,,
+掉落物,空酒瓶,,,-2,3,1,,喝太多啦！,,
+結局,幸福滿載！,,,50,,,,"哇！接得太厲害了！
+你收下了滿滿的祝福，今天的幸運女神似乎特別眷顧你呢！
+五條：不錯嘛，反應挺快的。
+悠仁：謝謝你來參加我們的婚禮！",,
+結局,幸福有接到！,,,25,,,,"雖然漏掉了一些，不過重要的祝福都接住了！
+畢竟今天最重要的，是大家都能開開心心的。
+五條：嗯，還算合格吧？
+悠仁：哈哈哈，五條老師不要太嚴格啦！",,
+結局,幸福擦肩而過……？,,,0,,,,"咦？捧花呢？
+好像有點忙不過來呢！不過沒關係，今天的幸福可是不限量供應的。
+五條：要不要我再丟一次？
+悠仁：老師！不可以啦！",,
 參數,接接樂生命數,,,3,,,,,,
 參數,抽籤抽完文字,,,,,,,"捧花都抽完了！
 想再玩一次的話，可以重新抽。",,
@@ -405,7 +426,11 @@ NPC,虎杖,10,4,,,,,"你終於來了！
 參數,掉落速度,,,5,,,,,,
 參數,掉落間隔,,,0.6,,,,,,
 參數,最後加速,,,2.2,,,,,,
-參數,接捧花標題,,,,,,,接捧花,,`;
+參數,接捧花標題,,,,,,,幸福接接樂,,
+參數,開場標題,,,,,,,歡迎來到五條與悠仁的婚禮！,,
+參數,操作說明,,,,,,,"先選一隻喜歡的貓咪，再用方向鍵或 WASD 在庭院裡自由走動。
+靠近發亮的愛心，或是遇見正在等你的人，就能發現更多婚禮的小故事。",,
+參數,接接樂規則,,,,,,,在 {秒} 秒內，盡可能接住掉落的花束與紅包！,,`;
 
 /* 接捧花排行榜：把 Google Apps Script「網頁應用程式」的網址（結尾是 /exec）貼在這裡。
    留空＝不顯示名字輸入和排行榜（遊戲照常玩）。也可以用 ?board=網址 臨時測試。 */
@@ -1251,7 +1276,13 @@ function cup(g,x,y,body,dk,tea){ R(g,dk,x,y+1,8,7); R(g,body,x+1,y+1,6,6); R(g,N
 function furnTile(g,x,y,px,py,ch,t){
   const L=at(x-1,y)!==ch;
   if(ch==="Z"){ tatami32(g,x,y,px,py); shadowRow(g,N.tatamiDk,px+5,py+27,24); tableTop(g,px+3,py+8,26,18);
-    cup(g,px+7,py+11,N.white,N.stoneLt,N.tea); cup(g,px+18,py+11,N.sakura,N.sakuraDk,N.tea); }
+    if(x<10){ cup(g,px+6,py+11,N.waterLt,N.waterDk,N.tea); cup(g,px+17,py+11,N.mapleLt,N.maple,N.tea); }
+    else {                                       // 攤開的書本
+      R(g,N.woodDk,px+5,py+9,22,15); R(g,N.redDk,px+4,py+10,24,14);                       // 書皮
+      R(g,N.paper,px+5,py+10,10,12); R(g,N.paper,px+17,py+10,10,12); R(g,N.plasterDk,px+15,py+10,2,12);   // 左右兩頁、書脊
+      R(g,N.plasterDk,px+5,py+21,10,1); R(g,N.plasterDk,px+17,py+21,10,1);
+      for(let i=0;i<4;i++){ R(g,N.lattice,px+7,py+12+i*2,6,1); R(g,N.lattice,px+19,py+12+i*2,6,1); }
+      R(g,N.red,px+15,py+8,2,6); R(g,N.redDk,px+15,py+13,2,1); } }
   else if(ch==="T"){ tatami32(g,x,y,px,py); shadowRow(g,N.tatamiDk,px,py+27,32);
     const x0=px+(L?3:0), w=L?29:29; tableTop(g,x0,py+8,w,18);
     if(L) cup(g,px+14,py+11,N.waterLt,N.waterDk,N.tea); else cup(g,px+8,py+11,N.mapleLt,N.maple,N.tea);
@@ -1967,11 +1998,11 @@ function openLot(s){
   paused=true; clearKeys(); markSeen(s); lotSpot=s;
   if(!s.lot) s.lot=newDeck();
   $("lTitle").textContent=s.name; typeText($("lText"),s.text);
-  showOv($("lot"));
+  showOv($("lot")); miniMusic("lot");
   showBouquet();
   $("lClose").focus();
 }
-function closeLot(){ hideOv($("lot")); paused=false; }
+function closeLot(){ hideOv($("lot")); paused=false; miniMusic(null); }
 /* 捧花（像素版）：畫在小畫布上，點到哪朵花就抽哪朵 */
 const LOT_W=170, LOT_H=193, LOT_S=LOT_W/300, LOT_Q=3;   // LOT_Q：畫布解析度倍數（平滑畫法，不用像素）
 let lotSt=null, lotRAF=0, lotLast=0;
@@ -2058,7 +2089,7 @@ function showBouquet(){
 let lotBusy=false;
 function pickFlower(card){
   if(lotBusy||card.done) return;
-  lotBusy=true; card.done=true; card.pull={t:0}; lotSt.sel=-1;
+  lotBusy=true; card.done=true; card.pull={t:0}; lotSt.sel=-1; sfx("pick");
   $("lCount").textContent=lotLeft()?"剩下 "+lotLeft()+" 朵":"最後一朵！";
 }
 function drawLot(card){
@@ -2070,7 +2101,7 @@ function drawLot(card){
   const pic=$("lPic");
   if(L.image){ pic.hidden=false; pic.referrerPolicy="no-referrer"; pic.onerror=()=>{pic.hidden=true}; pic.src=L.image; } else pic.hidden=true;
   $("lOk").textContent = lotLeft() ? "好" : "完成";
-  lotView("result");
+  lotView("result"); sfx("reveal");
   $("lOk").focus();
 }
 
@@ -2090,7 +2121,7 @@ let CG=null, cRAF=0, cLast=0;
 function catchDrops(){
   let l=DATA.filter(d=>d.type==="drop");
   if(!l.length) l=[{name:"紅包",value:1,weight:5},{name:"金紅包",value:3,weight:1},{name:"粉花",value:2,weight:3},{name:"天藍花",value:2,weight:3},{name:"白花",value:3,weight:1},{name:"空酒瓶",value:-2,weight:3,lose:true}];
-  return l.map(d=>({name:d.name||"？",value:isFinite(d.value)?d.value:1,weight:(isFinite(d.weight)&&d.weight>0)?d.weight:1,lose:!!d.lose,img:loadImg(d.icon)}));
+  return l.map(d=>({name:d.name||"？",value:isFinite(d.value)?d.value:1,weight:(isFinite(d.weight)&&d.weight>0)?d.weight:1,lose:!!d.lose,text:d.text||"",img:loadImg(d.icon)}));
 }
 function catchEndings(){
   const l=DATA.filter(d=>d.type==="ending").map(d=>({...d,th:isFinite(d.value)?d.value:0})).sort((a,b)=>b.th-a.th);
@@ -2120,16 +2151,66 @@ function playStep(){
   g.gain.setValueAtTime(.0001,now); g.gain.exponentialRampToValueAtTime(.16,now+.01); g.gain.exponentialRampToValueAtTime(.0001,now+.11);
   o.connect(g); o.start(now); o.stop(now+.12);
 }
+
+/* ---------- 小遊戲的音效與音樂（全部用瀏覽器內建合成，不需要音檔） ---------- */
+function tone(freq,t0,dur,type,vol,to,dest){
+  const c=actx; if(!c) return; const o=c.createOscillator(), g=c.createGain();
+  o.type=type||"sine"; o.frequency.setValueAtTime(freq,t0); if(to) o.frequency.exponentialRampToValueAtTime(to,t0+dur);
+  g.gain.setValueAtTime(.0001,t0); g.gain.exponentialRampToValueAtTime(vol,t0+.012); g.gain.exponentialRampToValueAtTime(.0001,t0+dur);
+  o.connect(g); g.connect(dest||c.destination); o.start(t0); o.stop(t0+dur+.03);
+}
+const NOTE=n=>523.25*Math.pow(2,n/12);
+function sfx(name){
+  if(!MUSIC.on) return; const c=audioCtx(); if(!c) return; const n=c.currentTime;
+  switch(name){
+    case "good": tone(NOTE(7),n,.14,"triangle",.2); tone(NOTE(12),n+.07,.2,"triangle",.18); break;
+    case "big": [0,4,7,12,16].forEach((s,i)=>tone(NOTE(s),n+i*.06,.25,"triangle",.17)); tone(NOTE(19),n+.3,.35,"sine",.14); break;
+    case "bad": tone(220,n,.25,"sawtooth",.1,110); tone(160,n+.05,.3,"square",.06,80); break;
+    case "tick": tone(NOTE(7),n,.09,"sine",.16); break;
+    case "go": tone(NOTE(12),n,.12,"triangle",.2); tone(NOTE(19),n+.1,.3,"triangle",.2); break;
+    case "end": [12,9,7,4,0].forEach((s,i)=>tone(NOTE(s),n+i*.11,.3,"triangle",.14)); break;
+    case "pick": tone(420,n,.09,"sine",.2,900); tone(NOTE(4),n+.08,.12,"sine",.1); break;
+    case "reveal": [0,4,7,12].forEach((s,i)=>tone(NOTE(s),n+i*.08,.45,"sine",.15)); tone(NOTE(16),n+.34,.6,"triangle",.1); break;
+    case "tap": tone(NOTE(9),n,.06,"sine",.12); break;
+  }
+}
+const MINI={mode:null,timer:0,next:0,step:0,bus:null};
+const MINIPAT={
+  catch:{bpm:136,mel:[0,2,4,7,4,2,0,null, 5,4,2,4,7,null,4,2, 4,7,9,7,4,2,0,2, 4,2,0,-3,0,null,null,null],bass:[-12,-12,-15,-17]},
+  lot:{bpm:78,mel:[4,null,7,null,9,null,7,null, 4,null,2,null,0,null,null,null, 5,null,9,null,12,null,9,null, 7,null,4,null,2,null,null,null],bass:[-12,-15,-17,-12]}
+};
+function miniTick(){
+  const c=actx; if(!c||!MINI.mode){ return; } const P=MINIPAT[MINI.mode], beat=60/P.bpm/2;
+  while(MINI.next<c.currentTime+.35){
+    const s=MINI.step%32, m=P.mel[s];
+    if(m!=null) tone(NOTE(m),MINI.next,MINI.mode==="catch"?.28:.7,"triangle",MINI.mode==="catch"?.12:.1,null,MINI.bus);
+    if(s%8===0) tone(NOTE(P.bass[(s/8)|0]),MINI.next,beat*7,"sine",.14,null,MINI.bus);
+    if(MINI.mode==="catch" && s%4===2) tone(NOTE(19),MINI.next,.05,"square",.015,null,MINI.bus);
+    MINI.next+=beat; MINI.step++;
+  }
+}
+function miniStop(){ clearInterval(MINI.timer); MINI.timer=0; MINI.mode=null; if(MINI.bus){ try{ MINI.bus.disconnect(); }catch(_){ } MINI.bus=null; } }
+function miniMusic(mode){        // 進入小遊戲：主旋律暫停、換小遊戲專用的曲子；離開再接回去
+  miniStop(); MINI.want=mode;
+  if(!mode){ if(MUSIC.on&&MUSIC.el&&MUSIC.el.src) MUSIC.el.play().catch(()=>{}); return; }
+  if(MUSIC.el) MUSIC.el.pause();
+  if(!MUSIC.on) return; const c=audioCtx(); if(!c) return;
+  MINI.mode=mode; MINI.bus=c.createGain(); MINI.bus.gain.value=.7; MINI.bus.connect(c.destination);
+  MINI.next=c.currentTime+.15; MINI.step=0; MINI.timer=setInterval(miniTick,90);
+}
 function bgmNext(){
-  if(!MUSIC.on) return; const el=MUSIC.el||(MUSIC.el=new Audio()); el.volume=MUSIC.vol; el.onended=()=>{ MUSIC.i=(MUSIC.i+1)%MUSIC.list.length; bgmNext(); };
+  if(!MUSIC.on||MINI.want) return; const el=MUSIC.el||(MUSIC.el=new Audio()); el.volume=MUSIC.vol; el.onended=()=>{ MUSIC.i=(MUSIC.i+1)%MUSIC.list.length; if(!MINI.want) bgmNext(); };
   let fails=0; el.onerror=()=>{ if(++fails>=MUSIC.list.length) return; MUSIC.i=(MUSIC.i+1)%MUSIC.list.length; el.src=MUSIC.list[MUSIC.i]; el.play().catch(()=>{}); };
   el.src=MUSIC.list[MUSIC.i]; el.play().catch(()=>{});
 }
 function setMusic(on){
   MUSIC.on=on; const b=$("musicBtn"); b.setAttribute("aria-pressed",String(on)); b.textContent=on?"音樂：開":"音樂：關";
-  if(on){ audioCtx(); loadStep(); if(MUSIC.el&&MUSIC.el.src) MUSIC.el.play().catch(()=>{}); else bgmNext(); } else if(MUSIC.el) MUSIC.el.pause();
+  if(!on){ if(MUSIC.el) MUSIC.el.pause(); miniStop(); return; }
+  audioCtx(); loadStep();
+  if(MINI.want){ miniMusic(MINI.want); return; }
+  if(MUSIC.el&&MUSIC.el.src) MUSIC.el.play().catch(()=>{}); else bgmNext();
 }
-document.addEventListener("visibilitychange",()=>{ if(!MUSIC.el) return; if(document.hidden) MUSIC.el.pause(); else if(MUSIC.on) MUSIC.el.play().catch(()=>{}); });
+document.addEventListener("visibilitychange",()=>{ if(document.hidden){ if(MUSIC.el) MUSIC.el.pause(); if(actx) actx.suspend(); } else if(MUSIC.on){ if(actx) actx.resume(); if(MUSIC.el&&!MINI.want) MUSIC.el.play().catch(()=>{}); } });
 
 /* ---- 排行榜（Google Apps Script）：每次成績都列，取前 50 名 ---- */
 const lbUrl = () => new URLSearchParams(location.search).get("board") || LEADERBOARD_URL;
@@ -2179,12 +2260,12 @@ function openCatch(s){
   paused=true; clearKeys(); markSeen(s);
   $("cTitle").textContent=paramText("接捧花標題","接捧花"); typeText($("cText"),s.text);
   const secs=paramNum("接接樂秒數",30), lv=paramNum("接接樂生命數",3);
-  $("cRule").textContent=`限時 ${secs} 秒　${lv} 條命　越到後面掉得越快\n`+catchDrops().map(d=>`${d.name} ${d.value>0?"+":""}${d.value}${d.lose?"（扣命）":""}`).join("\n");
+  $("cRule").textContent=paramText("接接樂規則","在 {秒} 秒內，盡可能接住掉落的花束與紅包！").replace("{秒}",secs)+`\n遊戲時間：${secs} 秒　剩餘機會：${lv} 次\n越到後面，掉落速度越快！\n\n`+catchDrops().map(d=>`${d.name} ${d.value>0?"+":""}${d.value}${d.text?"　"+d.text:""}`).join("\n");
   $("cNameBox").hidden=!lbOn(); $("cBoardBtn").hidden=!lbOn();
   if(lbOn()) $("cName").value=getSavedName();
-  catchView("intro"); showOv($("catch")); (lbOn()&&!$("cName").value ? $("cName") : $("cStart")).focus();
+  catchView("intro"); showOv($("catch")); miniMusic("catch"); (lbOn()&&!$("cName").value ? $("cName") : $("cStart")).focus();
 }
-function closeCatch(){ cancelAnimationFrame(cRAF); CG=null; cKeys.left=cKeys.right=false; hideOv($("catch")); paused=false; }
+function closeCatch(){ cancelAnimationFrame(cRAF); CG=null; cKeys.left=cKeys.right=false; hideOv($("catch")); paused=false; miniMusic(null); }
 function startCatch(){
   const ds=catchDrops(), lives=Math.max(1,Math.round(paramNum("接接樂生命數",3)));
   CG={ds,total:ds.reduce((a,d)=>a+d.weight,0),time:Math.max(5,paramNum("接接樂秒數",30)),lives,maxLives:lives,
@@ -2206,7 +2287,7 @@ function spawnDrop(){
 function catchUpdate(dt){
   const G=CG; G.t+=dt; G.flash=Math.max(0,G.flash-dt);
   G.fx.forEach(f=>f.t+=dt); G.fx=G.fx.filter(f=>f.t<.8);
-  if(G.count>0){ G.count-=dt; return; }
+  if(G.count>0){ G.count-=dt; const nn=Math.ceil(G.count-.4); if(nn!==G.lastN){ G.lastN=nn; sfx(nn>0?"tick":"go"); } return; }
   G.time-=dt; if(G.time<=0){ G.time=0; catchHud(); return endCatch(); }
   G.f=1+(G.ramp-1)*Math.min(1,Math.max(0,1-G.time/G.total0));   // 時間越少，掉得越快
   const dir=(cKeys.right?1:0)-(cKeys.left?1:0);
@@ -2219,7 +2300,8 @@ function catchUpdate(dt){
       it.hit=true; const d=it.d;
       G.score=Math.max(0,G.score+d.value);
       if(d.lose){ G.lives--; G.flash=.35; }
-      if(d.value) G.fx.push({x:it.x,y:BASKET_TOP-8,t:0,text:(d.value>0?"+":"")+d.value,col:d.value>0?C.pinkDeep:C.skyDeep});
+      sfx(d.lose||d.value<0?"bad":(d.value>=3?"big":"good"));
+      if(d.value) G.fx.push({x:Math.max(70,Math.min(CW-70,it.x)),y:BASKET_TOP-8,t:0,text:(d.value>0?"+":"")+d.value+(d.text?" "+d.text:""),col:d.value>0?C.pinkDeep:C.skyDeep});
       else if(d.lose) G.fx.push({x:it.x,y:BASKET_TOP-8,t:0,text:"－1♥",col:C.skyDeep});
       catchHud();
       if(G.lives<=0){ G.items=G.items.filter(i=>!i.hit); return endCatch(); }
@@ -2265,7 +2347,7 @@ function catchDraw(){
   for(let k=0;k<3;k++){ g.beginPath(); g.moveTo(bx-BASKET_HALF+3+k*3,BASKET_TOP+16+k*9); g.lineTo(bx+BASKET_HALF-3-k*3,BASKET_TOP+16+k*9); g.stroke(); }
   rect(g,C.pinkDeep,bx-BASKET_HALF-2,BASKET_TOP,BASKET_HALF*2+4,7); rect(g,C.pink,bx-BASKET_HALF-2,BASKET_TOP,BASKET_HALF*2+4,3);
   // 分數跳字
-  g.textAlign="center"; g.font="20px "+SMOOTH_FONT;
+  g.textAlign="center"; g.font="700 18px "+SMOOTH_FONT; g.lineJoin="round";
   G.fx.forEach(f=>{ g.globalAlpha=1-f.t/.8; g.fillStyle=C.white; g.strokeStyle=f.col; g.lineWidth=4; g.strokeText(f.text,f.x,f.y-f.t*50); g.fillText(f.text,f.x,f.y-f.t*50); });
   g.globalAlpha=1;
   if(G.flash>0){ g.fillStyle=`rgba(232,121,138,${(G.flash/.35)*.35})`; g.fillRect(0,0,CW,CH); }
@@ -2284,7 +2366,7 @@ function catchLoop(now){
 }
 function endCatch(){
   if(!CG||CG.over) return;
-  CG.over=true; cancelAnimationFrame(cRAF);
+  CG.over=true; cancelAnimationFrame(cRAF); sfx("end");
   const e=pickEnding(CG.score);
   $("cFinal").textContent=CG.score+" 分";
   $("cEName").textContent=e.name||""; $("cEText").textContent=e.text||"";
@@ -2359,6 +2441,7 @@ $("lOk").addEventListener("click",showBouquet);
 $("lAgain").addEventListener("click",()=>{ lotSpot.lot=newDeck(); showBouquet(); });
 $("sBtn").addEventListener("click",()=>{ buildWorld(); hideOv($("start")); paused=false; setMusic($("musicChk").checked); });
 $("musicBtn").addEventListener("click",()=>setMusic(!MUSIC.on));
+document.addEventListener("click",e=>{ if(e.target.closest&&e.target.closest(".card button.go,.card button.ghost")) sfx("tap"); });
 $("again").addEventListener("click",()=>{ paused=true; clearKeys(); showOv($("start")); });
 addEventListener("resize",resize); addEventListener("orientationchange",()=>setTimeout(resize,200));
 
@@ -2366,9 +2449,9 @@ addEventListener("resize",resize); addEventListener("orientationchange",()=>setT
 (async function(){
   DATA = await loadData();
   const set = DATA.find(d=>d.type==="setting"&&d.name) || DATA.find(d=>d.type==="setting") || {};
-  const title = set.name || "婚禮庭院探索";
-  document.title=title; $("title").textContent=title; $("sTitle").textContent=title;
-  $("sText").textContent = set.text || "用方向鍵或 WASD 走動，靠近發亮的愛心或站著的人就能看到內容。";
+  const title = set.name || "五悠日和 — 今日、ふたりの日";
+  document.title=title; $("title").textContent=title; $("sTitle").textContent=paramText("開場標題",title); $("sHow").textContent=paramText("操作說明","用方向鍵或 WASD 走動，靠近發亮的愛心或站著的人就能看到內容。");
+  $("sText").textContent = set.text || "";
   if(set.image){ const c=$("sCover"); c.hidden=false; c.referrerPolicy="no-referrer"; c.onerror=()=>{c.hidden=true}; c.src=set.image; }
   players = DATA.filter(d=>d.type==="player");
   if(!players.length) players=[{name:"貓咪"}];
