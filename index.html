@@ -236,7 +236,7 @@
       <img id="sCover" class="pic" alt="" hidden>
       <header class="hero-head">
         <span class="eyebrow">WEDDING GARDEN</span>
-        <h2 id="sTitle">歡迎來到五條與悠仁的婚禮！</h2>
+        <h2 id="sTitle">歡迎來到五條與虎杖的婚禮！</h2>
       </header>
       <p id="sText" class="rich center"></p>
       <section class="panel">
@@ -423,14 +423,14 @@ const SHEET_CSV_URL = "";
 /* 不想用試算表時，也可以把整份 CSV 內容直接貼在這兩個反引號中間（並把上面網址清空） */
 const EMBEDDED_CSV = `類型,名稱,x,y,數值,權重,扣命,觸發遊戲,文字,圖片網址,圖示網址
 設定,五悠日和 — 今日、ふたりの日,,,,,,,"今天是個特別的日子。
-謝謝你來參加五條和悠仁的婚禮！
+謝謝你來參加五條和虎杖的婚禮！
 庭院裡準備了不少小驚喜，典禮開始前，不妨四處逛逛吧。",,
 角色,白貓,,,,,,,,,
 角色,橘貓,,,,,,,,,
 角色,藍貓,,,,,,,,,
 角色,粉貓,,,,,,,,,
 NPC,五條,9,4,,,,,五條似乎正在尋找下一份甜點。,,
-NPC,悠仁,10,4,,,,,悠仁正在確認婚禮一切順利！,,
+NPC,虎杖,10,4,,,,,虎杖正在確認婚禮一切順利！,,
 事件,鳥居,9,10,,,,,"踏過鳥居，便是今日的良緣之地。
 願這條小徑，通往兩人往後每一個幸福的日子。",,
 事件,結緣花籤,12,9,,,,抽籤,"神明準備了一束捧花。
@@ -483,7 +483,7 @@ NPC,悠仁,10,4,,,,,悠仁正在確認婚禮一切順利！,,
 參數,掉落間隔,,,0.6,,,,,,
 參數,最後加速,,,2.2,,,,,,
 參數,接捧花標題,,,,,,,幸福接接樂,,
-參數,開場標題,,,,,,,歡迎來到五條與悠仁的婚禮！,,
+參數,開場標題,,,,,,,歡迎來到五條與虎杖的婚禮！,,
 參數,操作說明,,,,,,,"先選一隻喜歡的貓咪，再用方向鍵或 WASD 在庭院裡自由走動。
 靠近發亮的愛心，或是遇見正在等你的人，就能發現更多婚禮的小故事。",,
 參數,接接樂規則,,,,,,,在 {秒} 秒內，盡可能接住掉落的花束與紅包！,,`;
@@ -2448,7 +2448,7 @@ function endCatch(){
   $("cEName").textContent=e.name||"";
   { const box=$("cEText"); box.innerHTML=""; const lines=String(e.text||"").split("\n").filter(Boolean); let first=true;
     lines.forEach(ln=>{ const m=ln.match(/^([^：:\s]{1,6})[：:]\s*(.+)$/);
-      if(m){ const d=document.createElement("div"); d.className="say"+(m[1]==="悠仁"?" go2":""); const w=document.createElement("span"); w.className="who"; w.textContent=m[1]; const x=document.createElement("span"); x.textContent=m[2]; d.append(w,x); box.append(d); }
+      if(m){ const d=document.createElement("div"); d.className="say"+(m[1]==="虎杖"?" go2":""); const w=document.createElement("span"); w.className="who"; w.textContent=m[1]; const x=document.createElement("span"); x.textContent=m[2]; d.append(w,x); box.append(d); }
       else { const p=document.createElement("p"); if(first) p.className="lead"; p.textContent=ln; box.append(p); first=false; } }); }
   const pic=$("cEPic");
   if(e.image){ pic.hidden=false; pic.referrerPolicy="no-referrer"; pic.onerror=()=>{pic.hidden=true}; pic.src=e.image; } else pic.hidden=true;
