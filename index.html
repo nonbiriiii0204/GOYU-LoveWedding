@@ -122,6 +122,12 @@
   .input::placeholder{color:#a7accb}
   .input:hover{border-color:rgba(62,68,120,.34)}
   .input:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(217,100,126,.18)}
+  .pv{display:flex;justify-content:center;padding:var(--s3);background:var(--blue-pale);border:1px solid var(--line);border-radius:var(--r-panel)}
+  .pv canvas{width:144px;height:144px;image-rendering:pixelated}
+  .who{display:flex;flex-direction:column;gap:var(--s2);text-align:center;min-height:3.2em}
+  .who .nm{font-size:18px;font-weight:700;color:var(--ink-1);letter-spacing:.04em}
+  .who .ds{margin:0;font-size:14.5px;line-height:1.7;color:var(--ink-2)}
+  .who .ds:empty{display:none}
   .pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:var(--s3)}
   .opt{display:flex;flex-direction:column;align-items:center;gap:var(--s2);padding:var(--s3) var(--s2) var(--s2);font:500 13px 'Noto Sans TC',sans-serif;letter-spacing:.06em;color:var(--ink-2);background:#fff;border:1px solid var(--line-2);border-radius:var(--r-panel);cursor:pointer;transition:border-color .15s,background .15s,box-shadow .15s,transform .12s}
   .opt:hover{border-color:rgba(62,68,120,.36);transform:translateY(-1px)}
@@ -145,7 +151,7 @@
   .badge.cool{color:var(--sky-ink);background:var(--sky-soft)}
   .badge.pos{color:#b8435d;background:var(--accent-soft)}
   .badge.neg{color:var(--sky-ink);background:var(--sky-soft)}
-  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3)}
+  .tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3)}
   .tile{display:flex;flex-direction:column;gap:2px;padding:var(--s3);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-panel);text-align:center}
   .tile .k{font-size:12px;color:var(--ink-3)}
   .tile .v{font-size:18px;font-weight:700;color:var(--ink-1);letter-spacing:.02em}
@@ -165,7 +171,7 @@
   .fortune .msg{text-align:left;width:100%;margin-top:var(--s2);padding-top:var(--s4);border-top:1px dashed rgba(201,162,74,.45)}
 
   /* ---- 接接樂 ---- */
-  .statbar{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:var(--s3)}
+  .statbar{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
   .stat{display:flex;flex-direction:column;gap:2px;padding:10px var(--s3);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-panel)}
   .stat .k{font-size:12px;color:var(--ink-3)}
   .stat b{font-size:22px;line-height:1.2;font-weight:700;color:var(--ink-1);font-variant-numeric:tabular-nums}
@@ -232,26 +238,50 @@
 
 <div id="start" class="overlay">
   <div class="card" role="dialog" aria-modal="true" aria-labelledby="sTitle">
-    <div class="dlg-body">
-      <img id="sCover" class="pic" alt="" hidden>
-      <header class="hero-head">
-        <span class="eyebrow">WEDDING GARDEN</span>
-        <h2 id="sTitle">歡迎來到五條與虎杖的婚禮！</h2>
-      </header>
-      <p id="sText" class="rich center"></p>
-      <section class="panel">
-        <h3 class="sec-title howlab">操作說明</h3>
-        <p id="sHow" class="how"></p>
-      </section>
-      <section class="sec">
-        <h3 id="charLab" class="sec-title">選擇角色</h3>
-        <div id="charPick" class="pick"></div>
-      </section>
-      <label id="musicRow" class="panel mrow"><span class="mt">開啟遊戲音樂<small>包含背景音樂與遊戲音效</small></span><input id="musicChk" type="checkbox" checked><span class="sw" aria-hidden="true"></span></label>
+    <div id="sBar" class="dlg-bar" hidden>
+      <div class="ttl"><span class="eyebrow">出發前準備</span><h2 id="sStepT">選擇角色</h2></div>
+      <span id="sStep" class="badge cool">1 / 2</span>
     </div>
-    <div class="dlg-foot">
-      <button id="sBtn" class="btn btn-primary btn-block" type="button">進入庭院</button>
-      <div class="credit">音樂：Kevin MacLeod（incompetech.com）〈Senbazuru〉〈Ripples〉，CC BY 4.0</div>
+    <div id="sWelcome" class="view">
+      <div class="dlg-body">
+        <img id="sCover" class="pic" alt="" hidden>
+        <header class="hero-head">
+          <span class="eyebrow">WEDDING GARDEN</span>
+          <h2 id="sTitle">歡迎來到五條與悠仁的婚禮！</h2>
+        </header>
+        <p id="sText" class="rich center"></p>
+        <section class="panel">
+          <h3 class="sec-title howlab">操作說明</h3>
+          <p id="sHow" class="how"></p>
+        </section>
+        <label id="musicRow" class="panel mrow"><span class="mt">開啟遊戲音樂<small>包含背景音樂與遊戲音效</small></span><input id="musicChk" type="checkbox" checked><span class="sw" aria-hidden="true"></span></label>
+      </div>
+      <div class="dlg-foot">
+        <button id="sGo" class="btn btn-primary btn-block" type="button">進入庭院</button>
+        <div class="credit">音樂：Kevin MacLeod（incompetech.com）〈Senbazuru〉〈Ripples〉，CC BY 4.0</div>
+      </div>
+    </div>
+    <div id="sChar" class="view" hidden>
+      <div class="dlg-body">
+        <div class="pv"><canvas id="pvC" width="144" height="144" aria-hidden="true"></canvas></div>
+        <div class="who"><div id="cNm" class="nm"></div><p id="cDs" class="ds"></p></div>
+        <div id="charPick" class="pick" role="group" aria-label="選擇角色"></div>
+      </div>
+      <div class="dlg-foot"><div class="row">
+        <button id="sPrevC" class="btn btn-secondary" type="button">上一步</button>
+        <button id="sNextC" class="btn btn-primary" type="button">進入庭院</button>
+      </div></div>
+    </div>
+    <div id="sAcc" class="view" hidden>
+      <div class="dlg-body">
+        <div class="pv"><canvas id="pvA" width="144" height="144" aria-hidden="true"></canvas></div>
+        <div class="who"><div id="aNm" class="nm"></div><p id="aDs" class="ds"></p></div>
+        <div id="accPick" class="pick" role="group" aria-label="選擇配飾"></div>
+      </div>
+      <div class="dlg-foot"><div class="row">
+        <button id="sPrevA" class="btn btn-secondary" type="button">上一步</button>
+        <button id="sBtn" class="btn btn-primary" type="button">進入庭院</button>
+      </div></div>
     </div>
   </div>
 </div>
@@ -348,7 +378,7 @@
     </div>
     <div id="cPlay" class="view" hidden>
       <div class="dlg-body">
-        <div class="statbar"><div class="stat"><span class="k">分數</span><b id="cScore">0</b></div><div class="stat"><span class="k">剩餘秒數</span><b id="cTime">0</b></div><div class="stat"><span class="k">機會</span><b id="cLives" aria-label="生命"></b></div></div>
+        <div class="statbar"><div class="stat"><span class="k">分數</span><b id="cScore">0</b></div><div class="stat"><span class="k">機會次數</span><b id="cLives" aria-label="生命"></b></div></div>
         <canvas id="cCv" width="320" height="420" aria-label="接接樂遊戲畫面"></canvas>
         <div class="caption center" style="display:flex;justify-content:center">左右拖曳，或用方向鍵 / A D 移動</div>
       </div>
@@ -392,14 +422,15 @@
    留空就會顯示內建範例。也可以用 ?sheet=網址 臨時指定。
 
    試算表欄位（第一列標題照抄，順序可以不同，沒用到的欄位留空）：
-   類型 | 名稱 | x | y | 數值 | 權重 | 扣命 | 觸發遊戲 | 文字 | 圖片網址 | 圖示網址
+   類型 | 名稱 | x | y | 數值 | 權重 | 扣命 | 觸發遊戲 | 文字 | 圖片網址 | 圖示網址 | 圖示網址2
 
    類型：設定 / 參數 / 角色 / NPC / 事件 / 籤 / 掉落物 / 結局
    （「已發現」計數已拿掉；地圖上的裝飾物是寫在程式裡的，不用填表格）
    設定：名稱＝遊戲標題、文字＝開場說明、圖片網址＝開場畫面上方的圖
-   角色：玩家可以選的角色（貓咪）。圖示網址＝地圖上的樣子，空白就用內建貓咪
+   角色：玩家可以選的角色。圖示網址＝精靈圖 A（64×64，4 格各 32×32：左上朝下站、右上朝下走、左下朝上站、右下朝上走），
+          圖示網址2＝精靈圖 B（64×64：左上朝右站、右上朝右走；往左走會自動翻轉）。空白就用內建貓咪
    NPC ：站在地圖上的人物。x、y＝位置、文字＝對話內容
-          圖示網址＝站在地圖上的樣子（空白就用內建的佔位小人）
+          圖示網址（和圖示網址2）＝站在地圖上的樣子，格式和角色一樣；單張圖也可以（空白就用內建的佔位小人）
           圖片網址＝對話時彈出的大圖（可空）
    事件：地圖上發亮的愛心。x、y＝位置、文字＝內容
           圖片網址＝彈出的大圖、圖示網址＝換掉愛心的小圖示（可空）
@@ -408,8 +439,9 @@
    籤  ：一列＝一朵花。名稱＝運勢（大吉…）、文字＝內容、
           圖片網址＝抽出來的小插圖、圖示網址＝抽出來的那朵花（空白就用內建的花）
    參數：名稱＝參數名稱、數值＝參數的值（文字類的參數寫在「文字」欄）
-          用到：抽籤抽完文字、接接樂秒數、接接樂生命數、掉落速度（數字越大越快）、掉落間隔（秒）、
-          最後加速（時間倒數到 0 時速度是一開始的幾倍，填 1＝不加速）、接捧花標題（文字欄）
+          用到：抽籤抽完文字、接接樂生命數（機會次數，用完就結束，不限時間）、掉落速度（數字越大越快）、掉落間隔（秒）、
+          最後加速（玩約 45 秒時速度是一開始的幾倍，填 1＝不加速）、接捧花標題（文字欄）、
+          角色縮放（數值：1＝角色圖原尺寸，0.5＝縮成一半，也可填 0.75 等，預設 1）
    掉落物：數值＝加減分、權重＝出現機率（越大越常掉）、扣命填 1＝接到會扣一條命、圖示網址＝掉落時的圖
    結局：數值＝分數門檻，取「分數 ≥ 門檻」裡最高的；文字＝結局文字、圖片網址＝結局插圖
 
@@ -421,16 +453,16 @@
    https://docs.google.com/spreadsheets/d/e/2PACX-1vQPACiyJ2JU6kBv9bSaXQ9huJ64dzsSRadPSQwOz5Xw5d8H-D559UMQIwh-nUOCuLzP1MIgqTQiVHDx/pub?output=csv */
 const SHEET_CSV_URL = "";
 /* 不想用試算表時，也可以把整份 CSV 內容直接貼在這兩個反引號中間（並把上面網址清空） */
-const EMBEDDED_CSV = `類型,名稱,x,y,數值,權重,扣命,觸發遊戲,文字,圖片網址,圖示網址
+const EMBEDDED_CSV = `類型,名稱,x,y,數值,權重,扣命,觸發遊戲,文字,圖片網址,圖示網址,圖示網址2
 設定,五悠日和 — 今日、ふたりの日,,,,,,,"今天是個特別的日子。
-謝謝你來參加五條和虎杖的婚禮！
+謝謝你來參加五條和悠仁的婚禮！
 庭院裡準備了不少小驚喜，典禮開始前，不妨四處逛逛吧。",,
 角色,白貓,,,,,,,,,
 角色,橘貓,,,,,,,,,
 角色,藍貓,,,,,,,,,
 角色,粉貓,,,,,,,,,
 NPC,五條,9,4,,,,,五條似乎正在尋找下一份甜點。,,
-NPC,虎杖,10,4,,,,,虎杖正在確認婚禮一切順利！,,
+NPC,悠仁,10,4,,,,,悠仁正在確認婚禮一切順利！,,
 事件,鳥居,9,10,,,,,"踏過鳥居，便是今日的良緣之地。
 願這條小徑，通往兩人往後每一個幸福的日子。",,
 事件,結緣花籤,12,9,,,,抽籤,"神明準備了一束捧花。
@@ -457,6 +489,8 @@ NPC,虎杖,10,4,,,,,虎杖正在確認婚禮一切順利！,,
 五條今天收到好多祝福，不過他最在意的，還是悠仁有沒有稱讚他今天很帥。",,
 籤,大吉・永結同心,,,,,,,"此生相遇，三生有幸。
 從今以後，春夏秋冬，身邊都有彼此。",,
+籤,大吉・命中注定,,,,,,,"良緣天定，此心不移。
+五條說，第一次遇見悠仁的時候，就覺得這孩子很有意思。至於現在嘛……已經不打算讓他離開自己身邊了。",,
 掉落物,金紅包,,,3,1,,,大大的祝福！,,
 掉落物,紅包,,,1,5,,,收下小小心意！,,
 掉落物,粉花,,,2,3,,,粉色的幸福！,,
@@ -478,15 +512,14 @@ NPC,虎杖,10,4,,,,,虎杖正在確認婚禮一切順利！,,
 參數,接接樂生命數,,,3,,,,,,
 參數,抽籤抽完文字,,,,,,,"捧花都抽完了！
 想再玩一次的話，可以重新抽。",,
-參數,接接樂秒數,,,30,,,,,,
 參數,掉落速度,,,5,,,,,,
 參數,掉落間隔,,,0.6,,,,,,
 參數,最後加速,,,2.2,,,,,,
 參數,接捧花標題,,,,,,,幸福接接樂,,
-參數,開場標題,,,,,,,歡迎來到五條與虎杖的婚禮！,,
+參數,開場標題,,,,,,,歡迎來到五條與悠仁的婚禮！,,
 參數,操作說明,,,,,,,"先選一隻喜歡的貓咪，再用方向鍵或 WASD 在庭院裡自由走動。
 靠近發亮的愛心，或是遇見正在等你的人，就能發現更多婚禮的小故事。",,
-參數,接接樂規則,,,,,,,在 {秒} 秒內，盡可能接住掉落的花束與紅包！,,`;
+參數,接接樂規則,,,,,,,盡可能接住掉落的花束與紅包！,,`;
 
 /* 接捧花排行榜：把 Google Apps Script「網頁應用程式」的網址（結尾是 /exec）貼在這裡。
    留空＝不顯示名字輸入和排行榜（遊戲照常玩）。也可以用 ?board=網址 臨時測試。 */
@@ -613,10 +646,11 @@ const HEAD = {"類型":"type","type":"type","名稱":"name","name":"name","x":"x
   "數值":"value","value":"value","權重":"weight","weight":"weight","扣命":"lose","lose":"lose",
   "觸發遊戲":"game","game":"game",
   "圖片網址":"image","圖片":"image","image":"image","文字":"text","text":"text",
-  "圖示網址":"icon","圖示":"icon","icon":"icon"};
+  "圖示網址":"icon","圖示":"icon","icon":"icon",
+  "圖示網址2":"icon2","圖示2":"icon2","icon2":"icon2"};
 const TYPE = {"設定":"setting","setting":"setting","settings":"setting","參數":"param","param":"param",
   "角色":"player","player":"player","npc":"npc","人物":"npc","事件":"event","event":"event",
-  "籤":"lot","lot":"lot","掉落物":"drop","drop":"drop","結局":"ending","ending":"ending"};
+  "配飾":"acc","acc":"acc","籤":"lot","lot":"lot","掉落物":"drop","drop":"drop","結局":"ending","ending":"ending"};
 /* 觸發遊戲欄位可以填的名稱 */
 const GAMES = {"抽籤":"lot","lot":"lot","接接樂":"catch","接捧花":"catch","catch":"catch"};
 function rowsToData(rows){
@@ -658,10 +692,71 @@ async function loadData(){
 function normalizeSample(){ return SAMPLE.map(d=>({...d, game:GAMES[d.game]||""})); }
 function loadImg(src){ if(!src) return null; const im=new Image(); im.referrerPolicy="no-referrer"; im.src=src; return im; }
 const ready = im => im && im.complete && im.naturalWidth>0;
+/* ---------- 角色精靈圖（像素原尺寸、不平滑） ----------
+   圖 A（64×64，4 格各 32×32）：左上＝朝下站、右上＝朝下走、左下＝朝上站、右下＝朝上走
+   圖 B（64×64）：左上＝朝右站、右上＝朝右走（往左走時自動翻轉）；下排可留空
+   不是 64×64 的圖（例如 32×32 的單張圖）就當作單張圖，原尺寸直接畫，往左時翻轉 */
+const mkSheet = (a,b) => a ? {a:loadImg(a), b:loadImg(b), off:Math.random()*10} : null;
+/* 待機動畫條：一張橫排的圖，每格是正方形（例如 192×64＝3 格 64×64），只有正面。
+   角色縮放（參數）：1＝原尺寸；小於 1＝縮小（每個新像素取覆蓋範圍內面積最大的顏色，盡量保留輪廓） */
+let SPK = 1;
+function scaledOf(sp){      // 依「角色縮放」把每一格縮小：每個新像素取它覆蓋範圍內「面積最大的顏色」（同面積取較深的，保留輪廓）
+  if(sp.sc!==undefined && sp.scK===SPK) return sp.sc;
+  const im=sp.a, w=im.naturalWidth, h=im.naturalHeight, n=Math.round(w/h), c=Math.max(8,Math.round(h*SPK)); sp.sc=null; sp.scK=SPK;
+  try{
+    const cv=document.createElement("canvas"); cv.width=w; cv.height=h; const g=cv.getContext("2d"); g.drawImage(im,0,0);
+    const d=g.getImageData(0,0,w,h).data, o=document.createElement("canvas"); o.width=n*c; o.height=c; const og=o.getContext("2d"), od=og.createImageData(n*c,c), r=h/c;
+    for(let f=0;f<n;f++) for(let oy=0;oy<c;oy++) for(let ox=0;ox<c;ox++){
+      const x0=ox*r, x1=(ox+1)*r, y0=oy*r, y1=(oy+1)*r, wt={}; let op=0;
+      for(let sy=Math.floor(y0);sy<Math.ceil(y1);sy++) for(let sx=Math.floor(x0);sx<Math.ceil(x1);sx++){
+        const ar=(Math.min(sx+1,x1)-Math.max(sx,x0))*(Math.min(sy+1,y1)-Math.max(sy,y0)), q=(sy*w+f*h+sx)*4; if(ar<=0||d[q+3]<128) continue;
+        const key=d[q]<<16|d[q+1]<<8|d[q+2]; wt[key]=(wt[key]||0)+ar; op+=ar; }
+      if(op<r*r*.5) continue;
+      let best=null,bw=0,bl=1e9; for(const k in wt){ const l=((k>>16)&255)*.3+((k>>8)&255)*.59+(k&255)*.11; if(wt[k]>bw+1e-6||(Math.abs(wt[k]-bw)<=1e-6&&l<bl)){ best=+k; bw=wt[k]; bl=l; } }
+      const q=(oy*n*c+f*c+ox)*4; od.data[q]=(best>>16)&255; od.data[q+1]=(best>>8)&255; od.data[q+2]=best&255; od.data[q+3]=255;
+    }
+    og.putImageData(od,0,0); sp.sc=o;
+  }catch(_){ sp.sc=null; }
+  return sp.sc;
+}
+function bboxOf(sp,src,n){      // 所有格子合起來「有顏色的範圍」，用來自動裁掉透明邊（圖畫在 64×64 裡、角色本體較小時，就以本體大小 1:1 顯示）
+  const key=src===sp.a?"bb":"bbs"; if(sp[key]&&sp[key].src===src) return sp[key];
+  const c=src.height, W=src.width; let x0=c,y0=c,x1=-1,y1=-1; sp[key]={src,x0:0,y0:0,x1:c-1,y1:c-1};
+  try{
+    const cv=document.createElement("canvas"); cv.width=W; cv.height=c; const g=cv.getContext("2d"); g.drawImage(src,0,0); const d=g.getImageData(0,0,W,c).data;
+    for(let y=0;y<c;y++) for(let x=0;x<W;x++) if(d[(y*W+x)*4+3]>=128){ const xx=x%c; if(xx<x0)x0=xx; if(xx>x1)x1=xx; if(y<y0)y0=y; if(y>y1)y1=y; }
+    if(x1>=0) sp[key]={src,x0,y0,x1,y1};
+  }catch(_){}
+  return sp[key];
+}
+function idleIdx(t,n){ const beat=Math.floor(t/.42)%12; return n>=3 ? (beat===10 ? 2 : beat%2) : beat%2; }   // 呼吸（0、1 交替）＋偶爾眨眼（第 3 格）
+function sheetFrame(sp,dir,walk,tm,bbIn){
+  const A=sp&&sp.a; if(!ready(A)) return null;
+  const W=A.naturalWidth, H=A.naturalHeight;
+  if(W>=H*2 && W%H===0){                                  // 待機動畫條
+    const n=W/H, src=(SPK<1&&scaledOf(sp))||A, c=src===A?H:src.height, kk=c/H, t=(tm||0)+sp.off;
+    const i = tm<0 ? 0 : walk ? Math.floor(t/.16)%2 : idleIdx(t,n);
+    const bb=bbIn||bboxOf(sp,src,n), bw=bb.x1-bb.x0+1, bh=bb.y1-bb.y0+1;
+    return {im:src,sx:Math.min(i,n-1)*c+bb.x0,sy:bb.y0,w:bw,h:bh,strip:true,pad:0,bb};
+  }
+  if(W===64&&H===64){
+    if(dir==="side"&&ready(sp.b)) return {im:sp.b,sx:walk?32:0,sy:0,w:32,h:32};
+    return {im:A,sx:walk?32:0,sy:dir==="up"?32:0,w:32,h:32};
+  }
+  return {im:A,sx:0,sy:0,w:W,h:H};
+}
+function drawSheet(g,sp,dir,walk,cx,fy,face,acc,tm){      // 腳貼在 fy+1；acc＝配飾疊圖（同樣的排法）
+  const f=sheetFrame(sp,dir,walk,tm); if(!f) return false;
+  const flip = (f.strip||!(dir==="side"||f.w!==32)) ? 1 : face, dy=f.strip?f.pad:0, bob=(f.strip&&walk&&Math.floor(((tm||0)+sp.off)/.16)%2)?-1:0;
+  g.save(); g.imageSmoothingEnabled=false; g.translate(cx,0); g.scale(flip,1);
+  g.drawImage(f.im,f.sx,f.sy,f.w,f.h,-Math.round(f.w/2),fy+1-f.h+dy+bob,f.w,f.h);
+  const a=acc&&sheetFrame(acc,dir,walk,tm,f.strip?f.bb:undefined); if(a&&a.w===f.w) g.drawImage(a.im,a.sx,a.sy,a.w,a.h,-Math.round(a.w/2),fy+1-a.h+dy+bob,a.w,a.h);
+  g.restore(); return true;
+}
 
 /* ---------- 狀態 ---------- */
-let DATA=[], players=[], spots=[], player={x:9,y:12,img:null,face:1,moving:false,cat:0};
-let openSpot=null, paused=true, time=0, chosen=0;
+let DATA=[], players=[], spots=[], player={x:9,y:12,img:null,sp:null,acc:null,dir:"down",face:1,moving:false,cat:0};
+let openSpot=null, paused=true, time=0, chosen=0, accs=[], chosenAcc=-1;
 const seenSet=new Set();
 const keys={up:false,down:false,left:false,right:false};
 
@@ -686,7 +781,8 @@ function freeNear(x,y){
 
 function buildWorld(){
   const ch = players[chosen] || {};
-  player.cat = chosen; player.img = loadImg(ch.icon);
+  SPK = Math.max(.3,Math.min(1,paramNum("角色縮放",1))); player.cat = chosen; player.sp = mkSheet(ch.icon,ch.icon2); player.img = player.sp ? player.sp.a : null; player.dir = "down";
+  { const ac = chosenAcc>=0 && accs[chosenAcc]; player.acc = ac ? (ac._sp || (ac._sp = mkSheet(ac.icon,ac.icon2))) : null; }
   player.x=START[0]; player.y=START[1]; player.face=1; player.moving=false;
   if(isFinite(ch.x)&&isFinite(ch.y)){ [player.x,player.y]=freeNear(ch.x,yShift(ch.y)); }
 
@@ -701,7 +797,7 @@ function buildWorld(){
     return {
       id:i, kind:d.type, key:d.type+"|"+d.name, name:d.name||"？", x, y, text:d.text||"",
       popup: d.image, game: d.game||"", lot:null,
-      sprite: loadImg(d.icon),
+      sprite: loadImg(d.icon), sheet: isNpc ? mkSheet(d.icon,d.icon2) : null,
       robe: isNpc ? npcIdx++ : 0,
       dist: isNpc ? NPC_DIST : EVENT_DIST,
       seen: seenSet.has(d.type+"|"+d.name)
@@ -1135,6 +1231,8 @@ function roof32(g,x,y,px,py){
       R(g,N.roofDk,cx,yy+4,8,1); R(g,N.roofDk,cx+1,yy+5,6,1); R(g,N.roofDk,cx+8,yy,1,5); } }
   R(g,N.woodDk,px,py+S-7,S,1); R(g,N.wood,px,py+S-6,S,5); R(g,N.woodLt,px,py+S-6,S,1); R(g,N.woodDk,px,py+S-1,S,1);   // 軒下木板
   for(let u=0;u<S;u+=8){ D(g,N.roofDk,px+u+4,py+S-9,3); D(g,N.roofLt,px+u+4,py+S-10,2); D(g,N.roof,px+u+4,py+S-10,1); }  // 軒丸瓦
+  if(at(x-1,y)!=="H"){ R(g,N.woodDk,px,py,3,S); R(g,N.wood,px+1,py+1,1,S-2); R(g,N.woodLt,px+1,py+1,1,3); }                 // 屋頂兩端的收邊板（破風）
+  if(at(x+1,y)!=="H"){ R(g,N.woodDk,px+S-3,py,3,S); R(g,N.wood,px+S-2,py+1,1,S-2); R(g,N.woodLt,px+S-2,py+1,1,3); }
 }
 function shoji32(g,x,y,px,py){
   R(g,N.lattice,px,py,S,S); R(g,N.woodDk,px,py,S,1); R(g,N.woodLt,px,py+1,S,1);
@@ -1146,6 +1244,20 @@ function shoji32(g,x,y,px,py){
   R(g,N.wood,px+2,py+24,S-4,6); R(g,N.woodLt,px+2,py+24,S-4,1); R(g,N.woodDk,px+2,py+29,S-4,1); R(g,N.woodDk,px,py+S-1,S,1);
   for(let i=0;i<3;i++) R(g,N.grain,px+4+i*9,py+26+(i%2)*2,5,1);
   if(at(x,y-1)==="H"){ shadeTop(g,px,py+1,N.plasterDk,3); }
+}
+/* 屋子左右兩側的牆：從正面看只看得到牆的「側面」＝一條窄窄的牆頂，貼在格子的外緣，其餘是室內地板 */
+const isSideWall = (x,y) => at(x,y)==="M" && at(x,y+1)==="M" && at(x-1,y)!=="M" && at(x+1,y)!=="M";
+function wallSide32(g,x,y,px,py){
+  const left = x < COLS/2, nb = at(left?x+1:x-1,y);
+  if("eUVQ".includes(nb)) bath32(g,x,y,px,py); else tatami32(g,x,y,px,py);                 // 牆旁邊的室內地板
+  const sx = left ? px : px+S-12, ix = left ? sx+12 : sx-3;                               // 牆寬 12；ix＝牆在地板上的影子
+  for(let j=0;j<S;j++) for(let i=0;i<3;i++){ if(ph(ix+i,py+j,21)<[.75,.5,.25][left?i:2-i]) R(g,N.tatamiDk,ix+i,py+j,1,1); }
+  R(g,N.woodDk,sx,py,12,S); R(g,N.plaster,sx+1,py,10,S);
+  R(g,N.plasterDk,left?sx+8:sx+1,py,3,S); R(g,N.white,left?sx+2:sx+7,py,2,S);
+  speck(g,sx+1,py,N.plasterDk,N.white,.05,.04,15);
+  R(g,N.wood,sx,py,12,3); R(g,N.woodLt,sx+1,py,10,1); R(g,N.woodDk,sx,py+3,12,1);       // 每格一根橫木
+  R(g,N.woodDk,sx,py+S-1,12,1);
+  if(at(x,y-1)==="H") shadeTop(g,sx,py+3,N.plasterDk,3);
 }
 function wall32(g,x,y,px,py){
   const side=(x===0||x===COLS-1)&&y>0&&y<ROWS-1;
@@ -1312,7 +1424,7 @@ function tile(g,x,y,t){
     case "W": case "b": water32(g,x,y,px,py); break;
     case "f": if(at(x-1,y)!=="f"&&at(x,y-1)!=="f") flowerbedFull(g,x,y); break;
     case "H": roof32(g,x,y,px,py); break;
-    case "M": shoji32(g,x,y,px,py); break;
+    case "M": if(isSideWall(x,y)) wallSide32(g,x,y,px,py); else shoji32(g,x,y,px,py); break;
     case "w": wood32porch(g,x,y,px,py,N.wood,N.woodLt); break;
     case "K": case "k": torii32(g,x,y,px,py,ch); break;
     case "L": lantern32(g,x,y,px,py,t); break;
@@ -1392,13 +1504,15 @@ function furnTile(g,x,y,px,py,ch,t){
     R(g,N.waterLt,px+7,py+6,9,8); R(g,N.waterDk,px+7,py+13,9,1); R(g,N.sakura,px+16,py+6,9,8); R(g,N.sakuraDk,px+16,py+13,9,1);
     R(g,N.sakuraLt,px+7,py+17,9,7); R(g,N.sakura,px+7,py+23,9,1); R(g,"#cde8f6",px+16,py+17,9,7); R(g,N.waterLt,px+16,py+23,9,1);
     R(g,N.waterLt,px+8,py+27,16,3); R(g,N.white,px+8,py+27,16,1); }
-  else if(ch==="X"){ tatami32(g,x,y,px,py);
-    R(g,N.woodDk,px,py,32,32); R(g,N.paper,px+2,py+2,28,28); R(g,N.lattice,px+14,py,4,32); R(g,N.woodLt,px+14,py,1,32);
-    R(g,N.gold,px+10,py+14,2,5); R(g,N.gold,px+20,py+14,2,5);
-    for(let i=0;i<5;i++){ R(g,N.waterLt,px+3+i*2,py+24+(i%2),2,1); R(g,N.sakura,px+19+i*2,py+25-(i%2),2,1); }
-    R(g,N.plasterDk,px+2,py+2,28,1); }
+  else if(ch==="X"){ tatami32(g,x,y,px,py);                              // 拉門隔間：直的隔牆從正面只看得到窄窄的側面
+    for(let j=0;j<S;j++) for(let i=0;i<3;i++){ if(ph(px+20+i,py+j,22)<[.7,.45,.2][i]) R(g,N.tatamiDk,px+20+i,py+j,1,1); }   // 地板上的影子
+    R(g,N.woodDk,px+12,py,8,S); R(g,N.paper,px+13,py,6,S); R(g,N.lattice,px+15,py,2,S); R(g,N.plasterDk,px+18,py,1,S);
+    R(g,N.woodLt,px+12,py,1,S); R(g,N.gold,px+13,py+14,1,3);
+    if(at(x,y-1)!=="X"){ R(g,N.woodDk,px+11,py,10,3); R(g,N.wood,px+12,py+1,8,1); }                                     // 上端的橫木
+    if(at(x,y+1)!=="X"){ R(g,N.woodDk,px+11,py+S-4,10,4); R(g,N.wood,px+12,py+S-3,8,1); } }
   else if(ch==="h"){ wood32(g,x,y,px,py,N.woodLt,N.woodPale);
-    if(x===8) R(g,N.woodDk,px,py,2,32); if(x===11) R(g,N.woodDk,px+30,py,2,32);
+    if(x===8){ R(g,N.woodDk,px,py,4,32); R(g,N.wood,px+1,py,2,32); R(g,N.woodLt,px+1,py,1,32); }
+    if(x===11){ R(g,N.woodDk,px+28,py,4,32); R(g,N.wood,px+29,py,2,32); R(g,N.woodLt,px+29,py,1,32); }
     if(x===8||x===11){
       R(g,N.waterDk,px+11,py+18,10,11); R(g,N.waterLt,px+12,py+18,3,11); R(g,N.waterDk,px+13,py+14,6,4); R(g,N.white,px+13,py+20,1,4);
       R(g,N.trunk,px+15,py+7,2,8); R(g,N.trunk,px+10,py+5,2,5); R(g,N.trunk,px+20,py+7,2,4); R(g,N.trunk,px+12,py+9,3,1);
@@ -1415,7 +1529,7 @@ const HEARTS={a:heart32("#e8798a","#b84a62","#fde3e6"), b:heart32("#c3cdf5","#8a
 function drawSpot32(s){
   if(s.kind==="npc") return; const g=ctx, cx=ri(s.x*32+16), cy=ri(s.y*32+16), bob=reduceMotion()?0:ri(Math.sin(time*3+s.id)*2), p=reduceMotion()?0:(Math.sin(time*3+s.id)>0?1:0);
   if(!s.seen) ringDots32(g,cx,cy+8,12+p*2,5+p,10,N.gold); else ringDots32(g,cx,cy+8,12,5,8,"#c3cdf5");
-  if(ready(s.sprite)){ const h=30, w=ri(h*s.sprite.naturalWidth/s.sprite.naturalHeight); g.globalAlpha=s.seen?.65:1; g.drawImage(s.sprite,cx-ri(w/2),cy-h+6+bob,w,h); g.globalAlpha=1; }
+  if(ready(s.sprite)){ const w=s.sprite.naturalWidth, h=s.sprite.naturalHeight; g.save(); g.imageSmoothingEnabled=false; g.globalAlpha=s.seen?.65:1; g.drawImage(s.sprite,cx-ri(w/2),cy-h+6+bob,w,h); g.restore(); }
   else g.drawImage(s.seen?HEARTS.b:HEARTS.a,cx-11,cy-18+bob);
 }
 function ringDots32(g,cx,cy,rx,ry,n,col){ for(let i=0;i<n;i++){ const a=i*Math.PI*2/n+(reduceMotion()?0:time*.9); R(g,col,cx+ri(Math.cos(a)*rx),cy+ri(Math.sin(a)*ry),2,2); } }
@@ -1544,15 +1658,15 @@ const BUB32=mk(26,22,g=>{ RR(g,"#f4a0aa",1,0,24,16); RR(g,"#fffdfb",2,1,22,14); 
 function drawNpc32(g,s){
   const cx=ri(s.x*32+16), fy=ri(s.y*32+28), bob=reduceMotion()?0:ri(Math.sin(time*3+s.id)*1.2);
   shadowAt32(g,cx,fy+1,10,3);
-  if(ready(s.sprite)){ const h=44,w=h*s.sprite.naturalWidth/s.sprite.naturalHeight; g.save(); g.imageSmoothingEnabled=true; g.drawImage(s.sprite,cx-w/2,fy-h,w,h); g.restore(); }
-  else g.drawImage(personSp(s.robe),cx-17,fy-47);
+  if(!(s.sheet&&drawSheet(g,s.sheet,"down",0,cx,fy,1,null,time))) g.drawImage(personSp(s.robe),cx-17,fy-47);
   if(!s.seen) g.drawImage(BUB32,cx-13,fy-70+bob);
 }
 function drawPlayer32(g){
   const cx=ri(player.x*32+16), fy=ri(player.y*32+28), fr=player.moving?(Math.floor(time*8)%2):0, bob=(player.moving&&fr)?-1:0;
   shadowAt32(g,cx,fy+1,11,3);
-  if(ready(player.img)){ const h=40,w=h*player.img.naturalWidth/player.img.naturalHeight; g.save(); g.imageSmoothingEnabled=true; g.translate(cx,0); g.scale(player.face,1); g.drawImage(player.img,-w/2,fy-h+bob,w,h); g.restore(); }
-  else { g.save(); g.translate(cx,0); g.scale(player.face,1); g.drawImage(catSp(player.cat,fr),-20,fy-37+bob); g.restore(); }
+  if(player.sp && ready(player.sp.a)) drawSheet(g,player.sp,player.dir,player.moving?(Math.floor(time*6)%2):0,cx,fy,player.face,player.acc,time);
+  else { g.save(); g.translate(cx,0); g.scale(player.face,1); g.drawImage(catSp(player.cat,fr),-20,fy-37+bob);
+    const a=player.acc&&sheetFrame(player.acc,"side",0); if(a&&a.w===32){ g.imageSmoothingEnabled=false; g.drawImage(a.im,a.sx,a.sy,32,32,-16,fy+1-32+bob,32,32); } g.restore(); }
 }
 function flowerbedFull(g,x,y){
   let w=0,h=0; while(at(x+w,y)==="f") w++; while(at(x,y+h)==="f") h++;
@@ -1949,7 +2063,7 @@ function update(dt){
   player.moving=!!(dx||dy);
   if(player.moving){
     const l=Math.hypot(dx,dy); dx=dx/l*SPEED*dt; dy=dy/l*SPEED*dt;
-    if(dx) player.face=dx>0?1:-1;
+    if(dx){ player.face=dx>0?1:-1; player.dir="side"; } else if(dy) player.dir=dy>0?"down":"up";
     stepT-=dt; if(stepT<=0){ stepT=.46; playStep(); }
     dustT-=dt; if(dustT<=0 && !reduceMotion()){ dustT=.13; DUST.push({x:player.x*T+T/2+(Math.random()-.5)*8,y:player.y*T+T/2+16,t:0}); }
     if(!solidAt(player.x+dx,player.y)) player.x+=dx;
@@ -2180,8 +2294,8 @@ function drawLot(card){
 /* ---------- 接接樂 ----------
    掉落物（類型「掉落物」）：數值＝加減分、權重＝出現機率、扣命＝接到扣一條命、圖示網址＝圖
    結局（類型「結局」）：數值＝分數門檻，取「分數 ≥ 門檻」裡最高的那一個
-   參數：接接樂秒數、接接樂生命數、掉落速度、掉落間隔
-   時間到或生命用完就結束；漏接不扣命；分數最低是 0 */
+   參數：接接樂生命數、掉落速度、掉落間隔
+   生命（機會）用完就結束，不限時間；漏接不扣命；分數最低是 0 */
 const SMOOTH_FONT="'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif";
 const CW=320, CH=420, BASKET_HALF=38, BASKET_TOP=CH-66;
 const cCv=$("cCv"), cg=cCv.getContext("2d",{willReadFrequently:true});
@@ -2197,7 +2311,7 @@ function catchDrops(){
 }
 function catchEndings(){
   const l=DATA.filter(d=>d.type==="ending").map(d=>({...d,th:isFinite(d.value)?d.value:0})).sort((a,b)=>b.th-a.th);
-  return l.length? l : [{name:"時間到！",th:0,text:"",image:""}];
+  return l.length? l : [{name:"挑戰結束！",th:0,text:"",image:""}];
 }
 function pickEnding(score){ const l=catchEndings(); return l.find(e=>score>=e.th)||l[l.length-1]; }
 function catchView(v){ $("cIntro").hidden=v!=="intro"; $("cIntro2").hidden=v!=="intro2"; $("cStep").hidden=!(v==="intro"||v==="intro2"); $("cStep").textContent=v==="intro2"?"2 / 2":"1 / 2"; $("cPlay").hidden=v!=="play"; $("cEnd").hidden=v!=="end"; $("cBoard").hidden=v!=="board"; }
@@ -2248,7 +2362,7 @@ function sfx(name){
 }
 const MINI={mode:null,timer:0,next:0,step:0,bus:null};
 const MINIPAT={
-  catch:{bpm:136,mel:[0,2,4,7,4,2,0,null, 5,4,2,4,7,null,4,2, 4,7,9,7,4,2,0,2, 4,2,0,-3,0,null,null,null],bass:[-12,-12,-15,-17]},
+  catch:{bpm:176,mel:[0,4,7,12,7,4,7,9, 5,9,12,9,5,4,2,4, 7,11,14,11,7,5,4,2, 0,4,7,4,2,5,7,12],bass:[-12,-19,-17,-15]},
   lot:{bpm:78,mel:[4,null,7,null,9,null,7,null, 4,null,2,null,0,null,null,null, 5,null,9,null,12,null,9,null, 7,null,4,null,2,null,null,null],bass:[-12,-15,-17,-12]}
 };
 function miniTick(){
@@ -2257,7 +2371,7 @@ function miniTick(){
     const s=MINI.step%32, m=P.mel[s];
     if(m!=null) tone(NOTE(m),MINI.next,MINI.mode==="catch"?.28:.7,"triangle",MINI.mode==="catch"?.12:.1,null,MINI.bus);
     if(s%8===0) tone(NOTE(P.bass[(s/8)|0]),MINI.next,beat*7,"sine",.14,null,MINI.bus);
-    if(MINI.mode==="catch" && s%4===2) tone(NOTE(19),MINI.next,.05,"square",.015,null,MINI.bus);
+    if(MINI.mode==="catch"){ if(s%4===0) tone(150,MINI.next,.09,"sine",.2,45,MINI.bus); if(s%2===1) tone(NOTE(31),MINI.next,.03,"square",.012,null,MINI.bus); if(s%8===4) tone(NOTE(19),MINI.next,.06,"square",.03,null,MINI.bus); }
     MINI.next+=beat; MINI.step++;
   }
 }
@@ -2331,9 +2445,9 @@ async function showBoard(from){
 function openCatch(s){
   paused=true; clearKeys(); markSeen(s);
   $("cTitle").textContent=paramText("接捧花標題","接捧花"); typeText($("cText"),s.text);
-  const secs=paramNum("接接樂秒數",30), lv=paramNum("接接樂生命數",3);
-  $("cRuleLead").textContent=paramText("接接樂規則","在 {秒} 秒內，盡可能接住掉落的花束與紅包！").replace("{秒}",secs);
-  $("cTiles").innerHTML=""; [["遊戲時間",secs+" 秒"],["剩餘機會",lv+" 次"],["掉落速度","越來越快"]].forEach(([k,v])=>{ const d=document.createElement("div"); d.className="tile"; d.innerHTML='<span class="k"></span><span class="v"></span>'; d.children[0].textContent=k; d.children[1].textContent=v; if(v.length>4) d.children[1].style.fontSize="14px"; $("cTiles").append(d); });
+  const lv=paramNum("接接樂生命數",3);
+  $("cRuleLead").textContent=paramText("接接樂規則","盡可能接住掉落的花束與紅包！").replace(/在?\s*(\{秒\}|\d+)\s*秒內?[，,]?\s*/,"");
+  $("cTiles").innerHTML=""; [["機會次數",lv+" 次"],["掉落速度","越來越快"]].forEach(([k,v])=>{ const d=document.createElement("div"); d.className="tile"; d.innerHTML='<span class="k"></span><span class="v"></span>'; d.children[0].textContent=k; d.children[1].textContent=v; if(v.length>4) d.children[1].style.fontSize="14px"; $("cTiles").append(d); });
   const il=$("cItems"); il.innerHTML="";
   catchDrops().forEach(d=>{ const li=document.createElement("li"); const n=document.createElement("span"), h=document.createElement("span"), s2=document.createElement("span"); n.className="nm"; h.className="ht"; s2.className="badge "+(d.value>=0?"pos":"neg");
     n.textContent=d.name; h.textContent=d.text||(d.lose?"會扣掉一次機會":""); s2.textContent=(d.value>0?"+":"")+d.value; li.append(n,h,s2); il.append(li); });
@@ -2344,15 +2458,15 @@ function openCatch(s){
 function closeCatch(){ cancelAnimationFrame(cRAF); CG=null; cKeys.left=cKeys.right=false; hideOv($("catch")); paused=false; miniMusic(null); }
 function startCatch(){
   const ds=catchDrops(), lives=Math.max(1,Math.round(paramNum("接接樂生命數",3)));
-  CG={ds,total:ds.reduce((a,d)=>a+d.weight,0),time:Math.max(5,paramNum("接接樂秒數",30)),lives,maxLives:lives,
-      speed:Math.max(.5,paramNum("掉落速度",5))*55,gap:Math.max(.2,paramNum("掉落間隔",.6)),ramp:Math.max(1,paramNum("最後加速",2.2)),total0:Math.max(5,paramNum("接接樂秒數",30)),f:1,
+  CG={ds,total:ds.reduce((a,d)=>a+d.weight,0),lives,maxLives:lives,
+      speed:Math.max(.5,paramNum("掉落速度",5))*55,gap:Math.max(.2,paramNum("掉落間隔",.6)),ramp:Math.max(1,paramNum("最後加速",2.2)),play:0,f:1,
       score:0,items:[],fx:[],x:CW/2,tx:CW/2,spawn:.3,count:2.4,over:false,flash:0,t:0};
   catchView("play"); catchHud();
   cancelAnimationFrame(cRAF); cLast=performance.now(); cRAF=requestAnimationFrame(catchLoop);
 }
 function catchHud(){
   if(!CG) return;
-  $("cScore").textContent=CG.score; $("cTime").textContent=Math.ceil(CG.time);
+  $("cScore").textContent=CG.score;
   $("cLives").textContent="♥".repeat(Math.max(0,CG.lives))+"♡".repeat(Math.max(0,CG.maxLives-Math.max(0,CG.lives)));
 }
 function spawnDrop(){
@@ -2364,8 +2478,8 @@ function catchUpdate(dt){
   const G=CG; G.t+=dt; G.flash=Math.max(0,G.flash-dt);
   G.fx.forEach(f=>f.t+=dt); G.fx=G.fx.filter(f=>f.t<.8);
   if(G.count>0){ G.count-=dt; const nn=Math.ceil(G.count-.4); if(nn!==G.lastN){ G.lastN=nn; sfx(nn>0?"tick":"go"); } return; }
-  G.time-=dt; if(G.time<=0){ G.time=0; catchHud(); return endCatch(); }
-  G.f=1+(G.ramp-1)*Math.min(1,Math.max(0,1-G.time/G.total0));   // 時間越少，掉得越快
+  G.play+=dt;                       // 不限時間：玩越久掉得越快（約 45 秒達到「最後加速」倍數，之後再慢慢加快，最多 1.8 倍）
+  G.f=1+(G.ramp-1)*Math.min(1,G.play/45); if(G.play>45) G.f=Math.min(G.ramp*1.8,G.f+(G.play-45)*.02*G.ramp);
   const dir=(cKeys.right?1:0)-(cKeys.left?1:0);
   if(dir) G.tx=Math.max(BASKET_HALF,Math.min(CW-BASKET_HALF,G.tx+dir*320*dt));
   G.x+=(G.tx-G.x)*Math.min(1,dt*22);
@@ -2388,7 +2502,7 @@ function catchUpdate(dt){
 }
 function drawDrop(g,d,x,y,rot){
   g.save(); g.translate(x,y); g.rotate(rot);
-  if(ready(d.img)){ const h=40,w=h*d.img.naturalWidth/d.img.naturalHeight; g.drawImage(d.img,-w/2,-h/2,w,h); }
+  if(ready(d.img)){ const iw=d.img.naturalWidth, ih=d.img.naturalHeight, k=Math.min(1,64/Math.max(iw,ih)); g.imageSmoothingEnabled=(k<1); g.drawImage(d.img,-iw*k/2,-ih*k/2,iw*k,ih*k); }
   else if(/花/.test(d.name) && !d.lose && d.value>=0){   // 花朵（名稱含「花」就畫成花，之後可換圖）
     const n=d.name, pc=/粉|紅/.test(n)?C.pink:/藍/.test(n)?C.sky:/白/.test(n)?C.white:/橘|黃|金/.test(n)?C.orange:[C.pink,C.sky,C.orange][n.length%3];
     g.strokeStyle="rgba(62,68,120,.35)"; g.lineWidth=1.3;
@@ -2448,7 +2562,7 @@ function endCatch(){
   $("cEName").textContent=e.name||"";
   { const box=$("cEText"); box.innerHTML=""; const lines=String(e.text||"").split("\n").filter(Boolean); let first=true;
     lines.forEach(ln=>{ const m=ln.match(/^([^：:\s]{1,6})[：:]\s*(.+)$/);
-      if(m){ const d=document.createElement("div"); d.className="say"+(m[1]==="虎杖"?" go2":""); const w=document.createElement("span"); w.className="who"; w.textContent=m[1]; const x=document.createElement("span"); x.textContent=m[2]; d.append(w,x); box.append(d); }
+      if(m){ const d=document.createElement("div"); d.className="say"+(m[1]==="悠仁"?" go2":""); const w=document.createElement("span"); w.className="who"; w.textContent=m[1]; const x=document.createElement("span"); x.textContent=m[2]; d.append(w,x); box.append(d); }
       else { const p=document.createElement("p"); if(first) p.className="lead"; p.textContent=ln; box.append(p); first=false; } }); }
   const pic=$("cEPic");
   if(e.image){ pic.hidden=false; pic.referrerPolicy="no-referrer"; pic.onerror=()=>{pic.hidden=true}; pic.src=e.image; } else pic.hidden=true;
@@ -2461,19 +2575,61 @@ cCv.addEventListener("pointerdown",e=>{ e.preventDefault(); try{cCv.setPointerCa
 cCv.addEventListener("pointermove",e=>{ catchPointer(e); });
 
 /* ---------- 選角色 ---------- */
+/* ---------- 進入頁：歡迎 → 選角色 → 選配飾 → 進入 ----------
+   只有一個角色、也沒有配飾時，歡迎頁直接進入；試算表沒有「配飾」就自動略過選配飾 */
+const spOf = o => o._sp || (o._sp = mkSheet(o.icon,o.icon2));
+function drawWho(g,W,H,sc,fr,ci,ai,tile){          // 把角色（和配飾）畫進小畫布，整數倍放大、不平滑
+  g.clearRect(0,0,W,H); g.imageSmoothingEnabled=false;
+  const ch=players[ci]||{}, tm=tile?-1:performance.now()/1000, f=ch.icon?sheetFrame(spOf(ch),"down",fr,tm):null, acc=ai>=0&&accs[ai]?spOf(accs[ai]):null;
+  g.fillStyle="rgba(62,68,120,.16)"; g.beginPath(); g.ellipse(W/2,H-(tile?3:6),W*.2,tile?3:6,0,0,7); g.fill();
+  if(f){ const k=Math.max(1,Math.floor((H-8)/f.h)), w=f.w*k, h=f.h*k, x=Math.round((W-w)/2), y=H-h-(tile?1:4)+(f.strip?f.pad*k:0); g.drawImage(f.im,f.sx,f.sy,f.w,f.h,x,y,w,h);
+    const a=acc&&sheetFrame(acc,"down",fr,tm,f.strip?f.bb:undefined); if(a&&a.w===f.w) g.drawImage(a.im,a.sx,a.sy,a.w,a.h,x,y,w,h); }
+  else if(!ch.icon){ const k=Math.max(1,Math.floor(sc*.75)), w=40*k, h=38*k, x=Math.round((W-w)/2), y=H-h-(tile?1:4); g.drawImage(catSp(ci,fr),0,0,40,38,x,y,w,h);
+    const a=acc&&sheetFrame(acc,"side",0); if(a&&a.w===32) g.drawImage(a.im,a.sx,a.sy,32,32,Math.round((W-32*k)/2),H-32*k-(tile?1:4),32*k,32*k); }
+}
+let sView="welcome";
+const sOrder = () => ["welcome",...(players.length>1?["char"]:[]),...(accs.length?["acc"]:[])];
+function sGoto(v){
+  sView=v; const o=sOrder(), steps=o.length-1, i=o.indexOf(v);
+  $("sWelcome").hidden=v!=="welcome"; $("sChar").hidden=v!=="char"; $("sAcc").hidden=v!=="acc"; $("sBar").hidden=v==="welcome";
+  const last = i===o.length-1, nextName = o[i+1]==="char"?"選擇角色":"選擇配飾";
+  $("sGo").textContent = steps ? "下一步："+nextName : "進入庭院";
+  $("sNextC").textContent = last ? "進入庭院" : "下一步："+nextName;
+  $("sStep").hidden = steps<2; $("sStep").textContent = i+" / "+steps;
+  $("sStepT").textContent = v==="acc" ? "選擇配飾" : "選擇角色";
+  if(v==="char") showWho(); if(v==="acc"){ buildAccPicker(); showAccWho(); }
+  const btn = v==="welcome"?$("sGo"):v==="char"?$("sNextC"):$("sBtn"); try{ btn.focus({preventScroll:true}); }catch(_){}
+}
+function sNav(d){ const o=sOrder(), i=o.indexOf(sView)+d; if(i>=o.length) return enterGame(); sGoto(o[Math.max(0,i)]); }
+function enterGame(){ buildWorld(); hideOv($("start")); paused=false; setMusic($("musicChk").checked); }
+function showWho(){ const p=players[chosen]||{}; $("cNm").textContent=p.name||""; $("cDs").textContent=p.text||""; }
+function showAccWho(){ const a=chosenAcc>=0?accs[chosenAcc]:null; $("aNm").textContent=a?a.name:"不戴配飾"; $("aDs").textContent=a?(a.text||""):"清清爽爽的樣子，也很好看。"; }
+setInterval(()=>{                                      // 預覽：站立／走路兩個姿勢輪流
+  if($("start").hidden||$("sWelcome").hidden===false) return;
+  const fr=Math.floor(performance.now()/420)%2;     // 角色縮放（SPK）在 buildWorld 讀取
+  if(sView==="char") drawWho($("pvC").getContext("2d"),144,144,3,fr,chosen,-1,false);
+  if(sView==="acc") drawWho($("pvA").getContext("2d"),144,144,3,fr,chosen,chosenAcc,false);
+},210);
+function paintTile(vis,ci,ai){ const g=vis.getContext("2d"); drawWho(g,vis.width,vis.height,2,0,ci,ai,true); }
+function mkTile(label,pressed,ci,ai,onpick){
+  const b=document.createElement("button"); b.type="button"; b.className="opt"; b.setAttribute("aria-pressed",String(pressed));
+  const vis=document.createElement("canvas"); vis.width=80; vis.height=76; vis.style.imageRendering="pixelated";
+  paintTile(vis,ci,ai);
+  for(const o of [players[ci],ai>=0?accs[ai]:null]) if(o&&o.icon){ const sp=spOf(o); sp.a.addEventListener("load",()=>paintTile(vis,ci,ai)); if(sp.b) sp.b.addEventListener("load",()=>paintTile(vis,ci,ai)); }
+  const s=document.createElement("span"); s.textContent=label; b.append(vis,s); b.onclick=onpick; return b;
+}
 function buildPicker(){
   const cp=$("charPick"); cp.innerHTML="";
-  $("charLab").hidden = cp.hidden = players.length<2;
   players.forEach((p,i)=>{
-    const b=document.createElement("button"); b.type="button"; b.className="opt"; b.setAttribute("aria-pressed",String(i===chosen));
-    let vis; const src=p.icon;
-    if(src){ vis=document.createElement("img"); vis.referrerPolicy="no-referrer"; vis.alt=""; vis.src=src; vis.onerror=()=>{vis.style.visibility="hidden"}; }
-    else { vis=document.createElement("canvas"); vis.width=80; vis.height=76; { const vg=vis.getContext("2d"); vg.imageSmoothingEnabled=false; vg.drawImage(catSp(i,0),0,0,40,38,0,0,80,76); } }
-    const s=document.createElement("span"); s.textContent=p.name||("角色"+(i+1));
-    b.append(vis,s);
-    b.onclick=()=>{ chosen=i; [...cp.children].forEach(x=>x.setAttribute("aria-pressed",String(x===b))); };
+    const b=mkTile(p.name||("角色"+(i+1)),i===chosen,i,-1,()=>{ chosen=i; [...cp.children].forEach(x=>x.setAttribute("aria-pressed",String(x===b))); showWho(); });
     cp.append(b);
   });
+}
+function buildAccPicker(){
+  const ap=$("accPick"); ap.innerHTML="";
+  const pick=(i,b)=>{ chosenAcc=i; [...ap.children].forEach(x=>x.setAttribute("aria-pressed",String(x===b))); showAccWho(); };
+  const none=mkTile("不戴",chosenAcc<0,chosen,-1,()=>pick(-1,none)); ap.append(none);
+  accs.forEach((a,i)=>{ const b=mkTile(a.name||("配飾"+(i+1)),i===chosenAcc,chosen,i,()=>pick(i,b)); ap.append(b); });
 }
 
 /* ---------- 輸入 ---------- */
@@ -2521,10 +2677,11 @@ $("modal").addEventListener("pointerdown",ev=>{ if(ev.target===$("modal")) close
 $("lClose").addEventListener("click",closeLot);
 $("lOk").addEventListener("click",showBouquet);
 $("lAgain").addEventListener("click",()=>{ lotSpot.lot=newDeck(); showBouquet(); });
-$("sBtn").addEventListener("click",()=>{ buildWorld(); hideOv($("start")); paused=false; setMusic($("musicChk").checked); });
+$("sGo").addEventListener("click",()=>sNav(1)); $("sNextC").addEventListener("click",()=>sNav(1)); $("sBtn").addEventListener("click",()=>sNav(1));
+$("sPrevC").addEventListener("click",()=>sNav(-1)); $("sPrevA").addEventListener("click",()=>sNav(-1));
 $("musicBtn").addEventListener("click",()=>setMusic(!MUSIC.on));
 document.addEventListener("click",e=>{ if(e.target.closest&&e.target.closest(".card .btn")) sfx("tap"); });
-$("again").addEventListener("click",()=>{ paused=true; clearKeys(); showOv($("start")); });
+$("again").addEventListener("click",()=>{ paused=true; clearKeys(); showOv($("start")); sGoto(sOrder()[1]||"welcome"); });
 addEventListener("resize",resize); addEventListener("orientationchange",()=>setTimeout(resize,200));
 
 /* ---------- 啟動 ---------- */
@@ -2537,7 +2694,9 @@ addEventListener("resize",resize); addEventListener("orientationchange",()=>setT
   if(set.image){ const c=$("sCover"); c.hidden=false; c.referrerPolicy="no-referrer"; c.onerror=()=>{c.hidden=true}; c.src=set.image; }
   players = DATA.filter(d=>d.type==="player");
   if(!players.length) players=[{name:"貓咪"}];
-  buildPicker();
+  SPK = Math.max(.3,Math.min(1,paramNum("角色縮放",1)));
+  accs = DATA.filter(d=>d.type==="acc");
+  buildPicker(); sGoto("welcome");
   buildWorld();
   resize();
   let last=performance.now();
