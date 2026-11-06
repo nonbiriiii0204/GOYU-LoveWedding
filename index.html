@@ -899,9 +899,9 @@ function paramText(name,def){ const r=DATA.find(d=>d.type==="param"&&d.name===na
 const at=(x,y)=> (y>=0&&y<ROWS&&x>=0&&x<COLS)? GRID[y][x] : "#";
 
 /* ---------- 弧形池塘：用一條圓滑的曲線算出水面，再沿邊緣擺一圈石頭 ---------- */
-const PB={x0:3,y0:22,x1:10,y1:27}, PCX=6.5*32, PCY=24.5*32, PA=3.3*32, PBH=2.36*32;
+const PB={x0:3,y0:22,x1:10,y1:27}, PCX=6.5*32, PCY=24.5*32, PA=3.0*32, PBH=2.3*32;
 function pondF(x,y){ const u=(x-PCX)/PA, v=(y-PCY)/PBH, th=Math.atan2(v,u), c=Math.cos(th);
-  const m=Math.pow(Math.pow(Math.abs(u),2.5)+Math.pow(Math.abs(v),2.5),1/2.5), M=1+.07*c*Math.sin(2*th+1)+.045*c*Math.sin(3*th+.5); return m/M; }
+  const m=Math.pow(Math.pow(Math.abs(u),2.5)+Math.pow(Math.abs(v),2.5),1/2.5), M=1+.05*c*Math.sin(2*th+1)+.03*c*Math.sin(3*th+.5); return m/M; }
 function pondD(x,y){ const f=pondF(x,y), gx=(pondF(x+1,y)-pondF(x-1,y))/2, gy=(pondF(x,y+1)-pondF(x,y-1))/2, gl=Math.hypot(gx,gy)||1e-3; return (f-1)/gl; }      // 負數＝水裡，單位＝像素
 for(let y=PB.y0;y<PB.y1;y++) for(let x=PB.x0;x<PB.x1;x++){ if(GRID[y][x]!=="W") continue; let near=false;
   for(let j=0;j<32&&!near;j+=2) for(let i=0;i<32;i+=2) if(pondD(x*32+i,y*32+j)<=11){ near=true; break; }
@@ -2346,8 +2346,20 @@ function roundAbs(b,cx,cy,corner,r,edge){      // cx,cy＝外角那一點（像�
     if(d>r){ const lx=ax-tx*32, ly=ay-ty*32; if(lx<0||ly<0||lx>31||ly>31) continue; const o=(ly*32+lx)*4; b.fillStyle="rgb("+data[o]+","+data[o+1]+","+data[o+2]+")"; b.fillRect(ax,ay,1,1); }
     else if(d>r-1.4){ b.fillStyle=edge; b.fillRect(ax,ay,1,1); } }
 }
+function roundConcave(b,x,y,corner,r,edge){      // 白砂地的「內凹角」：讓草地弧形地伸進來（corner＝這一格的哪個角）
+  const sx=corner%2===0?1:-1, sy=corner<2?1:-1, px=x*32, py=y*32, cx=sx>0?px:px+32, cy=sy>0?py:py+32;
+  const tmp=document.createElement("canvas"); tmp.width=32; tmp.height=32; const tg=tmp.getContext("2d"); tg.translate(-px,-py); grass32(tg,x,y,px,py); const data=tg.getImageData(0,0,32,32).data;
+  for(let j=0;j<r+2;j++) for(let i=0;i<r+2;i++){ const d=Math.hypot(i+.5,j+.5), ax=sx>0?cx+i:cx-1-i, ay=sy>0?cy+j:cy-1-j; if(ax<px||ax>=px+32||ay<py||ay>=py+32) continue;
+    if(d<=r){ const o=((ay-py)*32+(ax-px))*4; b.fillStyle="rgb("+data[o]+","+data[o+1]+","+data[o+2]+")"; b.fillRect(ax,ay,1,1); }
+    else if(d<=r+1.4){ b.fillStyle=edge; b.fillRect(ax,ay,1,1); } }
+}
+function roundInner(b,x,y,corner,r){          // 圍牆內側的草地角：用旁邊牆的顏色延伸出去補成弧形
+  const sx=corner%2===0?1:-1, sy=corner<2?1:-1, px=x*32, py=y*32, cx=sx>0?px:px+32, cy=sy>0?py:py+32;
+  for(let j=0;j<r;j++) for(let i=0;i<r;i++){ if(Math.hypot(i+.5-r,j+.5-r)<=r) continue; const ax=sx>0?cx+i:cx-1-i, ay=sy>0?cy+j:cy-1-j;
+    const fromV=i>=j, sxp=fromV?ax:(sx>0?px-1:px+32), syp=fromV?(sy>0?py-1:py+32):ay, c=b.getImageData(sxp,syp,1,1).data; b.fillStyle="rgb("+c[0]+","+c[1]+","+c[2]+")"; b.fillRect(ax,ay,1,1); }
+}
 function roundBase(b){
-  const grassy=c=>c==="g"||c==="S", isD=c=>c==="p"||c==="Y", isG=c=>c==="."||c==="P"||c==="J";
+  const grassy=c=>c==="g"||c==="S"||c==="W", isD=c=>c==="p"||c==="Y"||c==="w", isG=c=>c==="."||c==="P"||c==="J";
   for(let y=0;y<ROWS;y++) for(let x=0;x<COLS;x++){
     const c=at(x,y), u=at(x,y-1), d=at(x,y+1), l=at(x-1,y), r=at(x+1,y), px=x*32, py=y*32;
     if(isD(c)||isG(c)){ const same=isD(c)?isD:isG, edge=isD(c)?N.woodDk:N.gravelDk, R0=isD(c)?10:12;
@@ -2355,6 +2367,12 @@ function roundBase(b){
       if(grassy(u)&&grassy(r)) roundAbs(b,px+32,py,1,R0,edge);
       if(grassy(d)&&grassy(l)) roundAbs(b,px,py+32,2,R0,edge);
       if(grassy(d)&&grassy(r)) roundAbs(b,px+32,py+32,3,R0,edge); }
+    if(isG(c)){ const G2=q=>isG(q)||q==="K"||q==="k"||q==="L";
+      if(G2(l)&&G2(u)&&grassy(at(x-1,y-1))) roundConcave(b,x,y,0,10,N.gravelDk);
+      if(G2(r)&&G2(u)&&grassy(at(x+1,y-1))) roundConcave(b,x,y,1,10,N.gravelDk);
+      if(G2(l)&&G2(d)&&grassy(at(x-1,y+1))) roundConcave(b,x,y,2,10,N.gravelDk);
+      if(G2(r)&&G2(d)&&grassy(at(x+1,y+1))) roundConcave(b,x,y,3,10,N.gravelDk); }
+    if(c==="H"){ if(grassy(l)&&u==="#") roundAbs(b,px,py,0,9,N.woodDk); if(grassy(r)&&u==="#") roundAbs(b,px+32,py,1,9,N.woodDk); }
     if(c==="f"&&l!=="f"&&u!=="f"){ let w=0,h=0; while(at(x+w,y)==="f") w++; while(at(x,y+h)==="f") h++;
       const X0=px+1, Y0=py+1, X1=px+w*32-1, Y1=py+h*32-1;
       roundAbs(b,X0,Y0,0,9,N.woodDk); roundAbs(b,X1,Y0,1,9,N.woodDk); roundAbs(b,X0,Y1,2,9,N.woodDk); roundAbs(b,X1,Y1,3,9,N.woodDk); }
@@ -2362,7 +2380,7 @@ function roundBase(b){
 }
 function drawBase(g,t){
   if(!BASE){ BASE=document.createElement("canvas"); BASE.width=COLS*32; BASE.height=ROWS*32; const b=BASE.getContext("2d"); b.imageSmoothingEnabled=false;
-    for(let y=0;y<ROWS;y++) for(let x=0;x<COLS;x++) tile(b,x,y,0); roundBase(b); }
+    for(let y=0;y<ROWS;y++) for(let x=0;x<COLS;x++) tile(b,x,y,0); roundBase(b); roundInner(b,1,1,0,16); roundInner(b,COLS-2,1,1,16); roundInner(b,1,ROWS-2,2,16); roundInner(b,COLS-2,ROWS-2,3,16); }
   g.drawImage(BASE,0,0);
   for(const [x,y] of ANIMC) tile(g,x,y,t);
 }
