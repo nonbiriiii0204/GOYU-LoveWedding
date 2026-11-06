@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="color-scheme" content="light">
 <title>五悠日和 — 今日、ふたりの日</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500&family=Jost:wght@300;400;500&family=Noto+Serif+TC:wght@500;700&display=swap">
 <style>
   /* 配色：白 / 粉（偏紅）/ 淺橘 / 淺藍 / 天藍（偏紫） */
   :root{
@@ -24,7 +24,42 @@
   #hud .r{display:flex;align-items:center;gap:10px;white-space:nowrap}
   #hud b{color:var(--pink-deep)}
   #again{font:inherit;font-size:14px;color:var(--ink);background:var(--white);border:2px solid var(--pink);border-radius:999px;padding:4px 12px;cursor:pointer}
-  #again:focus-visible,.opt:focus-visible,#sBtn:focus-visible,#mClose:focus-visible,.fl:focus-visible,.x:focus-visible,.go:focus-visible{outline:3px solid var(--sky-deep);outline-offset:2px}
+  /* ---------- 感謝頁（日式婚禮謝卡） ---------- */
+  #thanks .tcard{--paper:#fbf7f0;--ink:#363859;--ink2:#5d6587;--ink3:#a39aae;--rose:#cc7186;--line:#8094db;--deep:#65749f;--deepInk:#ffd9d9;
+    --jp:"Noto Sans JP","Noto Sans TC","Hiragino Sans","Yu Gothic","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;--en:"Jost","Helvetica Neue",Arial,sans-serif;
+    width:100%;max-width:480px;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    background:var(--paper);color:var(--ink);font-family:var(--jp);line-height:1.9;border-radius:18px;text-align:center;box-shadow:0 10px 40px rgba(36,40,82,.28)}
+  #thanks .tcard main{padding:52px 22px 0}
+  #thanks .en{font-family:var(--en);letter-spacing:.32em;text-transform:uppercase}
+  #thanks .eyebrow{margin:0;font-size:12px;color:var(--rose);letter-spacing:.42em;padding-left:.42em}
+  #thanks h1{margin:16px 0 28px;font-weight:500;font-size:clamp(22px,6.2vw,32px);letter-spacing:.2em;padding-left:.18em;white-space:nowrap;line-height:1.35;color:var(--ink)}
+  #tCv{display:block;margin:0 auto;image-rendering:pixelated;border-radius:6px;max-width:100%}
+  #thanks h2{margin:36px 0 6px;font-weight:500;font-size:clamp(15.5px,4.2vw,18px);letter-spacing:.14em;color:var(--ink)}
+  #thanks .sub{margin:0;font-size:14px;color:var(--rose);letter-spacing:.2em;padding-left:.2em}
+  #thanks .msg{margin:26px 0 0;font-size:13px;line-height:2.2;color:var(--ink2);letter-spacing:.02em;white-space:normal}
+  #thanks .rule{width:84px;height:1px;background:var(--line);margin:48px auto;border:0;position:relative;opacity:.8}
+  #thanks .rule::after{content:"";position:absolute;left:50%;top:-3px;width:6px;height:6px;background:var(--rose);transform:translateX(-50%) rotate(45deg);box-shadow:0 0 0 5px var(--paper)}
+  #thanks .cr{display:grid;gap:30px}
+  #thanks .item .jp{font-size:12.5px;letter-spacing:.16em;color:var(--ink2)}
+  #thanks .item .e{font-family:var(--en);font-size:12px;letter-spacing:.1em;color:var(--ink3);margin-top:1px}
+  #thanks .item .nm{font-size:15px;letter-spacing:.1em;margin-top:3px;line-height:1.7;color:var(--ink)}
+  #thanks .item .nm small{display:block;font-size:11.5px;letter-spacing:.08em;color:var(--ink2);margin-top:2px}
+  #thanks .item .x{font-family:var(--en);color:var(--ink3);margin:0 .5em}
+  #thanks a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(204,113,134,.55);padding-bottom:1px;transition:color .2s,border-color .2s}
+  #thanks a:hover{color:var(--rose);border-color:var(--rose)}
+  #thanks .sp .t{margin:0;font-size:12px;color:var(--rose);letter-spacing:.42em;padding-left:.42em}
+  #thanks .sp .l{margin:12px 0 0;font-size:15px;letter-spacing:.12em;color:var(--ink)}
+  #thanks .pair{margin-top:40px;font-size:19px;letter-spacing:.18em;color:var(--ink)}
+  #thanks .pair i{font-style:normal;color:var(--rose);margin:0 .4em}
+  #thanks .wish{margin:6px 0 0;font-size:14px;color:var(--ink2);letter-spacing:.2em}
+  #thanks footer{margin-top:64px;background:var(--deep);color:var(--deepInk);padding:34px 24px 26px}
+  #thanks footer p{margin:0 auto;font-family:var(--en);font-size:11.5px;letter-spacing:.3em;line-height:2;text-transform:uppercase;padding-left:.3em;max-width:340px}
+  #thanks footer button{margin-top:18px;background:none;border:0;border-bottom:1px solid rgba(255,217,217,.5);color:var(--deepInk);font:inherit;font-size:12.5px;letter-spacing:.2em;padding:4px 2px;cursor:pointer;min-height:32px}
+  #thanks .tcard .fade{opacity:0}
+  #thanks .tcard.go .fade{animation:tIn .9s ease var(--d,0s) forwards}
+  @keyframes tIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){#thanks .tcard .fade{opacity:1!important;animation:none!important}}
+  #again:focus-visible,#thxBtn:focus-visible,.opt:focus-visible,#sBtn:focus-visible,#mClose:focus-visible,.fl:focus-visible,.x:focus-visible,.go:focus-visible{outline:3px solid var(--sky-deep);outline-offset:2px}
   #stage{position:relative;flex:1 1 0;min-height:0;width:100%;max-width:960px;background:var(--white);border:3px solid var(--pink);border-radius:10px;overflow:hidden;box-shadow:0 6px 0 var(--blue)}
   #stage.fit{flex:none;aspect-ratio:20/13;max-height:calc(100% - 52px)}
   #cv{position:absolute;inset:0;width:100%;height:100%}
@@ -52,9 +87,9 @@
   #title{font-size:16px;font-weight:700;letter-spacing:.06em;color:var(--ink-1)}
   #hud b{font-weight:700;color:var(--accent)}
   #stage{border:0;border-radius:16px;background:var(--blue-pale);box-shadow:0 18px 40px -20px rgba(44,48,86,.5),0 0 0 5px #fffdfb,0 0 0 6px var(--line-2)}
-  #again,#musicBtn{height:36px;padding:0 16px;font:600 13px/1 'Noto Sans TC',sans-serif;letter-spacing:.06em;color:var(--ink-2);background:#fff;border:1px solid var(--line-2);border-radius:var(--r-ctl);box-shadow:var(--shadow-ctl);cursor:pointer;transition:background .15s,transform .12s}
-  #again:hover,#musicBtn:hover{background:var(--surface-2)}
-  #again:active,#musicBtn:active{transform:translateY(1px)}
+  #again,#musicBtn,#thxBtn{height:36px;padding:0 16px;font:600 13px/1 'Noto Sans TC',sans-serif;letter-spacing:.06em;color:var(--ink-2);background:#fff;border:1px solid var(--line-2);border-radius:var(--r-ctl);box-shadow:var(--shadow-ctl);cursor:pointer;transition:background .15s,transform .12s}
+  #again:hover,#musicBtn:hover,#thxBtn:hover{background:var(--surface-2)}
+  #again:active,#musicBtn:active,#thxBtn:active{transform:translateY(1px)}
   #musicBtn[aria-pressed="false"]{color:var(--ink-3);background:var(--surface-2)}
   #pad button{border:1px solid var(--line-2);border-radius:50%;background:rgba(255,255,255,.88);color:var(--ink-2);font-size:15px;box-shadow:0 4px 10px -4px rgba(44,48,86,.35)}
   #pad button.on{background:var(--accent);color:#fff}
@@ -123,7 +158,21 @@
   .input:hover{border-color:rgba(62,68,120,.34)}
   .input:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(217,100,126,.18)}
   .pv{display:flex;justify-content:center;padding:var(--s3);background:var(--blue-pale);border:1px solid var(--line);border-radius:var(--r-panel)}
+  .pv{position:relative}
   .pv canvas{width:144px;height:144px;image-rendering:pixelated}
+  .pv canvas.hop{animation:hop .32s cubic-bezier(.3,.8,.4,1)}
+  @keyframes hop{0%{transform:translateY(0)}40%{transform:translateY(-9px)}100%{transform:translateY(0)}}
+  .saybub{position:absolute;top:16px;left:calc(50% + 46px);min-width:42px;max-width:130px;padding:5px 14px;border-radius:999px;background:#fff;border:1.5px solid #8e95c4;color:var(--ink-1);font:700 18px/1.4 'Noto Sans TC',sans-serif;letter-spacing:.06em;text-align:center;box-shadow:0 4px 10px -4px rgba(62,68,120,.35);transform-origin:0 70%;pointer-events:none}
+  .saybub::before{content:"";position:absolute;left:-7px;top:55%;width:10px;height:10px;background:#fff;border-left:1.5px solid #8e95c4;border-bottom:1.5px solid #8e95c4;transform:rotate(45deg)}
+  .saybub[hidden]{display:none}
+  .saybub.pop{animation:sayPop .36s cubic-bezier(.2,.9,.3,1.3) both}
+  .saybub.out{animation:sayOut .35s ease-in both}
+  @keyframes sayPop{0%{transform:scale(.2);opacity:0}60%{transform:scale(1.15);opacity:1}100%{transform:scale(1);opacity:1}}
+  @keyframes sayOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-8px)}}
+  .tabs{display:flex;gap:4px;padding:4px;background:#f1eee8;border-radius:var(--r-ctl)}
+  .tabs[hidden]{display:none}
+  .tabs button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:0;background:transparent;padding:9px 0;border-radius:9px;font:600 14px 'Noto Sans TC',sans-serif;letter-spacing:.06em;color:var(--ink-3);cursor:pointer;transition:background .15s,color .15s}
+  .tabs button[aria-selected="true"]{background:#fff;color:var(--ink-1);box-shadow:0 1px 3px rgba(62,68,120,.18)}
   .who{display:flex;flex-direction:column;gap:var(--s2);text-align:center;min-height:3.2em}
   .who .nm{font-size:18px;font-weight:700;color:var(--ink-1);letter-spacing:.04em}
   .who .ds{margin:0;font-size:14.5px;line-height:1.7;color:var(--ink-2)}
@@ -181,7 +230,7 @@
   .score-hero{display:flex;flex-direction:column;align-items:center;gap:var(--s2);padding:var(--s5) var(--s4);background:var(--tint);border:1px solid rgba(217,100,126,.14);border-radius:var(--r-panel);text-align:center}
   .score-hero .big{font-size:48px;font-weight:700;line-height:1.1;color:var(--accent);letter-spacing:.02em;animation:flwIn .5s cubic-bezier(.2,.9,.3,1.2) both}
   .say{display:flex;gap:var(--s3);align-items:flex-start;font-size:14.5px;line-height:1.7;color:var(--ink-2)}
-  .say .who{flex:none;min-width:3.4em;text-align:center;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:600;color:var(--sky-ink);background:var(--sky-soft)}
+  .say .who{flex:none;min-width:3.4em;min-height:0;display:inline-flex;align-items:center;justify-content:center;line-height:1.5;margin-top:1px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600;color:var(--sky-ink);background:var(--sky-soft)}
   .say.go2 .who{color:var(--accent-dk);background:var(--accent-soft)}
   .endtext{display:flex;flex-direction:column;gap:var(--s3)}
   .endtext .lead{font-size:16px;font-weight:600;color:var(--ink-1);line-height:1.7}
@@ -223,7 +272,7 @@
 <div id="app">
   <div id="hud">
     <span id="title">五悠日和 — 今日、ふたりの日</span>
-    <span class="r"><button id="musicBtn" type="button" aria-pressed="true">音樂：開</button><button id="again" type="button">換角色</button></span>
+    <span class="r"><button id="musicBtn" type="button" aria-pressed="true">音樂：開</button><button id="thxBtn" type="button" aria-label="感謝與製作名單">♥ 感謝</button><button id="again" type="button">換角色</button></span>
   </div>
   <div id="stage">
     <canvas id="cv"></canvas>
@@ -263,7 +312,7 @@
     </div>
     <div id="sChar" class="view" hidden>
       <div class="dlg-body">
-        <div class="pv"><canvas id="pvC" width="144" height="144" aria-hidden="true"></canvas></div>
+        <div class="pv"><canvas id="pvC" width="144" height="144" aria-hidden="true"></canvas><div id="pvSay" class="saybub" hidden aria-live="polite"></div></div>
         <div class="who"><div id="cNm" class="nm"></div><p id="cDs" class="ds"></p></div>
         <div id="charPick" class="pick" role="group" aria-label="選擇角色"></div>
       </div>
@@ -276,6 +325,7 @@
       <div class="dlg-body">
         <div class="pv"><canvas id="pvA" width="144" height="144" aria-hidden="true"></canvas></div>
         <div class="who"><div id="aNm" class="nm"></div><p id="aDs" class="ds"></p></div>
+        <div id="accTabs" class="tabs" role="tablist" aria-label="配飾欄位"></div>
         <div id="accPick" class="pick" role="group" aria-label="選擇配飾"></div>
       </div>
       <div class="dlg-foot"><div class="row">
@@ -286,6 +336,33 @@
   </div>
 </div>
 
+<div id="thanks" class="overlay" hidden>
+  <div class="tcard" role="dialog" aria-modal="true" aria-label="感謝與製作名單">
+    <main>
+      <p class="en eyebrow fade" style="--d:.05s">A Special Day For Two</p>
+      <h1 class="fade" style="--d:.2s">ふたりの結婚式</h1>
+      <canvas id="tCv" class="fade" style="--d:.4s"></canvas>
+      <h2 class="fade" style="--d:.6s">今天是五條和虎杖的大日子！</h2>
+      <p class="sub fade" style="--d:.7s">この幸せを、あなたにも</p>
+      <p class="msg fade" style="--d:.85s">謝謝你特地來到這裡，和我們一起分享這份喜悅 ♡<br>希望今天的庭院散步，帶給你一點點開心。<br>願你也帶著滿滿的好運與笑容回家！</p>
+      <hr class="rule">
+      <section class="cr">
+        <div class="item"><div class="jp">企劃・遊戲設計・像素美術・插畫</div><div class="e">Game Planning, Design &amp; Illustration</div><div class="nm"><a href="https://portaly.cc/nonbiriiii0204" target="_blank" rel="noopener noreferrer">逐悠</a></div></div>
+        <div class="item"><div class="jp">地圖設計・場景美術・程式開發</div><div class="e">Map Design, Environment Art &amp; Development</div><div class="nm"><a href="https://portaly.cc/nonbiriiii0204" target="_blank" rel="noopener noreferrer">逐悠</a><span class="x">×</span>Claude（Anthropic）</div></div>
+        <div class="item"><div class="jp">背景音樂</div><div class="e">Background Music</div><div class="nm"><a href="https://incompetech.com" target="_blank" rel="noopener noreferrer">Kevin MacLeod</a><small>Senbazuru / Ripples<br>Licensed under CC BY 4.0</small></div></div>
+        <div class="item"><div class="jp">遊戲測試／體驗優化</div><div class="e">Game Testing &amp; UX Improvement</div><div class="nm"><a href="https://www.plurk.com/tora0320" target="_blank" rel="noopener noreferrer">卡奇</a>、狗勾</div></div>
+      </section>
+      <hr class="rule">
+      <section class="sp">
+        <p class="en t">Special Thanks</p>
+        <p class="l">感謝每一位前來參加婚禮的你 ♡</p>
+        <div class="pair">五條悟<i>♡</i>虎杖悠仁</div>
+        <p class="wish">いつまでも、お幸せに。</p>
+      </section>
+    </main>
+    <footer><p>Thank you for celebrating with us and playing</p><button id="tClose" type="button">回到庭院</button></footer>
+  </div>
+</div>
 <div id="modal" class="overlay" hidden>
   <div class="card" role="dialog" aria-modal="true" aria-labelledby="mTitle">
     <div class="dlg-bar">
@@ -427,6 +504,7 @@
    類型：設定 / 參數 / 角色 / NPC / 事件 / 籤 / 掉落物 / 結局
    （「已發現」計數已拿掉；地圖上的裝飾物是寫在程式裡的，不用填表格）
    設定：名稱＝遊戲標題、文字＝開場說明、圖片網址＝開場畫面上方的圖
+   眼飾／頸飾／衣服：角色可以穿戴的配飾，三種類型各自一欄，每欄最多選一個（名稱、文字＝說明、圖示網址、圖示網址2＝配飾圖，格式和角色一樣，只畫配飾、其餘透明）
    角色：玩家可以選的角色。圖示網址＝精靈圖 A（64×64，4 格各 32×32：左上朝下站、右上朝下走、左下朝上站、右下朝上走），
           圖示網址2＝精靈圖 B（64×64：左上朝右站、右上朝右走；往左走會自動翻轉）。空白就用內建貓咪
    NPC ：站在地圖上的人物。x、y＝位置、文字＝對話內容
@@ -453,16 +531,30 @@
    https://docs.google.com/spreadsheets/d/e/2PACX-1vQPACiyJ2JU6kBv9bSaXQ9huJ64dzsSRadPSQwOz5Xw5d8H-D559UMQIwh-nUOCuLzP1MIgqTQiVHDx/pub?output=csv */
 const SHEET_CSV_URL = "";
 /* 不想用試算表時，也可以把整份 CSV 內容直接貼在這兩個反引號中間（並把上面網址清空） */
-const EMBEDDED_CSV = `類型,名稱,x,y,數值,權重,扣命,觸發遊戲,文字,圖片網址,圖示網址,圖示網址2
-設定,五悠日和 — 今日、ふたりの日,,,,,,,"今天是個特別的日子。
-謝謝你來參加五條和悠仁的婚禮！
-庭院裡準備了不少小驚喜，典禮開始前，不妨四處逛逛吧。",,
-角色,白貓,,,,,,,,,
-角色,橘貓,,,,,,,,,
-角色,藍貓,,,,,,,,,
-角色,粉貓,,,,,,,,,
+const EMBEDDED_CSV = `類型,名稱,x,y,數值,權重,扣命,觸發遊戲,文字,圖片網址,圖示網址,圖示網址2,大小,演示網址,背影網址
+設定,五悠日和 — 今日、ふたりの日,,,,,,,婚禮探險隊集合！今天要帶哪個小可愛一同出席呢？,,
+角色,七咪五,,,,,,,最喜歡黏著悠仁的小惡魔，仗著自己可愛總愛任性搗蛋。不過只要拿出甜點，就會立刻乖乖聽話。,,"data:image/png;base64,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",,,"data:image/png;base64,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"
+角色,七咪悠,,,,,,,活力滿滿、好奇心旺盛的小太陽，最喜歡到處探險。雖然偶爾有點冒失，卻有著讓人無法抗拒的親和力，是大家都喜歡的小可愛。,,"data:image/png;base64,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",,,"data:image/png;base64,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"
+眼飾,黑框眼鏡,,,,,,,圓圓的黑框眼鏡，戴上去好像變聰明了。,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAAA+klEQVR4Xu3XUWrCQBQFUCMuRfrj9tyGu9MPbffSEiEggpbcTNtn55xfuaMP3k2c1QoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGhpaHnYaPe2/Zxz5unycf0NaQ6W2CwJP3I8vx/Gz4Zh2D87/37p01wlaZHTXDXpHGluqWYFuB3gu8V/ZE5u+r7pDVJJWuQ0V006R5pbolkB0r8yc5s/qbb4vT8AXnX+ZgVIpcWpJp3jvzwAXnX+dbVF6s24ONXeZr/pr+dXALqmAHRNAejaj1yC04tdmoNU8wKkF7o0V1Fa5DRXTTpHmgMAAAAAAAAAAAAAAIBufAHyC31IDMZRBQAAAABJRU5ErkJggg==",,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAABD0lEQVR4Xu3YwWnDUBAEUCukFJNLOktB6SwX414U7CAQJhetBq/Rf++u0X6zI2GdTgAAAAAAAAAAAAAAAAAAAAAAAAAAAPBk0977fX6c52rGz+V6v38iAyreKxc9WhZ5i8elT2R0SJQ3kdElMXsioypSgJt5nr+XIaZp+qoMlMjokChvIqNLYvZERkWpAP81trr0a5WM9SyVHzElUd5ERpfE7ImMrUoFWC/antfXnmsXHUs/+gPgSOcvFSAl8Se4w+gPgCOd/61jgfhzW6SON9ireIXzKwBDUwCGpgAMTQEYWuQrUOJzZiIDttpdgMRXjERGp0R5ExldErMnMgAAAAAAAAAAAAAAAAAAAAA4il/JGY8SAuyfHQAAAABJRU5ErkJggg=="
+眼飾,愛心墨鏡,,,,,,,粉紅色的愛心墨鏡，視線裡全是粉紅泡泡。,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAABYUlEQVR4Xu3ZQUrDUBAG4OoN3LlSj+FRxJUHcC14AsG1B3AlHsVjqCt3HkF5gUAakjaZJjCPfh90EfJ+2mlnHkm62QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANX4uL3/K6/2A/ePx0RzMNfJ3MAUP4/PTdOf3d00y39f3wdj508PW+8fzWXVDv/120tTZ/941wZQzs3NZVND/YsNQHenv7q8aJp/rPFbn1/fW79ZJNc2SSbRQY7msonWEc0dYrEBaJVBKI08RRmA7i4XyWVx7BtArfUvPgBFO8n7jF0C7dPPZXKsG0CtG+DpGs0zpUGH1kRzmcy5JOuujeayidYRzR1qlQEodjXzGucyiQ5yNJdNtI5o7hCrDcDYEESLnJLLZI0hr+k7qKX+Ve4B+qY+/lsql0n/fmhqE0dz2UTriOZIaOofgEMbQPfpSq2OvX4AAAAAAAAAAAAAAAAAlvAPHfcW6+Gt6f0AAAAASUVORK5CYII=",,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAABpElEQVR4Xu3ZsU3DQBQG4MAGdFTAGIyCqBiAGokJkKgZgAoxCmMAFR0jgIyU6EBxfHZ+cpB8Xxlf/nu2751jZTYDAAAAAAAAAAAAAAAAAAAAAAAAAACADdtLzvd0fvkxzzt9uFtk932+TCIDakUa4O36drHwax3eXH2bO5HRWqJ5ExmtJGpPZIyxdgN0BZ8cH33NeXBxtpj7/f5xZR3PL6+Lp0Qio6VE8yYyWknUnsiYYlIDlF3a6RpgvviHFv5c1wClREb5s2tTEs2byGglUXsiY6pJDVAqix+j7wkwRpmxSbu+AWzT+a/dAJ3E4yuR0cIubgDbtAHuJxbNzxfaIcvGJzJamPqzq/xeIqOVRO2JjKkiDdCpXcCrxiUyWqite26bNoAx9/4vnn+sAWouRM1CGRozdLyV2rq2cQOouferFn/NsVLtta4RbYBVF2JM0X1jx2S0MFTf0PGahVST0cpQbUPHW5x/5CV4mTH//vZJZLSw7IW+5uaXEhmtJGpPZNT4tQbYdYnmTWS0kqg9kQEAAAAAAAAAAAAAAAAAAAAA8M98ApwTRShOiDKpAAAAAElFTkSuQmCC"
+頸飾,紅圍巾,,,,,,,這是五條織給悠仁的圍巾，雖然歪歪扭扭，但很溫暖。,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAABPElEQVR4Xu3YIU4DQRQA0ELQGAwHIOEACEQDpqqCM6B6BQ7BFVCcAUFCgiIIBISkCsIBamq4AISSRRQQ0JnJ3/z3zGbN7vz582f+7mAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwKe1EhMxOzl+K/Gcv9o+PS8yfvLaKBH68+N08Zin+eviuru12eQ+iuwbQJ/jL1IA2WXfAPoc/3r2xUtuRU6ArvXptL6H/wr7EfnRV3ZH67LDq4dQ4z7b2yn+E+BoNPxqLZZ1G8zk/iXEPPQ5/iInQHY1FuJsNPy1qGq8bxU1xtMq/tAFcHB59y0vN+P9VXLVK+Kvn//QBZBpsf9E/PU3O3+BSC30CaAFqN8CRNYi/6ELQAtQvwWIrEX+wxbAxfVt5NxUJ/7c+Ycm3gGU1bCZG36FMQAAAABJRU5ErkJggg==",,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAABUElEQVR4Xu3YMUoDURAG4CjWNjYeQPAAFhZBm1QWnsHKK3gIr2DlGSwEwUosLBTBSvEAaWy8gLJCIMRIksfzLe/N91XLslsMszP77w4GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABLW1v6yinjs5OvlPv+2/b5ZVI9xLWRUvrb80vKbc2IvgBaqj9pACZePz5/Dne3Nns/V1L0BdBS/eslH5zWdAtgsgSml0If5/rQQv0GgNCSItC8DTdr9ppOiXOwimr+mnQfXouy5+HNU5F6LvZ2iv8FOx4NF2Zv9a/e/6Q3QHSnj+9FBm3aeDQsPnR/aal+3wCEVt0b4OD64VfD7o72wzRR/Xn7X90ARHrY51F/3mUnAhGaASC06iKQDJw3A9cmd/+rGwAZOG8Grk3u/otAhGYACK2aCHR1ex+6UeqP3X8AgIy+AeNtyKUtInMzAAAAAElFTkSuQmCC"
+頸飾,藍領結,,,,,,,正式場合就要打領結，婚禮的標準配備。,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAAA1UlEQVR4Xu3XoQ3CUBAG4FeCZgw0QzABAsUECCZAERSSGRAEgUAzBLJhAAZggZKGVNHiuJK877NP3P3Nu3tpSgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC8FVEfYn96Vm21VvNR8e0sqj/yNIyKXZaPj1L32yEtN2V1Oe7SeLKIaqUXuS+Af80fNgC5y30B/Gv+Qd8Xs34FoC9hL0DXRb+et8V0tq5yHYRcczf6zu8nM0g95G2lmgXQdRbU3s/lnh8AAAAAAIj3AjD2Vk4KDKzYAAAAAElFTkSuQmCC",,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAAA7UlEQVR4Xu3YvY3CQBAGUBsRUwYxRVwFBERUQEAFRIgKrgYigqvgiiC0KIACaMDIIEskdx6fMMa372WWvrU0q53xT5YBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAITl4eQffB4uZdOy9WKSR3NN94K2xm0XtFEU5x/jp+M+m86W2WpblFWuvv5Poo0dzQ1tb6J1RXNd1N9pA6Qu9QEwhPpHqR9S0tbrE6B67YE+9doAqUt9ALxD/Z02QKTA769d/jHf3P4WRfLwTJ18WXNXN/ZvHgdAU25o+5p6/QAAAAAAAAAAAPASVw1TYWzj/nQRAAAAAElFTkSuQmCC"
+衣服,小圍裙,,,,,,,白色的小圍裙，上面繡了一顆愛心。,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAABAUlEQVR4Xu3YvQ7BUBgGYES4BLGYJK7PbrS7PonJIi4BkUoHif840uNreZ6Ro/rm7demp9UCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA3IrjoUj5j9T1dZeaJ3V93aXmSV3/qc6nP4Rf0M4VYrdcJ93x39GfjLKdb9Xkb0b/3aqLv9QbDys7/H61qexY3yJ//fvPOgCvbGeLu68H8+m3rs1w8tej/5B3gEfll559/mvkv7/4o/oPGYBnd/p/eQLI//hJH9F/yACUbsNGhI8k//UQRPUfNgCXQxAVPto5t/xx737ZthVtAzZjGzCXf+8fGuEETMdgaVxXmgEAAAAASUVORK5CYII=",,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAABPUlEQVR4Xu3ZzUoDMRQG0CqijyBuXAk+n3uX7n0+wZUb8RFUpDKKNZROjc1Pk+YcKJQ2M8zHnfQmncUCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD1afrwvp9cul5BybCtSMqQc24qUDCnHxjqOHQiHyARgaCYAQzvKnf714Wmn9f5/nF1fZr/uXOTvq/4nuQofOr26KHHaL2+Pz8XOnYv8/dTfEoihFekA27zc3q++Pr+7Wb2f+/zQyN9W/XUAhpZ9MzltAufWwOGv31/C7hCa9gCtb4Ll37wHaLH+OgBDqzoB5n7V18WO601srthxvYnNFTsuh+qb4J9wm9phzeD7Iv/3Hx+t1L9qBwit3+wj3Pzy/2ql/tU7wLabYDSjTfoWl7pFJkAPT2tLkr/9p/UAjO4TnMCYvg1GKg8AAAAASUVORK5CYII="
+衣服,紅羽織,,,,,,,喜氣洋洋的紅色羽織，適合參加婚禮。,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAABGElEQVR4Xu3YMUoDQRgF4EU8Q/AEdoKdVQ6gR/F0dh4glZ1go97BxlZkZYuUkfn590Gi3wepMvt4szPDhEwTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXz99dc+bw+3M2F+GkZX8lfxlbyu6rdzP841/+8sxF2tzfDj2/uL4bH7lXyt49P5fyuSj/zP871P+tuAjhlrRtg7/L66uA7eH9+OfjdqHR+V7pfOr8r3S+Zv8oBWGOT/yad35Xul87vSvdL5vsJxL+2yg2QvKIW6fyudL90fle6XzJ/lQOQvKIW6fyudL90fle6XzK/dQDePj6H391mqv8NVsnfDjdZT6Wf+f+99YeT9wNTQ5BAEpo/NwAAAABJRU5ErkJggg==",,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAABHElEQVR4Xu3ZMUoDURAG4EU8Q8gJ7IR0VjlAPIqns/MAVukCadQ72NiKrGxhpVneMAmT+L4PtnvLP2/nPTKQYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgYPz6HLPPy+P9GIgcpvXZzEjenGwd0/v2f579v249JM+bu9alf1o8LMPvZzLXT9tw3pxMLRP7P8/+Xx31lMCFcQHoWvMI9ONmddv8wd52++a1cyoyD6mopSKzl/2HL8CxDnVEReYhFbVUZPayfyMQXXMB6Fp4BKqYRysye5mBoyp6ccrM8AWomEcrMnuZgaMqenHKTCMQXWv+BXh9/0h9qMUQ/ycwk7lOVftbppaJ/V92/wH4b74BdiH7OHw52BYAAAAASUVORK5CYII="
+小精靈,ちみご,,,,,,,"ち！
+……小精靈朝你揮了揮手，好像在打招呼。",,"data:image/png;base64,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",,48,"data:image/png;base64,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","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAADzUlEQVR4Xu3cQW4UMRAF0IBYcgA4CogNLHKQHCwHySJsEBwFDsAe5EWD0+oe+5fru2z3f1IkYGbsKttl9/SQubsTERERERERERERERERERERERERERERERERmcgrVqyf7x/+5G1/fXqE+/JoY3ZpDCxjtwp2/vCiLNkvWksReLQR6Sh+dBF7tBHFI3aPNmq8rnmSl1sLexVnOSK5e7QRxSN2jzZquRYAMslnSm2UHh/ZzLF7GDF/1wKocWsQRhwghEf8pTZKj0fyiK3URulxlFsBIIHlz93+bH39bDw2AGSsRjNa/m4FgEoDkX7Sm8OZJ3SD5HD0XOT1I0LiHyn/N9GDiQzcSq6at2XDYHI5ASImM6JPWU9zAUQuxMi+cxFxRPR5JiIWrz6bPgjzCiL3/HD/769fHp9OBz2HfsjkiTEGiMjck9nzNxcAI/F88W9GLgL2GIycO2vx994ATZdAjIlv1TsmRn/7DeBoQzjCiKWE0WdE/qYCYKnd8aIxJj9pyZ8VU8+Ci8i/qQB+fP/mvhbTIOQ/m5rdsOciYMkXAboglP/L/4FcAy6AqEFGF0MPjA1gOwn2+dZsAL2tkD9cALkPHz/RBmFU+w2AtQj2RtkAVsu/qQCSVARXdeXcV5l76DZo1OUPinVvXPnj19gRkPlvPgFEZlZdALPsfslMsUosXQJVmrGokEuBklXz1wmwKM/FP6Pa/KsLoLbBETBiZbTJwoiV0SYLEmt1AVzdTJcAjFgZbbIgsUIFgFRWFFaMrHYZGLEy2mRBYoUK4OqQgY3CjJHZthc0RrgA0A56Gjk2GRNcAMmIC61XTL36segRW48+rCyxQZ8DHEHecDBYkvYQnfde73FYJX8VQKPohdB74e/Nnr/pEkhkFaYTILrqz/TeDUcZh955b1bIXyeA0SiTn0TEEtHnmZZY4AJo6czi56/f1S/rFVuvfpLa/HvG1LMvdv5wAfQ6blPitcmvyJJ/z4XJ1it/+Mtx2YN8tOi3f3v/7i173IuUP/e3wnrPP3wCMB0lfyXKv/5y1wvtLlD6toSaXxpHJr10AvS6PPM8BZR//aJnzL/pBCgttG3xl74yBJn8klJMnrz6Uv71i7/EOiemE+DI0ffF3DoBLJOf7wDWhD2dnQQ1p19r/rmosVghf7cCSNBLA2QR7I+/qEm/Jc/fuwiU/8sbIF7zD98F8pRP6q1imGHy92re/yj//4s6av5DCyBXeoOzOuUfc4vb9Cb4DHospedbXjNqMVhysbxG+ftxLYAEnVAEs20vzBiZbXthxshsW+SS/gI3sn8SU/10PgAAAABJRU5ErkJggg=="
+小精靈,ちみゆ,,,,,,,"み！
+……小精靈抱著坐墊，正認真聽著大家聊天。",,"data:image/png;base64,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",,48,"data:image/png;base64,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","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAAEK0lEQVR4Xu2cO44UMRCGF0QGB4AUrkDCIwAJcQYkMgi4BtcggAyJMyAkCHjcghQOADHIIO96Wt1tV7l+l+3+P2mlXc10uf56uXt6p8/OCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCBmISyhfHz5+9ie1/fH9G/FaFjZGJ8RAE7tZQOsXF2WOZdFqmsDChidr/kuL2MKGFxa+W9go4XLJm6zYK+xZ2NIo0W5hwwsL3y1slGLaAJIkb5GzkXu9Z0b23YIe9Zs2QAl7QegxQBIs/M/ZyL3uiYVvORu516WYNYDEsfS98Xft8aNhMQAkseqN3vSbNYCUEIjwEy4OR05oRKJh7b2S43tE4n9P+q94B1MSuJk4qm7NwEBisgN4JNNjTTIf1Q3gWYiea6d4+OGx5hYevlitWXUjzMqJlEdvX5//+eHp882gp0hvMlmCiIEET+2B0fWrGwAhPC3+SM9NgI5Bz9pRxd96AKpOgRCJr6W1T4j1lgNgbSCsgfAlB2JND/2qBkBROvG8QSQ/UKMf5VPLhvPQX9UA375+Nq/FEIT0J1IyDVsWAYq0CKQFQf2n/4FcgrgBvIIsLYYWIAZA3AmWeksGQGtm0C9ugJQ7d+/DgtArywGAKoIlvQyA2fRXNUAgNMFRObL2WXIv+hjU6/RHCuqzceqXn2N7IMl/9Q5AyMgUN8Ao0y8wkq/EF54CFTJiU0lOBXLMqp87wKRYFv+IlOovboBSgz2A8BVhEwXCV4RNFBJfixvg6Ix0CoDwFWEThcRXUQNIOssLlI8ouwgQviJsopD4KmqAoyMJrBdIH5G2rZD6KG4A6QIt6dk30ifiBgj0WGitfGq1joYWvrVYQ4vGN9F9gDUkFxwINKIt8Na9pHUcZtFf3QDvrt48eQp0a578/l6toYZQCC++fFo18eregxrT5+zZb134S0bXX108ewFAEwrMuwCOPgBG169qgK3tb2tSWbM1WVs3Q4xDK91LYhxa647MoN+0AQLoYtg7rWhZCGtDAK09shaDltoDs+gXN8CacBQ/fv76Z/rG9WvFS7QoBEkMapvi5a3bxfpbaN8q/i161y9uAGkAtMTiH70BtFD//+GHzr/44biS6achTXxEsxOgoH7st8Ja5191IwzFmvgjQf0XU78VsFOg8LSEki+NS5Keuxbo8Rw4B/WXFz0i/6odIFdosfhzjwyRJD9HzidLrNai/vLiz6HNiWoHWGPteTF7O4Am+ekE0Aq2ZOt6oGT3q9Wf4hWLGfSbNUBAeoEoKYLl9ueV9D1S/dZNQP2nH4Vb5V/8KZAlaVL3mmGE5C8puf6h/oui9sq/awOk5C5wZof6y292WqK6CN5Cui2F92uOsQyAJRotmmMsfbZEo0VzjKXPpg0QkAqSgLRtBdJHpG0rkD4ibRNySP4CvViu239lZY8AAAAASUVORK5CYII="
+小精靈,ちびちみご,,,,,,,"ち！
+……小精靈朝你揮了揮手，好像在打招呼。",,"data:image/png;base64,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",,32,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAADzUlEQVR4Xu3cQW4UMRAF0IBYcgA4CogNLHKQHCwHySJsEBwFDsAe5EWD0+oe+5fru2z3f1IkYGbsKttl9/SQubsTERERERERERERERERERERERERERERERERmcgrVqyf7x/+5G1/fXqE+/JoY3ZpDCxjtwp2/vCiLNkvWksReLQR6Sh+dBF7tBHFI3aPNmq8rnmSl1sLexVnOSK5e7QRxSN2jzZquRYAMslnSm2UHh/ZzLF7GDF/1wKocWsQRhwghEf8pTZKj0fyiK3URulxlFsBIIHlz93+bH39bDw2AGSsRjNa/m4FgEoDkX7Sm8OZJ3SD5HD0XOT1I0LiHyn/N9GDiQzcSq6at2XDYHI5ASImM6JPWU9zAUQuxMi+cxFxRPR5JiIWrz6bPgjzCiL3/HD/769fHp9OBz2HfsjkiTEGiMjck9nzNxcAI/F88W9GLgL2GIycO2vx994ATZdAjIlv1TsmRn/7DeBoQzjCiKWE0WdE/qYCYKnd8aIxJj9pyZ8VU8+Ci8i/qQB+fP/mvhbTIOQ/m5rdsOciYMkXAboglP/L/4FcAy6AqEFGF0MPjA1gOwn2+dZsAL2tkD9cALkPHz/RBmFU+w2AtQj2RtkAVsu/qQCSVARXdeXcV5l76DZo1OUPinVvXPnj19gRkPlvPgFEZlZdALPsfslMsUosXQJVmrGokEuBklXz1wmwKM/FP6Pa/KsLoLbBETBiZbTJwoiV0SYLEmt1AVzdTJcAjFgZbbIgsUIFgFRWFFaMrHYZGLEy2mRBYoUK4OqQgY3CjJHZthc0RrgA0A56Gjk2GRNcAMmIC61XTL36segRW48+rCyxQZ8DHEHecDBYkvYQnfde73FYJX8VQKPohdB74e/Nnr/pEkhkFaYTILrqz/TeDUcZh955b1bIXyeA0SiTn0TEEtHnmZZY4AJo6czi56/f1S/rFVuvfpLa/HvG1LMvdv5wAfQ6blPitcmvyJJ/z4XJ1it/+Mtx2YN8tOi3f3v/7i173IuUP/e3wnrPP3wCMB0lfyXKv/5y1wvtLlD6toSaXxpHJr10AvS6PPM8BZR//aJnzL/pBCgttG3xl74yBJn8klJMnrz6Uv71i7/EOiemE+DI0ffF3DoBLJOf7wDWhD2dnQQ1p19r/rmosVghf7cCSNBLA2QR7I+/qEm/Jc/fuwiU/8sbIF7zD98F8pRP6q1imGHy92re/yj//4s6av5DCyBXeoOzOuUfc4vb9Cb4DHospedbXjNqMVhysbxG+ftxLYAEnVAEs20vzBiZbXthxshsW+SS/gI3sn8SU/10PgAAAABJRU5ErkJggg=="
+小精靈,ちびちみゆ,,,,,,,"み！
+……小精靈抱著坐墊，正認真聽著大家聊天。",,"data:image/png;base64,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",,32,,"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAABACAYAAABMbHjfAAAEK0lEQVR4Xu2cO44UMRCGF0QGB4AUrkDCIwAJcQYkMgi4BtcggAyJMyAkCHjcghQOADHIIO96Wt1tV7l+l+3+P2mlXc10uf56uXt6p8/OCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCBmISyhfHz5+9ie1/fH9G/FaFjZGJ8RAE7tZQOsXF2WOZdFqmsDChidr/kuL2MKGFxa+W9go4XLJm6zYK+xZ2NIo0W5hwwsL3y1slGLaAJIkb5GzkXu9Z0b23YIe9Zs2QAl7QegxQBIs/M/ZyL3uiYVvORu516WYNYDEsfS98Xft8aNhMQAkseqN3vSbNYCUEIjwEy4OR05oRKJh7b2S43tE4n9P+q94B1MSuJk4qm7NwEBisgN4JNNjTTIf1Q3gWYiea6d4+OGx5hYevlitWXUjzMqJlEdvX5//+eHp882gp0hvMlmCiIEET+2B0fWrGwAhPC3+SM9NgI5Bz9pRxd96AKpOgRCJr6W1T4j1lgNgbSCsgfAlB2JND/2qBkBROvG8QSQ/UKMf5VPLhvPQX9UA375+Nq/FEIT0J1IyDVsWAYq0CKQFQf2n/4FcgrgBvIIsLYYWIAZA3AmWeksGQGtm0C9ugJQ7d+/DgtArywGAKoIlvQyA2fRXNUAgNMFRObL2WXIv+hjU6/RHCuqzceqXn2N7IMl/9Q5AyMgUN8Ao0y8wkq/EF54CFTJiU0lOBXLMqp87wKRYFv+IlOovboBSgz2A8BVhEwXCV4RNFBJfixvg6Ix0CoDwFWEThcRXUQNIOssLlI8ouwgQviJsopD4KmqAoyMJrBdIH5G2rZD6KG4A6QIt6dk30ifiBgj0WGitfGq1joYWvrVYQ4vGN9F9gDUkFxwINKIt8Na9pHUcZtFf3QDvrt48eQp0a578/l6toYZQCC++fFo18eregxrT5+zZb134S0bXX108ewFAEwrMuwCOPgBG169qgK3tb2tSWbM1WVs3Q4xDK91LYhxa647MoN+0AQLoYtg7rWhZCGtDAK09shaDltoDs+gXN8CacBQ/fv76Z/rG9WvFS7QoBEkMapvi5a3bxfpbaN8q/i161y9uAGkAtMTiH70BtFD//+GHzr/44biS6achTXxEsxOgoH7st8Ja5191IwzFmvgjQf0XU78VsFOg8LSEki+NS5Keuxbo8Rw4B/WXFz0i/6odIFdosfhzjwyRJD9HzidLrNai/vLiz6HNiWoHWGPteTF7O4Am+ekE0Aq2ZOt6oGT3q9Wf4hWLGfSbNUBAeoEoKYLl9ueV9D1S/dZNQP2nH4Vb5V/8KZAlaVL3mmGE5C8puf6h/oui9sq/awOk5C5wZof6y292WqK6CN5Cui2F92uOsQyAJRotmmMsfbZEo0VzjKXPpg0QkAqSgLRtBdJHpG0rkD4ibRNySP4CvViu239lZY8AAAAASUVORK5CYII="
+小精靈,さくらちみゆ,19.2,8,,,,,"ちみ…
+……這隻小精靈守在走廊上，好像在看著毛線球。",,"data:image/png;base64,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",,64,,
+小精靈,あおちみご,17.1,8,,,,,"ちみ…
+……藍色的小精靈安安靜靜地站著，看起來有點害羞。",,"data:image/png;base64,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",,64,,
 NPC,五條,9,4,,,,,五條似乎正在尋找下一份甜點。,,
-NPC,悠仁,10,4,,,,,悠仁正在確認婚禮一切順利！,,
+NPC,虎杖,10,4,,,,,虎杖正在確認婚禮一切順利！,,
 事件,鳥居,9,10,,,,,"踏過鳥居，便是今日的良緣之地。
 願這條小徑，通往兩人往後每一個幸福的日子。",,
 事件,結緣花籤,12,9,,,,抽籤,"神明準備了一束捧花。
@@ -516,17 +608,27 @@ NPC,悠仁,10,4,,,,,悠仁正在確認婚禮一切順利！,,
 參數,掉落間隔,,,0.6,,,,,,
 參數,最後加速,,,2.2,,,,,,
 參數,接捧花標題,,,,,,,幸福接接樂,,
-參數,開場標題,,,,,,,歡迎來到五條與悠仁的婚禮！,,
-參數,操作說明,,,,,,,"先選一隻喜歡的貓咪，再用方向鍵或 WASD 在庭院裡自由走動。
-靠近發亮的愛心，或是遇見正在等你的人，就能發現更多婚禮的小故事。",,
-參數,接接樂規則,,,,,,,盡可能接住掉落的花束與紅包！,,`;
+參數,開場標題,,,,,,,收到了婚禮邀請,,
+參數,操作說明,,,,,,,選擇一起冒險的ちみ，一起前往五條與悠仁的婚禮吧！在庭院裡自由走走逛逛，尋找藏起來的愛心，和婚禮上的大家打聲招呼，探索這場婚禮的小故事。,,
+參數,開始按鈕,,,,,,,開始挑選！,,
+參數,選角下一步按鈕,,,,,,,前往五條的衣櫃打扮,,
+參數,接接樂規則,,,,,,,盡可能接住掉落的花束與紅包！,,
+製作,企劃／文案,,,,,,,（請改成你的名字）,,
+製作,像素美術,,,,,,,（請改成你的名字）,,
+製作,程式／互動,,,,,,,Claude（Anthropic）,,
+製作,Special Thanks,,,,,,,（所有來參加婚禮的你）,,
+參數,感謝標題,,,,,,,謝謝你來參加婚禮！,,
+參數,感謝文字,,,,,,,"五條與悠仁的婚禮，因為有你而完整。
+希望今天的庭院散步，帶給你一點點開心。",,
+參數,版權聲明,,,,,,,本作為同人二次創作，與原作者、出版社及版權方無關，僅供粉絲同樂，請勿轉載或商用。,,`;
 
 /* 接捧花排行榜：把 Google Apps Script「網頁應用程式」的網址（結尾是 /exec）貼在這裡。
    留空＝不顯示名字輸入和排行榜（遊戲照常玩）。也可以用 ?board=網址 臨時測試。 */
 const LEADERBOARD_URL = "https://script.google.com/macros/s/AKfycby3DQYID5ydaT4Ig5ePkeLg5idW4Qk2M-TN0KjCATXiSQjohcj_zMAuB4n6agfZq60T/exec";
 
-const COLS = 20, ROWS = 21, T = 48;
-const YMAP=[[0,0],[1,1],[2,3],[4,5],[7,11],[9,15],[10,18],[12,20]];   // 試算表的 y → 地圖的哪一排（房子縮窄、庭院加大後自動換算，表格不用改）
+const COLS = 28, ROWS = 29, T = 48;
+const XSHIFT=4;   // 房子往右移了 4 格：試算表的 x 自動 +4
+const YMAP=[[0,0],[1,1],[2,3],[4,5],[7,9],[9,19.6],[10,25],[12,28]];   // 試算表的 y → 地圖的哪一排（房子縮窄、庭院加大後自動換算，表格不用改）
 const yShift = y => { if(!isFinite(y)) return y; if(y<=0) return y; for(let i=1;i<YMAP.length;i++){ if(y<=YMAP[i][0]||i===YMAP.length-1){ const a=YMAP[i-1], b=YMAP[i]; return a[1]+(y-a[0])*(b[1]-a[1])/(b[0]-a[0]); } } return y; };
 const SPEED = 4.2;
 const EVENT_DIST = 0.85, NPC_DIST = 1.25, NPC_RADIUS = 0.55;
@@ -560,31 +662,45 @@ const rnd = (x,y,i) => { const v=Math.sin(x*127.1+y*311.7+i*74.7)*43758.5453; re
    # 圍牆  g 草地  . 白砂  P 石板路  W 池塘  b 石橋  S 花樹  L 石燈籠  f 花圃  J 神社
    H 屋頂  M 紙門牆  h 壁龕木地板  w 木廊  t 榻榻米  Z 矮桌  K 鳥居柱  k 鳥居中間 */
 const GRID = [
-  "####################",
-  "#ggHHHHHHHHHHHHHHgg#",
-  "#SgMDBBRhhhhVUUQMgS#",
-  "#ggMtCCtXttXeeeeMgg#",
-  "#ggMttttXTTXeeeeMgg#",
-  "#ggMttttttttttttMgg#",
-  "#ggMttZttttttZttMgg#",
-  "#ggMMMMMwwwwMMMMMgg#",
-  "#ggwwwwwwwwwwwwwwgg#",
-  "#gSggggL.PP.LggggSg#",
-  "#gggggg..PP..gggggg#",
-  "#gggggg..PP..gggggg#",
-  "#gWWbWW..PP..gffffg#",
-  "#gWWbWW..PP.Jgffffg#",
-  "#gWWbWW..PP..gffffg#",
-  "#gWWbWW..PP..gffffg#",
-  "#gWWbWW..PP..gggggg#",
-  "#gggggg..PP..gggggg#",
-  "#gggggg..PP..gggggg#",
-  "#gSggg..KkkK..gggSg#",
-  "#########PP#########"
+  "############################",
+  "#ggggggHHHHHHHHHHHHHHgggggg#",
+  "#SgggggMDBBRhhhhVUUQMgggggS#",
+  "#ggggggMtCCtXttXeeeeMgggggg#",
+  "#ggggggMttttXTTXeeeeMgggggg#",
+  "#ggggggMttttttttttttMgggggg#",
+  "#ggggggMttZttttttZttMgggggg#",
+  "#ggggggMMMMMwwwwMMMMMgggggg#",
+  "#gSggggwwwwwwwwwwwwwwggggSg#",
+  "#ggggggggggL.PP.Lgggggggggg#",
+  "#gggggggggg..PP..gggggggggg#",
+  "#gggppppppg..PP..gggggggggg#",
+  "#gggpYYYYpg..PP..gggggggggg#",
+  "#gggpYYYYpg..PP..gppppppggg#",
+  "#gggppppppg..PP..gpYYYYpggg#",
+  "#gggggggggg..PP..gpYYYYpggg#",
+  "#gggppppppg..PP..gppppppggg#",
+  "#gggpYYYYpg..PP..gggggggggg#",
+  "#gggpYYYYpg..PP..gggggggggg#",
+  "#gggppppppg..PP..Jggggggggg#",
+  "#gggggggggg..PP..gggggggggg#",
+  "#gggggggggg..PP..gggggggggg#",
+  "#ggWWWbWWWg..PP..ggffffffgg#",
+  "#ggWWWbWWWg..PP..ggffffffgg#",
+  "#ggWWWbWWWg..PP..ggffffffgg#",
+  "#ggWWWbWWWg..PP..ggffffffgg#",
+  "#SgWWWbWWW..KkkK..gffffffgS#",
+  "#ggggggggggg.PP.ggggggggggg#",
+  "#############PP#############"
 ];
-const SOLID = "#WSLHMKZfJBCDRUVQXT";
-const START = [9,20];
-const TREE = {"1,2":"pink","18,2":"orange","2,9":"blue","17,9":"pink","2,19":"orange","17,19":"blue"};
+const SOLID = "#WSLHMKZfJBCDRUVQXTY";
+/* 庭院的長桌（左上角格子座標＋端位在左或右）：每桌 4×2，木台 6×4，周圍坐 5 位小精靈 */
+const TABLES = [{x:5,y:12,end:-1}, {x:19,y:14,end:1}, {x:5,y:17,end:-1}];
+const SEATS = []; TABLES.forEach((t,ti)=>{ t.i=ti;   // x 可以是小數（0.5＝兩格中間）；fy＝小精靈腳底的像素高度（上排坐進桌後、下排坐在桌前，都貼近桌子）
+  [[t.x+.5,t.y-1,0,t.y*32+8],[t.x+2.5,t.y-1,0,t.y*32+8],[t.x+.5,t.y+2,1,(t.y+2)*32+16],[t.x+2.5,t.y+2,1,(t.y+2)*32+16],[t.end<0?t.x-1:t.x+4,t.y,2,t.y*32+30]].forEach(([x,y,k,fy])=>SEATS.push({x,y,t:ti,k,fy,sortY:k===2?t.y+1.6:(k===0?t.y-.95:t.y+2.1)})); });
+const SEATMAP = {}; SEATS.forEach(q=>SEATMAP[q.x+","+q.y]=q);
+const OCC = new Set();   // 有小精靈坐著的位子（擋路）
+const START = [13,28];
+const TREE = {"1,2":"pink","26,2":"orange","2,8":"blue","25,8":"pink","1,26":"orange","26,26":"blue"};
 const TREE_COL = {   // [葉色, 亮部, 暗部]：pink＝櫻、orange＝楓、blue／sky＝松
   pink:[N.sakura,N.sakuraLt,N.sakuraDk], orange:[N.maple,N.mapleLt,N.redDk], blue:[N.pine,N.pineLt,N.pineDk], sky:[N.pine,N.pineLt,N.pineDk]
 };
@@ -647,10 +763,10 @@ const HEAD = {"類型":"type","type":"type","名稱":"name","name":"name","x":"x
   "觸發遊戲":"game","game":"game",
   "圖片網址":"image","圖片":"image","image":"image","文字":"text","text":"text",
   "圖示網址":"icon","圖示":"icon","icon":"icon",
-  "圖示網址2":"icon2","圖示2":"icon2","icon2":"icon2"};
+  "圖示網址2":"icon2","圖示2":"icon2","icon2":"icon2","大小":"size","size":"size","演示網址":"preview","演示":"preview","preview":"preview","背影網址":"back","背影":"back","back":"back"};
 const TYPE = {"設定":"setting","setting":"setting","settings":"setting","參數":"param","param":"param",
   "角色":"player","player":"player","npc":"npc","人物":"npc","事件":"event","event":"event",
-  "配飾":"acc","acc":"acc","籤":"lot","lot":"lot","掉落物":"drop","drop":"drop","結局":"ending","ending":"ending"};
+  "小精靈":"spirit","spirit":"spirit","眼飾":"eye","頸飾":"neck","衣服":"cloth","配飾":"neck","acc":"neck","籤":"lot","lot":"lot","掉落物":"drop","drop":"drop","結局":"ending","ending":"ending","製作":"credit","製作名單":"credit","credit":"credit"};
 /* 觸發遊戲欄位可以填的名稱 */
 const GAMES = {"抽籤":"lot","lot":"lot","接接樂":"catch","接捧花":"catch","catch":"catch"};
 function rowsToData(rows){
@@ -663,7 +779,7 @@ function rowsToData(rows){
     o.type = TYPE[(o.type||"").toLowerCase()];
     if(!o.type) continue;
     o.x = parseFloat(o.x); o.y = parseFloat(o.y);
-    o.value = parseFloat(o.value); o.weight = parseFloat(o.weight);
+    o.value = parseFloat(o.value); o.weight = parseFloat(o.weight); o.sizeList=(o.size||"").split(/[／\/、,\s]+/).map(parseFloat).filter(n=>n>0); o.size = parseFloat(o.size);
     o.lose = parseFloat(o.lose) > 0;
     o.game = GAMES[(o.game||"").toLowerCase()] || "";
     out.push(o);
@@ -701,8 +817,8 @@ const mkSheet = (a,b) => a ? {a:loadImg(a), b:loadImg(b), off:Math.random()*10} 
    角色縮放（參數）：1＝原尺寸；小於 1＝縮小（每個新像素取覆蓋範圍內面積最大的顏色，盡量保留輪廓） */
 let SPK = 1;
 function scaledOf(sp){      // 依「角色縮放」把每一格縮小：每個新像素取它覆蓋範圍內「面積最大的顏色」（同面積取較深的，保留輪廓）
-  if(sp.sc!==undefined && sp.scK===SPK) return sp.sc;
-  const im=sp.a, w=im.naturalWidth, h=im.naturalHeight, n=Math.round(w/h), c=Math.max(8,Math.round(h*SPK)); sp.sc=null; sp.scK=SPK;
+  const K=sp.k||SPK; if(sp.sc!==undefined && sp.scK===K) return sp.sc;
+  const im=sp.a, w=im.naturalWidth, h=im.naturalHeight, n=Math.round(w/h), c=Math.max(8,Math.round(h*K)); sp.sc=null; sp.scK=K;
   try{
     const cv=document.createElement("canvas"); cv.width=w; cv.height=h; const g=cv.getContext("2d"); g.drawImage(im,0,0);
     const d=g.getImageData(0,0,w,h).data, o=document.createElement("canvas"); o.width=n*c; o.height=c; const og=o.getContext("2d"), od=og.createImageData(n*c,c), r=h/c;
@@ -729,15 +845,17 @@ function bboxOf(sp,src,n){      // 所有格子合起來「有顏色的範圍」
   }catch(_){}
   return sp[key];
 }
-function idleIdx(t,n){ const beat=Math.floor(t/.42)%12; return n>=3 ? (beat===10 ? 2 : beat%2) : beat%2; }   // 呼吸（0、1 交替）＋偶爾眨眼（第 3 格）
+let FORCE_FRAME=null;     // 選角畫面：照原圖 3 格一個循環
+function idleIdx(t,n){ const beat=Math.floor(t/.42)%6; return n>=3 ? (beat===4 ? 2 : beat%2) : beat%2; }   // 呼吸（0、1 交替）＋偶爾眨眼（第 3 格）
 function sheetFrame(sp,dir,walk,tm,bbIn){
   const A=sp&&sp.a; if(!ready(A)) return null;
   const W=A.naturalWidth, H=A.naturalHeight;
   if(W>=H*2 && W%H===0){                                  // 待機動畫條
-    const n=W/H, src=(SPK<1&&scaledOf(sp))||A, c=src===A?H:src.height, kk=c/H, t=(tm||0)+sp.off;
-    const i = tm<0 ? 0 : walk ? Math.floor(t/.16)%2 : idleIdx(t,n);
-    const bb=bbIn||bboxOf(sp,src,n), bw=bb.x1-bb.x0+1, bh=bb.y1-bb.y0+1;
-    return {im:src,sx:Math.min(i,n-1)*c+bb.x0,sy:bb.y0,w:bw,h:bh,strip:true,pad:0,bb};
+    const n=W/H, src=((sp.k||SPK)<1&&scaledOf(sp))||A, c=src===A?H:src.height, kk=c/H, t=(tm||0)+sp.off;
+    const i = FORCE_FRAME!=null ? Math.min(FORCE_FRAME,n-1) : tm<0 ? 0 : walk ? Math.floor(t/.16)%2 : idleIdx(t,n);
+    let bb=bbIn; if(!bb){ const o=bboxOf(sp,src,n), P=3; bb={x0:Math.max(0,o.x0-P),y0:Math.max(0,o.y0-P),x1:Math.min(c-1,o.x1+P),y1:Math.min(c-1,o.y1+P),dy:Math.min(c-1,o.y1+P)-o.y1}; }   // 四周多留 3 格，配飾稍微超出身體也不會被裁掉
+    const bw=bb.x1-bb.x0+1, bh=bb.y1-bb.y0+1;
+    return {im:src,sx:Math.min(i,n-1)*c+bb.x0,sy:bb.y0,w:bw,h:bh,strip:true,pad:bb.dy||0,bb};
   }
   if(W===64&&H===64){
     if(dir==="side"&&ready(sp.b)) return {im:sp.b,sx:walk?32:0,sy:0,w:32,h:32};
@@ -745,18 +863,20 @@ function sheetFrame(sp,dir,walk,tm,bbIn){
   }
   return {im:A,sx:0,sy:0,w:W,h:H};
 }
-function drawSheet(g,sp,dir,walk,cx,fy,face,acc,tm){      // 腳貼在 fy+1；acc＝配飾疊圖（同樣的排法）
+function drawSheet(g,sp,dir,walk,cx,fy,face,acc,tm,ff){      // 腳貼在 fy+1；acc＝配飾疊圖（同樣的排法）
   const f=sheetFrame(sp,dir,walk,tm); if(!f) return false;
-  const flip = (f.strip||!(dir==="side"||f.w!==32)) ? 1 : face, dy=f.strip?f.pad:0, bob=(f.strip&&walk&&Math.floor(((tm||0)+sp.off)/.16)%2)?-1:0;
+  const flip = ff ? ff : (f.strip||!(dir==="side"||f.w!==32)) ? 1 : face, dy=f.strip?f.pad:0, bob=(f.strip&&walk&&Math.floor(((tm||0)+sp.off)/.16)%2)?-1:0;
   g.save(); g.imageSmoothingEnabled=false; g.translate(cx,0); g.scale(flip,1);
   g.drawImage(f.im,f.sx,f.sy,f.w,f.h,-Math.round(f.w/2),fy+1-f.h+dy+bob,f.w,f.h);
-  const a=acc&&sheetFrame(acc,dir,walk,tm,f.strip?f.bb:undefined); if(a&&a.w===f.w) g.drawImage(a.im,a.sx,a.sy,a.w,a.h,-Math.round(a.w/2),fy+1-a.h+dy+bob,a.w,a.h);
+  for(const ac of (acc||[])){ const a=sheetFrame(ac,dir,walk,tm,f.strip?f.bb:undefined); if(a&&a.w===f.w) g.drawImage(a.im,a.sx,a.sy,a.w,a.h,-Math.round(a.w/2),fy+1-a.h+dy+bob,a.w,a.h); }
   g.restore(); return true;
 }
 
 /* ---------- 狀態 ---------- */
 let DATA=[], players=[], spots=[], player={x:9,y:12,img:null,sp:null,acc:null,dir:"down",face:1,moving:false,cat:0};
-let openSpot=null, paused=true, time=0, chosen=0, accs=[], chosenAcc=-1;
+let openSpot=null, paused=true, time=0, chosen=0;
+const SLOTS=[{k:"eye",n:"眼飾"},{k:"neck",n:"頸飾"},{k:"cloth",n:"衣服"}];    // 配飾三個欄位；疊圖順序：衣服 → 頸飾 → 眼飾
+let accs={eye:[],neck:[],cloth:[]}, chosenAcc={eye:-1,neck:-1,cloth:-1}, curSlot="eye";
 const seenSet=new Set();
 const keys={up:false,down:false,left:false,right:false};
 
@@ -765,7 +885,7 @@ function paramNum(name,def){ const r=DATA.find(d=>d.type==="param"&&d.name===nam
 function paramText(name,def){ const r=DATA.find(d=>d.type==="param"&&d.name===name); return r&&r.text? r.text : def; }
 
 const at=(x,y)=> (y>=0&&y<ROWS&&x>=0&&x<COLS)? GRID[y][x] : "#";
-const isBlocked=(tx,ty)=> SOLID.includes(at(tx,ty));
+const isBlocked=(tx,ty)=> SOLID.includes(at(tx,ty)) || OCC.has(tx+","+ty);
 function freeNear(x,y){
   const rx=Math.round(x), ry=Math.round(y);
   if(!isBlocked(rx,ry)) return [x,y];
@@ -782,13 +902,13 @@ function freeNear(x,y){
 function buildWorld(){
   const ch = players[chosen] || {};
   SPK = Math.max(.3,Math.min(1,paramNum("角色縮放",1))); player.cat = chosen; player.sp = mkSheet(ch.icon,ch.icon2); player.img = player.sp ? player.sp.a : null; player.dir = "down";
-  { const ac = chosenAcc>=0 && accs[chosenAcc]; player.acc = ac ? (ac._sp || (ac._sp = mkSheet(ac.icon,ac.icon2))) : null; }
+  player.acc = accLayers();
   player.x=START[0]; player.y=START[1]; player.face=1; player.moving=false;
-  if(isFinite(ch.x)&&isFinite(ch.y)){ [player.x,player.y]=freeNear(ch.x,yShift(ch.y)); }
+  if(isFinite(ch.x)&&isFinite(ch.y)){ [player.x,player.y]=freeNear(ch.x+XSHIFT,yShift(ch.y)); }
 
   let npcIdx=0;
   spots = DATA.filter(d=>(d.type==="event"||d.type==="npc") && isFinite(d.x) && isFinite(d.y)).map((d0,i)=>{
-    const d = {...d0, y:yShift(d0.y)};
+    const d = {...d0, x:d0.x+XSHIFT, y:yShift(d0.y)};
     const isNpc = d.type==="npc";
     // 事件點放在擋路的格子上（例如神社）時照原位置放，只要旁邊有能走的格子、玩家走得到；其他情況才自動挪開
     const rx=Math.round(d.x), ry=Math.round(d.y);
@@ -803,7 +923,7 @@ function buildWorld(){
       seen: seenSet.has(d.type+"|"+d.name)
     };
   });
-  updateFound(); snapCam();
+  buildSpirits(); buildRunners(); updateFound(); snapCam();
   openSpot = spots.find(s=>Math.hypot(player.x-s.x,player.y-s.y)<s.dist) || null;
 }
 function updateFound(){}
@@ -1301,13 +1421,14 @@ function flower32(g,x,y,px,py){          // 整齊的花圃：木框、一排一
 }
 /* ---- 32 格的樹、鳥居、石燈籠、神社、橋 ---- */
 function fillTri(g,c,pts){ P(g,c,pts); }
-function mkTreeSprite(kind,seed){
-  const col=TREE_COL[kind];
+function mkTreeSprite(kind,seed,part){      // part："trunk"＝樹影＋樹幹（不動）、"crown"＝樹冠（會搖）
+  const col=TREE_COL[kind], TR=part!=="crown", CR=part!=="trunk";
   return mk(72,96,g=>{
     g.translate(0,16); const cx=36, by=74;
-    E(g,N.grassDk,cx,by,15,4); E(g,N.grass,cx-1,by-1,12,3);                                  // 樹影
+    if(TR){ E(g,N.grassDk,cx,by,15,4); E(g,N.grass,cx-1,by-1,12,3); }                                  // 樹影
     if(kind==="blue"||kind==="sky"){
-      R(g,N.dark,cx-4,by-14,8,14); R(g,N.trunk,cx-3,by-14,5,14); R(g,N.woodLt,cx-3,by-14,1,13);
+      if(TR){ R(g,N.dark,cx-4,by-14,8,14); R(g,N.trunk,cx-3,by-14,5,14); R(g,N.woodLt,cx-3,by-14,1,13); }
+      if(!CR) return;
       const tiers=[[8,34,10],[24,24,15],[40,16,20],[56,8,24]];       // [頂 y, 底 y, 半寬] 由上到下
       tiers.forEach(([ty,by2,hw],i)=>{
         const top=[cx,ty-6+i*0], b=ty+ [20,22,24,26][i];
@@ -1323,9 +1444,10 @@ function mkTreeSprite(kind,seed){
       });
       R(g,N.white,cx-1,2,2,2);
     } else {
-      R(g,N.dark,cx-5,by-38,10,38); R(g,N.trunk,cx-4,by-38,7,38); R(g,N.woodLt,cx-4,by-36,1,34); R(g,N.dark,cx+3,by-36,1,36);
+      if(TR){ R(g,N.dark,cx-5,by-38,10,38); R(g,N.trunk,cx-4,by-38,7,38); R(g,N.woodLt,cx-4,by-36,1,34); R(g,N.dark,cx+3,by-36,1,36);
       R(g,N.dark,cx-8,by-3,16,3); R(g,N.trunk,cx-7,by-3,14,2);                         // 樹根
-      R(g,N.dark,cx-10,by-30,6,2); R(g,N.trunk,cx-9,by-31,5,2); R(g,N.dark,cx+5,by-33,7,2); R(g,N.trunk,cx+5,by-34,6,2);   // 樹枝
+      R(g,N.dark,cx-10,by-30,6,2); R(g,N.trunk,cx-9,by-31,5,2); R(g,N.dark,cx+5,by-33,7,2); R(g,N.trunk,cx+5,by-34,6,2); }   // 樹枝
+      if(!CR) return;
       const blobs=[[-17,22,12],[17,22,12],[0,12,15],[-9,6,11],[10,6,11],[0,28,13],[-20,12,9],[20,12,9],[0,0,10]];
       blobs.forEach(([dx,y,r])=>D(g,col[2],cx+dx,y+1,r+1));
       blobs.forEach(([dx,y,r])=>D(g,col[0],cx+dx,y,r));
@@ -1343,10 +1465,18 @@ function mkTreeSprite(kind,seed){
   });
 }
 function drawTree32(g,x,y,t){
-  const kind=TREE[x+","+y]||"pink", key="tree"+kind+x+"_"+y;
-  const sp=SPR[key]||(SPR[key]=mkTreeSprite(kind,x*7+y*3));
-  const sw=reduceMotion()?0:ri(Math.sin(t*1.2+x)*.8);
-  g.drawImage(sp,x*32+16-36+sw,y*32+30-74-16);
+  const kind=TREE[x+","+y]||"pink", key="tree"+kind+x+"_"+y, seed=x*7+y*3;
+  const tk=SPR[key+"t"]||(SPR[key+"t"]=mkTreeSprite(kind,seed,"trunk")), cr=SPR[key+"c"]||(SPR[key+"c"]=mkTreeSprite(kind,seed,"crown"));
+  const ox=x*32+16-36, oy=y*32+30-74-16;
+  g.drawImage(tk,ox,oy);
+  /* 樹冠：每 3 像素高切一條，越高擺得越多（最多 ±2 像素），整棵像被風吹彎；
+     風力用 3 個關鍵姿勢（左、正、右）之間慢慢過渡，所以中間會有好幾個過場畫面，葉子動、樹幹不動 */
+  const pine=(kind==="blue"||kind==="sky"), top=pine?4:2, bot=pine?84:62, amp=pine?1.6:2.2;
+  const ph=t*(Math.PI*2/3.2)+x*1.3+y*.7, w=reduceMotion()?0:(Math.sin(ph)+.35*Math.sin(ph*2.3+1));
+  for(let r=top;r<bot;r+=3){
+    const k=1-(r-top)/(bot-top), dx=ri(w*amp*k*k+0);
+    g.drawImage(cr,0,r,72,3,ox+dx,oy+r,72,3);
+  }
 }
 /* 鳥居：四格寬、兩根柱子，用像素一層層畫 */
 function torii32(g,x,y,px,py,ch){
@@ -1426,6 +1556,7 @@ function tile(g,x,y,t){
     case "H": roof32(g,x,y,px,py); break;
     case "M": if(isSideWall(x,y)) wallSide32(g,x,y,px,py); else shoji32(g,x,y,px,py); break;
     case "w": wood32porch(g,x,y,px,py,N.wood,N.woodLt); break;
+    case "p": case "Y": deck32(g,x,y,px,py); break;
     case "K": case "k": torii32(g,x,y,px,py,ch); break;
     case "L": lantern32(g,x,y,px,py,t); break;
     case "Z": case "T": case "B": case "C": case "D": case "R": case "V": case "U": case "Q": case "X": case "h": case "t": case "e":
@@ -1444,7 +1575,7 @@ function cup(g,x,y,body,dk,tea){ R(g,dk,x,y+1,8,7); R(g,body,x+1,y+1,6,6); R(g,N
 function furnTile(g,x,y,px,py,ch,t){
   const L=at(x-1,y)!==ch;
   if(ch==="Z"){ tatami32(g,x,y,px,py); shadowRow(g,N.tatamiDk,px+5,py+27,24); tableTop(g,px+3,py+8,26,18);
-    if(x<10){ cup(g,px+6,py+11,N.waterLt,N.waterDk,N.tea); cup(g,px+17,py+11,N.mapleLt,N.maple,N.tea); }
+    if(x<14){ cup(g,px+6,py+11,N.waterLt,N.waterDk,N.tea); cup(g,px+17,py+11,N.mapleLt,N.maple,N.tea); }
     else {                                       // 攤開的書本
       R(g,N.woodDk,px+5,py+9,22,15); R(g,N.redDk,px+4,py+10,24,14);                       // 書皮
       R(g,N.paper,px+5,py+10,10,12); R(g,N.paper,px+17,py+10,10,12); R(g,N.plasterDk,px+15,py+10,2,12);   // 左右兩頁、書脊
@@ -1511,9 +1642,9 @@ function furnTile(g,x,y,px,py,ch,t){
     if(at(x,y-1)!=="X"){ R(g,N.woodDk,px+11,py,10,3); R(g,N.wood,px+12,py+1,8,1); }                                     // 上端的橫木
     if(at(x,y+1)!=="X"){ R(g,N.woodDk,px+11,py+S-4,10,4); R(g,N.wood,px+12,py+S-3,8,1); } }
   else if(ch==="h"){ wood32(g,x,y,px,py,N.woodLt,N.woodPale);
-    if(x===8){ R(g,N.woodDk,px,py,4,32); R(g,N.wood,px+1,py,2,32); R(g,N.woodLt,px+1,py,1,32); }
-    if(x===11){ R(g,N.woodDk,px+28,py,4,32); R(g,N.wood,px+29,py,2,32); R(g,N.woodLt,px+29,py,1,32); }
-    if(x===8||x===11){
+    if(x===12){ R(g,N.woodDk,px,py,4,32); R(g,N.wood,px+1,py,2,32); R(g,N.woodLt,px+1,py,1,32); }
+    if(x===15){ R(g,N.woodDk,px+28,py,4,32); R(g,N.wood,px+29,py,2,32); R(g,N.woodLt,px+29,py,1,32); }
+    if(x===12||x===15){
       R(g,N.waterDk,px+11,py+18,10,11); R(g,N.waterLt,px+12,py+18,3,11); R(g,N.waterDk,px+13,py+14,6,4); R(g,N.white,px+13,py+20,1,4);
       R(g,N.trunk,px+15,py+7,2,8); R(g,N.trunk,px+10,py+5,2,5); R(g,N.trunk,px+20,py+7,2,4); R(g,N.trunk,px+12,py+9,3,1);
       D(g,N.sakura,px+11,py+5,3); D(g,N.sakuraLt,px+21,py+6,2); D(g,N.sakuraDk,px+16,py+9,2); D(g,N.sakuraLt,px+12,py+4,1); D(g,N.sakura,px+18,py+4,2);
@@ -1527,7 +1658,7 @@ function heart32(c,d,l){ return mk(22,20,g=>{
   R(g,l,4,3,3,2); R(g,l,3,5,2,2); }); }
 const HEARTS={a:heart32("#e8798a","#b84a62","#fde3e6"), b:heart32("#c3cdf5","#8a96d8","#eaf4fb")};
 function drawSpot32(s){
-  if(s.kind==="npc") return; const g=ctx, cx=ri(s.x*32+16), cy=ri(s.y*32+16), bob=reduceMotion()?0:ri(Math.sin(time*3+s.id)*2), p=reduceMotion()?0:(Math.sin(time*3+s.id)>0?1:0);
+  if(s.kind==="npc"||s.kind==="spirit") return; const g=ctx, cx=ri(s.x*32+16), cy=ri(s.y*32+16), bob=reduceMotion()?0:ri(Math.sin(time*3+s.id)*2), p=reduceMotion()?0:(Math.sin(time*3+s.id)>0?1:0);
   if(!s.seen) ringDots32(g,cx,cy+8,12+p*2,5+p,10,N.gold); else ringDots32(g,cx,cy+8,12,5,8,"#c3cdf5");
   if(ready(s.sprite)){ const w=s.sprite.naturalWidth, h=s.sprite.naturalHeight; g.save(); g.imageSmoothingEnabled=false; g.globalAlpha=s.seen?.65:1; g.drawImage(s.sprite,cx-ri(w/2),cy-h+6+bob,w,h); g.restore(); }
   else g.drawImage(s.seen?HEARTS.b:HEARTS.a,cx-11,cy-18+bob);
@@ -1604,9 +1735,18 @@ function drawDecor32(d){
     R(g,N.sakura,px-8,py-15,2,2); R(g,N.sakura,px+9,py-10,2,2); R(g,N.sakuraLt,px,py-22,2,2); R(g,N.white,px+5,py-18,1,1);
   }
 }
-function shadowAt32(g,cx,fy,rx,ry){
-  const ch=at(Math.floor(cx/32),Math.floor((fy-1)/32));
-  const col=ch==="t"||ch==="Z"||ch==="T"?N.tatamiDk:ch==="w"||ch==="h"||ch==="b"?N.woodDk:ch==="g"||ch==="f"||ch==="S"?N.grassDk:ch==="W"?N.waterDk:N.gravelDk;
+const GROUND_SHADOW=ch=>ch==="t"||ch==="Z"||ch==="T"?N.tatamiDk:ch==="w"||ch==="h"||ch==="b"||ch==="p"||ch==="Y"?N.woodDk:ch==="g"||ch==="f"||ch==="S"?N.grassDk:ch==="W"?N.waterDk:ch==="P"?N.stoneDk:N.gravelDk;
+const hex2rgb=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)), rgb2hex=c=>"#"+c.map(v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,"0")).join("");
+function spriteTint(sp){      // 角色的主色（只算一次）：取第一格裡不透明像素的平均色
+  if(!sp||!ready(sp.a)) return null; if(sp.tint!==undefined) return sp.tint; sp.tint=null;
+  try{ const H=sp.a.naturalHeight, cv=document.createElement("canvas"); cv.width=H; cv.height=H; const x=cv.getContext("2d"); x.drawImage(sp.a,0,0,H,H,0,0,H,H);
+    const d=x.getImageData(0,0,H,H).data; let r=0,gg=0,b=0,n=0; for(let i=0;i<d.length;i+=4) if(d[i+3]>128){ r+=d[i]; gg+=d[i+1]; b+=d[i+2]; n++; }
+    if(n) sp.tint=[r/n,gg/n,b/n]; }catch(_){ }
+  return sp.tint;
+}
+function shadowAt32(g,cx,fy,rx,ry,sp){      // 影子＝腳下地面的深一階顏色，再稍微染上角色本身的顏色；橢圓
+  let col=GROUND_SHADOW(at(Math.floor(cx/32),Math.floor((fy-1)/32)));
+  const t=spriteTint(sp); if(t){ const c=hex2rgb(col); col=rgb2hex(c.map((v,i)=>v*.78+t[i]*.22*.7)); }
   E(g,col,cx,fy-1,rx,ry);
 }
 
@@ -1653,20 +1793,357 @@ function personPix(k,fr){ const robe=ROBES[k%ROBES.length], hair=HAIRS[k%2], ski
     R(g,C.pink,cx-8,22,3,1); R(g,C.pink,cx+5,22,3,1); R(g,C.pinkDeep,cx-1,23,2,1);
   }); }
 const personSp=k=>SPR["pp"+k]||(SPR["pp"+k]=personPix(k));
-const BUB32=mk(26,22,g=>{ RR(g,"#f4a0aa",1,0,24,16); RR(g,"#fffdfb",2,1,22,14); P(g,"#f4a0aa",[[10,15],[16,15],[13,21]]); P(g,"#fffdfb",[[11,14],[15,14],[13,19]]);
-  for(const dx of [7,12,17]) R(g,"#e8798a",dx,7,2,2); });
+const BUB32=mk(26,22,g=>{ RR(g,"#8e95c4",1,0,24,16); RR(g,"#fffdfb",2,1,22,14); P(g,"#8e95c4",[[10,15],[16,15],[13,21]]); P(g,"#fffdfb",[[11,14],[15,14],[13,19]]);
+  for(const dx of [7,12,17]) R(g,"#3e4478",dx,7,2,2); });
+/* ---- 庭院的木台、長桌、座墊、坐著的小精靈 ---- */
+const CUSH=[[N.sakura,N.sakuraDk],[N.waterLt,N.waterDk],[N.mapleLt,N.maple]];
+function deck32(g,x,y,px,py){
+  const isD=(a,b)=>{ const c=at(a,b); return c==="p"||c==="Y"; };
+  grass32(g,x,y,px,py);
+  R(g,N.woodPale,px,py,32,32);
+  for(let i=0;i<4;i++){ R(g,N.woodLt,px,py+i*8+7,32,1); }
+  for(let i=0;i<5;i++){ const r1=rnd(x,y,300+i), r2=rnd(x,y,320+i); R(g,N.woodLt,px+ri(r1*28)+1,py+ri(r2*3)*8+3,3,1); }
+  if(!isD(x,y-1)) R(g,N.woodLt,px,py,32,1);
+  if(!isD(x-1,y)) R(g,N.woodDk,px,py,1,32);
+  if(!isD(x+1,y)) R(g,N.woodDk,px+31,py,1,32);
+  if(!isD(x,y+1)){ R(g,N.wood,px,py+26,32,4); R(g,N.woodLt,px,py+26,32,1); R(g,N.woodDk,px,py+30,32,2); R(g,N.grassDk,px,py+32-1,32,1); }
+}
+function drawTable32(g,t){
+  const x0=t.x*32+2, y0=t.y*32+3, w=124, h=58;
+  R(g,N.woodDk,x0+3,y0+h-4,4,6); R(g,N.woodDk,x0+w-7,y0+h-4,4,6);                 // 桌腳
+  tableTop(g,x0,y0,w,h);
+  R(g,N.paper,x0+8,y0+21,w-16,11); R(g,N.sakura,x0+8,y0+21,w-16,1); R(g,N.sakura,x0+8,y0+31,w-16,1);   // 桌旗
+  for(let i=0;i<4;i++){                                                              // 茶杯與點心盤
+    const bx=x0+14+i*29, k=(t.i+i)%3;
+    cup(g,bx,y0+6,CUSH[k][0],CUSH[k][1],N.tea);
+    const px=bx+4, py=y0+36;
+    R(g,N.stoneLt,px-6,py,13,5); R(g,N.white,px-5,py,11,3);
+    D(g,N.sakura,px-3,py-1,2); D(g,N.white,px,py-1,2); D(g,N.leaf,px+3,py-1,2);
+  }
+}
+let SPIRITS=[];
+function buildSpirits(){
+  SPIRITS=[]; OCC.clear();
+  const sp=DATA.filter(d=>d.type==="spirit");
+  if(!sp.length) return;
+  const sizeOf=d=>isFinite(d.size)&&d.size>0? d.size : 48;
+  const isStand=d=>isFinite(d.x)&&isFinite(d.y);
+  const seatedSp=sp.filter(d=>!isStand(d));
+  /* 每一桌：每個「種類×大小」都至少坐一位（大小欄填「48／32」代表兩種大小都有），不夠 5 位就輪流補；每桌坐的位置不一樣 */
+  const V=[]; for(let si=0;si<4;si++) seatedSp.forEach(d=>{ const L=d.sizeList&&d.sizeList.length?d.sizeList:[48]; if(L[si]) V.push({d,size:L[si]}); });
+  const plan=[];
+  TABLES.forEach((tb,t)=>{
+    const seats=SEATS.filter(q=>q.t===t), m=seats.length;
+    const mine=[];
+    for(let j=0;j<m&&V.length;j++){
+      const v = j<V.length ? V[j] : V[(t+j-V.length)%V.length];
+      mine.push({v, q:seats[m===5?(2*j+3*t)%5:j%m], talk:j===(t+1)%m});
+    }
+    if(t===1){ const A=mine.find(e=>e.q===seats[1]), B=mine.find(e=>e.q===seats[3]); if(A&&B){ const tmp=A.v; A.v=B.v; B.v=tmp; } }   // 右邊那桌：右側一排（隔著桌子面對面）的兩位對調
+    const sw=(a,b)=>{ const A=mine.find(e=>e.q===seats[a]), B=mine.find(e=>e.q===seats[b]); if(A&&B){ const tmp=A.v; A.v=B.v; B.v=tmp; } };   // 座位：0 上左 1 上右 2 下左 3 下右 4 側邊
+    if(t===0){ sw(0,2); sw(1,3); }                          // 左上桌：上排和下排互換（正面／背影跟著座位走）
+    if(t===1){ sw(0,1); sw(2,3); }                          // 右桌：上排兩位互換、下排兩位互換
+    if(t===2){ const E=mine.find(e=>e.q===seats[4]); if(E){ const o=V.find(x=>x.size===E.v.size&&x.d!==E.v.d&&/ゆ$/.test(x.d.name)); if(o) E.v=o; } }   // 左下桌：側邊那位改成 02（粉髮）
+    plan.push(...mine);
+  });
+  const mkOne=(d,o)=>{
+    const sh=mkSheet(d.icon,d.icon2), size=sizeOf(d); if(sh) sh.k=Math.min(1,size/48);
+    const bk=d.back?mkSheet(d.back):null; if(bk) bk.k=sh?sh.k:1;
+    const s={back:bk, id:SPIRITS.length, name:d.name, text:d.text, sheet:sh, robe:SPIRITS.length, size, flip:/あおちみご/.test(d.name||""), nextB:time+Math.random()*6, b:null, ...o};
+    SPIRITS.push(s); return s;
+  };
+  plan.forEach(({v,q,talk})=>{
+    const d=v.d, size=v.size;
+    const s=mkOne({...d,size},{x:q.x, y:q.y, fy:q.fy+(q.k===0&&size>32?4:0), t:q.t, sortY:q.sortY, seated:true, row:q.k});
+    OCC.add(Math.floor(q.x)+","+q.y); OCC.add(Math.ceil(q.x)+","+q.y);
+    if(d.text && talk) addSpiritSpot(s);             // 每一桌都有 1 位可以對話
+  });
+  sp.filter(isStand).forEach(d=>{
+    const s=mkOne(d,{x:d.x, y:d.y, fy:ri(d.y*32+28), t:0, sortY:d.y+.05, seated:false});
+    OCC.add(Math.floor(d.x)+","+Math.round(d.y)); OCC.add(Math.ceil(d.x)+","+Math.round(d.y));
+    if(d.text) addSpiritSpot(s);                     // 單獨站著的那隻一定可以對話
+  });
+}
+function addSpiritSpot(s){
+  s.spot={id:200+s.id, kind:"spirit", key:"spirit|"+s.name+"|"+s.id, name:s.name||"小精靈", x:s.x, y:s.y, text:s.text, popup:"", game:"", lot:null, sprite:null, sheet:null, robe:0, dist:1.5, seen:seenSet.has("spirit|"+s.name+"|"+s.id)};
+  spots.push(s.spot);
+}
+/* ---------- 庭院草地上互相追逐的兩隻（32 大小）：ちびちみご 追 ちびちみゆ ---------- */
+let RUN=[], WALK=null, RS={}, FXP=[];
+function walkGrid(){
+  if(WALK) return WALK; WALK=[];
+  for(let y=0;y<ROWS;y++){ WALK[y]=[]; for(let x=0;x<COLS;x++) WALK[y][x]= y>=10&&y<=26&&x>=1&&x<=26&&"g.P".includes(GRID[y][x]); }
+  return WALK;
+}
+const rt=v=>Math.round(v), okTile=(x,y)=>{ const W=walkGrid(), tx=rt(x), ty=rt(y); return !!(W[ty]&&W[ty][tx]); };
+function bfsPath(sx,sy,gx,gy){
+  const W=walkGrid(), key=(x,y)=>y*COLS+x, prev=new Map(), q=[[sx,sy]]; prev.set(key(sx,sy),null);
+  while(q.length){ const [x,y]=q.shift(); if(x===gx&&y===gy) break;
+    for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){ const nx=x+dx, ny=y+dy; if(!W[ny]||!W[ny][nx]||prev.has(key(nx,ny))) continue; prev.set(key(nx,ny),[x,y]); q.push([nx,ny]); } }
+  if(!prev.has(key(gx,gy))) return [];
+  const out=[]; let c=[gx,gy]; while(c){ out.push(c); c=prev.get(key(c[0],c[1])); } return out.reverse();
+}
+function clearLine(x0,y0,x1,y1){ const n=Math.ceil(Math.hypot(x1-x0,y1-y0)/.25); for(let i=1;i<=n;i++){ if(!okTile(x0+(x1-x0)*i/n,y0+(y1-y0)*i/n)) return false; } return true; }
+function setPath(r,gx,gy){       // 找路，再把拐彎拉直（看得到就直接跑過去）
+  const raw=bfsPath(rt(r.x),rt(r.y),gx,gy); let pts=raw.slice(1), out=[], cx=r.x, cy=r.y, i=0;
+  while(i<pts.length){ let j=pts.length-1; while(j>i&&!clearLine(cx,cy,pts[j][0],pts[j][1])) j--; out.push(pts[j]); cx=pts[j][0]; cy=pts[j][1]; i=j+1; }
+  r.path=out;
+}
+function randGrass(minFrom){
+  const W=walkGrid(), c=[]; for(let y=10;y<=26;y++) for(let x=1;x<=26;x++) if(W[y][x]&&GRID[y][x]==="g") c.push([x,y]);
+  for(let k=0;k<30;k++){ const t=c[Math.floor(Math.random()*c.length)]; if(!minFrom||minFrom.every(([fx,fy,d])=>Math.hypot(t[0]-fx,t[1]-fy)>=d)) return t; }
+  return c[Math.floor(Math.random()*c.length)];
+}
+function buildRunners(){
+  RUN=[]; const sp=DATA.filter(d=>d.type==="spirit"&&!(isFinite(d.x)&&isFinite(d.y))&&d.size===32);
+  const chase=sp.find(d=>/ご$/.test(d.name)), flee=sp.find(d=>/ゆ$/.test(d.name)); if(!chase||!flee) return;
+  const mk=(d,spd,start)=>{ const sh=mkSheet(d.icon,d.icon2); if(sh) sh.k=32/48; const bk=d.back?mkSheet(d.back):null; if(bk) bk.k=32/48;
+    return {sheet:sh,back:bk,x:start[0],y:start[1],path:[],spd,dir:"down",t:0,wait:0,boost:0,tint:null,b:null,nextCry:1+Math.random()*2,size:32,hop:0,cheer:0}; };
+  const f0=randGrass(), c0=randGrass([[f0[0],f0[1],9]]);
+  const F=mk(flee,3.0,f0), C=mk(chase,3.4,c0); F.role="flee"; C.role="chase"; RUN=[C,F];
+  C.words=["ち！","ちみ！","ち！ち！"]; C.f0=760; C.mi=false; F.words=["み！","みー！","みみ！"]; F.f0=940; F.mi=true;
+  for(const r of RUN){ r.tripCd=12+Math.random()*14; r.trip=0; r.lying=false; r.fx=1; r.tapCd=0; }
+  RS={ci:0,catches:0,swapAt:3,mode:"run",mt:0,st:0,grace:0,lookCd:7,orbitCd:20,still:0,reactCd:0,hide:null,hideCd:15,ht:0};
+}
+function stepRun(r,dt){
+  if(r.wait>0){ r.wait-=dt; r.moving=false; return; }
+  const sp=r.spd*(r.boost>0?1.25:1); if(r.boost>0) r.boost-=dt;
+  let left=sp*dt; r.moving=false;
+  while(left>0&&r.path.length){ const [tx,ty]=r.path[0], dx=tx-r.x, dy=ty-r.y, d=Math.hypot(dx,dy);
+    if(d<=left){ r.x=tx; r.y=ty; r.path.shift(); left-=d; }
+    else { r.x+=dx/d*left; r.y+=dy/d*left; left=0; }
+    if(d>1e-4){ r.vx=dx/d; r.vy=dy/d; r.moving=true; } }
+  if(r.moving) r.dir = (r.vy<-.35&&Math.abs(r.vy)>=Math.abs(r.vx)*.8)?"up":"down";
+}
+function runnerCry(r,txt,f0,forceMi){ if(r.b&&time-r.b.t0<1.0) return; say(r,txt); cry(r.x,r.y,txt,f0,"chi",forceMi); tableHear(r); }
+function say(r,txt){ r.b={t0:time,txt}; }
+/* ---------- 小特效：愛心、花瓣（世界座標，畫在放大後的畫面上） ---------- */
+function burst(x,y,nh,np){      // x,y＝格子座標；從身體高度冒出來
+  const wx=x*T+T/2, wy=(y*32+12)*1.5;
+  for(let i=0;i<nh;i++) FXP.push({k:"h",x:wx+(Math.random()-.5)*20,y:wy,vx:(Math.random()-.5)*26,vy:-(34+Math.random()*26),t:0,life:1.1+Math.random()*.5});
+  for(let i=0;i<np;i++) FXP.push({k:"p",x:wx,y:wy-6,vx:(Math.random()-.5)*90,vy:-(30+Math.random()*50),t:0,life:1.0+Math.random()*.6,r:Math.random()*6,c:Math.random()<.6?N.sakura:N.white});
+}
+function fxStep(dt){ for(let i=FXP.length-1;i>=0;i--){ const q=FXP[i]; q.t+=dt;
+    if(q.k==="s"){ const u=Math.min(1,q.t/q.life), ex=player.x*T+T/2, ey=(player.y*32+10)*1.5; q.x=q.x0+(ex-q.x0)*u; q.y=q.y0+(ey-q.y0)*u-Math.sin(u*Math.PI)*34; if(q.t>q.life){ FXP.splice(i,1); burst(player.x,player.y-.1,5,3); if($("musicChk").checked&&audioCtx()) voiceSyl("mi",actx.currentTime+.01,980,true,.5,0,false); } continue; } q.x+=q.vx*dt; q.y+=q.vy*dt; q.vy+= (q.k==="p"?90:-6)*dt; q.vx*=.99; if(q.t>q.life) FXP.splice(i,1); } }
+function drawFx(){
+  const g=mctx, u=Math.max(2,Math.round(view.gpE*1.4));
+  for(const q of FXP){ const [sx,sy]=toScreen(q.x,q.y), a=Math.max(0,Math.min(1,(q.life-q.t)/.4)); g.globalAlpha=a;
+    if(q.k==="s"){ g.globalAlpha=1; const px=u; [[N.sakuraDk,-3],[N.white,0],[N.leaf,3]].forEach(([c,o])=>{ g.fillStyle=c; g.fillRect(Math.round(sx+o*px-px),Math.round(sy-px),px*2,px*2); }); g.fillStyle=N.woodLt; g.fillRect(Math.round(sx-4*px),Math.round(sy),px*8,Math.max(1,Math.round(px*.5))); continue; }
+    if(q.k==="h"){ const px=u, X=Math.round(sx-2.5*px), Y=Math.round(sy-2*px); g.fillStyle=C.pinkDeep;
+      [[1,0],[3,0],[0,1],[1,1],[2,1],[3,1],[4,1],[0,2],[1,2],[2,2],[3,2],[4,2],[1,3],[2,3],[3,3],[2,4]].forEach(([i,j])=>g.fillRect(X+i*px,Y+j*px,px,px)); g.fillStyle="#fff"; g.fillRect(X+px,Y+px,px,px); }
+    else { g.save(); g.translate(sx,sy); g.rotate(q.r+q.t*5); g.fillStyle=q.c; g.beginPath(); g.ellipse(0,0,u*1.3,u*.8,0,0,6.3); g.fill(); g.restore(); } }
+  g.globalAlpha=1;
+}
+/* ---------- 追逐的狀態機 ---------- */
+let HIDES=null;
+function hideSpots(){ if(HIDES) return HIDES; HIDES=[]; for(const tr of TREES){ if(okTile(tr.x,tr.y-1)&&okTile(tr.x,tr.y-2)) HIDES.push({x:tr.x,y:tr.y-.9}); } return HIDES; }
+function farGrass(C,F){ let g=null; for(let k=0;k<14;k++){ const q=randGrass([[F.x,F.y,4]]); if(Math.hypot(q[0]-C.x,q[1]-C.y)>Math.hypot(q[0]-F.x,q[1]-F.y)+1){ g=q; break; } } return g||randGrass([[C.x,C.y,7]]); }
+function faceEach(a,b){ a.fx=b.x>a.x?-1:1; b.fx=a.x>b.x?-1:1; }
+function endCheer(C,F){
+  RS.mode="run"; RS.grace=7; RS.catches++; C.cheer=F.cheer=0; C.hop=F.hop=0;
+  if(RS.catches>=RS.swapAt){ RS.catches=0; RS.swapAt=2+Math.floor(Math.random()*3); RS.ci=1-RS.ci;      // 換你追
+    const nc=RUN[RS.ci], nf=RUN[1-RS.ci]; say(nc,"こんどは！"); say(nf,"わー！"); burst(nc.x,nc.y,3,2); }
+  const nF=RUN[1-RS.ci], nC=RUN[RS.ci];
+  nC.path=[]; nC.wait=1.2; nF.boost=2.2; nF.tire=0; nF.t=9; nC.t=9; const g=farGrass(nC,nF); setPath(nF,g[0],g[1]);
+}
+function updateRunners(dt){
+  fxStep(dt); if(RUN.length<2) return;
+  const C=RUN[RS.ci], F=RUN[1-RS.ci]; C.t+=dt; F.t+=dt;
+  for(const r of RUN){ if(r.b&&time-r.b.t0>=2.1) r.b=null; r.hop=r.tapHop?Math.abs(Math.sin(Math.min(1,r.tapHop)*Math.PI*2))*7:0; if(r.tapHop>0) r.tapHop-=dt*2.2; r.tapCd-=dt; r.lying=false; }
+  RS.grace-=dt; RS.lookCd-=dt; RS.orbitCd-=dt; RS.hideCd-=dt; RS.reactCd-=dt;
+  RS.still=player.moving?0:RS.still+dt; RS.chaseCd=(RS.chaseCd||0)-dt;
+  const dist=Math.hypot(C.x-F.x,C.y-F.y), pd=Math.min(Math.hypot(C.x-player.x,C.y-player.y),Math.hypot(F.x-player.x,F.y-player.y));
+  const chorus=(n)=>{ if($("musicChk").checked&&audioCtx()){ const {vol,pan}=distVol(C.x,C.y); if(vol>.02) for(let i=0;i<n;i++){ voiceSyl("mi",actx.currentTime+.01+i*.2,760+i*70,true,vol,pan,false); voiceSyl("mi",actx.currentTime+.11+i*.2,940+i*70,true,vol*.85,pan,false); } } };
+  const hp=(a,b,t)=>Math.abs(Math.sin((t-a)/(b-a)*Math.PI))*9;
+  // ① 抓到了：先一隻跳一下（ち！）→ 換另一隻跳一下（み！）→ 一起連跳兩下（ちみ！）→ 被抓的跑開
+  if(RS.mode==="cheer"){
+    RS.mt+=dt; const t=RS.mt; C.moving=F.moving=false; C.cheer=F.cheer=1;
+    if(t<.45){ C.hop=hp(0,.45,t); if(RS.st<1){ RS.st=1; runnerCry(C,"ち！",760,false); C.b={t0:time,txt:"ち！"}; } }
+    else if(t<.9){ F.hop=hp(.45,.9,t); if(RS.st<2){ RS.st=2; F.b={t0:time,txt:"み！"}; cry(F.x,F.y,"み！",940,"mi",true); } }
+    else if(t<1.7){ C.hop=F.hop=hp(.9,1.3,t>1.3?t-.4:t); if(RS.st<3){ RS.st=3; C.b={t0:time,txt:"ちみ！"}; F.b={t0:time,txt:"ちみ！"}; chorus(2); burst(F.x,F.y,5,5); } }
+    else endCheer(C,F);
+    return;
+  }
+  // ② 玩家靠近：兩隻停下來轉頭看你，冒「ち？」「み？」
+  if(RS.mode==="look"){
+    RS.mt+=dt; C.moving=F.moving=false; C.fx=C.x>player.x?1:-1; F.fx=F.x>player.x?1:-1;
+    if(RS.mt>1.7){ RS.mode="run"; C.t=F.t=9; }
+    return;
+  }
+  // ⑥ 玩家站著不動：兩隻繞著你跑一圈
+  if(RS.mode==="orbit"){
+    RS.mt+=dt; if(player.moving||RS.mt>14){ RS.mode="run"; RS.grace=1.2; C.path=[]; F.path=[]; C.t=F.t=9; return; }
+    if(!C.path.length&&!F.path.length){ RS.mode="joy"; RS.mt=0; RS.st=0; C.path=[]; F.path=[]; say(C,"ちみー！"); say(F,"みー！"); burst(player.x,player.y-.2,6,4); chorus(2); return; }
+    C.nextCry-=dt; F.nextCry-=dt;
+    if(C.nextCry<=0){ C.nextCry=1.4+Math.random()*1.4; runnerCry(C,C.words[Math.floor(Math.random()*3)],C.f0,C.mi); }
+    if(F.nextCry<=0){ F.nextCry=1.2+Math.random()*1.4; runnerCry(F,F.words[Math.floor(Math.random()*3)],F.f0,F.mi); }
+    stepRun(C,dt); stepRun(F,dt); return;
+  }
+  if(RS.mode==="joy"){ RS.mt+=dt; C.moving=F.moving=false; C.hop=F.hop=hp(0,.4,RS.mt%.8<.4?RS.mt%.8:RS.mt%.8-.4+0); if(RS.mt>.9){ RS.mode="run"; RS.grace=2; RS.orbitCd=45; C.t=F.t=9; F.path=[]; const g=farGrass(C,F); setPath(F,g[0],g[1]); } return; }
+  // ⑤ 躲到樹後：逃的躲在樹冠後面一下，追的東張西望；時間到再「みっ！」跳出來
+  if(RS.mode==="hide"){
+    const H=RS.hide; RS.mt+=dt;
+    if(RS.st===0){ if(!F.path.length){ RS.st=1; RS.ht=2.6; F.moving=false; F.hidden=true; } }
+    else { RS.ht-=dt; F.moving=false; if(RS.ht<=0){ F.hidden=false; say(F,"みっ！"); cry(F.x,F.y,"みっ！",980,"mi",true); F.tapHop=1; F.boost=1.6; RS.mode="run"; RS.hideCd=28+Math.random()*15; RS.grace=1; const g=farGrass(C,F); F.path=[]; setPath(F,g[0],g[1]); C.t=9; return; } }
+    // 追的在樹附近亂找
+    if(!C.path.length||C.t>2.4){ C.t=0; const q=randGrass([[H.x,H.y,3]]); const a=Math.atan2(q[1]-H.y,q[0]-H.x), r=3.5+Math.random()*2, gx=Math.round(H.x+Math.cos(a)*r), gy=Math.round(H.y+Math.sin(a)*r); if(okTile(gx,gy)) setPath(C,gx,gy); else setPath(C,q[0],q[1]); if(Math.random()<.5) runnerCry(C,"ち？",760,false); }
+    C.spd=2.4; stepRun(C,dt); if(RS.st===0) stepRun(F,dt);
+    if(Math.hypot(C.x-F.x,C.y-F.y)<1.0){ F.hidden=false; RS.mode="cheer"; RS.mt=0; RS.st=0; C.path=[]; F.path=[]; faceEach(C,F); }
+    return;
+  }
+  // ③ 一般追逐
+  if(dist<1.0&&RS.grace<=0){ RS.mode="cheer"; RS.mt=0; RS.st=0; C.path=[]; F.path=[]; C.wait=F.wait=0; faceEach(C,F); return; }
+  RS.pchase=(player.moving&&pd<4.5)?(RS.pchase||0)+dt:Math.max(0,(RS.pchase||0)-dt*1.5);
+  if(RS.grace<=0&&RS.chaseCd<=0&&RS.pchase>2.5&&!(C.trip>0)&&!(F.trip>0)){ RS.pchase=0; RS.chaseCd=9; RS.mode="look"; RS.mt=0; C.path=[]; F.path=[]; say(C,"ち？"); say(F,"み？"); cry(C.x,C.y,"ち？",780,"chi",false); setTimeout(()=>cry(F.x,F.y,"み？",960,"mi",true),260); return; }
+  if(RS.grace<=0&&RS.lookCd<=0&&pd<3.4&&!(C.trip>0)&&!(F.trip>0)){ RS.mode="look"; RS.mt=0; RS.lookCd=16+Math.random()*10; C.path=[]; F.path=[]; say(C,"ち？"); say(F,"み？"); cry(C.x,C.y,"ち？",780,"chi",false); setTimeout(()=>cry(F.x,F.y,"み？",960,"mi",true),260); return; }
+  if(RS.grace<=0&&RS.orbitCd<=0&&RS.still>2&&!(C.trip>0)&&!(F.trip>0)&&okTile(player.x,player.y)&&Math.hypot(C.x-player.x,C.y-player.y)<22&&Math.hypot(F.x-player.x,F.y-player.y)<22){
+    let pts=null; for(const R of [2.4,2,1.6]){ const q=[]; for(let i=0;i<14;i++){ const a=i/14*Math.PI*2; q.push([player.x+Math.cos(a)*R,player.y+.2+Math.sin(a)*R]); } if(q.every(([x,y])=>okTile(x,y))){ pts=q; break; } }
+    if(pts){ const near=r=>{ let bi=0,bd=1e9; pts.forEach(([x,y],i)=>{ const d=Math.hypot(x-r.x,y-r.y); if(d<bd){ bd=d; bi=i; } }); return bi; };
+      const iF=near(F), iC=(iF+12)%14, lap=i0=>{ const o=[]; for(let k=0;k<15;k++) o.push(pts[(i0+k)%14]); return o; };
+      for(const [r,i0] of [[F,iF],[C,iC]]){ setPath(r,rt(pts[i0][0]),rt(pts[i0][1])); r.path=[...r.path,...lap(i0)]; r.spd=3.1; }
+      RS.mode="orbit"; RS.mt=0; say(C,"ちみー♪"); say(F,"みー♪"); return; }
+    RS.orbitCd=4;
+  }
+  // 逃的：換目標（偶爾躲到樹後）
+  if(!F.path.length||dist<1.8&&F.t>.7){ F.t=0;
+    const hs=hideSpots(); const cand=RS.hideCd<=0&&dist>4.5?hs.filter(h=>Math.hypot(h.x-F.x,h.y-F.y)<9&&Math.hypot(h.x-C.x,h.y-C.y)>5):[];
+    if(cand.length&&Math.random()<.5){ const h=cand[Math.floor(Math.random()*cand.length)]; setPath(F,rt(h.x),rt(h.y)); F.path.push([h.x,h.y]); RS.mode="hide"; RS.hide=h; RS.mt=0; RS.st=0; C.path=[]; return; }
+    const g=farGrass(C,F); setPath(F,g[0],g[1]); }
+  // 追的：每 0.2 秒重新鎖定對方
+  if(C.t>.2){ C.t=0; if(clearLine(C.x,C.y,F.x,F.y)) C.path=[[F.x,F.y]]; else setPath(C,rt(F.x),rt(F.y)); }
+  F.tire=dist<4?Math.min(5,(F.tire||0)+dt):Math.max(0,(F.tire||0)-dt*.5); F.spd=3.1*(1-Math.min(.14,F.tire*.03)); C.spd=RS.grace>0?2.6:3.35;
+  C.nextCry-=dt; F.nextCry-=dt;
+  if(C.nextCry<=0){ C.nextCry=1.1+Math.random()*1.6; runnerCry(C,C.words[Math.floor(Math.random()*3)],C.f0,C.mi); }
+  if(F.nextCry<=0){ F.nextCry=(dist<5?.9:1.8)+Math.random()*1.3; runnerCry(F,F.words[Math.floor(Math.random()*3)],F.f0,F.mi); }
+  // ⑤ 絆倒：偶爾摔一跤（原地趴下 1 秒），摔倒的那隻就會被追上或讓對方跑遠
+  for(const r of RUN){
+    r.tripCd-=dt;
+    if(r.trip>0){ r.trip-=dt; const e=3.5-r.trip; r.moving=false; if(e<.25) r.hop=Math.sin(e/.25*Math.PI)*6; else if(e<3.2) r.lying=true; else r.hop=Math.sin((e-3.2)/.3*Math.PI)*4; if(r.trip<=0){ r.trip=0; r.tripCd=14+Math.random()*16; r.tapHop=.5; say(r,"むー！"); } }
+    else if(r.tripCd<=0&&r.moving&&RS.grace<=0&&!(RUN[0].trip>0||RUN[1].trip>0)){ const o=RUN[0]===r?RUN[1]:RUN[0]; o.tripCd=Math.max(o.tripCd,7+Math.random()*8); r.trip=3.5; r.path=[]; say(r,"わっ！"); cry(r.x,r.y,"わっ！",880,"mi",true); setTimeout(()=>{ if(r.trip>0) say(r,"いてて…"); },700); }
+  }
+  if(!(C.trip>0)) stepRun(C,dt); else C.moving=false;
+  if(!(F.trip>0)) stepRun(F,dt); else F.moving=false;
+  // ④ 桌邊反應：跑過桌邊，坐著的小精靈會冒「ち！」
+  if(RS.reactCd<=0){ for(const sp of SPIRITS){ if(!sp.seated||sp.b||(sp.rcd||0)>time) continue; if(Math.min(Math.hypot(sp.x-C.x,sp.y-C.y),Math.hypot(sp.x-F.x,sp.y-F.y))<2.2 && Math.hypot(sp.x-player.x,sp.y-player.y)<14){ const t=Math.random()<.7?"ち！":"ちー！"; sp.b={t0:time,txt:t}; sp.rcd=time+9; spiritCry(sp,t); RS.reactCd=1.3; break; } } }
+}
+function runnerTap(cx,cy){      // ③ 點小精靈：冒愛心＋花瓣
+  for(const r of RUN){ if(r.hidden||r.lying&&0) continue; const [sx,sy]=toScreen(r.x*T+T/2,(r.y*32+28-14)*1.5);
+    if(Math.hypot(cx-sx,cy-sy)<20*view.gpE+8 && r.tapCd<=0){ r.tapCd=.7; r.tapHop=1; burst(r.x,r.y,4,5); const t=r.mi?"みっ♡":"ち♡"; say(r,t); cry(r.x,r.y,r.mi?"みっ！":"ち！",r.f0*1.1,"chi",r.mi); return true; } }
+  return false;
+}
+cv.addEventListener("pointerdown",e=>{ if(paused) return; const b=cv.getBoundingClientRect(); if(!runnerTap(e.clientX-b.left,e.clientY-b.top)) spiritTap(e.clientX-b.left,e.clientY-b.top); });
+function drawRunner32(g,r){
+  const cx=ri(r.x*32+16), fy0=ri(r.y*32+28), fy=fy0-ri(r.hop||0);
+  shadowAt32(g,cx,fy0+1,ri(32*.3)+2,ri(32*.08)+2,r.sheet);
+  const sh=(r.dir==="up"&&r.back&&ready(r.back.a))?r.back:r.sheet;
+  if(r.moving&&Math.abs(r.vx)>.15) r.fx=r.vx>0?-1:1;      // 原圖朝左；往右跑就水平翻轉
+  if(!sh) return;
+  if(r.lying){ const py=fy-12; g.save(); g.translate(cx,py); g.rotate(r.fx===-1?Math.PI/2:-Math.PI/2); g.translate(-cx,-py); drawSheet(g,sh,"down",0,cx,fy,1,null,time,r.fx||1); g.restore(); }
+  else drawSheet(g,sh,"down",(r.moving||r.cheer>0)?1:0,cx,fy,1,null,time+(r.role==="flee"?.3:0),r.fx||1);
+}
+function drawSpirit32(g,s){
+  const cx0=ri(s.x*32+16), hopY=s.pat>0?Math.round(Math.sin((1-s.pat/.3)*Math.PI)*3):0, fy=s.fy-hopY, jit=s.shake>0?((Math.floor(time*30)%2)?1:-1):0, cx=cx0+jit;
+  if(s.seated){ const c=CUSH[(s.t+s.id)%3], cy=s.fy-3; R(g,N.woodDk,cx0-9,cy+3,18,1); R(g,c[1],cx0-9,cy-3,18,6); R(g,c[0],cx0-8,cy-3,16,5); R(g,N.white,cx0-2,cy-2,3,1); }
+  if(s.gone){                                         // 把位子讓給玩家了：站在座位旁邊陪著
+    const so=s.standOff||{dx:0,dy:1.9}, scx=cx0+Math.round(so.dx*32), sfy=s.fy+Math.round(so.dy*32)-hopY;
+    shadowAt32(g,scx,sfy+2,ri(s.size*.3)+3,ri(s.size*.08)+2,s.sheet);
+    if(s.sheet) drawSheet(g,s.sheet,"down",0,scx,sfy,1,null,time+s.id*0.53,so.dx<0?-1:1);
+    return; }
+  shadowAt32(g,cx,s.fy+2,ri(s.size*.3)+3,ri(s.size*.08)+2,s.sheet);
+  const lk=s.look&&time>=s.look.t0&&time-s.look.t0<s.look.dur;      // 轉頭看：背對的也轉過來給你看正面
+  const useSh=(!lk&&s.row===1&&s.back&&ready(s.back.a))?s.back:s.sheet;      // 坐在桌子下緣（面向桌子）的看到的是背影
+  const ffl=lk?(s.look.tx>s.x?-1:1):((s.row===2&&TABLES[s.t]&&TABLES[s.t].end<0)||(s.row===1&&TABLES[s.t]&&s.x===TABLES[s.t].x+.5)||(!s.seated&&s.flip)?-1:1);     // 桌子左端的座位面向右 → 翻轉
+  if(!(useSh&&drawSheet(g,useSh,"down",0,cx,fy,1,null,time+s.id*0.53,ffl))) g.drawImage(personSp(s.robe),cx-17,fy-47);
+  if(s.spot && !s.spot.seen){ const bob=reduceMotion()?0:ri(Math.sin(time*3+s.id)*1.2); g.drawImage(BUB32,cx-13,fy-s.size-26+bob); }
+}
+/* ---------- 桌邊小精靈的互動：轉頭看、噎到被拍背、舉杯、請你吃點心、讓座、整桌探頭 ---------- */
+let TEV=[], TS=[], sitT=0, sitCd=20;
+const tableSp=ti=>SPIRITS.filter(q=>q.seated&&q.t===ti);
+const later=(d,fn)=>TEV.push({at:time+d,fn});
+function sayS(sp,txt){ sp.b={t0:time,txt}; spiritCry(sp,txt); }
+function lookAt(sp,tx,dur){ sp.look={t0:time,dur,tx}; sp.pat=.2; }
+function tableLook(ti,tx,first){      // 整桌一個接一個轉頭看過去
+  const t=TS[ti]; if(!t||t.busy>time||t.lookCd>time) return false; const l=tableSp(ti).filter(q=>!q.gone).sort((p,q)=>Math.abs(p.x-tx)-Math.abs(q.x-tx));
+  l.forEach((q,i)=>later(i*.9,()=>{ lookAt(q,tx,3.4); if(i===0&&first) sayS(q,first); })); t.lookCd=time+26; t.busy=time+l.length*.9+3.6; return true;
+}
+function tableChoke(ti){
+  const t=TS[ti], l=tableSp(ti).filter(q=>!q.gone); if(l.length<2) return; const c=l[Math.floor(Math.random()*l.length)];
+  const n=l.filter(q=>q!==c).sort((p,q)=>Math.hypot(p.x-c.x,p.y-c.y)-Math.hypot(q.x-c.x,q.y-c.y))[0]; t.busy=time+4.6;
+  c.shake=2.6; sayS(c,["ち…！？","み…！？"][Math.floor(Math.random()*2)]);
+  later(1.0,()=>{ n.pat=.3; sayS(n,"ち！"); }); later(1.7,()=>{ n.pat=.3; sayS(n,"み！"); }); later(2.4,()=>{ n.pat=.3; sayS(n,"ち！"); });
+  later(2.7,()=>{ c.shake=0; c.pat=.3; sayS(c,"ぷはっ♡"); burst(c.x,c.y-.8,3,0); });
+}
+function tableCheers(ti){
+  const t=TS[ti], l=tableSp(ti).filter(q=>!q.gone); if(!l.length) return; t.busy=time+3;
+  [0,.55,1.1].forEach((d,i)=>later(d,()=>{ l.forEach((q,j)=>{ q.pat=.3; if(!q.gone){ q.b={t0:time,txt:["み！","み！","みー！！"][i]}; setTimeout(()=>cry(q.x,q.y,"み！",(q.size>40?620:860)+i*90+j*18,"mi",true),j*35); } }); }));
+  later(1.2,()=>{ const T0=TABLES[ti]; burst(T0.x+2,T0.y+.6,4,6); });
+}
+function tableHear(src){      // 追逐的叫聲／跑過：附近的整桌一起探頭
+  for(let ti=0;ti<TABLES.length;ti++){ const l=tableSp(ti); if(l.length&&Math.min(...l.map(q=>Math.hypot(q.x-src.x,q.y-src.y)))<8 && Math.hypot(TABLES[ti].x-player.x,TABLES[ti].y-player.y)<16) tableLook(ti,src.x,"ち？"); }
+}
+function spiritTap(cx,cy){      // ① 點桌邊小精靈：把點心遞給你吃
+  let best=null,bd=1e9; for(const q of SPIRITS){ if(!q.seated||q.gone) continue; const [sx,sy]=toScreen(q.x*T+T/2,(q.fy-q.size*.45)*1.5), d=Math.hypot(cx-sx,cy-sy); if(d<(q.size*.5+4)*view.gpE&&d<bd){ best=q; bd=d; } }
+  if(!best||(best.tapCd||0)>time||Math.hypot(best.x-player.x,best.y-player.y)>9) return false;
+  best.tapCd=time+2.5; best.pat=.3; sayS(best,Math.random()<.5?"ちみ♡":"どうぞ♪");
+  FXP.push({k:"s",x:best.x*T+T/2,y:(best.fy-best.size*.5)*1.5,x0:best.x*T+T/2,y0:(best.fy-best.size*.5)*1.5,t:0,life:.8,vx:0,vy:0});
+  return true;
+}
+function updateTables(dt){
+  if(!TS.length) for(let i=0;i<TABLES.length;i++) TS[i]={busy:0,lookCd:time+4,chokeCd:time+25+Math.random()*25,cheerCd:time+35+Math.random()*30};
+  for(let i=TEV.length-1;i>=0;i--){ if(time>=TEV[i].at){ const e=TEV.splice(i,1)[0]; try{ e.fn(); }catch(_){ } } }
+  for(const q of SPIRITS){ if(q.pat>0) q.pat-=dt; if(q.shake>0) q.shake-=dt; }
+  for(let ti=0;ti<TS.length;ti++){ const t=TS[ti], l=tableSp(ti); if(!l.length||t.busy>time) continue;
+    const near=Math.min(...l.map(q=>Math.hypot(q.x-player.x,q.y-player.y)));
+    if(player.sit) continue;
+    if(near<3.2&&t.lookCd<time){ tableLook(ti,player.x,"ち？"); continue; }      // ② 玩家走近：輪流轉頭看你
+    if(near<16&&t.chokeCd<time){ t.chokeCd=time+45+Math.random()*40; tableChoke(ti); continue; }      // ③
+    if(near<16&&t.cheerCd<time){ t.cheerCd=time+50+Math.random()*40; tableCheers(ti); } }     // ④
+  // ⑤ 在桌邊站很久：把位子讓給你
+  if(player.sit){ sitT=0; return; }
+  sitCd-=dt; let ns=null,nd=1e9; for(const q of SPIRITS){ if(!q.seated||q.gone) continue; const d=Math.hypot(q.x-player.x,q.y-player.y); if(d<nd){ nd=d; ns=q; } }
+  if(player.moving||!ns||nd>1.9||sitCd>0) sitT=0; else { sitT+=dt; if(sitT>5){ sitT=0; const q=ns; q.pat=.3; sayS(q,"どうぞ♪"); later(1.1,()=>{ if(player.moving||paused) return; player.sit={s:q,px:player.x,py:player.y}; q.gone=true; q.standOff=q.row===0?{dx:0,dy:-1.9}:q.row===1?{dx:0,dy:1.9}:{dx:TABLES[q.t].end<0?-1.6:1.6,dy:0}; burst(q.x,q.y-.6,4,3); player.x=q.x; player.y=q.y; player.moving=false; }); sitCd=3; } }
+}
+function standUp(){ const st=player.sit; if(!st) return; player.sit=null; player.x=st.px; player.y=st.py; st.s.gone=false; st.s.pat=.3; sayS(st.s,"おかえり♡"); sitCd=40; }
+/* ---------- 小精靈的對話泡泡（ち／み！）：彈出 → 停一下 → 淡出，同時最多 3 個，離玩家太遠不冒 ---------- */
+function updateBubbles(){
+  if(!SPIRITS.length) return;
+  const words=paramText("小精靈泡泡","ちみ／ち／み！").split(/[／\/]/).map(x=>x.trim()).filter(Boolean); if(!words.length) return;
+  let active=0; for(const s of SPIRITS){ if(s.b&&time-s.b.t0>=2.1) s.b=null; if(s.b) active++; }
+  for(const s of SPIRITS){
+    if(s.b||time<s.nextB) continue;
+    s.nextB=time+10+Math.random()*16;
+    if(active<3 && Math.hypot(s.x-player.x,s.y-player.y)<13){ const txt=words[Math.floor(Math.random()*words.length)]; s.b={t0:time,txt}; active++; spiritCry(s,txt); }
+  }
+}
+function drawBubbles(){
+  const g=mctx; g.font="700 15px "+PIXFONT(); g.textAlign="center"; g.textBaseline="middle";
+  for(const s of [...SPIRITS,...RUN]){
+    if(!s.b) continue;
+    const age=time-s.b.t0, [sx,sy0]=toScreen(s.x*T+T/2,((s.fy!=null?s.fy:ri(s.y*32+28))-(s.size||32)-8-(s.hop||0))*1.5);
+    const sc = age<.18 ? .2+1.0*(age/.18) : age<.3 ? 1.2-.2*((age-.18)/.12) : 1;
+    const fade = age>1.6 ? Math.max(0,1-(age-1.6)/.5) : 1, rise = age>1.6 ? (age-1.6)*14 : 0;
+    const w=Math.ceil(g.measureText(s.b.txt).width)+20, h=26, sy=sy0-rise;
+    g.save(); g.globalAlpha=fade; g.translate(sx,sy); g.scale(sc,sc);
+    g.shadowColor="rgba(44,48,86,.22)"; g.shadowBlur=6; g.shadowOffsetY=2;
+    g.fillStyle=C.white; g.beginPath(); g.roundRect(-w/2,-h-6,w,h,h/2); g.fill();
+    g.beginPath(); g.moveTo(-5,-7); g.lineTo(5,-7); g.lineTo(0,0); g.closePath(); g.fill();
+    g.shadowColor="transparent"; g.strokeStyle="#8e95c4"; g.lineWidth=1.5; g.beginPath(); g.roundRect(-w/2,-h-6,w,h,h/2); g.stroke();
+    g.fillStyle=C.ink; g.fillText(s.b.txt,0,-h/2-6+1);
+    g.restore();
+  }
+}
 function drawNpc32(g,s){
   const cx=ri(s.x*32+16), fy=ri(s.y*32+28), bob=reduceMotion()?0:ri(Math.sin(time*3+s.id)*1.2);
-  shadowAt32(g,cx,fy+1,10,3);
+  shadowAt32(g,cx,fy+1,10,3,s.sheet);
   if(!(s.sheet&&drawSheet(g,s.sheet,"down",0,cx,fy,1,null,time))) g.drawImage(personSp(s.robe),cx-17,fy-47);
   if(!s.seen) g.drawImage(BUB32,cx-13,fy-70+bob);
 }
 function drawPlayer32(g){
-  const cx=ri(player.x*32+16), fy=ri(player.y*32+28), fr=player.moving?(Math.floor(time*8)%2):0, bob=(player.moving&&fr)?-1:0;
-  shadowAt32(g,cx,fy+1,11,3);
-  if(player.sp && ready(player.sp.a)) drawSheet(g,player.sp,player.dir,player.moving?(Math.floor(time*6)%2):0,cx,fy,player.face,player.acc,time);
-  else { g.save(); g.translate(cx,0); g.scale(player.face,1); g.drawImage(catSp(player.cat,fr),-20,fy-37+bob);
-    const a=player.acc&&sheetFrame(player.acc,"side",0); if(a&&a.w===32){ g.imageSmoothingEnabled=false; g.drawImage(a.im,a.sx,a.sy,32,32,-16,fy+1-32+bob,32,32); } g.restore(); }
+  const sit=player.sit, cx=ri(player.x*32+16), fy=sit?sit.s.fy:ri(player.y*32+28), fr=player.moving?(Math.floor(time*8)%2):0, bob=(player.moving&&fr)?-1:0;
+  if(sit){ const c=CUSH[(sit.s.t+sit.s.id)%3], cy=fy-3; R(g,N.woodDk,cx-9,cy+3,18,1); R(g,c[1],cx-9,cy-3,18,6); R(g,c[0],cx-8,cy-3,16,5); R(g,N.white,cx-2,cy-2,3,1); }
+  shadowAt32(g,cx,fy+1,11,3,player.sp);
+  if(player.sp && ready(player.sp.a)) drawSheet(g,player.sp,sit?(sit.s.row===1?"up":"down"):player.dir,player.moving?(Math.floor(time*6)%2):0,cx,fy,player.face,player.acc,time,(!sit&&player.dir==="side")?(player.face>0?-1:1):0);
+  else { g.save(); g.translate(cx,0); g.scale(player.face,1); g.drawImage(catSp(player.cat,fr),-20,fy-37+bob); g.restore(); }
 }
 function flowerbedFull(g,x,y){
   let w=0,h=0; while(at(x+w,y)==="f") w++; while(at(x,y+h)==="f") h++;
@@ -1678,20 +2155,27 @@ function flowerbedFull(g,x,y){
   const sx=px+7, sy=py+7, sw=W-14, sh=H-14;
   R(g,N.woodDk,sx-1,sy-1,sw+2,sh+2); R(g,N.soil,sx,sy,sw,sh); R(g,"#5f4733",sx,sy,sw,3);
   for(const [cx2,cy2] of [[0,0],[sw-7,0],[0,sh-7],[sw-7,sh-7]]){ R(g,N.woodDk,sx+cx2-1,sy+cy2-1,9,9); R(g,N.woodLt,sx+cx2,sy+cy2,7,7); R(g,N.wood,sx+cx2+1,sy+cy2+2,6,5); }   // 四角的木樁
-  const FC=[[N.sakuraDk,N.sakura,N.sakuraLt],["#5f86d6","#8fb4ef","#d3e3fb"],["#e08a3c","#f2a65a","#fbd2a6"],["#d9d4c6",N.white,N.paper]];   // 粉、藍、橘、白
-  const rows=Math.floor((sh-6)/14), cols=Math.floor((sw-6)/14), per=Math.max(1,Math.floor(rows/4));
-  for(let r=0;r<rows;r++){
-    const col=FC[Math.min(3,Math.floor(r*4/rows))], cy=sy+10+r*14;
-    for(let i=sx+4;i<sx+sw-4;i+=2) if(ph(i,cy,7)<.5) R(g,"#6a4d38",i,cy+7,1,1);
-    for(let c=0;c<cols;c++){ const cx=sx+10+c*14;
-      R(g,N.leafDk,cx-1,cy+3,2,6); R(g,N.leaf,cx-4,cy+5,4,2); R(g,N.leafDk,cx-4,cy+6,2,1); R(g,N.leaf,cx+1,cy+6,4,2);
-      R(g,col[0],cx-3,cy-2,7,5); R(g,col[0],cx-2,cy-3,5,7);                    // 花瓣（暗）
-      R(g,col[1],cx-3,cy-3,6,5); R(g,col[1],cx-4,cy-1,8,3); R(g,col[2],cx-3,cy-3,2,1);
-      R(g,N.goldLt,cx-1,cy-1,2,2); R(g,N.gold,cx-1,cy,2,1);
+  for(let r=0;r<8;r++){ const cy=sy+12+r*16; for(let i=sx+4;i<sx+sw-4;i+=2) if(ph(i,cy,7)<.5) R(g,"#6a4d38",i,cy+10,1,1); }   // 土裡的小石子
+  for(const [mx,my] of [[sx+3,sy+sh-4],[sx+sw-7,sy+sh-4]]){ R(g,N.stoneLt,mx,my,3,2); R(g,N.stoneDk,mx,my+1,3,1); }
+}
+const FLOWERBEDS=[]; for(let y=0;y<ROWS;y++) for(let x=0;x<COLS;x++) if(GRID[y][x]==="f"&&GRID[y][x-1]!=="f"&&(y===0||GRID[y-1][x]!=="f")){ let w=0,h=0; while(GRID[y][x+w]==="f") w++; while(GRID[y+h]&&GRID[y+h][x]==="f") h++; FLOWERBEDS.push({x,y,w,h}); }
+const FC=[["#d9d4c6",N.white,N.paper],[N.sakuraDk,N.sakura,N.sakuraLt],["#5f86d6","#8fb4ef","#d3e3fb"],["#e08a3c","#f2a65a","#fbd2a6"]];   // 由上到下：白、粉、藍、橘（各兩排）
+function drawFlowers32(g,t){
+  for(const B of FLOWERBEDS){
+    const px=B.x*32, py=B.y*32, W=B.w*32, H=B.h*32, sx=px+7, sy=py+7, sw=W-14, cols=Math.floor((sw-6)/14);
+    for(let r=0;r<8;r++){
+      const col=FC[r>>1], cy=sy+12+r*16;
+      for(let c=0;c<cols;c++){ const cx=sx+10+c*14;
+        const sw2=reduceMotion()?0:Math.sin(t*1.7+c*.55+r*.35+B.x), o=ri(sw2*1.4), o2=ri(sw2*.7);
+        R(g,N.leafDk,cx-1,cy+4,2,6); R(g,N.leaf,cx-4,cy+6,4,2); R(g,N.leafDk,cx-4,cy+7,2,1); R(g,N.leaf,cx+1,cy+7,4,2);   // 莖與葉（不動）
+        R(g,N.leafDk,cx-1+o2,cy+2,2,2);                                                                                        // 上半莖跟著擺
+        R(g,col[0],cx-3+o,cy-2,7,5); R(g,col[0],cx-2+o,cy-3,5,7);
+        R(g,col[1],cx-3+o,cy-3,6,5); R(g,col[1],cx-4+o,cy-1,8,3); R(g,col[2],cx-3+o,cy-3,2,1);
+        R(g,N.goldLt,cx-1+o,cy-1,2,2); R(g,N.gold,cx-1+o,cy,2,1);
+      }
     }
   }
 }
-
 let BASE=null; const ANIMC=[];
 for(let y=0;y<ROWS;y++) for(let x=0;x<COLS;x++){ const c=GRID[y][x]; if("LTU".includes(c)) ANIMC.push([x,y]); }
 function drawBase(g,t){
@@ -1842,7 +2326,7 @@ function paw(g,px,py,col,dir){            // 貓咪腳印（dir：u 上、r 右�
 }
 const PAWCOL=ch=>({w:N.woodDk,h:N.woodDk,t:N.tatamiDk,Z:N.tatamiDk,H:N.roofLt,M:N.woodDk,g:N.grassDk,".":N.gravelDk,P:N.stoneDk}[ch]||N.woodDk);
 function drawSpot(s){          // 只畫愛心（NPC 在別的地方用平滑畫法畫）
-  if(s.kind==="npc") return;
+  if(s.kind==="npc"||s.kind==="spirit") return;
   const g=ctx, cx=ri(s.x*LT+LT/2), cy=ri(s.y*LT+LT/2), bob=reduceMotion()?0:ri(Math.sin(time*3+s.id));
   const p=reduceMotion()?0:(Math.sin(time*3+s.id)>0?1:0);
   if(!s.seen){ ringDots(g,cx,cy+4,6+p,3+p,8,N.gold); }
@@ -1855,30 +2339,42 @@ function drawSpot(s){          // 只畫愛心（NPC 在別的地方用平滑畫
 function ringDots(g,cx,cy,rx,ry,n,col){ for(let i=0;i<n;i++){ const a=i*Math.PI*2/n+(reduceMotion()?0:time*.9); R(g,col,cx+ri(Math.cos(a)*rx),cy+ri(Math.sin(a)*ry),1,1); } }
 /* ---------- 純裝飾（不能互動、不擋路；位置用格子座標） ---------- */
 const DECOR = [
-  {k:"koi", cx:4.0, cy:14.0, rx:1.7, ry:0.85, sp:0.55, ph:0, col:N.white, pc:N.sakuraDk},
-  {k:"koi", cx:4.2, cy:14.3, rx:1.4, ry:0.7, sp:-0.7, ph:2.5, col:N.sakura, pc:N.white},
-  {k:"ema", x:11.0, y:14.9},
-  {k:"flag", x:6.6, y:19.2, col:N.indigo, dk:N.indigoDk},
-  {k:"flag", x:13.4, y:19.2, col:N.red, dk:N.redDk},
-  {k:"cushion", x:5.0, y:6.0, col:N.crimson, dk:N.redDk},
-  {k:"cushion", x:14.0, y:6.0, col:N.indigo, dk:N.indigoDk},
-  {k:"sleepcat", x:14.0, y:6.0, cat:3},
-  {k:"sleepcat", x:5.5, y:3.25, cat:0},
-  {k:"bonsai", x:2.2, y:7.3},
-  {k:"bonsai", x:17.3, y:7.3},
-  {k:"pot", x:3.5, y:8.45},
-  {k:"pot", x:15.6, y:8.45},
-  {k:"furin", x:6.2, y:7.9},
-  {k:"bowl", x:13.7, y:8.45},
-  {k:"yarn", x:14.6, y:8.55},
-  {k:"shoes", x:8.7, y:8.5},
-  {k:"pot", x:13.2, y:17.2},
-  {k:"pot", x:6.2, y:17.2},
-  {k:"bonsai", x:16.2, y:17.0},
-  {k:"bonsai", x:2.8, y:17.2},
-  {k:"paw", x:8.3, y:1.55, dir:"r"},{k:"paw", x:9.0, y:1.3, dir:"r"},{k:"paw", x:9.7, y:1.55, dir:"r"},{k:"paw", x:10.4, y:1.3, dir:"r"},{k:"paw", x:11.1, y:1.55, dir:"r"},
-  {k:"paw", x:4.1, y:8.35, dir:"r"},{k:"paw", x:4.8, y:8.1, dir:"r"},{k:"paw", x:5.5, y:8.35, dir:"r"},{k:"paw", x:6.2, y:8.1, dir:"r"},
-  {k:"paw", x:9.8, y:5.6, dir:"l"},{k:"paw", x:9.1, y:5.35, dir:"l"},{k:"paw", x:8.4, y:5.6, dir:"l"},{k:"paw", x:7.7, y:5.35, dir:"l"}
+  {k:"koi", cx:8.0, cy:24.0, rx:1.0, ry:1.3, sp:0.55, ph:0, col:N.white, pc:N.sakuraDk},
+  {k:"koi", cx:8.0, cy:24.7, rx:0.9, ry:0.9, sp:-0.7, ph:2.5, col:N.sakura, pc:N.white},
+  {k:"koi", cx:4.0, cy:24.2, rx:0.8, ry:1.3, sp:0.6, ph:1.2, col:N.mapleLt, pc:N.white},
+  {k:"ema", x:16.0, y:20.9},
+  {k:"butterfly", cx:21.5, cy:24.2, rx:2.7, ry:1.6, sp:.45, ph:0, col:N.sakura, dk:N.sakuraDk, y:40},
+  {k:"butterfly", cx:21.5, cy:24.4, rx:2.4, ry:1.9, sp:-.38, ph:2.2, col:N.waterLt, dk:N.waterDk, y:40},
+  {k:"butterfly", cx:21.5, cy:23.8, rx:2.9, ry:1.3, sp:.55, ph:4.1, col:N.goldLt, dk:N.gold, y:40},
+  {k:"bee", cx:20.2, cy:25.0, rx:.7, ry:.5, sp:2.6, ph:1, y:40},
+  {k:"bee", cx:23.2, cy:23.4, rx:.6, ry:.4, sp:-3.0, ph:3, y:40},
+  {k:"can", x:18.3, y:25.3},
+  {k:"sign", x:18.5, y:22.7},
+  {k:"mush", x:25.3, y:23.6},
+  {k:"mush", x:25.5, y:24.4},
+  {k:"flag", x:10.4, y:26.2, col:N.indigo, dk:N.indigoDk},
+  {k:"flag", x:16.6, y:26.2, col:N.red, dk:N.redDk},
+  {k:"cushion", x:9.0, y:6.0, col:N.crimson, dk:N.redDk},
+  {k:"cushion", x:18.0, y:6.0, col:N.indigo, dk:N.indigoDk},
+  {k:"sleepcat", x:18.0, y:6.0, cat:3},
+  {k:"sleepcat", x:9.5, y:3.25, cat:0},
+  {k:"bonsai", x:6.2, y:7.3},
+  {k:"bonsai", x:21.3, y:7.3},
+  {k:"pot", x:7.5, y:8.45},
+  {k:"pot", x:21.0, y:8.45},
+  {k:"furin", x:10.2, y:7.9},
+  {k:"bowl", x:19.3, y:8.55},
+  {k:"yarn", x:17.0, y:8.55},
+  {k:"shoes", x:12.7, y:8.5},
+  {k:"pot", x:10.3, y:16.0},
+  {k:"pot", x:16.7, y:16.0},
+  {k:"bonsai", x:2.6, y:15.4},
+  {k:"bonsai", x:25.2, y:15.4},
+  {k:"bonsai", x:3.0, y:20.4},
+  {k:"bonsai", x:24.6, y:19.8},
+  {k:"paw", x:12.3, y:1.55, dir:"r"},{k:"paw", x:13.0, y:1.3, dir:"r"},{k:"paw", x:13.7, y:1.55, dir:"r"},{k:"paw", x:14.4, y:1.3, dir:"r"},{k:"paw", x:15.1, y:1.55, dir:"r"},
+  {k:"paw", x:8.1, y:8.35, dir:"r"},{k:"paw", x:8.8, y:8.1, dir:"r"},{k:"paw", x:9.5, y:8.35, dir:"r"},{k:"paw", x:10.2, y:8.1, dir:"r"},
+  {k:"paw", x:13.8, y:5.6, dir:"l"},{k:"paw", x:13.1, y:5.35, dir:"l"},{k:"paw", x:12.4, y:5.6, dir:"l"},{k:"paw", x:11.7, y:5.35, dir:"l"}
 ];
 function drawDecor(d){
   const g=ctx;
@@ -1890,7 +2386,27 @@ function drawDecor(d){
     R(g,N.black,x+f*2,y-1,1,1);                                             // 眼睛
     return;
   }
+  if(d.k==="butterfly"||d.k==="bee"){
+    const a=time*d.sp+d.ph, x=ri((d.cx+Math.cos(a)*d.rx)*LT+LT/2), y=ri((d.cy+Math.sin(a*2)*d.ry)*LT+LT/2-10), fl=reduceMotion()?0:(Math.floor(time*(d.k==="bee"?16:7)+d.ph)%2);
+    if(d.k==="bee"){ R(g,N.dark,x,y,3,2); R(g,N.gold,x+1,y,1,2); R(g,N.white,x,y-1-fl,2,1); return; }
+    R(g,d.dk,x,y,1,3);
+    if(fl){ R(g,d.col,x-3,y-1,3,3); R(g,d.col,x+1,y-1,3,3); R(g,d.dk,x-3,y+1,1,1); R(g,d.dk,x+3,y+1,1,1); }
+    else { R(g,d.col,x-2,y-2,2,4); R(g,d.col,x+1,y-2,2,4); R(g,d.dk,x-2,y+1,1,1); R(g,d.dk,x+2,y+1,1,1); }
+    return;
+  }
   const px=ri(d.x*LT+LT/2), py=ri(d.y*LT+LT/2);
+  if(d.k==="can"){      // 澆水壺
+    R(g,N.waterDk,px-4,py-2,9,7); R(g,N.waterLt,px-4,py-2,9,2); R(g,N.waterLt,px-3,py,1,4); R(g,N.waterDk,px+5,py-1,3,1); R(g,N.waterDk,px+7,py-3,1,3); R(g,N.waterLt,px-3,py-5,6,1); R(g,N.waterLt,px-3,py-4,1,2); R(g,N.waterLt,px+2,py-4,1,2);
+    shadowAt(g,px,py+6,6,1); return;
+  }
+  if(d.k==="sign"){     // 小木牌（愛心）
+    R(g,N.woodDk,px-1,py-2,3,10); R(g,N.wood,px,py-2,1,10); R(g,N.woodDk,px-7,py-9,15,9); R(g,N.woodPale,px-6,py-8,13,7); R(g,N.woodLt,px-6,py-8,13,1);
+    R(g,N.sakuraDk,px-3,py-7,2,2); R(g,N.sakuraDk,px+1,py-7,2,2); R(g,N.sakuraDk,px-3,py-5,6,2); R(g,N.sakuraDk,px-2,py-3,4,1); R(g,N.sakuraDk,px-1,py-2,2,1);
+    shadowAt(g,px,py+8,4,1); return;
+  }
+  if(d.k==="mush"){     // 小蘑菇
+    R(g,N.paper,px-1,py,3,3); R(g,N.red,px-3,py-3,7,3); R(g,N.red,px-2,py-4,5,1); R(g,N.white,px-2,py-3,1,1); R(g,N.white,px+1,py-2,1,1); R(g,N.redDk,px-3,py-1,7,1); return;
+  }
   if(d.k==="ema"){        // 繪馬架
     R(g,N.woodDk,px-8,py-5,2,12); R(g,N.woodDk,px+6,py-5,2,12); R(g,N.woodDk,px-9,py-6,18,2); R(g,N.wood,px-9,py-6,18,1);
     [[-6,-3,N.woodPale],[-1,-3,N.woodLt],[4,-3,N.woodPale],[-4,3,N.woodLt],[2,3,N.woodPale]].forEach(([dx,dy,c],i)=>{
@@ -1976,9 +2492,10 @@ function draw(){
   drawBase(g,time);
   DECOR.filter(d=>d.k==='koi').forEach(d=>drawDecor32(d));
   BRIDGES.forEach(b=>bridge32(g,b.x,b.y));
+  drawFlowers32(g,time);
   drawGround();
   const items=spots.map(s=>({y:s.y,f:()=>drawSpot32(s)}))
-    .concat(DECOR.filter(d=>d.k!=="koi").map(d=>({y:d.y-.2,f:()=>drawDecor32(d)})),SHRINES.map(s=>({y:s.y+.9,f:()=>drawShrine32(g,s.x,s.y)})),spots.filter(s=>s.kind==="npc").map(s=>({y:s.y+.05,f:()=>drawNpc32(g,s)})),[{y:player.y+.05,f:()=>drawPlayer32(g)}],
+    .concat(DECOR.filter(d=>d.k!=="koi").map(d=>({y:d.y-.2,f:()=>drawDecor32(d)})),SHRINES.map(s=>({y:s.y+.9,f:()=>drawShrine32(g,s.x,s.y)})),spots.filter(s=>s.kind==="npc").map(s=>({y:s.y+.05,f:()=>drawNpc32(g,s)})),[{y:player.sit?player.sit.s.sortY+.02:player.y+.05,f:()=>drawPlayer32(g)}],TABLES.map(t=>({y:t.y+1.5,f:()=>drawTable32(g,t)})),SPIRITS.map(q=>({y:q.gone&&q.standOff?q.sortY+q.standOff.dy:q.sortY,f:()=>drawSpirit32(g,q)})),RUN.map(r=>({y:r.y+.05,f:()=>drawRunner32(g,r)})),
       TREES.map(tr=>({y:tr.y+.08,f:()=>drawTree32(g,tr.x,tr.y,time)}))).sort((a,b)=>a.y-b.y);
   items.forEach(i=>i.f());
   drawAir();
@@ -1993,7 +2510,7 @@ function draw(){
     gr.addColorStop(0,`rgba(255,214,150,${(.28*a).toFixed(2)})`); gr.addColorStop(1,"rgba(255,214,150,0)");
     mctx.fillStyle=gr; mctx.fillRect(sx-r,sy-r,r*2,r*2);
   }
-  drawLabels(); drawArrows();
+  drawLabels(); drawFx(); drawBubbles(); drawArrows();
 }
 const PIXFONT=()=>getComputedStyle(document.body).fontFamily;
 function pixBox(g,x,y,w,h,fill,edge){ g.save(); g.shadowColor="rgba(44,48,86,.25)"; g.shadowBlur=8; g.shadowOffsetY=2; g.fillStyle=fill; g.beginPath(); g.roundRect(x,y,w,h,h/2); g.fill(); g.restore(); g.strokeStyle="rgba(217,100,126,.45)"; g.lineWidth=1; g.beginPath(); g.roundRect(x+.5,y+.5,w-1,h-1,h/2); g.stroke(); }
@@ -2011,7 +2528,7 @@ function drawArrows(){      // 還沒發現、而且在畫面外的互動點：�
   const W=cv.clientWidth, H=cv.clientHeight, g=mctx, m=26, cx=W/2, cy=H/2;
   const list=[];
   for(const s of spots){
-    if(s.seen) continue;
+    if(s.seen||s.kind==="spirit") continue;
     const [sx,sy]=toScreen(s.x*T+T/2,s.y*T+T/2);
     if(sx>-10 && sx<W+10 && sy>-10 && sy<H+10) continue;     // 已經在畫面裡
     list.push({s,sx,sy,d:Math.hypot(sx-cx,sy-cy)});
@@ -2034,7 +2551,7 @@ function resize(){
   const big=Math.min(innerWidth,innerHeight)>=560;
   const fits=s=>{ const q=s/dpr; return COLS*LT*q+8<=aw && ROWS*LT*q+8<=ah; };
   let sc=Math.max(1,Math.round(1.5*dpr));                         // 手機：一個像素約 1.5 css 像素（一格約 48）
-  if(big){ sc=0; for(let s=Math.max(1,Math.round(1.6*dpr)); s>=1; s--) if(fits(s)){ sc=s; break; } if(!sc) sc=Math.max(1,Math.round(1.2*dpr)); }   // 電腦：挑放得下整張地圖的最大倍數
+  if(big){ sc=Math.max(1,Math.round(1.6*dpr)); }     // 電腦：地圖很大，固定放大倍數、鏡頭跟著角色   // 電腦：挑放得下整張地圖的最大倍數
   const gpE=sc/dpr;
   const mw=COLS*LT*gpE, mh=ROWS*LT*gpE, bw=8;
   const fit=mw+bw<=aw && mh+bw<=ah;                       // 整張地圖放得下就整張顯示，否則跟著角色捲動
@@ -2057,11 +2574,12 @@ function solidAt(x,y){
   return spots.some(s=>s.kind==="npc" && Math.hypot(x-s.x,(y+0.2)-s.y)<NPC_RADIUS);
 }
 function update(dt){
-  time+=dt; fxUpdate(dt); camStep(dt);
+  time+=dt; fxUpdate(dt); camStep(dt); updateBubbles();
   if(paused) return;
   let dx=(keys.right?1:0)-(keys.left?1:0), dy=(keys.down?1:0)-(keys.up?1:0);
-  player.moving=!!(dx||dy);
-  if(player.moving){
+  if(player.sit){ if(dx||dy) standUp(); else { dx=dy=0; player.moving=false; } }
+  if(!player.sit) player.moving=!!(dx||dy);
+  if(!player.sit&&player.moving){
     const l=Math.hypot(dx,dy); dx=dx/l*SPEED*dt; dy=dy/l*SPEED*dt;
     if(dx){ player.face=dx>0?1:-1; player.dir="side"; } else if(dy) player.dir=dy>0?"down":"up";
     stepT-=dt; if(stepT<=0){ stepT=.46; playStep(); }
@@ -2069,6 +2587,8 @@ function update(dt){
     if(!solidAt(player.x+dx,player.y)) player.x+=dx;
     if(!solidAt(player.x,player.y+dy)) player.y+=dy;
   }
+  updateRunners(dt); updateTables(dt);
+  if(player.sit) return;
   let near=null, nd=1e9;
   for(const s of spots){ const d=Math.hypot(player.x-s.x,player.y-s.y); if(d<s.dist && d<nd){ near=s; nd=d; } }
   if(near && near!==openSpot){ openSpot=near; trigger(near); }
@@ -2083,7 +2603,7 @@ function trigger(s){
 function markSeen(s){ if(!s.seen){ s.seen=true; seenSet.add(s.key); updateFound(); } }
 function openModal(s){
   paused=true; clearKeys(); markSeen(s);
-  $("mTitle").textContent=s.name; $("mEye").textContent=s.kind==="npc"?"來賓對話":"景點"; typeText($("mText"),s.text);
+  $("mTitle").textContent=s.name; $("mEye").textContent=s.kind==="npc"?"來賓對話":s.kind==="spirit"?"小精靈":"景點"; typeText($("mText"),s.text);
   const im=$("mImg");
   if(s.popup){ im.hidden=false; im.referrerPolicy="no-referrer"; im.onerror=()=>{im.hidden=true}; im.src=s.popup; } else im.hidden=true;
   showOv($("modal")); $("mClose").focus();
@@ -2241,7 +2761,11 @@ function lotLoop(now){
   for(const c of lotSt.cards){ if(c.pull){ c.pull.t+=dt; if(!c.pull.fin && c.pull.t>=.5){ c.pull.fin=true; const cc=c; setTimeout(()=>{ delete cc.pull; lotBusy=false; drawLot(cc); },reduceMotion()?0:30); } } }
   lotDraw(); lotRAF=requestAnimationFrame(lotLoop);
 }
-function lotPoint(e){ const r=lotSt.cv.getBoundingClientRect(); return [(e.clientX-r.left)/r.width*300,(e.clientY-r.top)/r.height*340.6]; }
+function lotPoint(e){      // Safari 手機上 clientX/Y 會和畫布位置差一點：優先用「相對於畫布本身」的座標（不受捲動、縮放、動畫位移影響）
+  const cv=lotSt.cv, r=cv.getBoundingClientRect();
+  if(e.target===cv && typeof e.offsetX==="number" && cv.clientWidth>0) return [e.offsetX/cv.clientWidth*300, e.offsetY/cv.clientHeight*340.6];
+  return [(e.clientX-r.left)/r.width*300,(e.clientY-r.top)/r.height*340.6];
+}
 function lotHit(e){
   const [x,y]=lotPoint(e), order=lotDrawOrder().filter(c=>!c.pull).reverse();
   for(const c of order){ const p=lotSt.pos[c.i]; if(Math.hypot(x-p.x,y-p.y)<=30) return c; }
@@ -2562,7 +3086,7 @@ function endCatch(){
   $("cEName").textContent=e.name||"";
   { const box=$("cEText"); box.innerHTML=""; const lines=String(e.text||"").split("\n").filter(Boolean); let first=true;
     lines.forEach(ln=>{ const m=ln.match(/^([^：:\s]{1,6})[：:]\s*(.+)$/);
-      if(m){ const d=document.createElement("div"); d.className="say"+(m[1]==="悠仁"?" go2":""); const w=document.createElement("span"); w.className="who"; w.textContent=m[1]; const x=document.createElement("span"); x.textContent=m[2]; d.append(w,x); box.append(d); }
+      if(m){ const d=document.createElement("div"); d.className="say"+(/^(悠仁|虎杖)$/.test(m[1])?" go2":""); const w=document.createElement("span"); w.className="who"; w.textContent=m[1]; const x=document.createElement("span"); x.textContent=m[2]; d.append(w,x); box.append(d); }
       else { const p=document.createElement("p"); if(first) p.className="lead"; p.textContent=ln; box.append(p); first=false; } }); }
   const pic=$("cEPic");
   if(e.image){ pic.hidden=false; pic.referrerPolicy="no-referrer"; pic.onerror=()=>{pic.hidden=true}; pic.src=e.image; } else pic.hidden=true;
@@ -2578,23 +3102,28 @@ cCv.addEventListener("pointermove",e=>{ catchPointer(e); });
 /* ---------- 進入頁：歡迎 → 選角色 → 選配飾 → 進入 ----------
    只有一個角色、也沒有配飾時，歡迎頁直接進入；試算表沒有「配飾」就自動略過選配飾 */
 const spOf = o => o._sp || (o._sp = mkSheet(o.icon,o.icon2));
-function drawWho(g,W,H,sc,fr,ci,ai,tile){          // 把角色（和配飾）畫進小畫布，整數倍放大、不平滑
+const spPv = o => o.preview ? (o._pv || (o._pv = mkSheet(o.preview))) : null;
+const accLayers = (over,pv) => ["cloth","neck","eye"].map(k=>{ const i=(over&&k in over)?over[k]:chosenAcc[k]; const a=i>=0?accs[k][i]:null; return a?(pv?spPv(a):spOf(a)):null; }).filter(Boolean);
+function drawWho(g,W,H,sc,fr,ci,lay,tile,pv){          // 把角色（和配飾）畫進小畫布，整數倍放大、不平滑
   g.clearRect(0,0,W,H); g.imageSmoothingEnabled=false;
-  const ch=players[ci]||{}, tm=tile?-1:performance.now()/1000, f=ch.icon?sheetFrame(spOf(ch),"down",fr,tm):null, acc=ai>=0&&accs[ai]?spOf(accs[ai]):null;
+  const ch=players[ci]||{}, tm=tile?-1:performance.now()/1000, usePv=pv&&ch.preview, psp=usePv?(ch._pv||(ch._pv=mkSheet(ch.preview))):null;
+  FORCE_FRAME = tile?null:Math.floor(performance.now()/330)%3;
+  const f=ch.icon?sheetFrame(psp||spOf(ch),"down",0,tm):null;
   g.fillStyle="rgba(62,68,120,.16)"; g.beginPath(); g.ellipse(W/2,H-(tile?3:6),W*.2,tile?3:6,0,0,7); g.fill();
   if(f){ const k=Math.max(1,Math.floor((H-8)/f.h)), w=f.w*k, h=f.h*k, x=Math.round((W-w)/2), y=H-h-(tile?1:4)+(f.strip?f.pad*k:0); g.drawImage(f.im,f.sx,f.sy,f.w,f.h,x,y,w,h);
-    const a=acc&&sheetFrame(acc,"down",fr,tm,f.strip?f.bb:undefined); if(a&&a.w===f.w) g.drawImage(a.im,a.sx,a.sy,a.w,a.h,x,y,w,h); }
-  else if(!ch.icon){ const k=Math.max(1,Math.floor(sc*.75)), w=40*k, h=38*k, x=Math.round((W-w)/2), y=H-h-(tile?1:4); g.drawImage(catSp(ci,fr),0,0,40,38,x,y,w,h);
-    const a=acc&&sheetFrame(acc,"side",0); if(a&&a.w===32) g.drawImage(a.im,a.sx,a.sy,32,32,Math.round((W-32*k)/2),H-32*k-(tile?1:4),32*k,32*k); }
+    for(const ac of (lay||[])){ const a=sheetFrame(ac,"down",fr,tm,f.strip?f.bb:undefined); if(a&&a.w===f.w) g.drawImage(a.im,a.sx,a.sy,a.w,a.h,x,y,w,h); } }
+  else if(!ch.icon){ const k=Math.max(1,Math.floor(sc*.75)), w=40*k, h=38*k, x=Math.round((W-w)/2), y=H-h-(tile?1:4); g.drawImage(catSp(ci,fr),0,0,40,38,x,y,w,h); }
+  FORCE_FRAME=null;
 }
 let sView="welcome";
-const sOrder = () => ["welcome",...(players.length>1?["char"]:[]),...(accs.length?["acc"]:[])];
+const accSlots = () => SLOTS.filter(s=>accs[s.k].length);
+const sOrder = () => ["welcome",...(players.length>1?["char"]:[]),...(accSlots().length?["acc"]:[])];
 function sGoto(v){
   sView=v; const o=sOrder(), steps=o.length-1, i=o.indexOf(v);
   $("sWelcome").hidden=v!=="welcome"; $("sChar").hidden=v!=="char"; $("sAcc").hidden=v!=="acc"; $("sBar").hidden=v==="welcome";
   const last = i===o.length-1, nextName = o[i+1]==="char"?"選擇角色":"選擇配飾";
-  $("sGo").textContent = steps ? "下一步："+nextName : "進入庭院";
-  $("sNextC").textContent = last ? "進入庭院" : "下一步："+nextName;
+  $("sGo").textContent = steps ? paramText("開始按鈕","開始挑選！") : "進入庭院";
+  $("sNextC").textContent = last ? "進入庭院" : (o[i+1]==="acc" ? paramText("選角下一步按鈕","前往五條的衣櫃打扮") : "下一步："+nextName);
   $("sStep").hidden = steps<2; $("sStep").textContent = i+" / "+steps;
   $("sStepT").textContent = v==="acc" ? "選擇配飾" : "選擇角色";
   if(v==="char") showWho(); if(v==="acc"){ buildAccPicker(); showAccWho(); }
@@ -2603,33 +3132,104 @@ function sGoto(v){
 function sNav(d){ const o=sOrder(), i=o.indexOf(sView)+d; if(i>=o.length) return enterGame(); sGoto(o[Math.max(0,i)]); }
 function enterGame(){ buildWorld(); hideOv($("start")); paused=false; setMusic($("musicChk").checked); }
 function showWho(){ const p=players[chosen]||{}; $("cNm").textContent=p.name||""; $("cDs").textContent=p.text||""; }
-function showAccWho(){ const a=chosenAcc>=0?accs[chosenAcc]:null; $("aNm").textContent=a?a.name:"不戴配飾"; $("aDs").textContent=a?(a.text||""):"清清爽爽的樣子，也很好看。"; }
+function showAccWho(){ const k=curSlot, sn=SLOTS.find(s=>s.k===k).n, i=chosenAcc[k], a=i>=0?accs[k][i]:null; $("aNm").textContent=a?(a.name||sn):"不戴"+sn; $("aDs").textContent=a?(a.text||""):"清清爽爽的樣子，也很好看。"; }
 setInterval(()=>{                                      // 預覽：站立／走路兩個姿勢輪流
   if($("start").hidden||$("sWelcome").hidden===false) return;
   const fr=Math.floor(performance.now()/420)%2;     // 角色縮放（SPK）在 buildWorld 讀取
-  if(sView==="char") drawWho($("pvC").getContext("2d"),144,144,3,fr,chosen,-1,false);
-  if(sView==="acc") drawWho($("pvA").getContext("2d"),144,144,3,fr,chosen,chosenAcc,false);
-},210);
-function paintTile(vis,ci,ai){ const g=vis.getContext("2d"); drawWho(g,vis.width,vis.height,2,0,ci,ai,true); }
-function mkTile(label,pressed,ci,ai,onpick){
+  if(sView==="char") drawWho($("pvC").getContext("2d"),144,144,3,fr,chosen,[],false,true);
+  if(sView==="acc") drawWho($("pvA").getContext("2d"),144,144,3,fr,chosen,accLayers(undefined,true),false,true);
+},110);
+function paintTile(vis,ci,lay,pv){ drawWho(vis.getContext("2d"),vis.width,vis.height,2,0,ci,lay,true,pv); }
+function mkTile(label,pressed,ci,lay,onpick,pv){
   const b=document.createElement("button"); b.type="button"; b.className="opt"; b.setAttribute("aria-pressed",String(pressed));
   const vis=document.createElement("canvas"); vis.width=80; vis.height=76; vis.style.imageRendering="pixelated";
-  paintTile(vis,ci,ai);
-  for(const o of [players[ci],ai>=0?accs[ai]:null]) if(o&&o.icon){ const sp=spOf(o); sp.a.addEventListener("load",()=>paintTile(vis,ci,ai)); if(sp.b) sp.b.addEventListener("load",()=>paintTile(vis,ci,ai)); }
+  paintTile(vis,ci,lay,pv);
+  const pc=players[ci]; for(const sp of [pc&&pc.icon?spOf(pc):null,pv&&pc&&pc.preview?(pc._pv||(pc._pv=mkSheet(pc.preview))):null,...lay]) if(sp){ sp.a.addEventListener("load",()=>paintTile(vis,ci,lay,pv)); if(sp.b) sp.b.addEventListener("load",()=>paintTile(vis,ci,lay,pv)); }
+  const s=document.createElement("span"); s.textContent=label; b.append(vis,s); b.onclick=onpick; return b;
+}
+/* ---------- 選角時小精靈說話：ち／み 的可愛語音（用聲音合成做的）＋會跟著一個字一個字冒出來的對話泡泡 ---------- */
+let noiseBuf=null;
+function voiceSyl(kind,t0,f0,accent,vol,pan,fall){
+  const c=actx; if(!c) return; const out=c.createGain(); out.gain.value=.9*(vol==null?1:vol); let dest=c.destination;
+  if(c.createStereoPanner){ const pn=c.createStereoPanner(); pn.pan.value=pan||0; pn.connect(dest); dest=pn; } out.connect(dest);
+  if(!noiseBuf){ noiseBuf=c.createBuffer(1,Math.floor(c.sampleRate*.12),c.sampleRate); const d=noiseBuf.getChannelData(0); for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1; }
+  let vs=t0;
+  if(kind==="chi"){                                   // ち：先一小段「ㄑ」的氣音
+    const n=c.createBufferSource(); n.buffer=noiseBuf; const bp=c.createBiquadFilter(); bp.type="bandpass"; bp.frequency.value=5200; bp.Q.value=1.4;
+    const g=c.createGain(); g.gain.setValueAtTime(.0001,t0); g.gain.exponentialRampToValueAtTime(.22,t0+.012); g.gain.exponentialRampToValueAtTime(.0001,t0+.065);
+    n.connect(bp); bp.connect(g); g.connect(out); n.start(t0); n.stop(t0+.08); vs=t0+.035;
+  } else {                                            // み：先一小段鼻音「ㄇ」
+    const o=c.createOscillator(); o.type="sine"; o.frequency.setValueAtTime(f0*.5,t0); const lp=c.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=500;
+    const g=c.createGain(); g.gain.setValueAtTime(.0001,t0); g.gain.exponentialRampToValueAtTime(.2,t0+.02); g.gain.exponentialRampToValueAtTime(.0001,t0+.085);
+    o.connect(lp); lp.connect(g); g.connect(out); o.start(t0); o.stop(t0+.1); vs=t0+.05;
+  }
+  const dur=accent?.17:.13, top=f0*(fall?.86:accent?1.28:1.14);          // 母音「ㄧ」：音高往上滑一點；驚嘆號音更高、更長
+  const o=c.createOscillator(); o.type="sawtooth"; o.frequency.setValueAtTime(f0,vs); o.frequency.exponentialRampToValueAtTime(top,vs+dur*.8);
+  const lfo=c.createOscillator(), lg=c.createGain(); lfo.frequency.value=9; lg.gain.value=f0*.015; lfo.connect(lg); lg.connect(o.frequency); lfo.start(vs); lfo.stop(vs+dur+.05);
+  const g=c.createGain(); g.gain.setValueAtTime(.0001,vs); g.gain.exponentialRampToValueAtTime(accent?.3:.24,vs+.02); g.gain.exponentialRampToValueAtTime(.0001,vs+dur);
+  for(const [fr,q,m] of [[330,7,1],[2800,9,.7]]){ const bp=c.createBiquadFilter(); bp.type="bandpass"; bp.frequency.value=fr; bp.Q.value=q; const mg=c.createGain(); mg.gain.value=m; o.connect(bp); bp.connect(mg); mg.connect(g); }
+  g.connect(out); o.start(vs); o.stop(vs+dur+.04);
+}
+let sayTimer=0, sayHide=0;
+function speakText(text,fromGesture){
+  const el=$("pvSay"), cvp=$("pvC"); if(!el) return;
+  const syl=[...text].filter(ch=>"ちみ".includes(ch)), chars=[...text];
+  if($("musicChk").checked && audioCtx()){ const t=actx.currentTime+.02, f0=720+Math.random()*120; let k=0;
+    chars.forEach((ch,i)=>{ if(ch==="ち"||ch==="み"){ voiceSyl(ch==="ち"?"chi":"mi",t+k*.21,f0*(1+k*.05),chars[i+1]==="！"||chars[i+1]==="!"); k++; } }); }
+  clearInterval(sayTimer); clearTimeout(sayHide);
+  el.hidden=false; el.className="saybub"; void el.offsetWidth; el.className="saybub pop"; el.textContent="";
+  cvp.classList.remove("hop"); void cvp.offsetWidth; cvp.classList.add("hop");
+  let n=0; el.textContent=chars[0]||""; n=1;
+  sayTimer=setInterval(()=>{ n++; el.textContent=chars.slice(0,n).join(""); if(n>=chars.length) clearInterval(sayTimer); },reduceMotion()?0:210);
+  sayHide=setTimeout(()=>{ el.className="saybub out"; setTimeout(()=>{ el.hidden=true; },360); },1700+chars.length*210);
+}
+function speakChar(){
+  const words=paramText("小精靈泡泡","ちみ／ち／み！").split(/[／\/]/).map(x=>x.trim()).filter(Boolean);
+  speakText(words[Math.floor(Math.random()*words.length)]||"ち！");
+}
+/* ---------- 遊戲裡的叫聲：離玩家越近越大聲、越遠越小聲（14 格以外聽不到），左右聲道跟著位置 ---------- */
+function distVol(x,y){ const d=Math.hypot(x-player.x,y-player.y); return {vol:Math.pow(Math.max(0,1-d/14),1.6), pan:Math.max(-1,Math.min(1,(x-player.x)/9))}; }
+function cry(x,y,text,f0,kind,forceMi){
+  if(!$("musicChk").checked||!audioCtx()) return; const {vol,pan}=distVol(x,y); if(vol<.02) return;
+  const chars=[...text]; let k=0; const t=actx.currentTime+.01;
+  chars.forEach((ch,i)=>{ if(ch==="ち"||ch==="み"){ const nx=chars[i+1], acc=nx==="！"||nx==="!", fall=nx==="〜"||nx==="ー"?false:(Math.random()<.28&&!acc);
+    voiceSyl(forceMi||ch==="み"?"mi":"chi",t+k*.17,f0*(1+k*.06),acc,vol,pan,fall); k++; } });
+}
+function spiritCry(s,text){ cry(s.x,s.y,text,(s.size>40?560:800)+((s.id*53)%130),"mi",true); }      // 桌邊小精靈：都用「み」系的聲音，每隻音高不同，此起彼落
+function paintAccTile(vis,a){      // 只畫飾品本身（不戴＝空白）：取這張圖有顏色的範圍，整數倍放大置中
+  const g=vis.getContext("2d"); g.clearRect(0,0,vis.width,vis.height); g.imageSmoothingEnabled=false;
+  if(!a) return; const sp=spPv(a)||spOf(a), f=sheetFrame(sp,"down",0,-1); if(!f) return;
+  const k=Math.max(1,Math.floor(Math.min((vis.width-8)/f.w,(vis.height-8)/f.h))), w=f.w*k, h=f.h*k;
+  g.drawImage(f.im,f.sx,f.sy,f.w,f.h,Math.round((vis.width-w)/2),Math.round((vis.height-h)/2),w,h);
+}
+function mkAccTile(label,pressed,a,onpick){
+  const b=document.createElement("button"); b.type="button"; b.className="opt"; b.setAttribute("aria-pressed",String(pressed));
+  const vis=document.createElement("canvas"); vis.width=80; vis.height=76; vis.style.imageRendering="pixelated";
+  paintAccTile(vis,a); if(a){ const sp=spPv(a)||spOf(a); sp.a.addEventListener("load",()=>paintAccTile(vis,a)); }
   const s=document.createElement("span"); s.textContent=label; b.append(vis,s); b.onclick=onpick; return b;
 }
 function buildPicker(){
   const cp=$("charPick"); cp.innerHTML="";
   players.forEach((p,i)=>{
-    const b=mkTile(p.name||("角色"+(i+1)),i===chosen,i,-1,()=>{ chosen=i; [...cp.children].forEach(x=>x.setAttribute("aria-pressed",String(x===b))); showWho(); });
+    const b=mkTile(p.name||("角色"+(i+1)),i===chosen,i,[],()=>{ chosen=i; [...cp.children].forEach(x=>x.setAttribute("aria-pressed",String(x===b))); showWho(); speakChar(); },true);
     cp.append(b);
   });
 }
-function buildAccPicker(){
-  const ap=$("accPick"); ap.innerHTML="";
-  const pick=(i,b)=>{ chosenAcc=i; [...ap.children].forEach(x=>x.setAttribute("aria-pressed",String(x===b))); showAccWho(); };
-  const none=mkTile("不戴",chosenAcc<0,chosen,-1,()=>pick(-1,none)); ap.append(none);
-  accs.forEach((a,i)=>{ const b=mkTile(a.name||("配飾"+(i+1)),i===chosenAcc,chosen,i,()=>pick(i,b)); ap.append(b); });
+const SV=(d)=>'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+d+'</svg>';
+const TABICON={
+  eye:SV('<circle cx="6.5" cy="14" r="3.6"/><circle cx="17.5" cy="14" r="3.6"/><path d="M10.1 14h3.8M2.9 14 4.6 6.5M21.1 14l-1.7-7.5"/>'),
+  neck:SV('<path d="M12 12 4 7v10zM12 12l8-5v10z"/><rect x="10.4" y="9.8" width="3.2" height="4.4" rx="1"/>'),
+  cloth:SV('<path d="M8.5 3 3 6l2.4 4.2L8 9v12h8V9l2.6 1.2L21 6l-5.5-3a3.6 3.6 0 0 1-7 0z"/>')
+};
+function buildAccPicker(){                                 // 眼飾／頸飾／衣服：上面切換欄位，下面選這個欄位的配飾（每個欄位最多選一個）
+  const slots=accSlots(); if(!slots.some(s=>s.k===curSlot)) curSlot=slots[0].k;
+  const tabs=$("accTabs"), ap=$("accPick"); tabs.innerHTML=""; ap.innerHTML="";
+  tabs.hidden = slots.length<2;
+  slots.forEach(sl=>{ const t=document.createElement("button"); t.type="button"; t.setAttribute("role","tab"); t.setAttribute("aria-selected",String(sl.k===curSlot));
+    t.innerHTML=TABICON[sl.k]+"<span></span>"; t.lastChild.textContent=sl.n+(chosenAcc[sl.k]>=0?" ✓":""); t.onclick=()=>{ curSlot=sl.k; buildAccPicker(); showAccWho(); }; tabs.append(t); });
+  const k=curSlot, pick=(i,b)=>{ chosenAcc[k]=i; buildAccPicker(); showAccWho(); };
+  ap.append(mkAccTile("不戴",chosenAcc[k]<0,null,()=>pick(-1)));
+  accs[k].forEach((a,i)=>ap.append(mkAccTile(a.name||(SLOTS.find(s=>s.k===k).n+(i+1)),i===chosenAcc[k],a,()=>pick(i))));
 }
 
 /* ---------- 輸入 ---------- */
@@ -2672,11 +3272,69 @@ document.querySelectorAll("#pad button").forEach(b=>{
   b.addEventListener("pointercancel",off); b.addEventListener("pointerleave",off);
   b.addEventListener("contextmenu",e=>e.preventDefault());
 });
+
+/* ---------- 感謝頁：上方小動畫（64 站著眨眼＋愛心；32 輪流蹦蹦跳）＋文字＋製作名單 ---------- */
+const TH={on:false,raf:0,lo:null,t0:0,sc:3,cyc:-1,spr:null};
+function thSprites(){
+  if(TH.spr) return TH.spr; const find=re=>DATA.find(d=>d.type==="spirit"&&re.test(d.name)&&d.size===32), mk32=d=>{ if(!d) return null; const sh=mkSheet(d.icon,d.icon2); if(sh) sh.k=32/48; return sh; };
+  const big=re=>{ const d=DATA.find(x=>x.type==="spirit"&&re.test(x.name)&&x.size===48); return d?mkSheet(d.preview||d.icon,d.icon2):null; };
+  const silver=big(/ご$/)||(players[0]&&players[0].icon?spOf(players[0]):null), pink=big(/ゆ$/)||(players[1]&&players[1].icon?spOf(players[1]):null);
+  TH.spr={big:[silver,pink],small:{pink:mk32(find(/ゆ$/)),silver:mk32(find(/ご$/))}}; return TH.spr;
+}
+const THEART=["01010","11111","11111","01110","00100"];
+function thFrame(){
+  if(!TH.on) return; const cv=$("tCv"), g=TH.lo.getContext("2d"), tm=(performance.now()-TH.t0)/1000, W=176, H=137, S=thSprites();
+  g.setTransform(1,0,0,1,0,0); g.clearRect(0,0,W,H); g.imageSmoothingEnabled=false;
+  const gr=g.createLinearGradient(0,0,0,H); gr.addColorStop(0,"#fde9ee"); gr.addColorStop(.55,"#eaf4fb"); gr.addColorStop(.555,N.grassLt); gr.addColorStop(1,N.grass); g.fillStyle=gr; g.fillRect(0,0,W,H);
+  for(let i=0;i<14;i++){ const x=(i*29+7)%W, y=80+((i*17)%54); R(g,i%3?N.grassDk:N.blade,x,y,1,2); if(i%4===0) R(g,i%8===0?N.sakura:N.white,x+3,y-1,1,1); }
+  // 花園：後面一排矮樹籬（有小花），草地上散著小花（先畫，角色畫在上面，不會被擋住）
+  for(let x=0;x<W+4;x+=6){ const y=72+(((x/6|0)*7)%3); R(g,N.leafDk,x,y+3,7,9); R(g,N.leaf,x,y,7,8); R(g,N.pineLt,x+1,y,3,2); if((x/6|0)%3===1){ R(g,(x/6|0)%2?N.white:N.sakura,x+2,y+2,1,1); R(g,N.goldLt,x+4,y+5,1,1); } }
+  R(g,N.grassDk,0,83,W,1);
+  const FC=[N.white,N.sakura,"#8fb4ec",N.mapleLt];
+  for(let i=0;i<46;i++){ const fx=(i*37+11)%(W-8)+4, fy=90+((i*53)%44), c=FC[i%4], sw=Math.round(Math.sin(tm*1.6+i)*.6); R(g,N.leaf,fx,fy+1,1,3); R(g,N.leafDk,fx+(i%2?1:-1),fy+3,1,1);
+    R(g,c,fx-1+sw,fy,3,1); R(g,c,fx+sw,fy-1,1,3); R(g,N.gold,fx+sw,fy,1,1); }
+  for(let i=0;i<8;i++){ const x=((i*43+tm*9)%(W+10))-5, y=((i*31+tm*14+i*9)%H); R(g,i%2?N.sakura:N.white,Math.round(x),Math.round(y),1,1); }
+  const shadow=(cx,fy,rx)=>{ g.fillStyle="rgba(62,100,60,.28)"; g.beginPath(); g.ellipse(cx,fy+1,rx,2.5,0,0,7); g.fill(); };
+  // 後排：64 站著眨眼（銀髮在左、粉髮在右）＋頭上的小愛心
+  const bigs=[[S.big[0],59],[S.big[1],117]];
+  for(const [sh,cx] of bigs){ shadow(cx,86,20); if(sh) drawSheet(g,sh,"down",0,cx,86,1,null,tm+(cx>90?.4:0),cx<90?-1:1); }
+  for(let i=0;i<5;i++){ const ph=((tm*.7+i*.37)%1.6)/1.6, side=i%2?1:0, cx=bigs[side][1]+(i%3-1)*7+(side?-3:3), y=24-ph*14; g.globalAlpha=Math.min(1,(1-ph)*2.2);
+    THEART.forEach((row,j)=>{ for(let k=0;k<5;k++) if(row[k]==="1") R(g,j<1&&false?N.white:(i%5===3?"#728ee3":(i%2?"#ee9fb6":"#e0698f")),Math.round(cx-2+k*(ph>.5?.9:1)),Math.round(y+j),1,1); }); g.globalAlpha=1; }
+  // 前排：32（粉左、銀右）：銀「ち」一下 → 粉「み」一下 → 兩隻一起跳兩下「ちみ」→ 休息
+  const P=4.4, ph=tm%P, cyc=Math.floor(tm/P), hop=(a,b)=>ph>=a&&ph<b?Math.abs(Math.sin((ph-a)/(b-a)*Math.PI))*9:0;
+  let hs=0,hp=0,bs=null,bp=null;
+  if(ph<.5){ hs=hop(0,.5); bs="ち"; } else if(ph<1){ hp=hop(.5,1); bp="み"; } else if(ph<1.9){ const b=ph<1.45?hop(1,1.45):hop(1.45,1.9); hs=hp=b; bs=bp="ちみ"; }
+  const small=[[S.small.pink,64,hp,bp,"み",0],[S.small.silver,112,hs,bs,"ち",1]];
+  for(const [sh,cx,h] of small){ shadow(cx,116,10); if(sh) drawSheet(g,sh,"down",h>0?1:0,cx,116-Math.round(h),1,null,tm+(cx>90?.5:0),cx<90?-1:1); }
+  const cx2=cv.getContext("2d"); cx2.imageSmoothingEnabled=false; cx2.clearRect(0,0,cv.width,cv.height); cx2.drawImage(TH.lo,0,0,W,H,0,0,cv.width,cv.height);
+  const sc=TH.sc; cx2.font="700 "+(5*sc)+"px "+PIXFONT(); cx2.textAlign="center"; cx2.textBaseline="middle";
+  for(const [sh,cx,h,b] of small){ if(!b) continue; const age=Math.min(.4,(ph<.5?ph:ph<1?ph-.5:ph<1.9?(ph-1)%.45:0)), pop=age<.1?.6+4*age:1, x=(cx+(cx<90?-26:26))*sc, y=(116-22-h)*sc, w=(b.length*5.5+7)*sc, hh=8.5*sc;
+    cx2.save(); cx2.translate(x,y); cx2.scale(pop,pop); cx2.fillStyle="#fff"; cx2.beginPath(); cx2.roundRect(-w/2,-hh-1.6*sc,w,hh,hh/2); cx2.fill(); cx2.beginPath(); cx2.moveTo(-1.6*sc,-1.7*sc); cx2.lineTo(1.6*sc,-1.7*sc); cx2.lineTo(0,.4*sc); cx2.fill();
+    cx2.strokeStyle="#8e95c4"; cx2.lineWidth=Math.max(1,sc*.5); cx2.beginPath(); cx2.roundRect(-w/2,-hh-1.6*sc,w,hh,hh/2); cx2.stroke(); cx2.fillStyle=C.ink; cx2.fillText(b+"！",0,-hh/2-1.4*sc); cx2.restore(); }
+  if(cyc!==TH.cyc){ TH.cyc=cyc; }
+  const beats=[[0,"chi",760],[.5,"mi",940],[1,"chi",760],[1.05,"mi",940],[1.45,"chi",800],[1.5,"mi",980]];
+  if(TH.snd!==undefined){ for(const [t,k,f] of beats){ if(TH.lastPh<t&&ph>=t||(TH.lastPh>ph&&t===0)) if($("musicChk").checked&&audioCtx()) voiceSyl(k,actx.currentTime+.01,f,true,.55,0,false); } }
+  TH.lastPh=ph; TH.snd=1;
+  TH.raf=requestAnimationFrame(thFrame);
+}
+function openThanks(){
+  paused=true; clearKeys();
+  showOv($("thanks")); const tc=$("thanks").querySelector(".tcard"); tc.classList.remove("go"); tc.scrollTop=0; void tc.offsetWidth; tc.classList.add("go");
+  const cv=$("tCv"), W=176, H=137, avail=Math.min(352,innerWidth-56), sc=Math.max(2,Math.floor(avail/W)), dpr=Math.min(window.devicePixelRatio||1,2);
+  TH.sc=sc*dpr; cv.width=W*TH.sc; cv.height=H*TH.sc; cv.style.width=(W*sc)+"px"; cv.style.height=(H*sc)+"px";
+  TH.lo=TH.lo||document.createElement("canvas"); TH.lo.width=W; TH.lo.height=H; TH.t0=performance.now(); TH.on=true; TH.lastPh=0; TH.snd=undefined; cancelAnimationFrame(TH.raf); thFrame(); $("tClose").focus({preventScroll:true});
+}
+function closeThanks(){ TH.on=false; cancelAnimationFrame(TH.raf); hideOv($("thanks")); paused=false; }
+$("thxBtn").addEventListener("click",()=>{ if(!paused) openThanks(); });
+$("tClose").addEventListener("click",closeThanks);
+$("thanks").addEventListener("pointerdown",ev=>{ if(ev.target===$("thanks")) closeThanks(); });
+
 $("mClose").addEventListener("click",closeModal);
 $("modal").addEventListener("pointerdown",ev=>{ if(ev.target===$("modal")) closeModal(); });
 $("lClose").addEventListener("click",closeLot);
 $("lOk").addEventListener("click",showBouquet);
 $("lAgain").addEventListener("click",()=>{ lotSpot.lot=newDeck(); showBouquet(); });
+$("pvC").addEventListener("pointerdown",()=>speakChar()); $("pvC").style.cursor="pointer";
 $("sGo").addEventListener("click",()=>sNav(1)); $("sNextC").addEventListener("click",()=>sNav(1)); $("sBtn").addEventListener("click",()=>sNav(1));
 $("sPrevC").addEventListener("click",()=>sNav(-1)); $("sPrevA").addEventListener("click",()=>sNav(-1));
 $("musicBtn").addEventListener("click",()=>setMusic(!MUSIC.on));
@@ -2695,7 +3353,7 @@ addEventListener("resize",resize); addEventListener("orientationchange",()=>setT
   players = DATA.filter(d=>d.type==="player");
   if(!players.length) players=[{name:"貓咪"}];
   SPK = Math.max(.3,Math.min(1,paramNum("角色縮放",1)));
-  accs = DATA.filter(d=>d.type==="acc");
+  accs = {eye:DATA.filter(d=>d.type==="eye"), neck:DATA.filter(d=>d.type==="neck"), cloth:DATA.filter(d=>d.type==="cloth")};
   buildPicker(); sGoto("welcome");
   buildWorld();
   resize();
