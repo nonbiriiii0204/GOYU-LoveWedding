@@ -33,7 +33,7 @@
   #thanks .en{font-family:var(--en);letter-spacing:.32em;text-transform:uppercase}
   #thanks .eyebrow{margin:0;font-size:12px;color:var(--rose);letter-spacing:.42em;padding-left:.42em}
   #thanks h1{margin:16px 0 28px;font-weight:500;font-size:clamp(22px,6.2vw,32px);letter-spacing:.2em;padding-left:.18em;white-space:nowrap;line-height:1.35;color:var(--ink)}
-  #tCv{display:block;margin:0 auto;image-rendering:pixelated;border-radius:6px;max-width:100%}
+  #tCv{display:block;margin:0 auto;image-rendering:pixelated;border-radius:6px;max-width:100%;height:auto;aspect-ratio:176/137}
   #thanks h2{margin:36px 0 6px;font-weight:500;font-size:clamp(15.5px,4.2vw,18px);letter-spacing:.14em;color:var(--ink)}
   #thanks .sub{margin:0;font-size:14px;color:var(--rose);letter-spacing:.2em;padding-left:.2em}
   #thanks .msg{margin:26px 0 0;font-size:13px;line-height:2.2;color:var(--ink2);letter-spacing:.02em;white-space:normal}
@@ -69,6 +69,14 @@
   #pad button.on{background:var(--pink)}
   #pad .u{left:44px;top:0}#pad .d{left:44px;bottom:0}#pad .l{left:0;top:44px}#pad .r{right:0;top:44px}
   @media (pointer:coarse){#pad{display:block}}
+  body.watching #pad,body.watching #again,body.watching #thxBtn{display:none!important}
+  #watchBar{position:absolute;left:0;right:0;bottom:14px;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 12px;pointer-events:none;z-index:3}
+  #watchBar[hidden]{display:none}
+  #watchBar p{margin:0;font-size:12.5px;letter-spacing:.08em;color:#fff;background:rgba(54,56,89,.55);border-radius:999px;padding:3px 12px}
+  #watchBar .wrow{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;pointer-events:auto}
+  #watchBar button{height:40px;min-width:76px;padding:0 14px;border-radius:999px;border:1px solid rgba(54,56,89,.25);background:rgba(255,255,255,.94);color:#363859;font:600 14px/1 var(--font,inherit);letter-spacing:.06em;cursor:pointer;touch-action:manipulation}
+  #watchBar button:active{transform:translateY(1px)}
+  #watchBar button.leave{background:#363859;color:#fff;border-color:#363859}
   /* ================= Design System：彈窗與小遊戲介面 =================
      字級：標題 22／區塊標題 13／內文 15／輔助 12.5　間距：4 8 12 16 24 32　圓角：卡片 20／區塊 14／控制項 12 */
   :root{
@@ -276,6 +284,10 @@
   </div>
   <div id="stage">
     <canvas id="cv"></canvas>
+    <div id="watchBar" hidden>
+      <p>ちびちみ觀賞模式，點他們會撒愛心哦 ♡</p>
+      <div class="wrow"><button id="wSnack" type="button">餵點心</button><button id="wBall" type="button">毛線球</button><button id="wPetal" type="button">花瓣雨</button><button id="wLeave" type="button" class="leave">離開</button></div>
+    </div>
     <div id="pad">
       <button class="u" data-k="up" aria-label="上">▲</button>
       <button class="l" data-k="left" aria-label="左">◀</button>
@@ -350,7 +362,7 @@
         <div class="item"><div class="jp">企劃・遊戲設計・像素美術・插畫</div><div class="e">Game Planning, Design &amp; Illustration</div><div class="nm"><a href="https://portaly.cc/nonbiriiii0204" target="_blank" rel="noopener noreferrer">逐悠</a></div></div>
         <div class="item"><div class="jp">地圖設計・場景美術・程式開發</div><div class="e">Map Design, Environment Art &amp; Development</div><div class="nm"><a href="https://portaly.cc/nonbiriiii0204" target="_blank" rel="noopener noreferrer">逐悠</a><span class="x">×</span>Claude（Anthropic）</div></div>
         <div class="item"><div class="jp">背景音樂</div><div class="e">Background Music</div><div class="nm"><a href="https://incompetech.com" target="_blank" rel="noopener noreferrer">Kevin MacLeod</a><small>Senbazuru / Ripples<br>Licensed under CC BY 4.0</small></div></div>
-        <div class="item"><div class="jp">遊戲測試／體驗優化</div><div class="e">Game Testing &amp; UX Improvement</div><div class="nm"><a href="https://www.plurk.com/tora0320" target="_blank" rel="noopener noreferrer">卡奇</a>、狗勾</div></div>
+        <div class="item"><div class="jp">遊戲測試／體驗優化</div><div class="e">Game Testing &amp; UX Improvement</div><div class="nm">卡奇、狗勾</div></div>
       </section>
       <hr class="rule">
       <section class="sp">
@@ -923,7 +935,7 @@ function buildWorld(){
       seen: seenSet.has(d.type+"|"+d.name)
     };
   });
-  buildSpirits(); buildRunners(); updateFound(); snapCam();
+  buildSpirits(); buildRunners(); spots.push({id:900,kind:"bench",key:"bench",name:"縁側",x:9.2,y:8.5,text:"",popup:"",game:"watch",lot:null,sprite:null,sheet:null,robe:0,dist:1.15,seen:true}); updateFound(); snapCam();
   openSpot = spots.find(s=>Math.hypot(player.x-s.x,player.y-s.y)<s.dist) || null;
 }
 function updateFound(){}
@@ -1708,6 +1720,13 @@ function drawDecor32(d){
       R(g,N.white,px+a,py+b-o,5,1); R(g,N.white,px+a+3,py+b+1-o,1,2); R(g,N.white,px+a+1,py+b+3-o,1,1); R(g,N.white,px+a,py+b+4-o,5,1); });
   } else if(d.k==="paw"){
     paw32(g,px,py,PAWCOL(at(Math.floor(d.x+.5),Math.floor(d.y+.5))),d.dir);
+  } else if(d.k==="bench"){     // 縁側的長椅
+    shadowAt32(g,px,py+12,22,3);
+    R(g,N.woodDk,px-18,py+3,4,10); R(g,N.woodDk,px+14,py+3,4,10); R(g,N.wood,px-17,py+3,2,9); R(g,N.wood,px+15,py+3,2,9);
+    R(g,N.woodDk,px-18,py-13,3,12); R(g,N.woodDk,px+15,py-13,3,12);
+    R(g,N.woodDk,px-20,py-14,40,4); R(g,N.woodLt,px-20,py-14,40,2); R(g,N.wood,px-17,py-9,34,2);
+    R(g,N.woodDk,px-21,py-2,42,7); R(g,N.wood,px-21,py-3,42,6); R(g,N.woodLt,px-21,py-3,42,1); R(g,N.grain,px-12,py,10,1); R(g,N.grain,px+3,py+1,12,1);
+    R(g,N.redDk,px-13,py-6,26,5); R(g,N.crimson,px-13,py-6,26,4); R(g,N.sakura,px-13,py-6,26,1); R(g,N.white,px-1,py-4,2,1);
   } else if(d.k==="furin"){
     const sw=reduceMotion()?0:ri(Math.sin(time*2.2)*2);
     R(g,N.woodDk,px,py-20,2,5); R(g,N.plasterDk,px,py-15,1,7);
@@ -1796,7 +1815,35 @@ const personSp=k=>SPR["pp"+k]||(SPR["pp"+k]=personPix(k));
 const BUB32=mk(26,22,g=>{ RR(g,"#8e95c4",1,0,24,16); RR(g,"#fffdfb",2,1,22,14); P(g,"#8e95c4",[[10,15],[16,15],[13,21]]); P(g,"#fffdfb",[[11,14],[15,14],[13,19]]);
   for(const dx of [7,12,17]) R(g,"#3e4478",dx,7,2,2); });
 /* ---- 庭院的木台、長桌、座墊、坐著的小精靈 ---- */
-const CUSH=[[N.sakura,N.sakuraDk],[N.waterLt,N.waterDk],[N.mapleLt,N.maple]];
+const CUSH=[[N.sakura,N.sakuraDk,N.sakuraLt],["#8fb2e6","#6a8fc9","#b6cdf2"],[N.mapleLt,N.maple,"#f6c29a"]];
+
+/* ---- 點心小圖（12 種，隨機出現）---- */
+const SNK_PAL={o:"#7a4f4f",w:"#fffaf5",p:"#f4a6bd",P:"#e0708f",r:"#e04a5a",R:"#b8344a",y:"#ffd66b",Y:"#f2994a",b:"#a8693f",B:"#5b3a29",c:"#fff0d2",g:"#7cc47f",G:"#4f9a5a",u:"#8ec9f0",U:"#5a9fd8",t:"#e8b878",T:"#c98f5f",m:"#c98f5f",l:"#dcdce6"};
+const SNACKS=[
+ ["喜久福",["....g......","....r......","...orro....","..owwwwwo..",".owwwwwwwo.",".owwwwwwwo.",".owwwwwwwo.","..ooooooo.."]],
+ ["櫻花麻糬",["..oooooo...",".oppppppo..","oppPpppppo.","opppppPppo.","ogggggggggo",".oGgggggGo.","..ooooooo.."]],
+ ["棒棒糖",["...oooo....","..oPpPpo...",".oPpwwpPo..",".opwPPwpo..",".oPpwwpPo..","..oPpPpo...","...ooo.....","....b......","....b......","....b......"]],
+ ["刨冰",["...........","..ooooooo..",".orrrYYuuo.","orrrrYYuuuo","owwwwwwwwwo",".owwwwwwwo.","..olllllo..","...olllo...","...ooooo..."]],
+ ["草莓聖代",["....rr.....","...orro....","..owwwwwo..",".owwwwwwwo.","..opppppo..","..owwwwwo..","..opppppo..","...owwwo...","....ooo....","...ooooo..."]],
+ ["可麗餅",["..rr.pp....",".orrowwoo..",".owwwwwwwo.","..otttttto.","...otttto..","...otTttto.","....ottto..",".....oto...","......o...."]],
+ ["拉麵",[".......b.b.","...y.y..b.b",".oYyYyYyYyo","oyyYyywwYyyo","orrrrrrrrro",".orrrrrrro.","..orrrrro..","...ooooo..."]],
+ ["熱奶茶",["..l...l....","...l...l...",".ooooooooo.",".omTTTTTmo.",".owwwwwwwoo",".owwwwwwwo.o",".owwwwwwwoo.","..owwwwwo...","...ooooo...."]],
+ ["豬肉蓋飯",["....g.g....",".obbbbbbbo.","obBbYYbBbbo","oBbbYYbbbBo","orrrrrrrrro",".orwrwrwrwo","..orrrrro..","...ooooo..."]],
+ ["牛排",[".ooooooooo.","owwwwwwwwwo","owBbbbbBwwo","owBbRbRbBwo","owBRbRbRBwo","owBbRbRbBwo","owwBBBBBwgo",".ooooooooo."]],
+ ["巧克力",[".ooooooooo.","oBBBBBBBBBo","oBbbBbbBbbo","oBbbBbbBbbo","oBBBBBBBBBo","oBbbBbbBbbo","oBbbBbbBbbo","orrrrrrrrro",".ooooooooo."]],
+ ["甜甜圈",["...ooooo...","..opPPPpo..",".opPyPrPpo.","opPrPPPyPpo","opPPo.oPPPo","opyPo.oPrPo",".opPPPPPpo.","..opPPPpo..","...ooooo..."]]];
+const SNK_CV=[];
+function snackSp(i){
+  if(SNK_CV[i]) return SNK_CV[i]; const rows=SNACKS[i][1], w=Math.max(...rows.map(r=>r.length)), h=rows.length, c=document.createElement("canvas"); c.width=w; c.height=h; const g=c.getContext("2d");
+  rows.forEach((r,y)=>{ for(let x=0;x<r.length;x++){ const k=SNK_PAL[r[x]]; if(k){ g.fillStyle=k; g.fillRect(x,y,1,1); } } }); return SNK_CV[i]=c;
+}
+function drawCush(g,cx,cy,s,sz){      // 日式圓形坐墊：每桌粉／藍／橘隨機分配，同桌看得到的三個不重複
+  if(s.cush==null&&s.row!=null&&TABLES[s.t]){ const m=[{side:1,bl:0,br:2},{side:2,bl:1,br:0},{side:0,bl:2,br:1}][s.t]||{side:1,bl:0,br:2}; s.cush=s.row===2?m.side:(s.x===TABLES[s.t].x+.5?m.bl:m.br); }      // 0粉 1藍 2橘；依桌子（左上／右／左下）固定
+  const k=s.cush==null?0:s.cush, c=CUSH[k];
+  const rx=ri((sz||40)*.34)+5, ry=Math.max(4,ri(rx*.42)); cy+=2;
+  E(g,N.woodDk,cx,cy+3,rx,ry); E(g,c[1],cx,cy+2,rx,ry); E(g,c[0],cx,cy+1,rx,ry); E(g,c[2],cx-1,cy,ri(rx*.7),Math.max(2,ri(ry*.5)));
+  R(g,c[1],cx-1,cy+1,3,2); R(g,N.white,cx,cy+1,1,1);
+}
 function deck32(g,x,y,px,py){
   const isD=(a,b)=>{ const c=at(a,b); return c==="p"||c==="Y"; };
   grass32(g,x,y,px,py);
@@ -1924,14 +1971,14 @@ function burst(x,y,nh,np){      // x,y＝格子座標；從身體高度冒出來
   for(let i=0;i<np;i++) FXP.push({k:"p",x:wx,y:wy-6,vx:(Math.random()-.5)*90,vy:-(30+Math.random()*50),t:0,life:1.0+Math.random()*.6,r:Math.random()*6,c:Math.random()<.6?N.sakura:N.white});
 }
 function fxStep(dt){ for(let i=FXP.length-1;i>=0;i--){ const q=FXP[i]; q.t+=dt;
-    if(q.k==="s"){ const u=Math.min(1,q.t/q.life), ex=player.x*T+T/2, ey=(player.y*32+10)*1.5; q.x=q.x0+(ex-q.x0)*u; q.y=q.y0+(ey-q.y0)*u-Math.sin(u*Math.PI)*34; if(q.t>q.life){ FXP.splice(i,1); burst(player.x,player.y-.1,5,3); if($("musicChk").checked&&audioCtx()) voiceSyl("mi",actx.currentTime+.01,980,true,.5,0,false); } continue; } q.x+=q.vx*dt; q.y+=q.vy*dt; q.vy+= (q.k==="p"?90:-6)*dt; q.vx*=.99; if(q.t>q.life) FXP.splice(i,1); } }
+    if(q.k==="s"){ const u=Math.min(1,q.t/q.life), ex=player.x*T+T/2, ey=(player.y*32+10)*1.5; q.x=q.x0+(ex-q.x0)*u; q.y=q.y0+(ey-q.y0)*u-Math.sin(u*Math.PI)*34; if(q.t>q.life){ FXP.splice(i,1); burst(player.x,player.y-.1,5,3); if($("musicChk").checked&&audioCtx()) voiceSyl("mi",actx.currentTime+.01,980,true,.5,0,false); } continue; } q.x+=q.vx*dt; q.y+=q.vy*dt; q.vy+= (q.k==="p"?(q.g==null?90:q.g):-6)*dt; q.vx*=.99; if(q.t>q.life) FXP.splice(i,1); } }
 function drawFx(){
   const g=mctx, u=Math.max(2,Math.round(view.gpE*1.4));
   for(const q of FXP){ const [sx,sy]=toScreen(q.x,q.y), a=Math.max(0,Math.min(1,(q.life-q.t)/.4)); g.globalAlpha=a;
-    if(q.k==="s"){ g.globalAlpha=1; const px=u; [[N.sakuraDk,-3],[N.white,0],[N.leaf,3]].forEach(([c,o])=>{ g.fillStyle=c; g.fillRect(Math.round(sx+o*px-px),Math.round(sy-px),px*2,px*2); }); g.fillStyle=N.woodLt; g.fillRect(Math.round(sx-4*px),Math.round(sy),px*8,Math.max(1,Math.round(px*.5))); continue; }
+    if(q.k==="s"){ g.globalAlpha=1; const sp=snackSp(q.i||0), px=u*1.25, ww=sp.width*px, hh=sp.height*px; g.imageSmoothingEnabled=false; g.drawImage(sp,Math.round(sx-ww/2),Math.round(sy-hh/2),Math.round(ww),Math.round(hh)); continue; }
     if(q.k==="h"){ const px=u, X=Math.round(sx-2.5*px), Y=Math.round(sy-2*px); g.fillStyle=C.pinkDeep;
       [[1,0],[3,0],[0,1],[1,1],[2,1],[3,1],[4,1],[0,2],[1,2],[2,2],[3,2],[4,2],[1,3],[2,3],[3,3],[2,4]].forEach(([i,j])=>g.fillRect(X+i*px,Y+j*px,px,px)); g.fillStyle="#fff"; g.fillRect(X+px,Y+px,px,px); }
-    else { g.save(); g.translate(sx,sy); g.rotate(q.r+q.t*5); g.fillStyle=q.c; g.beginPath(); g.ellipse(0,0,u*1.3,u*.8,0,0,6.3); g.fill(); g.restore(); } }
+    else { g.save(); g.translate(sx,sy); g.rotate(q.r+q.t*5); g.fillStyle=q.c; g.beginPath(); g.ellipse(0,0,u*1.3*(q.s||1),u*.8*(q.s||1),0,0,6.3); g.fill(); g.restore(); } }
   g.globalAlpha=1;
 }
 /* ---------- 追逐的狀態機 ---------- */
@@ -1945,6 +1992,34 @@ function endCheer(C,F){
     const nc=RUN[RS.ci], nf=RUN[1-RS.ci]; say(nc,"こんどは！"); say(nf,"わー！"); burst(nc.x,nc.y,3,2); }
   const nF=RUN[1-RS.ci], nC=RUN[RS.ci];
   nC.path=[]; nC.wait=1.2; nF.boost=2.2; nF.tire=0; nF.t=9; nC.t=9; const g=farGrass(nC,nF); setPath(nF,g[0],g[1]);
+}
+let ATT=null; const WATCH={on:false};
+function startAttract(kind){
+  const C=RUN[RS.ci], F=RUN[1-RS.ci]; RS.queue=null; RS.mt=0; RS.st=0; C.path=[]; F.path=[];
+  if(kind==="petal"){ RS.mode="petal"; RS.pt=0; say(C,"わぁ♡"); say(F,"わぁ♡"); cry(C.x,C.y,"み！",C.f0,"mi",true); setTimeout(()=>cry(F.x,F.y,"み！",F.f0,"mi",true),220); return true; }
+  const mx=(C.x+F.x)/2, my=(C.y+F.y)/2; let pt=null; for(let k=0;k<30&&!pt;k++){ const q=randGrass([]), d=Math.hypot(q[0]-mx,q[1]-my); if(d>2.5&&d<7) pt=q; } pt=pt||randGrass([]);
+  ATT={kind,x:pt[0],y:pt[1],vx:0,vy:0,t:0,kicks:0,cool:0,eat:0,who:null,snack:Math.floor(Math.random()*SNACKS.length)}; RS.mode="attract";
+  for(const r of [C,F]){ setPath(r,rt(pt[0]),rt(pt[1])); r.boost=0; }
+  say(C,kind==="snack"?"ち！？":"ち！"); say(F,kind==="snack"?"み！？":"み！"); return true;
+}
+function finishAttract(C,F){ RS.mode="joy"; RS.mt=0; C.path=[]; F.path=[]; say(C,"ちみー！"); say(F,"みー！"); burst(C.x,C.y,3,2); burst(F.x,F.y,3,2); cry(C.x,C.y,"ち！",C.f0,"chi",false); setTimeout(()=>cry(F.x,F.y,"み！",F.f0,"mi",true),200); }
+function drawAtt(g){
+  const A=ATT; if(!A) return; const px=ri(A.x*32+16), py=ri(A.y*32+22);
+  if(A.kind==="snack"){ const sp=snackSp(A.snack); shadowAt(g,px,py+6,Math.round(sp.width*1.4),3); g.drawImage(sp,px-((sp.width*3)>>1),py+6-sp.height*3,sp.width*3,sp.height*3);
+  } else { const by=py-6, r=7, dx=A.dx||1, dy=A.dy||0, ph=A.ph||0; shadowAt(g,px,py+3,8,2);
+    for(let y=-r;y<=r;y++) for(let x=-r;x<=r;x++){ const d2=x*x+y*y; if(d2>r*r+r*.6) continue;
+      const w=(x*dx+y*dy)/r, a=Math.asin(Math.max(-1,Math.min(1,w)))*r, band=Math.floor((a-ph+300)/3)%2;      // 條紋沿著滾動方向跑
+      g.fillStyle=d2>(r-1)*(r-1)?N.redDk:(band?"#f28b78":N.red); g.fillRect(px+x,by+y,1,1); }
+    R(g,"#ffd2c8",px-3,by-4,2,2); R(g,N.redDk,px+6,by+5,6,1); R(g,N.redDk,px+11,by+6,2,1); R(g,N.red,px+6,by+4,3,1); }
+}
+function enterWatch(sp){
+  clearKeys(); WATCH.on=true; RS.queue=null; const seat={bench:true,fy:ri(sp.y*32+20),sortY:sp.y+.3,row:0,t:0,id:0,x:sp.x,y:sp.y};
+  player.sit={s:seat,px:sp.x,py:sp.y+1.7}; player.x=sp.x; player.y=sp.y; player.dir="down"; player.moving=false;
+  document.body.classList.add("watching"); $("watchBar").hidden=false;
+}
+function leaveWatch(){
+  WATCH.on=false; ATT=null; RS.queue=null; if(RS.mode==="attract"||RS.mode==="petal"){ RS.mode="run"; RS.grace=1; RUN.forEach(r=>{ r.path=[]; r.t=9; }); }
+  document.body.classList.remove("watching"); $("watchBar").hidden=true;
 }
 function updateRunners(dt){
   fxStep(dt); if(RUN.length<2) return;
@@ -1991,12 +2066,55 @@ function updateRunners(dt){
     if(Math.hypot(C.x-F.x,C.y-F.y)<1.0){ F.hidden=false; RS.mode="cheer"; RS.mt=0; RS.st=0; C.path=[]; F.path=[]; faceEach(C,F); }
     return;
   }
+  // ⑦ 觀賞模式的互動：餵點心／丟毛線球／花瓣雨
+  if(RS.mode==="attract"||RS.mode==="petal"){
+    RS.mt+=dt;
+    if(RS.mode==="petal"){
+      C.moving=F.moving=false; C.hop=F.hop=Math.abs(Math.sin(RS.mt*5))*2.5; RS.pt=(RS.pt||0)-dt;
+      while(RS.pt<=0){ RS.pt+=.035; FXP.push({k:"p",x:cam.x+Math.random()*view.w,y:cam.y-8,vx:(Math.random()-.5)*26+12,vy:14+Math.random()*26,g:7,t:0,life:4+Math.random()*1.6,s:1.4,r:Math.random()*6,c:["#ffffff","#ee9fb6","#ffd9d9","#bcc8f2"][Math.floor(Math.random()*4)]}); }
+      if(RS.mt>4.4) finishAttract(C,F);
+      return;
+    }
+    const A=ATT; if(!A){ finishAttract(C,F); return; } A.t+=dt; C.spd=F.spd=3.4;
+    if(RS.mt>16){ ATT=null; finishAttract(C,F); return; }
+    if(A.kind==="snack"){
+      const go=(r,x,y)=>{ if(r.path.length||Math.hypot(r.x-x,r.y-y)<.25) return; if(okTile(x,y)&&clearLine(r.x,r.y,x,y)) r.path=[[x,y]]; else setPath(r,rt(x),rt(y)); };
+      if(!A.sp){ let L={x:A.x-.95,y:A.y}, R={x:A.x+.95,y:A.y}; if(!okTile(L.x,L.y)) L={x:A.x,y:A.y+.9}; if(!okTile(R.x,R.y)) R={x:A.x,y:A.y-.9};
+        const dd=(r,q)=>Math.hypot(r.x-q.x,r.y-q.y); A.sp=(dd(C,L)+dd(F,R)<=dd(C,R)+dd(F,L))?[L,R]:[R,L]; }
+      const spOf2=r=>A.sp[r===C?0:1], arrived=r=>Math.hypot(r.x-spOf2(r).x,r.y-spOf2(r).y)<.35;
+      const startEat=r=>{ A.who=r; A.eat=0; r.path=[]; r.fx=A.x>r.x?-1:1; say(r,"もぐもぐ♡"); cry(r.x,r.y,"み！",r.f0,"mi",true); burst(r.x,r.y,3,0); };
+      for(const r of [C,F]) if(r!==A.who) go(r,spOf2(r).x,spOf2(r).y);
+      if(RS.st===0){
+        const nr=[C,F].filter(arrived).sort((a,b)=>Math.hypot(a.x-A.x,a.y-A.y)-Math.hypot(b.x-A.x,b.y-A.y))[0];
+        if(nr){ RS.st=1; A.first=nr; startEat(nr); }
+        stepRun(C,dt); stepRun(F,dt);
+      } else {
+        const e=A.who, o=e===C?F:C; A.eat+=dt; e.moving=false; e.path=[]; e.hop=A.eat<1.7?Math.abs(Math.sin(A.eat*11))*2:0;
+        if(o!==A.first||RS.st===1) stepRun(o,dt);
+        if(A.eat>1.8){
+          if(RS.st===1){ say(e,"おいしい♡"); burst(e.x,e.y,3,0); if(arrived(o)){ RS.st=2; A.second=o; startEat(o); } else A.eat=1.8; }
+          else { A.eat=0; say(e,"ごちそうさま♡"); say(o,"みー♡"); burst(o.x,o.y,3,0); burst(e.x,e.y,3,0); cry(e.x,e.y,"ち！",e.f0,"chi",e.mi); ATT=null; finishAttract(C,F); }
+        }
+      }
+    } else {      // 毛線球：兩隻追著球，輪流「えいっ」踢一下
+      if(Math.hypot(A.vx,A.vy)>.05){ const nx=A.x+A.vx*dt, ny=A.y+A.vy*dt; if(okTile(nx,A.y)) A.x=nx; else A.vx=-A.vx*.6; if(okTile(A.x,ny)) A.y=ny; else A.vy=-A.vy*.6; const k=Math.pow(.25,dt); A.vx*=k; A.vy*=k; }
+      A.cool-=dt;
+      { const sp=Math.hypot(A.vx,A.vy); if(sp>.05){ A.dx=A.vx/sp; A.dy=A.vy/sp; A.ph=(A.ph||0)+sp*dt*32; } }
+      for(const r of [C,F]){ if(r.t>.2){ r.t=0; const tx=A.x+(r===C?-1:1)*1.0, ty=A.y+.1; if(Math.hypot(r.x-tx,r.y-ty)>.3){ if(okTile(tx,ty)&&clearLine(r.x,r.y,tx,ty)) r.path=[[tx,ty]]; else setPath(r,rt(A.x),rt(A.y)); } else r.path=[]; } }
+      { const dx=F.x-C.x, dy=F.y-C.y, d=Math.hypot(dx,dy)||.01; if(d<1.1){ const pu=(1.1-d)*Math.min(1,dt*14)*.5, ux=dx/d, uy=dy/d; if(okTile(F.x+ux*pu,F.y+uy*pu)){ F.x+=ux*pu; F.y+=uy*pu; } if(okTile(C.x-ux*pu,C.y-uy*pu)){ C.x-=ux*pu; C.y-=uy*pu; } } }
+      if(A.cool<=0) for(const r of [C,F]){ if(Math.hypot(r.x-A.x,r.y-A.y)<1.25){ A.kicks++; A.cool=.8; const a=Math.atan2(A.y-r.y,A.x-r.x)+(Math.random()-.5)*1.6; A.vx=Math.cos(a)*4.8; A.vy=Math.sin(a)*4.8; r.tapHop=.7; say(r,["えいっ！","ち！","みっ！"][Math.floor(Math.random()*3)]); cry(r.x,r.y,"み！",r.f0*1.05,"mi",true); break; } }
+      if(A.kicks>=4&&Math.hypot(A.vx,A.vy)<.5){ ATT=null; finishAttract(C,F); return; }
+      stepRun(C,dt); stepRun(F,dt);
+    }
+    return;
+  }
+  if(RS.queue&&WATCH.on&&!(C.trip>0)&&!(F.trip>0)){ if(startAttract(RS.queue)) return; }
   // ③ 一般追逐
   if(dist<1.0&&RS.grace<=0){ RS.mode="cheer"; RS.mt=0; RS.st=0; C.path=[]; F.path=[]; C.wait=F.wait=0; faceEach(C,F); return; }
   RS.pchase=(player.moving&&pd<4.5)?(RS.pchase||0)+dt:Math.max(0,(RS.pchase||0)-dt*1.5);
   if(RS.grace<=0&&RS.chaseCd<=0&&RS.pchase>2.5&&!(C.trip>0)&&!(F.trip>0)){ RS.pchase=0; RS.chaseCd=9; RS.mode="look"; RS.mt=0; C.path=[]; F.path=[]; say(C,"ち？"); say(F,"み？"); cry(C.x,C.y,"ち？",780,"chi",false); setTimeout(()=>cry(F.x,F.y,"み？",960,"mi",true),260); return; }
   if(RS.grace<=0&&RS.lookCd<=0&&pd<3.4&&!(C.trip>0)&&!(F.trip>0)){ RS.mode="look"; RS.mt=0; RS.lookCd=16+Math.random()*10; C.path=[]; F.path=[]; say(C,"ち？"); say(F,"み？"); cry(C.x,C.y,"ち？",780,"chi",false); setTimeout(()=>cry(F.x,F.y,"み？",960,"mi",true),260); return; }
-  if(RS.grace<=0&&RS.orbitCd<=0&&RS.still>2&&!(C.trip>0)&&!(F.trip>0)&&okTile(player.x,player.y)&&Math.hypot(C.x-player.x,C.y-player.y)<22&&Math.hypot(F.x-player.x,F.y-player.y)<22){
+  if(RS.grace<=0&&!player.sit&&RS.orbitCd<=0&&RS.still>2&&!(C.trip>0)&&!(F.trip>0)&&okTile(player.x,player.y)&&Math.hypot(C.x-player.x,C.y-player.y)<22&&Math.hypot(F.x-player.x,F.y-player.y)<22){
     let pts=null; for(const R of [2.4,2,1.6]){ const q=[]; for(let i=0;i<14;i++){ const a=i/14*Math.PI*2; q.push([player.x+Math.cos(a)*R,player.y+.2+Math.sin(a)*R]); } if(q.every(([x,y])=>okTile(x,y))){ pts=q; break; } }
     if(pts){ const near=r=>{ let bi=0,bd=1e9; pts.forEach(([x,y],i)=>{ const d=Math.hypot(x-r.x,y-r.y); if(d<bd){ bd=d; bi=i; } }); return bi; };
       const iF=near(F), iC=(iF+12)%14, lap=i0=>{ const o=[]; for(let k=0;k<15;k++) o.push(pts[(i0+k)%14]); return o; };
@@ -2043,13 +2161,13 @@ function drawRunner32(g,r){
 }
 function drawSpirit32(g,s){
   const cx0=ri(s.x*32+16), hopY=s.pat>0?Math.round(Math.sin((1-s.pat/.3)*Math.PI)*3):0, fy=s.fy-hopY, jit=s.shake>0?((Math.floor(time*30)%2)?1:-1):0, cx=cx0+jit;
-  if(s.seated){ const c=CUSH[(s.t+s.id)%3], cy=s.fy-3; R(g,N.woodDk,cx0-9,cy+3,18,1); R(g,c[1],cx0-9,cy-3,18,6); R(g,c[0],cx0-8,cy-3,16,5); R(g,N.white,cx0-2,cy-2,3,1); }
-  if(s.gone){                                         // 把位子讓給玩家了：站在座位旁邊陪著
+    if(s.gone){                                         // 把位子讓給玩家了：站在座位旁邊陪著
     const so=s.standOff||{dx:0,dy:1.9}, scx=cx0+Math.round(so.dx*32), sfy=s.fy+Math.round(so.dy*32)-hopY;
     shadowAt32(g,scx,sfy+2,ri(s.size*.3)+3,ri(s.size*.08)+2,s.sheet);
     if(s.sheet) drawSheet(g,s.sheet,"down",0,scx,sfy,1,null,time+s.id*0.53,so.dx<0?-1:1);
     return; }
   shadowAt32(g,cx,s.fy+2,ri(s.size*.3)+3,ri(s.size*.08)+2,s.sheet);
+  if(s.seated) drawCush(g,cx0,s.fy-3,s,s.size);
   const lk=s.look&&time>=s.look.t0&&time-s.look.t0<s.look.dur;      // 轉頭看：背對的也轉過來給你看正面
   const useSh=(!lk&&s.row===1&&s.back&&ready(s.back.a))?s.back:s.sheet;      // 坐在桌子下緣（面向桌子）的看到的是背影
   const ffl=lk?(s.look.tx>s.x?-1:1):((s.row===2&&TABLES[s.t]&&TABLES[s.t].end<0)||(s.row===1&&TABLES[s.t]&&s.x===TABLES[s.t].x+.5)||(!s.seated&&s.flip)?-1:1);     // 桌子左端的座位面向右 → 翻轉
@@ -2066,11 +2184,11 @@ function tableLook(ti,tx,first){      // 整桌一個接一個轉頭看過去
   const t=TS[ti]; if(!t||t.busy>time||t.lookCd>time) return false; const l=tableSp(ti).filter(q=>!q.gone).sort((p,q)=>Math.abs(p.x-tx)-Math.abs(q.x-tx));
   l.forEach((q,i)=>later(i*.9,()=>{ lookAt(q,tx,3.4); if(i===0&&first) sayS(q,first); })); t.lookCd=time+26; t.busy=time+l.length*.9+3.6; return true;
 }
-function tableChoke(ti){
-  const t=TS[ti], l=tableSp(ti).filter(q=>!q.gone); if(l.length<2) return; const c=l[Math.floor(Math.random()*l.length)];
-  const n=l.filter(q=>q!==c).sort((p,q)=>Math.hypot(p.x-c.x,p.y-c.y)-Math.hypot(q.x-c.x,q.y-c.y))[0]; t.busy=time+4.6;
+function tableChoke(ti,who){
+  const t=TS[ti], l=tableSp(ti).filter(q=>!q.gone); if(l.length<2&&!who) return; const c=who||l[Math.floor(Math.random()*l.length)];
+  const n=l.filter(q=>q!==c).sort((p,q)=>Math.hypot(p.x-c.x,p.y-c.y)-Math.hypot(q.x-c.x,q.y-c.y))[0]; t.busy=time+4.6; c.chokeUntil=time+3.2;
   c.shake=2.6; sayS(c,["ち…！？","み…！？"][Math.floor(Math.random()*2)]);
-  later(1.0,()=>{ n.pat=.3; sayS(n,"ち！"); }); later(1.7,()=>{ n.pat=.3; sayS(n,"み！"); }); later(2.4,()=>{ n.pat=.3; sayS(n,"ち！"); });
+  if(n){ later(1.0,()=>{ n.pat=.3; sayS(n,"ち！"); }); later(1.7,()=>{ n.pat=.3; sayS(n,"み！"); }); later(2.4,()=>{ n.pat=.3; sayS(n,"ち！"); }); }
   later(2.7,()=>{ c.shake=0; c.pat=.3; sayS(c,"ぷはっ♡"); burst(c.x,c.y-.8,3,0); });
 }
 function tableCheers(ti){
@@ -2083,9 +2201,13 @@ function tableHear(src){      // 追逐的叫聲／跑過：附近的整桌一�
 }
 function spiritTap(cx,cy){      // ① 點桌邊小精靈：把點心遞給你吃
   let best=null,bd=1e9; for(const q of SPIRITS){ if(!q.seated||q.gone) continue; const [sx,sy]=toScreen(q.x*T+T/2,(q.fy-q.size*.45)*1.5), d=Math.hypot(cx-sx,cy-sy); if(d<(q.size*.5+4)*view.gpE&&d<bd){ best=q; bd=d; } }
-  if(!best||(best.tapCd||0)>time||Math.hypot(best.x-player.x,best.y-player.y)>9) return false;
+  if(!best||Math.hypot(best.x-player.x,best.y-player.y)>9) return false;
+  if((best.chokeUntil||0)>time) return true;
+  if(time-(best.tapT||-9)>3.2) best.tapN=0; best.tapT=time; best.tapN=(best.tapN||0)+1;      // 連續點很多下 → 噎住
+  if(best.tapN>=5){ best.tapN=0; best.tapCd=time+3.5; tableChoke(best.t,best); return true; }
+  if((best.tapCd||0)>time) return true;
   best.tapCd=time+2.5; best.pat=.3; sayS(best,Math.random()<.5?"ちみ♡":"どうぞ♪");
-  FXP.push({k:"s",x:best.x*T+T/2,y:(best.fy-best.size*.5)*1.5,x0:best.x*T+T/2,y0:(best.fy-best.size*.5)*1.5,t:0,life:.8,vx:0,vy:0});
+  FXP.push({k:"s",x:best.x*T+T/2,y:(best.fy-best.size*.5)*1.5,x0:best.x*T+T/2,y0:(best.fy-best.size*.5)*1.5,t:0,life:.8,vx:0,vy:0,i:Math.floor(Math.random()*SNACKS.length)});
   return true;
 }
 function updateTables(dt){
@@ -2103,7 +2225,7 @@ function updateTables(dt){
   sitCd-=dt; let ns=null,nd=1e9; for(const q of SPIRITS){ if(!q.seated||q.gone) continue; const d=Math.hypot(q.x-player.x,q.y-player.y); if(d<nd){ nd=d; ns=q; } }
   if(player.moving||!ns||nd>1.9||sitCd>0) sitT=0; else { sitT+=dt; if(sitT>5){ sitT=0; const q=ns; q.pat=.3; sayS(q,"どうぞ♪"); later(1.1,()=>{ if(player.moving||paused) return; player.sit={s:q,px:player.x,py:player.y}; q.gone=true; q.standOff=q.row===0?{dx:0,dy:-1.9}:q.row===1?{dx:0,dy:1.9}:{dx:TABLES[q.t].end<0?-1.6:1.6,dy:0}; burst(q.x,q.y-.6,4,3); player.x=q.x; player.y=q.y; player.moving=false; }); sitCd=3; } }
 }
-function standUp(){ const st=player.sit; if(!st) return; player.sit=null; player.x=st.px; player.y=st.py; st.s.gone=false; st.s.pat=.3; sayS(st.s,"おかえり♡"); sitCd=40; }
+function standUp(){ const st=player.sit; if(!st) return; player.sit=null; player.x=st.px; player.y=st.py; if(st.s.bench){ leaveWatch(); return; } st.s.gone=false; st.s.pat=.3; sayS(st.s,"おかえり♡"); sitCd=40; }
 /* ---------- 小精靈的對話泡泡（ち／み！）：彈出 → 停一下 → 淡出，同時最多 3 個，離玩家太遠不冒 ---------- */
 function updateBubbles(){
   if(!SPIRITS.length) return;
@@ -2140,7 +2262,7 @@ function drawNpc32(g,s){
 }
 function drawPlayer32(g){
   const sit=player.sit, cx=ri(player.x*32+16), fy=sit?sit.s.fy:ri(player.y*32+28), fr=player.moving?(Math.floor(time*8)%2):0, bob=(player.moving&&fr)?-1:0;
-  if(sit){ const c=CUSH[(sit.s.t+sit.s.id)%3], cy=fy-3; R(g,N.woodDk,cx-9,cy+3,18,1); R(g,c[1],cx-9,cy-3,18,6); R(g,c[0],cx-8,cy-3,16,5); R(g,N.white,cx-2,cy-2,3,1); }
+  if(sit&&!sit.s.bench) drawCush(g,cx,fy-3,sit.s,48);
   shadowAt32(g,cx,fy+1,11,3,player.sp);
   if(player.sp && ready(player.sp.a)) drawSheet(g,player.sp,sit?(sit.s.row===1?"up":"down"):player.dir,player.moving?(Math.floor(time*6)%2):0,cx,fy,player.face,player.acc,time,(!sit&&player.dir==="side")?(player.face>0?-1:1):0);
   else { g.save(); g.translate(cx,0); g.scale(player.face,1); g.drawImage(catSp(player.cat,fr),-20,fy-37+bob); g.restore(); }
@@ -2239,7 +2361,8 @@ const snapPx = v => Math.round(v*MM)/MM;   // 對齊像素格，走路時才不�
 const MAPW=COLS*T, MAPH=ROWS*T;
 const view={k:1,w:MAPW,h:MAPH,dpr:1,fit:true,sc:1,gpE:1,ox:0,oy:0}, cam={x:0,y:0};
 function camTarget(){
-  const tx=player.x*T+T/2-view.w/2, ty=player.y*T+T/2-view.h/2;
+  let fx=player.x, fy=player.y; if(WATCH.on&&RUN.length>1){ fx=(RUN[0].x+RUN[1].x)/2; fy=(RUN[0].y+RUN[1].y)/2; }
+  const tx=fx*T+T/2-view.w/2, ty=fy*T+T/2-view.h/2;
   return [view.w>=MAPW ? (MAPW-view.w)/2 : Math.max(0,Math.min(MAPW-view.w,tx)),
           view.h>=MAPH ? (MAPH-view.h)/2 : Math.max(0,Math.min(MAPH-view.h,ty))];
 }
@@ -2363,6 +2486,7 @@ const DECOR = [
   {k:"pot", x:7.5, y:8.45},
   {k:"pot", x:21.0, y:8.45},
   {k:"furin", x:10.2, y:7.9},
+  {k:"bench", x:9.2, y:8.5},
   {k:"bowl", x:19.3, y:8.55},
   {k:"yarn", x:17.0, y:8.55},
   {k:"shoes", x:12.7, y:8.5},
@@ -2444,6 +2568,12 @@ function drawDecor(d){
     R(g,N.woodDk,px-3,py+4,7,1);
   } else if(d.k==="yarn"){      // 毛線球
     D(g,N.sakuraDk,px,py,2); R(g,N.sakura,px-1,py-1,1,1); R(g,N.sakuraLt,px,py-2,1,1); R(g,N.sakuraDk,px+3,py+2,4,1); R(g,N.sakuraDk,px+6,py+3,1,1);
+  } else if(d.k==="bench"){     // 縁側的長椅（紅色座墊）
+    shadowAt(g,px,py+11,21,3);
+    R(g,N.woodDk,px-18,py+4,3,8); R(g,N.woodDk,px+15,py+4,3,8);
+    R(g,N.woodDk,px-19,py-12,38,2); R(g,N.wood,px-19,py-13,38,2); R(g,N.woodDk,px-17,py-11,2,10); R(g,N.woodDk,px+15,py-11,2,10);
+    R(g,N.woodDk,px-20,py-1,40,6); R(g,N.wood,px-20,py-2,40,5); R(g,N.woodLt,px-20,py-2,40,1);
+    R(g,N.redDk,px-12,py-5,24,4); R(g,N.crimson,px-12,py-5,24,3); R(g,N.white,px-1,py-4,2,1);
   } else if(d.k==="shoes"){     // 一雙鞋：藍＆紅
     R(g,N.indigoDk,px-5,py+1,5,3); R(g,N.indigo,px-5,py,5,3); R(g,N.white,px-5,py+3,5,1);
     R(g,N.redDk,px+1,py+1,5,3); R(g,N.red,px+1,py,5,3); R(g,N.white,px+1,py+3,5,1);
@@ -2495,7 +2625,7 @@ function draw(){
   drawFlowers32(g,time);
   drawGround();
   const items=spots.map(s=>({y:s.y,f:()=>drawSpot32(s)}))
-    .concat(DECOR.filter(d=>d.k!=="koi").map(d=>({y:d.y-.2,f:()=>drawDecor32(d)})),SHRINES.map(s=>({y:s.y+.9,f:()=>drawShrine32(g,s.x,s.y)})),spots.filter(s=>s.kind==="npc").map(s=>({y:s.y+.05,f:()=>drawNpc32(g,s)})),[{y:player.sit?player.sit.s.sortY+.02:player.y+.05,f:()=>drawPlayer32(g)}],TABLES.map(t=>({y:t.y+1.5,f:()=>drawTable32(g,t)})),SPIRITS.map(q=>({y:q.gone&&q.standOff?q.sortY+q.standOff.dy:q.sortY,f:()=>drawSpirit32(g,q)})),RUN.map(r=>({y:r.y+.05,f:()=>drawRunner32(g,r)})),
+    .concat(DECOR.filter(d=>d.k!=="koi").map(d=>({y:d.y-.2,f:()=>drawDecor32(d)})),SHRINES.map(s=>({y:s.y+.9,f:()=>drawShrine32(g,s.x,s.y)})),spots.filter(s=>s.kind==="npc").map(s=>({y:s.y+.05,f:()=>drawNpc32(g,s)})),[{y:player.sit?player.sit.s.sortY+.02:player.y+.05,f:()=>drawPlayer32(g)}],TABLES.map(t=>({y:t.y+1.5,f:()=>drawTable32(g,t)})),SPIRITS.map(q=>({y:q.gone&&q.standOff?q.sortY+q.standOff.dy:q.sortY,f:()=>drawSpirit32(g,q)})),RUN.map(r=>({y:r.y+.05,f:()=>drawRunner32(g,r)})),(ATT?[{y:ATT.y+(ATT.kind==="snack"?-.5:.05),f:()=>drawAtt(g)}]:[]),
       TREES.map(tr=>({y:tr.y+.08,f:()=>drawTree32(g,tr.x,tr.y,time)}))).sort((a,b)=>a.y-b.y);
   items.forEach(i=>i.f());
   drawAir();
@@ -2524,7 +2654,7 @@ function drawLabels(){      // 靠近互動點時的名字牌（用像素字體�
   }
 }
 function drawArrows(){      // 還沒發現、而且在畫面外的互動點：在螢幕邊緣放一個會跳動的箭頭
-  if(view.fit) return;
+  if(view.fit||WATCH.on) return;
   const W=cv.clientWidth, H=cv.clientHeight, g=mctx, m=26, cx=W/2, cy=H/2;
   const list=[];
   for(const s of spots){
@@ -2596,6 +2726,7 @@ function update(dt){
 }
 /* 依「觸發遊戲」決定要開哪個畫面；沒有（或還沒做好）就是普通彈窗 */
 function trigger(s){
+  if(s.game==="watch") return enterWatch(s);
   if(s.game==="lot" && lotList().length) return wipeTo(()=>openLot(s));
   if(s.game==="catch") return wipeTo(()=>openCatch(s));
   openModal(s);
@@ -3320,13 +3451,15 @@ function thFrame(){
 function openThanks(){
   paused=true; clearKeys();
   showOv($("thanks")); const tc=$("thanks").querySelector(".tcard"); tc.classList.remove("go"); tc.scrollTop=0; void tc.offsetWidth; tc.classList.add("go");
-  const cv=$("tCv"), W=176, H=137, avail=Math.min(352,innerWidth-56), sc=Math.max(2,Math.floor(avail/W)), dpr=Math.min(window.devicePixelRatio||1,2);
-  TH.sc=sc*dpr; cv.width=W*TH.sc; cv.height=H*TH.sc; cv.style.width=(W*sc)+"px"; cv.style.height=(H*sc)+"px";
+  const cv=$("tCv"), W=176, H=137, avail=Math.min(352,Math.max(160,(cv.parentElement.clientWidth||innerWidth-56)-(parseFloat(getComputedStyle(cv.parentElement).paddingLeft)||0)-(parseFloat(getComputedStyle(cv.parentElement).paddingRight)||0))), sc=Math.max(2,Math.ceil(Math.min(352,avail)/W)), dpr=Math.min(window.devicePixelRatio||1,2);
+  TH.sc=sc*dpr; cv.width=W*TH.sc; cv.height=H*TH.sc; cv.style.width=Math.floor(avail)+"px"; cv.style.height="auto";
   TH.lo=TH.lo||document.createElement("canvas"); TH.lo.width=W; TH.lo.height=H; TH.t0=performance.now(); TH.on=true; TH.lastPh=0; TH.snd=undefined; cancelAnimationFrame(TH.raf); thFrame(); $("tClose").focus({preventScroll:true});
 }
 function closeThanks(){ TH.on=false; cancelAnimationFrame(TH.raf); hideOv($("thanks")); paused=false; }
 $("thxBtn").addEventListener("click",()=>{ if(!paused) openThanks(); });
 $("tClose").addEventListener("click",closeThanks);
+for(const [id,kind] of [["wSnack","snack"],["wBall","ball"],["wPetal","petal"]]) $(id).addEventListener("click",()=>{ if(!WATCH.on||RS.queue||RS.mode==="attract"||RS.mode==="petal") return; RS.queue=kind; });
+$("wLeave").addEventListener("click",()=>standUp());
 $("thanks").addEventListener("pointerdown",ev=>{ if(ev.target===$("thanks")) closeThanks(); });
 
 $("mClose").addEventListener("click",closeModal);
