@@ -19,7 +19,7 @@
   [hidden]{display:none!important}
   html,body{margin:0;height:100%;background:#232b52;transition:background 6s ease;color:var(--ink);font-family:var(--font);overscroll-behavior:none;touch-action:none;-webkit-user-select:none;user-select:none}
   #app{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:env(safe-area-inset-top,0) env(safe-area-inset-right,0) env(safe-area-inset-bottom,0) env(safe-area-inset-left,0)}
-  #hud{width:100%;max-width:960px;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px;font-size:18px}
+  #hud{background:#373847;border-radius:12px;width:100%;max-width:960px;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px;font-size:18px}
   #title{font-weight:700;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   #hud .r{display:flex;align-items:center;gap:10px;white-space:nowrap}
   #hud b{color:var(--pink-deep)}
@@ -114,14 +114,15 @@
   }
   html,body,button,input{font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif}
   html,body{font-size:15px;font-weight:400;line-height:1.6}
-  #title{display:flex;flex-direction:column;align-items:flex-start;gap:1px;white-space:normal;line-height:1.25;color:#e4eaff;transition:color 6s ease}
+  #title{display:flex;flex-direction:column;align-items:flex-start;gap:1px;white-space:normal;line-height:1.25;color:#a9c0f2;transition:color 6s ease}
   #title .tm{font-size:17px;font-weight:700;letter-spacing:.1em}
   #title .ts{font-size:11.5px;font-weight:500;letter-spacing:.3em;opacity:.78;padding-left:.1em}
-  body.pink #title{color:#ffc4d3}
+  body.pink #title{color:#f0b4bc}
   #again,#musicBtn,#thxBtn,#achBtn,#mapBtn{transition:background 6s ease,border-color 6s ease,color 6s ease}
-  body.pink #again,body.pink #musicBtn,body.pink #thxBtn,body.pink #achBtn,body.pink #mapBtn{background:rgba(204,113,134,.28)!important;border-color:rgba(255,190,205,.6)!important;color:#ffe0ea!important}
-  #again,#musicBtn,#thxBtn,#achBtn,#mapBtn{background:rgba(255,255,255,.12)!important;border:1px solid rgba(255,255,255,.28)!important;color:#eef1ff!important;box-shadow:none!important}
-  #again:hover,#musicBtn:hover,#thxBtn:hover,#achBtn,#mapBtn:hover{background:rgba(255,255,255,.2)!important}
+  body.pink #again,body.pink #musicBtn,body.pink #thxBtn,body.pink #achBtn,body.pink #mapBtn{background:#c2757f!important;border-color:rgba(255,255,255,.32)!important;color:#f1f1ff!important}
+  #again,#musicBtn,#thxBtn,#achBtn,#mapBtn{background:#527dd3!important;border:1.5px solid rgba(255,255,255,.32)!important;color:#eef1ff!important;box-shadow:none!important}
+  #again:hover,#musicBtn:hover,#thxBtn:hover,#achBtn:hover,#mapBtn:hover{background:#6b92e0!important}
+  body.pink #again:hover,body.pink #musicBtn:hover,body.pink #thxBtn:hover,body.pink #achBtn:hover,body.pink #mapBtn:hover{background:#d08a94!important}
   #musicBtn[aria-pressed="false"]{opacity:.6}
   #hud b{font-weight:700;color:var(--accent)}
   #stage{border:0;border-radius:16px;background:var(--blue-pale);box-shadow:none}
@@ -132,6 +133,7 @@
   #musicBtn[aria-pressed="false"]{color:var(--ink-3);background:var(--surface-2)}
   #pad button{border:1px solid var(--line-2);border-radius:50%;background:rgba(255,255,255,.88);color:var(--ink-2);font-size:15px;box-shadow:0 4px 10px -4px rgba(44,48,86,.35)}
   #pad button.on{background:var(--accent);color:#fff}
+  @media (pointer:coarse){body:not(.watching) #toast{left:156px!important;right:12px;transform:none!important;max-width:none!important;text-align:center;pointer-events:none}}
   #toast{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);border:1px solid var(--line-2);border-radius:var(--r-ctl);background:#fff;color:var(--ink-2);box-shadow:var(--shadow-card);padding:10px 16px;font-size:13.5px;max-width:90%;z-index:9}
   .ln{display:block;opacity:0;animation:lnIn .8s ease var(--d,0s) forwards;white-space:pre-wrap}
   .ln.now{opacity:1;animation:none}
@@ -330,9 +332,13 @@
   .achToast .at{display:flex;flex-direction:column;gap:1px;min-width:0}.achToast small{font-size:10.5px;color:var(--ink2);letter-spacing:.04em}.achToast b{font-size:15px;line-height:1.25}.achToast em{font-style:normal;font-size:12px;line-height:1.35;color:var(--ink2)}
   #achBar2{display:flex;gap:6px;align-items:center}#achBar2 .btn{height:36px;padding:0 12px;font-size:13px;white-space:nowrap}#achEye[aria-pressed=true]{background:var(--surface-2);outline:2px solid var(--line-2)}
   #achList.peek .achRow em{white-space:pre-line;user-select:text;-webkit-user-select:text}#achList.peek .achRow b{user-select:text;-webkit-user-select:text}
-  .dexRow{border:1px solid var(--line-2);border-radius:12px;padding:10px;margin-bottom:10px}.dexRow h4{margin:0 0 2px;font-size:14px}.dexRow code{font-size:11px;color:var(--ink-2);user-select:text;-webkit-user-select:text;word-break:break-all}.dexRow p{margin:4px 0 0;font-size:12px;color:var(--ink-2);line-height:1.5}
-  .dexImgs{display:flex;gap:6px;margin-top:8px}.dexImgs figure{margin:0;text-align:center;font-size:11px;color:var(--ink-2);flex:1;min-width:0}.dexImgs canvas{width:100%;max-width:72px;aspect-ratio:1;background:#eef3fb;border-radius:8px;image-rendering:pixelated;display:block;margin:0 auto 2px}.dexImgs .none{aspect-ratio:1;max-width:72px;margin:0 auto 2px;border-radius:8px;border:1px dashed var(--line-2);display:flex;align-items:center;justify-content:center;font-size:13px}
+  .talkPics{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 8px}.talkPics figure{margin:0;text-align:center;font-size:12px;color:var(--ink-2)}.talkPics canvas{display:block;margin:0 auto 2px;image-rendering:pixelated}
+  .dexTabs{display:flex;gap:6px;padding:8px 16px 0}.dexTabs button{flex:1;padding:8px 6px;border:1px solid var(--line-2);border-radius:99px;background:#fff;color:var(--ink-2);font:600 14.3px/1.2 inherit;cursor:pointer}.dexTabs button.on{background:#65749f;color:#fff;border-color:#65749f}
+  .dlgSec{margin:14px 0 6px;font-size:15.3px;font-weight:700;color:#363859}.dlgItem{border:1px solid var(--line-2);border-radius:12px;padding:10px;margin-bottom:8px;background:#fff}.dlgItem .cond{display:inline-block;font-size:12.3px;color:#fff;background:#8094db;border-radius:99px;padding:2px 9px;margin-bottom:6px}.dlgItem .tt{font-weight:700;font-size:14.3px;margin-bottom:4px}.dlgItem .tx{white-space:pre-wrap;font-size:14.3px;line-height:1.7;color:#363859}.dlgItem .bt{margin-top:6px;display:flex;flex-wrap:wrap;gap:5px}.dlgItem .bt span{font-size:12.3px;padding:2px 9px;border-radius:99px;border:1px solid #cc7186;color:#cc7186}
+  .dexRow{border:1px solid var(--line-2);border-radius:12px;padding:10px;margin-bottom:10px}.dexRow h4{margin:0 0 2px;font-size:15.3px}.dexRow code{font-size:12.3px;color:var(--ink-2);user-select:text;-webkit-user-select:text;word-break:break-all}.dexRow p{margin:4px 0 0;font-size:13.3px;color:var(--ink-2);line-height:1.5}
+  .dexImgs{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;margin-top:8px}.dexImgs figure{margin:0;text-align:center;font-size:12.3px;color:var(--ink-2);flex:0 0 88px;min-width:0}.dexImgs canvas{width:88px;height:88px;flex:none;background:#eef3fb;border-radius:8px;image-rendering:pixelated;display:block;margin:0 auto 2px}.dexImgs .none{aspect-ratio:1;max-width:88px;margin:0 auto 2px;border-radius:8px;border:1px dashed var(--line-2);display:flex;align-items:center;justify-content:center;font-size:14.3px}
   #mapCv{display:block;margin:0 auto;border-radius:10px;border:1px solid var(--line-2);image-rendering:pixelated;max-width:100%}
+  #ach,#ach *,#dex,#dex *{user-select:text;-webkit-user-select:text;-webkit-touch-callout:default}#achEye,#achClose,#dexClose,#dexBtn{user-select:none;-webkit-user-select:none}
   #achList{display:flex;flex-direction:column;gap:8px}#achList h3{margin:10px 0 0;font-size:13px;color:var(--ink2);letter-spacing:.12em}
   .achRow{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:12px;background:#f3f4fa;position:relative}.achRow.got{background:#fff6ee}
   .achRow .at{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}.achRow b{font-size:15px;white-space:pre-line}.achRow .note{display:block;font-style:normal;font-size:11px;line-height:1.35;color:var(--ink3,#a39aae);white-space:pre-line}.achToast .at b,.achToast .at em{white-space:pre-line}.achRow em{white-space:pre-line;font-style:normal;font-size:12.5px;line-height:1.4;color:var(--ink2)}.achRow small{position:absolute;right:10px;top:8px;font-size:10px;color:var(--ink3,#a39aae)}
@@ -388,7 +394,7 @@
       </div>
       <div class="dlg-foot">
         <button id="sGo" class="btn btn-primary btn-block" type="button">進入庭院</button>
-        <div class="credit">音樂：Kevin MacLeod（incompetech.com）〈Senbazuru〉〈Ripples〉，CC BY 4.0</div>
+        <div class="credit">音樂：Kevin MacLeod（incompetech.com）〈Senbazuru〉〈Ripples〉〈Canon in D for Two Harps〉〈Mana Two - Part 2〉〈Mana Two - Part 1〉〈Blippy Trance〉〈Teddy Bear Waltz〉〈Flying Kerfuffle〉〈Arroz Con Pollo〉〈Holiday Weasel〉，CC BY 4.0</div>
       </div>
     </div>
     <div id="sChar" class="view" hidden>
@@ -435,7 +441,8 @@
 <div id="dex" class="overlay" hidden>
   <div class="card" role="dialog" aria-modal="true" aria-labelledby="dexT">
     <div class="dlg-bar"><div class="ttl"><h2 id="dexT">小精靈圖鑑</h2><span class="eyebrow" id="dexSum"></span></div><button id="dexClose" class="btn btn-icon" type="button" aria-label="關閉">✕</button></div>
-    <div class="dlg-body"><div id="dexList"></div></div>
+    <div class="dexTabs" role="tablist"><button id="dexT1" class="on" type="button" role="tab" aria-selected="true">小精靈圖鑑</button><button id="dexT2" type="button" role="tab" aria-selected="false">彈窗文字</button><button id="dexT3" type="button" role="tab" aria-selected="false">提示文字</button><button id="dexT4" type="button" role="tab" aria-selected="false">小精靈說的話</button></div>
+    <div class="dlg-body"><div id="dexList"></div><div id="dexDlg" hidden></div><div id="dexTip" hidden></div><div id="dexTalk" hidden></div></div>
   </div>
 </div>
 <div id="mapDlg" class="overlay" hidden>
@@ -467,7 +474,7 @@
       <section class="cr">
         <div class="item"><div class="jp">企劃・遊戲設計・像素美術・插畫</div><div class="e">Game Planning, Design &amp; Illustration</div><div class="nm"><a href="https://portaly.cc/nonbiriiii0204" target="_blank" rel="noopener noreferrer">逐悠</a></div></div>
         <div class="item"><div class="jp">地圖設計・場景美術・程式開發</div><div class="e">Map Design, Environment Art &amp; Development</div><div class="nm"><a href="https://portaly.cc/nonbiriiii0204" target="_blank" rel="noopener noreferrer">逐悠</a><span class="x">×</span>Claude（Anthropic）</div></div>
-        <div class="item"><div class="jp">背景音樂</div><div class="e">Background Music</div><div class="nm"><a href="https://incompetech.com" target="_blank" rel="noopener noreferrer">Kevin MacLeod</a><small>Senbazuru / Ripples<br>Licensed under CC BY 4.0</small></div></div>
+        <div class="item"><div class="jp">背景音樂</div><div class="e">Background Music</div><div class="nm"><a href="https://incompetech.com" target="_blank" rel="noopener noreferrer">Kevin MacLeod</a><small>Senbazuru<br>Ripples<br>Canon in D for Two Harps<br>Mana Two - Part 2<br>Mana Two - Part 1<br>Blippy Trance<br>Teddy Bear Waltz<br>Flying Kerfuffle<br>Arroz Con Pollo<br>Holiday Weasel<br>Licensed under CC BY 4.0</small></div></div>
         <div class="item"><div class="jp">遊戲測試／體驗優化</div><div class="e">Game Testing &amp; UX Improvement</div><div class="nm">卡奇、狗勾</div></div>
       </section>
       <hr class="rule">
@@ -838,14 +845,14 @@ const Y0=-9, NR=ROWS-Y0;      // 地圖往上擴了 3 格：新增的列用負�
 
 const POOLC={d:"#5fb39f",m:"#86cdb4",l:"#b6e8d4",rim:"#4a9a89"};
 const SPDEP=[[0,"#8fd3ba"],[9,"#86cdb4"],[18,"#7bc5b0"],[27,"#6ab6a6"],[36,"#5aa89c"],[44,"#4d9a92"]];      // 溫泉水深階層：[離岸距離px, 顏色]
-const SPG={cx:480,cy:-104,A:118,B:50,gap:[64,116]};      // 露天溫泉：池子中心（像素）、半徑、南邊入口的角度範圍
+const SPG={cx:480,cy:-104,A:118,B:50,gap:[-999,-998]};      // 露天溫泉：池子中心（像素）、半徑、南邊入口的角度範圍
 const SPD={barrel:{x:16.3,y:-1.6}, lant:[{x:10.9,y:-5.0},{x:19,y:-3.5},{x:5.0,y:2.3},{x:22.0,y:2.3}], bunny:[], snowman:[{x:19.9,y:-7.4}], mound:{x:22.7,y:-7.4}, angel:[], deco:[{k:"log",x:4.9,y:-4.6},{k:"lamp",x:5.6,y:-3.6},{k:"lamp",x:18.0,y:-2.1}], wtree:[{x:11,y:-7,v:0},{x:4.5,y:-6.3,v:1},{x:6.2,y:-7.0,v:0},{x:4.1,y:-3.0,v:1},{x:1.5,y:2.2,v:0},{x:6.0,y:2.2,v:1},{x:21.0,y:2.2,v:1},{x:25.5,y:2.2,v:0},{x:14.15,y:-7.4,v:0}]};      // 溫泉周邊的擺設
 function SPD_SOL(x,y){ const yy=y+.2; if(SPD.wtree.some(t=>Math.hypot(x-(t.x+.0),yy-(t.y+.35))<.4)) return true; if(Math.hypot(x-(GZ.x-1.44),yy-(GZ.yf+.3))<.4||Math.hypot(x-(GZ.x+1.44),yy-(GZ.yf+.3))<.4) return true; if(Math.abs(x-GZ.x)<1.9&&yy>GZ.yf-.55&&yy<GZ.yf+.25) return true; return SPD.lant.some(l=>Math.hypot(x-l.x,yy-(l.y+.75))<.45) || SPD.snowman.some(b=>Math.hypot(x-b.x,yy-b.y)<.3); }      // 橘子木桶、柴堆可以穿過去
 const GZ={x:16.8,yf:-7.4,a:1};      // 右上角的木頭涼亭（腳底＝前排柱子）
 const POOLBLK=new Set(); const STAIRBLK=new Set(); for(const x of [1,2,5,6,21,22,25,26]) for(let y=4;y<=5;y++) STAIRBLK.add(x+","+y);      // 池邊石圈（擋路），南邊留一個入口
 (function(){ const {cx,cy,A,B,gap}=SPG;
   for(let ty=Y0;ty<0;ty++) for(let tx=0;tx<COLS;tx++){ let hit=false;
-    for(const [ox,oy] of [[6,6],[16,6],[26,6],[6,16],[16,16],[26,16],[6,26],[16,26],[26,26]]){ const x=tx*32+ox, y=ty*32+oy, u=(x-cx)/(A+4), v=(y-cy)/(B+4), r=Math.hypot(u,v); if(r<.86||r>1.0) continue; const a=Math.atan2(v,u)*180/Math.PI; if(a>gap[0]&&a<gap[1]) continue; hit=true; }
+    for(const [ox,oy] of [[6,6],[16,6],[26,6],[6,16],[16,16],[26,16],[6,26],[16,26],[26,26]]){ const x=tx*32+ox, y=ty*32+oy, u=(x-cx)/(A+4), v=(y-cy)/(B+4), r=Math.hypot(u,v); if(r<.86||r>1.0) continue; const a=Math.atan2(v,u)*180/Math.PI; if(a>gap[0]&&a<gap[1]) continue; hit=false; }
     if(hit) POOLBLK.add(tx+","+ty); } })();
 const SOLID = "#WSLHMKZfJBCDRUVQXTYr";
 /* 庭院的長桌（左上角格子座標＋端位在左或右）：每桌 4×2，木台 6×4，周圍坐 5 位小精靈 */
@@ -855,7 +862,7 @@ const SEATS = []; TABLES.forEach((t,ti)=>{ t.i=ti;   // x 可以是小數（0.5�
 const SEATMAP = {}; SEATS.forEach(q=>SEATMAP[q.x+","+q.y]=q);
 const OCC = new Set();   // 有小精靈坐著的位子（擋路）
 const START = [13,28];
-const TREE = {"1,2":"pink","2,8":"orange","25,10":"pink","25,23":"bsakura","18,-5":"lpine","9,20":"bluebloom","18,20":"pink","10,25":"pink","17,24":"bluebloom"};
+const TREE = {"1,2":"pink","2,8":"orange","25,10":"pink","25,23":"bsakura","19,-5":"lpine","9,20":"bluebloom","18,20":"pink","10,25":"pink","17,24":"bluebloom"};
 const TREE_COL = {   // [葉色, 亮部, 暗部]：pink＝櫻、orange＝楓、blue／sky＝松
   pink:[N.sakura,N.sakuraLt,N.sakuraDk], orange:[N.maple,N.mapleLt,N.redDk], lpine:[N.pine,N.pineLt,N.pineDk], bluebloom:["#7f97d4","#a9bcee","#5d6fa8"], blue:[N.pine,N.pineLt,N.pineDk], sky:[N.pine,N.pineLt,N.pineDk]
 };
@@ -896,6 +903,8 @@ const cv = $("cv"), mctx = cv.getContext("2d");
 const low = document.createElement("canvas"), ctx = low.getContext("2d",{willReadFrequently:true});
 let LT = 32; const MM = 32/48;     // LT＝每格幾個像素；MM＝每個地圖單位對應幾個像素
 let toastTimer;
+const TT={"sheet_fail":{cond:"開啟遊戲時讀不到試算表",text:"讀不到試算表，先顯示內建範例。請確認有「發布到網路」並選 CSV 格式。"},"hide":{cond:"溫泉旁的小精靈躲進雪裡（在畫面內時）",text:"小精靈好像躲起來了"},"cold_up":{cond:"抱著櫻花瓣小精靈走進雪地",text:"上面太冷了，ちみ沒有穿保暖衣服沒辦法上去呦～"},"photo_wet":{cond:"拿著女僕照片走進雪地",text:"這麼珍貴的女僕照沾到雪會濕掉的"},"gog_got":{cond:"向池塘小石雕拿到兩副泳鏡後",text:"拿到兩副泳鏡了，交給池邊的小精靈吧。"},"sun_ok":{cond:"對小石雕給了魔法墨鏡，衣服變成內褲",text:"身上的衣服被神力變成內褲了……（可以到屋裡的衣櫃換回來）"},"sun_strip":{cond:"對小石雕給了魔法墨鏡，衣服被脫掉",text:"身上的衣服被神力脫掉了……（可以到屋裡的衣櫃換回來）"},"zunda_ok":{cond:"對小石雕給毛豆喜久福（前 4 次）",text:"小石雕從腰間噴出一大道水柱！"},"zunda_mute":{cond:"對小石雕給毛豆喜久福（5 次以上、已拿泳鏡）",text:"小石雕從腰間噴出一大道水柱！他別過頭去，不想理你了。"},"qs_hint":{cond:"跟池邊小精靈對話後",text:"池塘中間的小石雕，或許幫得上忙。"},"letter_got":{cond:"接下小石雕的信與禮物",text:"拿到了情書和禮物，送去給巨大的石像吧。"},"heart":{cond:"把回信交給小石雕",text:"一顆長著翅膀的小愛心，慢慢飄了起來。"},"reply_got":{cond:"收下巨大石像的回信",text:"拿到回信了，拿回去給池塘的小石雕吧。"},"snow_melt":{cond:"頭上放著雪球、走出雪地到溫暖處",text:"似乎因為溫度過高的關係，雪球融化了"},"snow_full":{cond:"頭上已有三顆雪球，還想再撿",text:"頭上最多只能放三顆雪球喔"},"snow_pick":{cond:"在雪堆撿起第 1、2 顆雪球",text:"撿起一顆雪球了（{n}／3）！點一下畫面，就能朝那個方向丟出去。也可以把雪球交給雪人旁的小精靈。"},"snow_pick3":{cond:"在雪堆撿起第 3 顆雪球",text:"頭上放滿三顆雪球了！點一下畫面就能丟出去。"},"snow_give1":{cond:"第 1 次把雪球交給雪人旁的小精靈",text:"雪交給腳邊的小精靈了（1／2）"},"snow_give2":{cond:"第 2 次交雪球（雪人長高）",text:"雪交給頭上的小精靈了（2／2），雪人長高了！"},"snow_top":{cond:"交出雪球後雪人長到最高",text:"雪人長到最高了！"},"ritual_first":{cond:"捧花儀式進行中，想做其他互動",text:"先到集合地點參加捧花儀式吧！"},"photo_back":{cond:"把女僕照片放回貓咪身體底下",text:"把照片放回貓咪身體底下了"},"need_name":{cond:"開始畫面沒輸入名字就按開始",text:"先輸入名字才能開始喔"}};      // 畫面下方提示文字：遊戲裡用 tt(key) 取字，圖鑑「提示文字」分頁讀同一份
+function tt(k,n){ const e=TT[k]; toast(e.text.replace("{n}",n)); }
 function toast(msg){ const t=$("toast"); t.textContent=msg; t.hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.hidden=true,5000); }
 
 function parseCSV(text){
@@ -953,7 +962,7 @@ async function loadData(){
     if(!data.length) throw new Error("empty");
     return data;
   }catch(e){
-    toast("讀不到試算表，先顯示內建範例。請確認有「發布到網路」並選 CSV 格式。");
+    tt("sheet_fail");
     if(EMBEDDED_CSV.trim()){ const d=rowsToData(parseCSV(EMBEDDED_CSV)); if(d.length) return d; }
     return normalizeSample();
   }
@@ -1005,6 +1014,8 @@ function bboxOf(sp,src,n){      // 所有格子合起來「有顏色的範圍」
   }catch(_){}
   return sp[key];
 }
+/* ---------- 彈窗文字（唯一來源）：遊戲裡的彈窗和圖鑑「彈窗文字」分頁都讀這一份，改這裡兩邊一起變 ---------- */
+const DT={"sit_ask": {"who": "桌邊的小精靈","cond": "站在座位旁的小精靈前，點出現的藍色「？」","title": "ちみ？","text": "ちみ〜ちみち、み？ち！\n（要不要你坐下來跟大家聊天嘛？）","btns": ["ち！（好呀）","み…（下次吧）"],"note": ""},"sit_leave": {"who": "桌邊的小精靈","cond": "已經坐在小精靈座位上，按方向鍵想起身","title": "ちみ？","text": "み〜ちみ、ちみち？み！\n（要不要離開座位，不跟大家聊天了呢？）","btns": ["み！（要離開）","ち！（再坐一下）"],"note": ""},"sofa_ask": {"who": "紅色沙發","cond": "走近沙發、點「…」","title": "坐下來休息一下？","text": "要不要坐下來休息一下，跟ちびちみ們玩耍呢？","btns": ["好呀","先不要"],"note": ""},"sofa_leave": {"who": "紅色沙發","cond": "坐在沙發上（觀賞模式），按離開","title": "要離開了嗎？","text": "要不要離開沙發，不再看ちびちみ們玩耍了呢？","btns": ["離開","再坐一下"],"note": ""},"wardrobe": {"who": "衣櫃","cond": "走近屋內衣櫃、點「…」","title": "要換衣服嗎？","text": "要不要打開衣櫃，換一套打扮呢？","btns": ["好呀","先不要"],"note": ""},"sled": {"who": "雪橇","cond": "走近雪橇、點「…」","title": "要坐上雪橇嗎？","text": "兩隻小精靈會一起拉著你，繞雪地跑三圈。","btns": ["坐上去","先不要"],"note": ""},"snowman": {"who": "雪人","cond": "手上拿著雪球、走近雪人旁的小精靈","title": "手上有一顆雪球","text": "要把雪球交給小精靈，幫忙把雪人堆得更高嗎？","btns": ["交給他們","先不要"],"note": ""},"pile1": {"who": "櫻花瓣堆","cond": "右上角櫻花樹下的花瓣堆，第 1 次互動","title": "","text": "樹上的櫻花瓣散落後，聚集成的普通小堆。","btns": [],"note": ""},"pile2": {"who": "櫻花瓣堆","cond": "右上角櫻花樹下的花瓣堆，第 2 次互動","title": "","text": "感覺躺上去會很舒服呢。","btns": [],"note": ""},"pile3": {"who": "櫻花瓣堆","cond": "右上角櫻花樹下的花瓣堆，第 3 次互動","title": "","text": "再碰的話，櫻花瓣堆要散掉了！","btns": [],"note": ""},"pile4": {"who": "櫻花瓣堆","cond": "右上角櫻花樹下的花瓣堆，第 4 次互動","title": "","text": "不要再碰了啦！","btns": [],"note": ""},"pile5": {"who": "櫻花瓣堆","cond": "櫻花瓣堆，第 5 次互動（發現小精靈）","title": "發現了一隻小精靈！","text": "哇！發現了一隻小精靈，他似乎剛吃飽被吵醒了，不是很開心的樣子。","btns": ["把他抱起來","將櫻花瓣被被蓋回他身上"],"note": ""},"bow_idle": {"who": "戴蝴蝶結的小精靈","cond": "一般狀態（手上沒有抱著櫻花小精靈）","title": "","text": "ち…ちみ…\n這個小精靈看起來有點落寞，似乎在找誰的樣子。","btns": [],"note": ""},"bow_carry": {"who": "戴蝴蝶結的小精靈","cond": "抱著櫻花瓣小精靈走到他面前","title": "","text": "ち…ちみ…\n這個小精靈看起來有點落寞，似乎在找誰的樣子。","btns": ["把櫻花瓣堆小精靈給他","先不要"],"note": ""},"basket": {"who": "籃子","cond": "兩隻小精靈在籃子裡睡著時","title": "呼……呼……","text": "兩個寶寶似乎睡的很熟，還流口水了呢。","btns": ["不要打擾他們","把粉色寶寶抱走"],"note": ""},"photo_take": {"who": "一張照片（床邊貓咪下）","cond": "第一次／再次拿起照片","title": "有東西……","text": "發現了一張照片，照片中似乎是一位穿著女僕裝的男性，照片背後似乎寫著「五條的寶物♡」\n\n奇怪，為什麼這麼重要的東西會被貓咪拿走了？","btns": ["拿走","放回去"],"note": "（彈窗上方附女僕照圖片）"},"photo_back": {"who": "一張照片（床邊貓咪下）","cond": "手上拿著照片時再次互動","title": "要把照片放回去嗎？","text": "要把「虎杖的女僕照片」放回貓咪身體底下嗎？","btns": ["放回去","再拿一下"],"note": "（彈窗上方附女僕照圖片）"},"qs_notheard": {"who": "池塘的小石雕","cond": "任務前：還沒跟池邊小精靈聊過","title": "","text": "唔……池邊那兩隻小精靈，好像有什麼心事。\n你可以先去跟他們聊聊嗎？","btns": ["好，我去問問"],"note": ""},"qs_heard": {"who": "池塘的小石雕","cond": "跟池邊小精靈聊過、還沒接任務","title": "","text": "唔……他們的泳鏡掉進水裡了，你也聽說了吧？\n（你看，水面上還漂著一根呼吸管）。\n我被釘在這個石座上動不了……可以拜託你嗎？\n請把這封信，和這份小小的禮物，送去給那邊的巨大石像。\n……那個，是情書啦。別偷看喔。","btns": ["好，我幫你送","先不要"],"note": ""},"qs_wait": {"who": "池塘的小石雕","cond": "已拿到信與禮物、還沒交給巨大石像","title": "","text": "信和禮物，就拜託你送去給巨大的石像了。\n他就站在花圃旁邊。……要親手交給他喔。","btns": ["知道了"],"note": ""},"qs_back": {"who": "池塘的小石雕","cond": "帶著巨大石像的回信回來","title": "","text": "這是……他的回信？！\n（石雕的臉，紅得好像連石頭都要融化了。）","btns": ["把回信交給他"],"note": ""},"qs_menu0": {"who": "池塘的小石雕","cond": "任務完成後・還沒拿泳鏡（選單）","title": "","text": "圍巾也圍好了，心情真好……\n那麼，泳鏡的事就拜託你了。\n你身上有什麼可以給小精靈們用的東西嗎？","btns": ["普通的泳鏡（附呼吸管）","魔法墨鏡（可以看穿內褲）","我也想吃毛豆喜久福","先不要"],"note": ""},"qs_menu1": {"who": "池塘的小石雕","cond": "任務完成後・泳鏡還在頭上沒交給小精靈（選單）","title": "","text": "泳鏡就在你頭上喔，快拿去給小精靈們吧。\n……還有什麼事嗎？","btns": ["（按鈕同上一則）"],"note": ""},"qs_menu2": {"who": "池塘的小石雕","cond": "任務完成後・泳鏡已交給小精靈（選單）","title": "","text": "小精靈們玩得好開心呢，謝謝你。\n……還有什麼事嗎？","btns": ["（按鈕同上一則）"],"note": ""},"qs_gog": {"who": "池塘的小石雕","cond": "選單：給他普通泳鏡","title": "","text": "哦哦——！就是這副！\n有呼吸管的泳鏡，這下可以放心潛下去了。\n你很誠實，我很欣賞你。\n兩副都拿去吧，親手交給池邊的小精靈們。","btns": ["太好了"],"note": ""},"qs_sun": {"who": "池塘的小石雕","cond": "選單：給他魔法墨鏡","title": "","text": "……魔法墨鏡？\n上面還寫著『可以看穿內褲』？！\n你居然拿這種東西給小孩子戴！！\n神明生氣了——罰你也嚐嚐被看光的滋味！","btns": ["等、等一下！"],"note": ""},"qs_zunda": {"who": "池塘的小石雕","cond": "選單：我也想吃毛豆喜久福（前 3 次）","title": "","text": "這、這不是仙台特產的毛豆喜久福嗎！\n這是要供奉給神明的吧？才不能給小精靈！\n（噗——！）","btns": ["對不起！"],"note": ""},"qs_zunda2": {"who": "池塘的小石雕","cond": "選單：我也想吃毛豆喜久福（第 4 次以後）","title": "","text": "……你很煩耶！！\n一直拿毛豆喜久福來是怎樣！\n給我——冷靜一下！！","btns": ["咿！"],"note": ""},"qs_mute": {"who": "池塘的小石雕","cond": "毛豆喜久福太多次、已拿到泳鏡後（不理人）","title": "","text": "……哼。\n我不想理你。\n（小石雕把臉別向一邊，擺明了不想跟你說話。）","btns": ["……"],"note": ""},"sp_first": {"who": "池邊的小精靈（ちびちみご＆ちびちみゆ）","cond": "任務前：第一次互動","title": "","text": "ちびちみご和ちびちみゆ並排趴在池塘邊，一直看著水裡游來游去的魚。\n『ち…ちみ、ち……（泳鏡……掉進池塘裡了……）』\n『み…みー、み……（好想下去玩水喔……）』\n是那種附呼吸管、可以潛水的泳鏡。水面上，漂著一根小小的呼吸管。","btns": ["我去想想辦法"],"note": ""},"sp_wait": {"who": "池邊的小精靈（ちびちみご＆ちびちみゆ）","cond": "任務進行中（還沒拿到泳鏡）","title": "","text": "『ち、ちみ！み〜！（石雕說他會幫忙！好期待！）』\n兩隻小精靈期待地看著池子中間的小石雕。","btns": ["嗯，等我一下"],"note": ""},"sp_gog": {"who": "池邊的小精靈（ちびちみご＆ちびちみゆ）","cond": "頭上帶著泳鏡、小精靈在岸邊","title": "","text": "『ち！？み〜！？（泳鏡！泳鏡だ！）』\n兩隻小精靈眼睛一亮，同時盯著你頭上的泳鏡。","btns": ["把泳鏡給ちびちみご","把泳鏡給ちびちみゆ","先不要"],"note": ""},"gs_sheet": {"who": "巨大的石像","cond": "任務前（試算表文字）","title": "","text": "SHEET:904","btns": [],"note": ""},"gs_ask": {"who": "巨大的石像","cond": "帶著石雕的信與禮物走近","title": "","text": "把石雕託你帶來的情書和禮物，交給巨大的石像嗎？","btns": ["交給他","先不要"],"note": ""},"gs_done": {"who": "巨大的石像","cond": "交出情書與禮物之後","title": "","text": "巨大的石像看著信和禮物，沉默了很久。\n然後，他輕輕收下了。\n（左耳的中間，出現了一圈虛線一樣的小小牙印——好像是害羞到咬了自己的耳朵。）\n接著，他遞出了一封回信。","btns": ["收下回信"],"note": ""},"gs_got": {"who": "巨大的石像","cond": "已拿到回信、還沒交給小石雕","title": "","text": "……回信，已經交到你手上了吧。\n快拿去給池塘裡的小石雕。\n（他的圍巾，在風裡輕輕晃了一下。）","btns": ["好"],"note": ""},"gs_after": {"who": "巨大的石像","cond": "任務完成後","title": "","text": "紅色的圍巾，暖暖的。\n他望向池塘的方向，耳朵上的牙印還沒消。\n（……看來，兩個人都過得很好。）","btns": ["嗯"],"note": ""}};
 let FORCE_FRAME=null;     // 選角畫面：照原圖 3 格一個循環
 function idleIdx(t,n){ const beat=Math.floor(t/.42)%6; return n>=3 ? (beat===4 ? 2 : beat%2) : beat%2; }   // 呼吸（0、1 交替）＋偶爾眨眼（第 3 格）
 function sheetFrame(sp,dir,walk,tm,bbIn){
@@ -1067,7 +1078,7 @@ function paramText(name,def){ const r=DATA.find(d=>d.type==="param"&&d.name===na
 const at=(x,y)=> (y>=Y0&&y<ROWS&&x>=0&&x<COLS)? GRID[y][x] : "#";
 
 /* ---------- 弧形池塘：用一條圓滑的曲線算出水面，再沿邊緣擺一圈石頭 ---------- */
-const PB={x0:1,y0:22,x1:10,y1:28}, PCX=174.5, PCY=795, PA=130.5, PBH=89;      // 池塘往左、往下擴到庭院的牆
+const PB={x0:1,y0:22,x1:10,y1:28}, PCX=181.5, PCY=795, PA=123.5, PBH=89;      // 池塘往左、往下擴到庭院的牆
 const QPHOME=[[4.0,20.75],[5.0,20.75]];      // 池邊兩隻小精靈一開始站的位置：池塘左上方的草地（不碰到池邊石子）
 function pondF(x,y){ const u=(x-PCX)/PA, v=(y-PCY)/PBH, th=Math.atan2(v,u), c=Math.cos(th);
   const m=Math.pow(Math.pow(Math.abs(u),3)+Math.pow(Math.abs(v),3),1/3), M=1+.05*c*Math.sin(2*th+1)+.03*c*Math.sin(3*th+.5); return m/M; }
@@ -1102,7 +1113,7 @@ function pondImg(){
         g.restore(); } } }
   const st=[], N0=84; for(let k=0;k<N0;k++){ const th=k/N0*Math.PI*2+.03; let lo=.3, hi=1.7; for(let it=0;it<22;it++){ const mid=(lo+hi)/2, f=pondF(PCX+mid*PA*Math.cos(th),PCY+mid*PBH*Math.sin(th)); if(f<1) lo=mid; else hi=mid; }
     const bx=PCX+lo*PA*Math.cos(th), by=PCY+lo*PBH*Math.sin(th), gx=pondF(bx+1,by)-pondF(bx-1,by), gy=pondF(bx,by+1)-pondF(bx,by-1), gl=Math.hypot(gx,gy)||1, nx=gx/gl, ny=gy/gl, w=8+Math.floor(rnd(k,3,7)*3), h=7+Math.floor(rnd(k,5,9)*3);
-    st.push({x:Math.round(bx+nx*3-w/2),y:Math.round(by+ny*3-h/2),w,h}); }
+    st.push({x:Math.min(Math.max(Math.round(bx+nx*3-w/2),ox),ox+W-w),y:Math.min(Math.max(Math.round(by+ny*3-h/2),oy),oy+H-h),w,h}); }      // 石頭不能超出圖片範圍（否則會被切掉一半）
   st.sort((a,b)=>a.y-b.y).forEach(q=>stone32(g,q.x-ox,q.y-oy,q.w,q.h));
   return POND_IMG=c;
 }
@@ -1160,16 +1171,16 @@ function buildWorld(){
   spots.push({id:906,kind:"pile",key:"pile",name:"櫻花瓣堆",x:25.0,y:11.0,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:1.6,seen:true});
   spots.push({id:908,kind:"basket",key:"basket",name:"籃子",x:4.5,y:8.72,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:1.7,seen:true});
   spots.push({id:907,kind:"bow",key:"bow",name:"戴蝴蝶結的小精靈",x:6.5,y:8.6,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:1.6,seen:true});
-  spots.push({id:930,kind:"clue",key:"qpSp1",name:"ちびちみご＆ちびちみゆ",x:4.5,y:20.75,hintFn:()=>[4.5*32+16,20.75*32+28-38],labelFn:()=>[4.5*32+16,20.75*32+40],text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:2.0,seen:true});
-  spots.push({id:905,kind:"clue",key:"clueSmall",name:"池塘的小石雕",x:8.0,y:24.2,hintFn:()=>{ const sp=fountainSprite(); const h=sp?sp.height:26; return [8*32+16,24.2*32+27-9+3-h-24]; },labelFn:()=>[8*32+16,24.2*32+27+12],text:"站在池塘石座上的小石雕，正笑瞇瞇地望著水面。\n平常，他只會從嘴巴冒出一小道水花。\n不過偶爾會有特別的水柱越過小橋，落在另一邊的水面……那時候，記得看看池塘上空。",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:2.6,seen:true});
+  spots.push({id:930,kind:"clue",key:"qpSp1",name:"ちびちみご＆ちびちみゆ",x:4.5,y:20.75,hintFn:()=>{ const c=qpRestC(); return [c.x*32+16,c.y*32+28-31]; },labelFn:()=>{ const c=qpRestC(); return [c.x*32+16,c.y*32+40]; },text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:3.2,seen:true});
+  spots.push({id:905,kind:"clue",key:"clueSmall",name:"池塘的小石雕",x:8.0,y:24.2,hintFn:()=>{ const sp=fountainSprite(); const h=(sp?sp.height:26)*FATY[QP.fat|0]; return [8*32+16,24.2*32+27-9+3-h-17]; },labelFn:()=>[8*32+16,24.2*32+27+12],text:"站在池塘石座上的小石雕，正笑瞇瞇地望著水面。\n平常，他只會從嘴巴冒出一小道水花。\n不過偶爾會有特別的水柱越過小橋，落在另一邊的水面……那時候，記得看看池塘上空。",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:2.6,seen:true});
   spots.push({id:902,kind:"wardrobe",key:"wardrobe",name:"衣櫃",x:8,y:3.1,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:1.5,seen:true});
-  spots.push({id:916,kind:"snowpile",key:"snowpile2",name:"雪堆",x:26.0,y:-0.8,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:1.7,seen:true});
+  spots.push({id:916,kind:"snowpile",key:"snowpile2",name:"雪堆",x:26.0,y:-2.8,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:1.7,seen:true});
   spots.push({id:920,kind:"sledride",key:"sledride",name:"雪橇",x:22.2,y:0.0,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:2.3,seen:true});
   spots.push({id:921,kind:"orangebarrel",key:"orangebarrel",name:"橘子木桶",x:16.3,y:-1.6,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:2.2,seen:true});
-  spots.push({id:922,kind:"springsp",key:"springsp1",spq:"n1",name:"泡湯的小精靈",x:13.31,y:-3.62,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:3.2,seen:true});
-  spots.push({id:924,kind:"springsp",key:"springsp3",spq:"leo",name:"泡湯的雪豹",x:15.875,y:-4.375,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:3.2,seen:true});
-  spots.push({id:925,kind:"springsp",key:"springsp4",spq:"n3",name:"泡湯的小精靈",x:14.2,y:-4.375,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:3.2,seen:true});
-  spots.push({id:923,kind:"springsp",key:"springsp2",spq:"n2",name:"泡湯的小精靈",x:15.69,y:-3.62,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:3.2,seen:true});
+  spots.push({id:922,kind:"springsp",key:"springsp1",spq:"n1",name:"泡湯的小精靈",x:13.31,y:-3.12,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:3.2,seen:true});
+  spots.push({id:924,kind:"springsp",key:"springsp3",spq:"leo",name:"泡湯的雪豹",x:15.875,y:-3.875,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:3.2,seen:true});
+  spots.push({id:925,kind:"springsp",key:"springsp4",spq:"n3",name:"泡湯的小精靈",x:14.2,y:-3.875,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:3.2,seen:true});
+  spots.push({id:923,kind:"springsp",key:"springsp2",spq:"n2",name:"泡湯的小精靈",x:15.69,y:-3.12,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:3.2,seen:true});
   spots.push({id:917,kind:"snowpile",key:"snowpile3",name:"雪堆",x:3.4,y:-3.5,text:"",popup:"",game:"",lot:null,sprite:null,sheet:null,robe:0,dist:1.7,seen:true});
   buildSpirits(); buildRunners(); buildWorshipper(); spots.push({id:900,kind:"bench",key:"bench",name:"紅色沙發",x:9.2,y:8.5,text:"",popup:"",game:"watch",lot:null,sprite:null,sheet:null,robe:0,dist:1.15,seen:seenSet.has("bench")}); updateFound(); snapCam();
   openSpot = spots.find(s=>Math.hypot(player.x-s.x,player.y-s.y)<s.dist) || null;
@@ -1520,8 +1531,8 @@ function grass32(g,x,y,px,py){
 let NOGND=false;
 let POSTS=null;
 function frontPosts(g){      // 石燈籠、鳥居柱：照 y 排序再畫一次上半部，躲在後面的小精靈會被遮到（不重畫地面）
-  if(!POSTS){ POSTS=[]; for(let y=0;y<GRID.length;y++){ const row=Array.isArray(GRID[y])?GRID[y]:String(GRID[y]).split(""); for(let x=0;x<row.length;x++) if(row[x]==="L"||row[x]==="K") POSTS.push([x,y,row[x]]); } }
-  return POSTS.map(([x,y,ch])=>({y:y+.6,f:()=>{ NOGND=true; try{ if(ch==="L") lantern32(g,x,y,x*32,y*32,time); else torii32(g,x,y,x*32,y*32,"K"); }finally{ NOGND=false; } }}));
+  if(!POSTS){ POSTS=[]; for(let y=0;y<GRID.length;y++){ const row=Array.isArray(GRID[y])?GRID[y]:String(GRID[y]).split(""); for(let x=0;x<row.length;x++) if(row[x]==="L"||row[x]==="K"||row[x]==="k") POSTS.push([x,y,row[x]]); } }
+  return POSTS.map(([x,y,ch])=>({y:y+(ch==="L"?.12:.6),f:()=>{ NOGND=true; try{ if(ch==="L") lantern32(g,x,y,x*32,y*32,time); else torii32(g,x,y,x*32,y*32,ch); }finally{ NOGND=false; } }}));
 }
 function gravel32(g,x,y,px,py){
   if(NOGND) return;
@@ -1533,6 +1544,7 @@ function gravel32(g,x,y,px,py){
   if(wallish(at(x,y-1))) shadeTop(g,px,py,N.gravelDk,4);
 }
 function path32(g,x,y,px,py){
+  if(NOGND) return;
   gravel32(g,x,y,px,py);
   [[1,1,14,13],[17,1,14,12],[2,17,13,13],[17,16,13,14]].forEach(([a,b,w,h],i)=>{
     const jx=ri((ph(x,y,80+i)-.5)*3), jy=ri((ph(x,y,90+i)-.5)*3);
@@ -1837,12 +1849,15 @@ function lantern32(g,x,y,px,py,t){
   g.restore();
 }
 function bridge32(g,x,y){
-  const px=x*32, py=y*32;
-  R(g,N.woodDk,px+5,py,22,32);
-  for(let k=0;k<8;k++){ R(g,N.wood,px+6,py+k*4,20,3); R(g,N.woodLt,px+6,py+k*4,20,1); R(g,N.woodDk,px+6,py+k*4+3,20,1); R(g,N.woodDk,px+8+(k*5)%10,py+k*4+1,1,1); }
+  const px=x*32, py=y*32, H=y===27?22:32;      // 最下面一格只畫到池塘南邊的水岸（跟北邊一樣從池塘開始、不延伸到草地）
+  R(g,N.woodDk,px+5,py,22,H);
+  for(let k=0;k<H/4;k++){ R(g,N.wood,px+6,py+k*4,20,3); R(g,N.woodLt,px+6,py+k*4,20,1); R(g,N.woodDk,px+6,py+k*4+3,20,1); R(g,N.woodDk,px+8+(k*5)%10,py+k*4+1,1,1); }
+  const t0=y===22?5:0, t1=y===27?5:0;      // 欄杆在橋的兩端稍微縮短，端點放石墩
   for(const rx of [0,26]){
-    R(g,N.redDk,px+rx,py,6,32); R(g,"#d5503b",px+rx,py,4,32); R(g,"#e8765f",px+rx,py,1,32);
-    for(const b of [1,15,29]){ R(g,N.gold,px+rx,py+b-1,6,3); R(g,N.goldLt,px+rx,py+b-1,6,1); }
+    R(g,N.redDk,px+rx,py+t0,6,H-t0-t1); R(g,"#d5503b",px+rx,py+t0,4,H-t0-t1); R(g,"#e8765f",px+rx,py+t0,1,H-t0-t1);
+    for(const b of [1,15,29]){ if(b<t0||b+2>H-t1) continue; R(g,N.gold,px+rx,py+b-1,6,3); R(g,N.goldLt,px+rx,py+b-1,6,1); }
+    if(y===22){ shadowAt(g,px+rx+3,py+t0+2,6,2); stone32(g,px+rx-2,py-3,10,9); R(g,N.stoneLt,px+rx+1,py-2,4,1); }
+    if(y===27){ shadowAt(g,px+rx+3,py+H-1,6,2); stone32(g,px+rx-2,py+H-8,10,9); R(g,N.stoneLt,px+rx+1,py+H-7,4,1); }
   }
 }
 function drawShrine32(g,x,y){
@@ -2112,6 +2127,9 @@ function statueSpriteBase(){      // 巨大石像：使用者重畫的圖
   return STSP=o;
 }
 
+function fDrop(g,ax,ay,bx,by,w){      // 水柱的水滴：順著弧線的細長條，兩端圓頭（不是方塊）
+  g.save(); g.lineCap="round"; g.lineJoin="round"; g.strokeStyle="#bfe6f3"; g.lineWidth=w||2.2; g.beginPath(); g.moveTo(ri(ax),ri(ay)); g.quadraticCurveTo(ri((ax+bx)/2),ri((ay+by)/2-.6),ri(bx),ri(by)); g.stroke();
+  g.strokeStyle="#ffffff"; g.lineWidth=1; g.beginPath(); g.moveTo(ri(ax),ri(ay)-.5); g.lineTo(ri(bx),ri(by)-.5); g.stroke(); g.restore(); }
 /* ---------- 池塘邊的噴水小童：每 60 秒噴一次水，持續 10 秒；看到會有成就 ---------- */
 let FTSP=null, FTIMG=null;
 const FOUNT={every:30, dur:10, start:30};      // 每 30 秒噴一次、一次 10 秒；連續兩次平常（嘴巴）、第三次特殊（腰間長水柱）      // 進入庭園 30 秒後第一次噴，之後每 60 秒一次
@@ -2184,8 +2202,8 @@ function drawFountain32(d){
   R(g,"#3d4048",px+1,py+ph-2,pw-2,3); R(g,"#4f535c",px,py+2,pw,ph-3); R(g,"#8c9099",px+1,py+1,pw-2,ph-4); R(g,"#a9adb4",px+2,py+1,pw-4,2); R(g,"#6c7079",px+1,py+ph-4,pw-2,2);
   R(g,"#6f8a5a",px+3,py+ph-3,4,2); R(g,"#88a370",px+4,py+ph-3,2,1);
   const top=py+3; let hipY=top-12, mouthY=top-17, hipX=cx;
-  if(sp){ g.drawImage(sp,cx-(sp.width>>1),top-sp.height); hipY=top-Math.round(sp.height*.15); mouthY=top-Math.round(sp.height*.46); }
-  if(sp){ const spH=sp.height, cy0=top-spH-5+(reduceMotion()?0:ri(Math.sin(time*1.4)*1)), ucx=cx+1;      // 葉子傘：插在石座邊，歪歪地替小石雕遮太陽
+  if(sp){ const fs=FATX[QP.fat|0], hs=FATY[QP.fat|0]; g.drawImage(sp,ri(cx-sp.width*fs/2),ri(top-sp.height*hs),Math.round(sp.width*fs),Math.round(sp.height*hs)); hipY=top-Math.round(sp.height*hs*.15); mouthY=top-Math.round(sp.height*hs*.46); }
+  if(sp){ const spH=sp.height*FATY[QP.fat|0], cy0=top-spH-5+(reduceMotion()?0:ri(Math.sin(time*1.4)*1)), ucx=cx+1;      // 葉子傘：插在石座邊，歪歪地替小石雕遮太陽
     for(let i=0;i<=cy0*0+ (py+4-(cy0+1));i++){ const t=i/(py+4-(cy0+1)), x=ri(cx+17-t*10), y=ri(py+4-i); R(g,N.woodDk,x,y,2,1); }
     for(let dy=-5;dy<=5;dy++){ const half=Math.round(17*Math.sqrt(Math.max(0,1-(dy/5.6)*(dy/5.6)))), off=Math.round(dy*.7), y=cy0+dy, x0=ucx-half+off, w=half*2+1;
       R(g,N.leafDk,x0,y,w,1); if(Math.abs(dy)<5) R(g,dy<=-2?"#8fc078":N.leaf,x0+1,y,w-2,1); }
@@ -2194,13 +2212,12 @@ function drawFountain32(d){
   const fmode=fountainMode(), special=fmode===2, ph0=Math.max(0,(time-FOUNT.start))%FOUNT.every, fade=fmode?Math.min(1,ph0/.8,(FOUNT.dur-ph0)/.8):0;
   g.save();
   /* 平常的：從嘴巴噴出一小段水，落在石座旁的水裡（特殊噴水時淡出） */
-  { const nf=fmode===1?Math.min(1,ph0/.6,(FOUNT.dur-ph0)/.6):0; if(nf>0){ const N2=14, L2=26, A2=6, B2=(fy-mouthY)-1;
-    for(let i=0;i<N2;i++){ if(i/N2>nf) continue; const u=((time*1.3+i/N2)%1), x=hipX-4-u*L2, y=mouthY-4*A2*u*(1-u)+B2*u*u; R(g,"#bfe6f3",ri(x),ri(y),2,2); if(i%3===0) R(g,"#ffffff",ri(x),ri(y),1,1); }
+  { const nf=fmode===1?Math.min(1,ph0/.6,(FOUNT.dur-ph0)/.6):0; if(nf>0){ const N2=4, L2=26, A2=6, B2=(fy-mouthY)-1;
+    for(let i=0;i<N2;i++){ if(i/N2>nf) continue; const u=((time*1.3+i/N2)%1), f=v=>[hipX-4-v*L2, mouthY+3-4*A2*v*(1-v)+B2*v*v], P0=f(Math.max(0,u-.05)), P1=f(u); fDrop(g,P0[0],P0[1],P1[0],P1[1],2); }
     const sx=hipX-4-L2; for(let k=0;k<2;k++){ const u=((time*1.1+k*.5)%1), rw=2+u*6; g.globalAlpha=(1-u)*.7*nf; g.strokeStyle="#e8f6fb"; g.lineWidth=1; g.beginPath(); g.ellipse(sx+1,fy-1,rw,rw*.4,0,0,6.283); g.stroke(); } g.globalAlpha=1; } }
   /* 特殊的：從腰間噴出一長道水柱，越過中間的小橋，落進左半邊的池塘，並出現彩虹 */
-  if(special){ const L=128, A=16, B=(fy-hipY)+2, N=40;
-    for(let i=0;i<N;i++){ if(i/N>fade) continue; const u=((time*1.5+i/N)%1), x=hipX-u*L, y=hipY-4*A*u*(1-u)+B*u*u*0.9;
-      R(g,"#bfe6f3",ri(x),ri(y),2,2); if(i%3===0) R(g,"#ffffff",ri(x),ri(y),1,1); }
+  if(special){ const L=128, A=16, B=(fy-hipY)+2, N=8;
+    for(let i=0;i<N;i++){ if(i/N>fade) continue; const u=((time*1.5+i/N)%1), f=v=>[hipX-v*L, hipY+1-4*A*v*(1-v)+B*v*v*0.9], P0=f(Math.max(0,u-.02)), P1=f(u); fDrop(g,P0[0],P0[1],P1[0],P1[1],2.2); }
     const lx=hipX-L, ly=hipY+B*.9;
     for(let k=0;k<2;k++){ const u=((time*1.1+k*.5)%1), rw=3+u*9; g.globalAlpha=(1-u)*.8*fade; g.strokeStyle="#e8f6fb"; g.lineWidth=1; g.beginPath(); g.ellipse(lx+1,ly+1,rw,rw*.4,0,0,6.283); g.stroke(); }
     const rf=Math.min(1,Math.max(0,(ph0-1.2)/1.2),(FOUNT.dur-ph0)/1.2); if(rf>0){      // 彩虹：浮在左半邊池塘上，水柱落點的後方
@@ -2278,14 +2295,27 @@ function drawStatue32(d){
 }
 const STATUE_HEAD=14;
 function mixC(a,b,t){ const h=c=>[1,3,5].map(i=>parseInt(c.slice(i,i+2),16)); const A=h(a),B=h(b); return "#"+A.map((v,i)=>Math.round(v+(B[i]-v)*t).toString(16).padStart(2,"0")).join(""); }
+const FISHAG={};
+function fishOk(x,y,m){ if(pondD(x,y)>-(16+m)||pondD(x+13,y)>-(8+m)||pondD(x-13,y)>-(8+m)) return false; const sx=x-(8*32+16), sy=y-(24.2*32+16); return sx*sx+sy*sy>36*36; }      // 魚能游的地方：離岸邊石頭一段距離、不碰小石雕底座
+function fishStep(id,x0,y0,spd){      // 魚自己游：快碰到岸邊時慢慢轉彎往別處游（不會瞬移、不會卡住）
+  let a=FISHAG[id]; if(!a){ a=FISHAG[id]={x:x0*32+16,y:y0*32+16,ang:Math.random()*6.283,t:time,wob:Math.random()*9};
+    for(let i=0;i<60&&!fishOk(a.x,a.y,0);i++){ a.x+=(PCX-a.x)*.1; a.y+=(PCY-a.y)*.1; } }
+  const dt=Math.min(.1,Math.max(0,time-a.t)); a.t=time; if(dt<=0) return a;
+  const L=26; let want=0;
+  const okAt=(ang,len)=>fishOk(a.x+Math.cos(ang)*len,a.y+Math.sin(ang)*len,2);
+  a.ang+=Math.sin(time*.5+a.wob)*.22*dt;      // 平常輕輕擺動方向
+  if(!okAt(a.ang,L)||!okAt(a.ang,L*.55)){ const l=okAt(a.ang-.7,L), r=okAt(a.ang+.7,L); want=(l&&!r)?-1:(r&&!l)?1:(l&&r?(a.tn||1):0); if(!want){ const to=Math.atan2(PCY-a.y,PCX-a.x); let d=to-a.ang; d=Math.atan2(Math.sin(d),Math.cos(d)); want=d>=0?1:-1; } a.tn=want; a.ang+=want*2.0*dt; }
+  const nx=a.x+Math.cos(a.ang)*spd*dt, ny=a.y+Math.sin(a.ang)*spd*dt;
+  if(fishOk(nx,ny,0)){ a.x=nx; a.y=ny; } else { a.ang+=(a.tn||1)*3.5*dt; }
+  return a; }
 function drawDecor32(d){
   if(d.k==="statue") return drawStatue32(d);
   if(d.k==="fountain") return drawFountain32(d);
   if(d.k==="guard") return drawGuard32(d);
   const g=ctx;
   if(d.k==="koi"){
-    const a=time*d.sp+d.ph, x=ri((d.cx+Math.cos(a)*d.rx)*32+16), y=ri((d.cy+Math.sin(a)*d.ry)*32+16);
-    const f=(-Math.sin(a)*d.rx*Math.sign(d.sp))>=0?1:-1, fl=reduceMotion()?0:(Math.floor(time*6)%2);
+    const A=fishStep("k"+d.cx+"_"+d.cy,d.cx,d.cy,7+Math.abs(d.sp)*8); let x=ri(A.x), y=ri(A.y), a=A.ang;
+    const f=Math.cos(a)>=0?1:-1, fl=reduceMotion()?0:(Math.floor(time*6)%2);
     const K=c=>mixC(c,"#1d4a78",.5);      // 魚在水下：整體偏藍、偏暗
     E(g,K(d.col),x,y,8,3); R(g,K(N.white),x-f*3-2,y-2,3,1); R(g,K(d.pc),x-f*2-1,y-1,4,2); R(g,K(d.pc),x+f*3-1,y,2,1);
     P(g,K(d.col),[[x-f*7,y],[x-f*13,y-3+fl*2],[x-f*13,y+3+fl*2]]); R(g,"#14213a",x+f*5,y-1,1,1);
@@ -2727,7 +2757,7 @@ function updateRunners(dt){
   if(RS.mode==="hide"){
     const H=RS.hide; RS.mt+=dt;
     const popOut=()=>{ F.hidden=false; say(F,"みっ！"); cry(F.x,F.y,"みっ！",980,"mi",true); F.tapHop=1; F.boost=1.6; C.scare=2.6; if(onCtr(C.x,C.y)) achAward("scared"); { const ax=C.x-F.x, ay=C.y-F.y, L=Math.hypot(ax,ay)||1; C.rv=[ax/L*3.4,ay/L*3.4]; } say(C,"ひっ！？"); cry(C.x,C.y,"ひゃっ！",1250,"chi",false); burst(C.x,C.y-.9,0,3); RS.mode="run"; RS.hideCd=18+Math.random()*12; RS.grace=1.6; const g=farGrass(C,F); F.path=[]; setPath(F,g[0],g[1]); C.path=[]; C.t=9; };
-    if(RS.st===0){ if(!F.path.length){ RS.st=1; RS.ht=14; RS.sk=0; RS.skT=0; F.moving=false; F.hidden=true; if(onCtr(F.x,F.y)) achAward("hide"); if(onScr(F.x,F.y)) toast("小精靈好像躲起來了"); } }
+    if(RS.st===0){ if(!F.path.length){ RS.st=1; RS.ht=14; RS.sk=0; RS.skT=0; F.moving=false; F.hidden=true; if(onCtr(F.x,F.y)) achAward("hide"); if(onScr(F.x,F.y)) tt("hide"); } }
     else { RS.ht-=dt; F.moving=false; if(RS.ht<=0||RS.sk===4){ popOut(); return; } }
     // 追的：先跑到樹附近 →「み？」→ 繞著樹找一圈 →「ち…？」→ 小精靈跳出來嚇人
     if(RS.st===0||RS.sk===0){ C.spd=3.35; if(C.t>.35||!C.path.length){ C.t=0; const vx=C.x-H.x, vy=C.y-H.y, L=Math.hypot(vx,vy)||1; let px=H.x+vx/L*1.9, py=H.y+vy/L*1.9; if(!okTile(px,py)){ px=H.x; py=H.y+1.9; } if(Math.hypot(C.x-px,C.y-py)>.4){ setPath(C,rt(px),rt(py)); if(!C.path.length) C.path=[[px,py]]; } }
@@ -2847,7 +2877,7 @@ function doHelp(dt){        // 拍背的流程：go 走過去 → pat 拍三下 
 }
 function sleepTap(cx,cy){      // 點睡著的小精靈（石像旁、走廊 SR）：叫醒
   const hit=(x,y,sz)=>{ const [sx,sy]=toScreen(x*T+T/2,(y*32+28-sz*.45)*1.5); return Math.hypot(cx-sx,cy-sy)<(sz*.55)*view.gpE+10; };
-  if(WOR&&WOR.mode==="sleep"&&hit(WOR.x,WOR.y,32)){ WOR.mode="startle"; WOR.t=0; WOR.said=0; WOR.hc=0; WOR.b=null; achAward("statue"); return true; }
+  if(WOR&&WOR.mode==="sleep"&&hit(WOR.x,WOR.y,32)){ WOR.mode="startle"; WOR.t=0; WOR.said=0; WOR.hc=0; WOR.b=null; napAdd("wor"); return true; }
   for(const q of SPIRITS){ if(q.zOk&&q.zz&&hit(q.x,q.y,q.size||32)){ wakeS(q); return true; } }
   return false;
 }
@@ -2877,10 +2907,10 @@ function worNext(w){        // 抽下一個動作：每一輪「虔誠、開心�
   }
   const act=w.bag.shift(); w.last=act; const sx=Math.random()<.5?-1:1; w.side=sx;
   let tx=20.5, ty=24.0;
-  if(act==="pray"){ tx=22; ty=22.75; }
+  if(act==="pray"){ tx=20.5; ty=22.75; }      // 走到的位置要跟該動作的位置一致（石像左移後這裡還留著舊座標 22，結束時會瞬移 1.5 格）
   else if(act==="jump"){ tx=20.5+(Math.random()-.5)*1.6; ty=23.7; }
   else if(act==="rest"||act==="sleep"){ tx=20.5+sx*2.1; ty=22.45; }
-  else if(act==="orbit"){ tx=22; ty=24.4; }
+  else if(act==="orbit"){ tx=20.5; ty=24.4; }
   else if(act==="offer"){ tx=20.5+sx*2.5; ty=23.9; { const pool=OFFER_KINDS.filter(k=>!OFFER||k!==OFFER.kind&&!FLY); w.okind=pool[Math.floor(Math.random()*pool.length)]; } }
   else if(act==="tribute"){ tx=20.5+sx*2.5; ty=23.9; w.okind=TRIB_KINDS[Math.floor(Math.random()*TRIB_KINDS.length)]; }
   const path=[], side=Math.abs(w.x-20.5)>1.8&&w.y<23.3;
@@ -2895,7 +2925,7 @@ function updateWorship(dt){
   if(!w.mode){ w.mode="pray"; w.act="pray"; w.t=0; }
   if(w.mode==="walk"){
     const q=w.path[0]; if(!q){ w.mode=w.act; w.t=0; w.moving=false; w.vx=0; if(w.act==="orbit") w.ang=Math.PI/2; return; }
-    const dx=q[0]-w.x, dy=q[1]-w.y, d=Math.hypot(dx,dy), st=2.3*dt; w.dir="down"; w.moving=true; w.hop=Math.abs(Math.sin(time*9))*2;
+    const dx=q[0]-w.x, dy=q[1]-w.y, d=Math.hypot(dx,dy), st=2.3*dt; w.dir=(dy<-.1&&Math.abs(dy)>=Math.abs(dx)*.5)?"up":"down"; w.moving=true; w.hop=Math.abs(Math.sin(time*9))*2;      // 往上走（走向集合點）用背影
     if(d<=st){ w.x=q[0]; w.y=q[1]; w.path.shift(); w.vx=0; } else { w.x+=dx/d*st; w.y+=dy/d*st; w.vx=dx/d*2.3; }
     return;
   }
@@ -3000,7 +3030,7 @@ function drawSpirit32(g,s){
 let TEV=[], TS=[], SWAPQ=null, HINTS=[], sitCd=20;
 function offerSwap(q){
   if(!q||player.sit||q.gone) return; q.pat=.3;
-  askYN({eye:"小精靈說話",title:"ちみ？",text:"ちみ〜ちみち、み？ち！\n（要不要你坐下來跟大家聊天嘛？）",yes:"ち！（好呀）",no:"み…（下次吧）"},()=>{ (()=>{ player.sit={s:q,px:player.x,py:player.y}; q.gone=true; achAward("sit"); q.standOff=q.row===0?{dx:0,dy:-1.9}:q.row===1?{dx:0,dy:1.9}:{dx:TABLES[q.t].end<0?-1.6:1.6,dy:0}; burst(q.x,q.y-.6,4,3); player.x=q.x; player.y=q.y; player.moving=false; sayS(q,"どうぞ♪"); })(); });
+  askYN({eye:"小精靈說話",title:DT.sit_ask.title,text:DT.sit_ask.text,yes:DT.sit_ask.btns[0],no:DT.sit_ask.btns[1]},()=>{ (()=>{ player.sit={s:q,px:player.x,py:player.y}; q.gone=true; achAward("sit"); q.standOff=q.row===0?{dx:0,dy:-1.9}:q.row===1?{dx:0,dy:1.9}:{dx:TABLES[q.t].end<0?-1.6:1.6,dy:0}; burst(q.x,q.y-.6,4,3); player.x=q.x; player.y=q.y; player.moving=false; sayS(q,"どうぞ♪"); })(); });
 }
 
 const tableSp=ti=>SPIRITS.filter(q=>q.seated&&q.t===ti);
@@ -3083,8 +3113,8 @@ function updateTables(dt){
 }
 function askStand(){
   if(paused||!player.sit) return; const w=!!player.sit.s.bench;
-  askYN(w?{eye:"紅色沙發",title:"要離開了嗎？",text:"要不要離開沙發，不再看ちびちみ們玩耍了呢？",yes:"離開",no:"再坐一下"}
-         :{eye:"小精靈說話",title:"ちみ？",text:"み〜ちみ、ちみち？み！\n（要不要離開座位，不跟大家聊天了呢？）",yes:"み！（要離開）",no:"ち！（再坐一下）"},()=>standUp());
+  askYN(w?{eye:"紅色沙發",title:DT.sofa_leave.title,text:DT.sofa_leave.text,yes:DT.sofa_leave.btns[0],no:DT.sofa_leave.btns[1]}
+         :{eye:"小精靈說話",title:DT.sit_leave.title,text:DT.sit_leave.text,yes:DT.sit_leave.btns[0],no:DT.sit_leave.btns[1]},()=>standUp());
 }
 function standUp(){ const st=player.sit; if(!st) return; player.sit=null; player.x=st.px; player.y=st.py; if(st.s.bench){ leaveWatch(); return; } st.s.gone=false; st.s.pat=.3; sayS(st.s,"おかえり♡"); }
 /* ---------- 小精靈的對話泡泡（ち／み！）：彈出 → 停一下 → 淡出，同時最多 3 個，離玩家太遠不冒 ---------- */
@@ -3160,15 +3190,14 @@ function drawHints(g){
       const st=statueSprite(); if(st){ const ps=1.5*MM*view.gpE, W=cv.clientWidth, topY=22.4*32+26-9+4+2-st.height;
         const [cx0,cy0]=toScreen((20.5*32+16)*1.5,(topY+st.height*.2)*1.5), half=st.width/2*ps, dist=half+22;
         const okR=cx0+dist<=W-30, okL=cx0-dist>=30; side=okR&&okL?(cx0>W/2?-1:1):okR?1:okL?-1:(cx0>W/2?-1:1);
-        sx=Math.max(34,Math.min(W-34,cx0+side*dist)); sy=cy0+19+bob*.4; scD=sc; } }
+        sx=Math.max(34,Math.min(W-34,cx0+side*dist)); sy=cy0+19+32*ps+bob*.4; scD=sc; } }
     h.sx=sx; h.sy=sy;
-    const col=h.type==="swap"?"#8094db":"#cc7186", bg=h.type==="swap"?"#eef1ff":"#fff0f3", R0=19;
+    const col="#85ebff", bg="#232b52", ol="#fffdfb", R0=19;      // 互動按鈕：深藍底、白邊、水藍圖樣
     g.save(); g.translate(sx,sy); g.scale(scD,scD);
     g.lineJoin="round"; g.lineCap="round";
     if(side){      // 側邊版：橫向的小氣泡按鈕，尖角朝 NPC（中心 = 點擊判定位置）
       const bw=h.type==="talk"?42:34, bh=h.type==="talk"?29:30, r=10, tx=-side*(bw/2), cy=-19;      // 判定中心在 sy-19
-      g.beginPath(); g.roundRect(-bw/2,cy-bh/2,bw,bh,r); g.fillStyle=bg; g.fill();
-      g.beginPath(); g.moveTo(tx,cy-6); g.lineTo(tx-side*10,cy); g.lineTo(tx,cy+6); g.closePath(); g.fill();
+      g.beginPath(); g.roundRect(-bw/2,cy-bh/2,bw,bh,r); g.moveTo(tx,cy-6); g.lineTo(tx-side*10,cy); g.lineTo(tx,cy+6); g.closePath(); g.fillStyle=bg; g.fill();
       if(h.type==="swap"){ g.strokeStyle=col; g.lineWidth=3.4; g.beginPath(); g.arc(0,cy-3.5,4,Math.PI*1.08,Math.PI*2.45); g.lineTo(0,cy+2.5); g.stroke(); g.fillStyle=col; g.beginPath(); g.arc(0,cy+8,2.1,0,Math.PI*2); g.fill(); }
       else { g.fillStyle=col; for(const dx of (h.type==="talk"?[-9,0,9]:[-7,0,7])){ g.beginPath(); g.arc(dx,cy,3,0,Math.PI*2); g.fill(); } }
     } else if(h.type==="talk"){      // 對話：圓角方框（連著小尾巴的一筆畫輪廓）＋粉色邊框＋三個圓點
@@ -3179,8 +3208,7 @@ function drawHints(g){
       g.fillStyle=bg; g.fill();
       g.fillStyle=col; for(const dx of [-9,0,9]){ g.beginPath(); g.arc(dx,-25.5,3.2,0,Math.PI*2); g.fill(); }
     } else {      // 事件／沙發／換位置：圓形泡泡
-      g.fillStyle=bg; g.beginPath(); g.arc(0,-R0,R0,0,Math.PI*2); g.fill();
-      g.beginPath(); g.moveTo(-6,-R0*.45); g.lineTo(6,-R0*.45); g.lineTo(0,2); g.closePath(); g.fill();
+      g.beginPath(); g.arc(0,-R0,R0,0,Math.PI*2); g.moveTo(-6,-R0*.45); g.lineTo(6,-R0*.45); g.lineTo(0,2); g.closePath(); g.fillStyle=bg; g.fill();
       if(h.type==="swap"){      // 粗圓體的「？」圖示（用線條畫，不靠字型）
         g.strokeStyle=col; g.lineWidth=3.8; g.beginPath(); g.arc(0,-R0-3.5,4.4,Math.PI*1.08,Math.PI*2.45); g.lineTo(0,-R0+3.4); g.stroke();
         g.fillStyle=col; g.beginPath(); g.arc(0,-R0+8.6,2.3,0,Math.PI*2); g.fill();
@@ -3203,7 +3231,7 @@ function wrapBub(g,tx,MAXW=250){      // 太長的氣泡自動換行（最寬約
 
 /* ---------- 表情氣泡（頭旁邊的小圓泡泡，裡面是會動的小表情）：shy 害羞／awk 汗顏／sweat 流汗／cry 哭哭 ---------- */
 function emote(o,k,life,ox,oy){ if(o) o.emo={k,t0:time,life:life||2.4,ox:ox||0,oy:oy||0}; }
-function emoList(){ syncBowEmo(); const L=[PILE&&PILE.bow?PILE.bow:null,...RUN,...(WOR?[WOR]:[]),...SPIRITS,player,GATH.go,GATH.hu]; try{ if(PK&&PK.sp) L.push(PK.sp); if(QP&&QP.sp) QP.sp.forEach(q=>L.push(q.o)); if(GX) GX.forEach(e=>L.push(e.o)); if(SN&&SN.ready) snowList().forEach(o=>L.push(o)); }catch(_){ } return [...new Set(L)].filter(Boolean); }
+function emoList(){ syncBowEmo(); const L=[PILE&&PILE.bow?PILE.bow:null,...RUN,...(WOR?[WOR]:[]),...SPIRITS,player,GATH.go,GATH.hu]; try{ if(PK&&PK.sp) L.push(PK.sp); if(QP&&QP.sp) QP.sp.forEach(q=>L.push(q.o)); if(QP&&QP.stObj) L.push(QP.stObj); if(GX) GX.forEach(e=>L.push(e.o)); if(SN&&SN.ready) snowList().forEach(o=>L.push(o)); }catch(_){ } return [...new Set(L)].filter(Boolean); }
 function syncBowEmo(){ try{ const b=PILE&&PILE.bow; if(!b) return; const want=b.mode==="angry"?"angry":(b.mode==="sad"?"cry":null); if(want){ if(!b.emo||b.emo.k!==want) emote(b,want,1e9); } else if(b.emo&&(b.emo.k==="angry"||b.emo.k==="cry")&&b.emo.life>1e8) b.emo=null; }catch(_){ } }
 function emoAll(k,life){ for(const o of emoList()){ if(o===GATH.go||o===GATH.hu||o.gone||o.hidden) continue; if(o!==player&&Math.hypot(o.x-player.x,o.y-player.y)>9) continue; emote(o,k,life); } }
 function drawEmoIcon(g,k,t){
@@ -3328,7 +3356,7 @@ function drawPicSp(g){
   const sh=picSheet(); if(!sh) return; const o=PK.sp, sl=PK.mode==="sleep", cx=ri(o.x*32+16)+ckJit(o), fy=ri(o.y*32+28)-ri(o.hop)-ri(jumpH(o))+(sl?3:0);
   shadowAt32(g,cx,fy+1+ri(o.hop),10,3,sh);
   if(sl){ FORCE_FRAME=2; drawSheet(g,sh,"down",0,cx,fy+(reduceMotion()?0:Math.round(Math.sin(time*1.6))),1,null,time); FORCE_FRAME=null; return; }
-  const bk=picBack(), behind=bk&&ready(bk.a)&&(PK.gx?o.dir==="up":(player.y<o.y-.6&&Math.abs(player.x-o.x)<4));
+  const bk=picBack(), behind=bk&&ready(bk.a)&&PK.mode!=="eat"&&(PK.gx?o.dir==="up":(player.y<o.y-.6&&Math.abs(player.x-o.x)<4));
   drawSheet(g,behind?bk:sh,behind?"up":"down",PK.gx&&(o.moving||o.cheerF)?(Math.floor(time*6)%2):0,cx,fy,1,null,time,PK.gx?o.face:0);
   if(PK.mode==="eat"){ const u=Math.min(1,PK.t/6.2); drawOfferItem(g,"sn"+PK.k,cx+8,fy-7,Math.max(.35,1-.65*u)); }
 }
@@ -3338,14 +3366,14 @@ function picnicBubbleList(){ return [PK.sp]; }
 const SN={ready:false,carry:false,stage:0,got:0,done:false,want:false,H:[32,48,64],
   S:{x:7.5,y:-1.7}, SH:{ax:8.7,bx:9.9,y:-2.5,mx:9.3,my:-2.2}, FIRE:{x:7.95,y:-4.0}, CU:[[7.05,-3.8],[8.85,-3.8]], IG:{x:7.3,y:-5.3}, notes:[],
   HC:[20.5,-4.9], HD:[23.3,-3.9], WALL:[21.1,22.7], WY:-3.4, WYS:[-4.4,-3.4], PL:[[19.8,-4.7],[24.1,-3.5]],
-  m1:{mode:"tea",t:0}, sm:true, trail:[], angels:[], deb:[], rb:null, AP:[[9.0,-2.9],[10.1,-2.9]], balls:[], m2:{mode:"chat",t:0,k:0,turn:0,lr:0,ph:0,pt:0},
+  m1:{mode:"tea",t:0}, sm:true, trail:[], angels:[], deb:[], rb:null, AP:[[9.0,-1.9],[10.1,-1.9]], balls:[], m2:{mode:"chat",t:0,k:0,turn:0,lr:0,ph:0,pt:0},
   sl:{x:22.2,y:0.0,flip:1}, mound:0, grow:0, pulse:0, wallK:0, pileK:[0,0], tTea:60};
 function snSheet(re){ const d=DATA.find(d=>d.type==="spirit"&&re.test(d.name)); if(!d) return null; const sh=mkSheet(d.icon,d.icon2); if(sh) sh.k=32/48; return sh; }
 function snMk(sh,x,y,face,id){ return {sheet:sh,x,y,size:32,hop:0,lift:0,face,moving:false,b:null,fy:null,bsz:34,id,oy:0,duck:0}; }
 function snowInit(){
   if(SN.ready) return true; const s1=mkSheet(ART.snowSp3,null), s3=mkSheet(ART.snowSp4,null), s2=mkSheet(ART.snowSp1,null), s4=mkSheet(ART.snowSp2,null); if(!s1||!s2||!s3||!s4) return false; s1.k=s2.k=s3.k=s4.k=32/48;
   const S=SN.S; SN.a=snMk(s1,SN.CU[0][0],SN.CU[0][1],-1,.3); SN.b=snMk(s2,SN.CU[1][0],SN.CU[1][1],1,1.1); SN.a.lift=SN.b.lift=-3;
-  SN.c=snMk(s4,SN.HC[0],SN.HC[1],-1,2.2); SN.d=snMk(s3,SN.HD[0],SN.HD[1],1,3.3); SN.ready=true; return true;
+  SN.c=snMk(s4,SN.HC[0],SN.HC[1],-1,2.2); SN.d=snMk(s3,SN.HD[0],SN.HD[1],1,3.3); SN.ready=true; try{ snPlan(false); }catch(_){ } return true;
 }
 const snowList=()=>SN.ready?[SN.a,SN.b,SN.c,SN.d]:[];
 const snSay=(o,t,l)=>{ o.b={t0:time,txt:t,life:l||1.8}; };
@@ -3356,17 +3384,42 @@ function snGo(o,tx,ty,spd,dt){ const dx=tx-o.x, dy=ty-o.y, d=Math.hypot(dx,dy), 
 function snIdle(o,words,dt){ o.ic=(o.ic==null?1+Math.random()*3:o.ic)-dt; if(o.ic<=0){ o.ic=4+Math.random()*3.5; snSay(o,snPick(words),1.8); if(Math.random()<.6) snJump(o,5); } }
 function snBurst(x,y,n){ const wx=x*T+T/2, wy=(y*32+12)*1.5; for(let i=0;i<n;i++) FXP.push({k:"p",x:wx,y:wy-6,vx:(Math.random()-.5)*90,vy:-(24+Math.random()*44),t:0,life:.8+Math.random()*.5,r:2+Math.random()*3,c:"#ffffff"}); }
 /* ---------- 雪地左邊兩隻：滾雪球→組成雪人→歡呼→烤棉花糖→（雪天使）→雪人被雪橇撞壞→流汗→重新滾 ---------- */
-const SNR={a:[[4.1,-2.05],[6.5,-2.05]], b:[[10.7,-1.05],[8.45,-1.05]], ra:11, rb:8, T:6.2};
+const SNR={a:[[4.1,-2.05],[6.5,-2.05]], b:[[10.7,-1.05],[8.45,-1.05]], ra:19, rb:14, T:10};
 function drawBigBall(g,px,gy,r){ r=Math.max(1,r); const ry=Math.max(1,Math.round(r*.92)); E(g,"rgba(70,90,130,.22)",px+2,gy-1,r+2,Math.max(2,Math.round(r*.35))); E(g,"#c7d7ec",px,gy-r+1,r,ry); E(g,"#f4f8fe",px-1,gy-r,Math.max(1,r-1),Math.max(1,ry-1)); R(g,"#fff",px-Math.round(r*.45),gy-r-Math.round(r*.5),Math.max(1,Math.round(r*.3)),1); }
 function snTrail(x,y,r){ const T=SN.trail, l=T[T.length-1]; if(l&&Math.hypot(l.x-x,l.y-y)<3) return; T.push({x,y,r,t0:time}); if(T.length>420) T.shift(); }
+function snObs(){      // 雪地上所有的景物位置（半徑＝雪天使要離它多遠）
+  const o=[], P=(x,y,r)=>o.push([x,y,r]);
+  P(SPD.barrel.x,SPD.barrel.y,1.8); SPD.lant.forEach(l=>P(l.x,l.y,1.8)); SPD.snowman.forEach(b=>P(b.x,b.y,1.6)); P(SPD.mound.x,SPD.mound.y,1.6); SPD.deco.forEach(d=>P(d.x,d.y,1.6)); SPD.wtree.forEach(t=>P(t.x,t.y,1.9));
+  P(SN.FIRE.x,SN.FIRE.y,2.2); SN.CU.forEach(c=>P(c[0],c[1],1.8)); P(SN.IG.x,SN.IG.y,3.0); P(GZ.x,GZ.yf,3.4);
+  for(const s of spots) if(s.x!=null&&s.y<4&&s.kind!=="npc") P(s.x,s.y,1.6);
+  return o;
+}
+function snPlan(keepS){      // 每次重堆：雪人換一個位置（一定在雪橇路線上），滾雪球路線、雪天使位置（離路線遠）跟著算
+  const S=SN.S, cur=[S.x,S.y], C=[]; for(const x of [6.2,6.8,7.4,8.0,8.4,9.2,10.0,10.8,11.6]) for(const y of [-2.3,-1.9,-1.5,-1.1]) C.push([x,y]);
+  if(!keepS) C.sort(()=>Math.random()-.5); else C.sort((p,q)=>Math.hypot(p[0]-cur[0],p[1]-cur[1])-Math.hypot(q[0]-cur[0],q[1]-cur[1]));
+  const clear=(x,y)=>!solidAt(x,y), lane=(x0,x1,y)=>{ for(let k=0;k<=10;k++) if(!clear(x0+(x1-x0)*k/10,y)) return false; return true; };
+  for(const [x,y] of C){ if(!keepS&&Math.hypot(x-cur[0],y-cur[1])<.9) continue;
+    S.x=x; S.y=y; const R1=snRoute(true), R2=snRoute(false), RR=R1.concat(R2);
+    if(RR.some(p=>solidAt(p[0],p[1]))) continue;
+    if(!lane(x-3.4,x-1,y-.35)||!lane(x+.95,x+3.2,y+.65)||!clear(x-1.05,y+.1)||!clear(x+1.05,y+.1)) continue;
+    const OB=snObs(); const free=(px,py)=>{ for(const dx of [-1.0,0,1.0]) for(const dy of [-1.3,-.6,.2,.8]){ const qx=px+dx, qy=py+dy; if(solidAt(qx,qy)) return false; const u=(qx*32+16-SPG.cx)/(SPG.A+4), v=(qy*32+16-SPG.cy)/(SPG.B+4); if(Math.hypot(u,v)<1.45) return false; } return OB.every(o=>Math.hypot(o[0]-px,o[1]-py)>=o[2]*.85); };
+    let TH=1.25; const far=(px,py)=>RR.every(p=>Math.hypot(p[0]-px,p[1]-py)>=TH)&&Math.hypot(px-x,py-y)>=2.2&&free(px,py)&&clear(px,py+1.25);
+    let ap=null; for(let ax=3.0;ax<=14.2&&!ap;ax+=.5){ for(const ay of [-1.9,-2.2,-1.5,-2.6,-1.1,-3.0,-.7,-3.4,-3.8,-4.2,-4.6]){ if(far(ax,ay)&&far(ax+1.1,ay)){ ap=[[ax,ay],[ax+1.1,ay]]; break; } } }
+    if(!ap){ TH=.95; for(let ax=3.0;ax<=14.2&&!ap;ax+=.5){ for(const ay of [-1.9,-2.2,-1.5,-2.6,-1.1,-3.0,-.7,-3.4,-3.8]){ if(far(ax,ay)&&far(ax+1.1,ay)){ ap=[[ax,ay],[ax+1.1,ay]]; break; } } } }
+    if(!ap) continue;
+    SNR.a=[[x-3.4,y-.35],[x-1,y-.35]]; SNR.b=[[x+3.2,y+.65],[x+.95,y+.65]]; SN.AP=ap; SN.routeN=null; SN.deb.forEach(d=>{ if(!d.fade) d.fade=time; }); return true; }
+  S.x=cur[0]; S.y=cur[1]; return false;
+}
+const snBuildOK=()=>{ const m2=SN.m2.mode; return m2==="gather"||m2==="ready"||m2==="fight"; };      // 另一組在打雪仗（或準備）的時候才重新堆；雪橇還在跑就先不堆
 function snSmash(){      // 雪橇撞到雪人
-  if(!SN.sm) return; SN.sm=false; const S=SN.S, m=SN.m1; snBurst(S.x,S.y-.6,26); snBurst(S.x,S.y-.2,14); SN.deb.push({x:S.x,y:S.y,t0:time}); snSfx("snowHitP",S.x,S.y);
+  if(!SN.sm) return; SN.sm=false; const S=SN.S, m=SN.m1; snBurst(S.x,S.y-.6,26); snBurst(S.x,S.y-.2,14); SN.deb.push({x:S.x,y:S.y,t0:time,n:0,lock:true}); snSfx("snowHitP",S.x,S.y);
   for(const o of [SN.a,SN.b]){ emote(o,"sweat",2.8,16,-14); snJump(o,6); } snSay(SN.a,"ち…！？",2.2); snSay(SN.b,"み…！",2.2);
   if(SN.m2.pl) snSay(SN.m2.pl,"あっ！",1.2); m.reb=true; if(m.mode==="tea"){ m.mode="sweat"; m.t=0; SN.a.lift=SN.b.lift=0; }
 }
+const SNLIE=Math.PI*5/12;
 function mkAngel(o){      // 用這隻小精靈自己的正面圖，挖出一個內凹的輪廓（手臂跟原圖一樣短）
   const W=80,H=84, c=document.createElement("canvas"); c.width=W; c.height=H; const t=c.getContext("2d"); t.imageSmoothingEnabled=false;
-  try{ drawSheet(t,o.sheet,"down",0,40,76,1,null,0,1); }catch(_){ }
+  try{ t.save(); t.translate(40,64); t.rotate(-(o.lieA||SNLIE)); t.translate(-40,-64); drawSheet(t,o.sheet,"down",0,40,76,1,null,0,1); t.restore(); }catch(_){ }
   const src=t.getImageData(0,0,W,H), sil=new Uint8Array(W*H); for(let k=0;k<W*H;k++) sil[k]=src.data[k*4+3]>70?1:0;
   const out=t.createImageData(W,H), at=(x,y)=>(x<0||y<0||x>=W||y>=H)?0:sil[y*W+x];
   for(let y=0;y<H;y++) for(let x=0;x<W;x++){ if(!sil[y*W+x]) continue; let col=[198,213,235]; if(!at(x-1,y)||!at(x,y-1)) col=[122,148,194]; else if(!at(x+1,y)||!at(x,y+1)) col=[255,255,255]; const k=(y*W+x)*4; out.data[k]=col[0]; out.data[k+1]=col[1]; out.data[k+2]=col[2]; out.data[k+3]=255; }
@@ -3379,9 +3432,10 @@ function sn1(dt){
     if(m.t<.05){ a.lift=b.lift=-3; a.face=-1; b.face=1; }
     a.face=-1; b.face=1; snIdle(a,["ふぅ…","ち♡","あつっ！","もぐもぐ"],dt); snIdle(b,["ふぅ…","み♡","ほっ…","もぐもぐ"],dt);
     for(const [o,off] of [[a,0],[b,4]]){ const ph=snMarsh(m.t,off); if(ph&&ph.eat&&!o.eatD){ o.eatD=1; snSay(o,"もぐ♡",1.6); burst(o.x,o.y-.6,1,0); } if(ph&&!ph.eat) o.eatD=0; }
-    if(m.t>13&&!SN.angels.length&&SN.sm){ a.lift=b.lift=0; m.mode="angel"; m.t=0; m.as=0; snSay(a,"ち！",1.2); snSay(b,"み！",1.2); }
+    if(!SN.sm&&!SN.rb&&m.t>2&&snBuildOK()){ a.lift=b.lift=0; snPlan(); m.mode="toRoll"; m.t=0; m.reb=false; }      // 雪人被撞壞了：等雪橇那邊結束、打雪仗時才重新堆
+    else if(m.t>13&&!SN.angels.length&&SN.sm){ a.lift=b.lift=0; m.mode="angel"; m.t=0; m.as=0; snSay(a,"ち！",1.2); snSay(b,"み！",1.2); }
   } else if(m.mode==="sweat"){
-    a.face=-1; b.face=1; if(m.t>3){ m.mode="toRoll"; m.t=0; m.reb=false; }
+    a.face=-1; b.face=1; if(m.t>3){ m.mode="toCU"; m.t=0; }
   } else if(m.mode==="toRoll"){
     const r1=snGo(a,SNR.a[0][0],SNR.a[0][1],1.8,dt), r2=snGo(b,SNR.b[0][0],SNR.b[0][1],1.8,dt);
     if(r1&&r2){ m.mode="roll"; m.t=0; a.face=-1; b.face=1; snSay(a,"ち！",1.2); snSay(b,"み！",1.2); SN.rb={a:{x:a.x,y:a.y,r:1},b:{x:b.x,y:b.y,r:1}}; }
@@ -3391,15 +3445,18 @@ function sn1(dt){
     const ra=Math.max(1,SNR.ra*Math.pow(u,.8)), rb=Math.max(1,SNR.rb*Math.pow(u,.8));
     SN.rb={a:{x:a.x+(ra+8)/32,y:a.y,r:ra},b:{x:b.x-(rb+8)/32,y:b.y,r:rb}};
     snTrail(ri(SN.rb.a.x*32+16),ri(SN.rb.a.y*32+28),ra); snTrail(ri(SN.rb.b.x*32+16),ri(SN.rb.b.y*32+28),rb);
+    m.rs=(m.rs==null?.6:m.rs)-dt; if(m.rs<=0){ m.rs=2.4+Math.random()*.8; m.rf=!m.rf; const w=["ん〜しょ！","ごろごろ〜","ち！","み！","よいしょ♪","ころころ…"]; snSay(m.rf?a:b,w[Math.floor(Math.random()*w.length)],1.4); }
     m.sf=(m.sf||0)-dt; if(m.sf<=0){ m.sf=.8; snBurst(SN.rb.a.x,SN.rb.a.y+.1,1); snBurst(SN.rb.b.x,SN.rb.b.y+.1,1); }
     if(u>=1){ m.mode="join"; m.t=0; a.moving=b.moving=false; a.hop=b.hop=0; snSay(a,"ち♡",1.2); snSay(b,"み♡",1.2); m.a0={x:SN.rb.a.x,y:SN.rb.a.y}; m.b0={x:SN.rb.b.x,y:SN.rb.b.y}; }
-  } else if(m.mode==="join"){
-    const rbl=SN.rb; const u1=Math.min(1,m.t/1.2), e1=u1*u1*(3-2*u1);
-    rbl.a.x=m.a0.x+(S.x-m.a0.x)*e1; rbl.a.y=m.a0.y+(S.y-m.a0.y)*e1;
-    const hx=S.x, hy=S.y+.5; rbl.b.x=m.b0.x+(hx-m.b0.x)*e1; rbl.b.y=m.b0.y+(hy-m.b0.y)*e1;
-    snGo(a,S.x-1.05,S.y+.1,1.6,dt); snGo(b,S.x+1.05,S.y+.1,1.6,dt); a.face=-1; b.face=1;
-    if(m.t>=1.2){ const u=Math.min(1,(m.t-1.2)/1.1), e=u*u*(3-2*u); rbl.b.y=hy+(S.y-hy)*e; rbl.b.lift=(24-SNR.rb)*e+Math.sin(u*Math.PI)*10; if(!m.jt){ m.jt=1; snJump(a,5); snJump(b,5); }
-      if(u>=1){ SN.sm=true; SN.pulse=1; SN.rb=null; m.jt=0; snBurst(S.x,S.y-.7,12); snSay(a,"やったー♡",1.8); snSay(b,"ち♡ち♡！",1.8); m.mode="cheer"; m.t=0; } }
+  } else if(m.mode==="join"){      // 組裝雪人：a 把大球推到定位；b 把小球推到旁邊、抱起來舉過頭、走過去，跳起來放到大球上
+    const rbl=SN.rb, ra=rbl.a.r, rb=rbl.b.r, t=m.t, E=u=>{ u=Math.max(0,Math.min(1,u)); return u*u*(3-2*u); }, PB={x:S.x+1.3,y:S.y+.12};
+    if(t<1.6){ const e=E(t/1.6); rbl.a.x=m.a0.x+(S.x-m.a0.x)*e; rbl.a.y=m.a0.y+(S.y-m.a0.y)*e; rbl.b.x=m.b0.x+(PB.x-m.b0.x)*e; rbl.b.y=m.b0.y+(PB.y-m.b0.y)*e;
+      a.x=rbl.a.x-(ra+8)/32; a.y=rbl.a.y; b.x=rbl.b.x+(rb+8)/32; b.y=rbl.b.y; a.face=-1; b.face=1; a.moving=b.moving=true; a.hop=b.hop=Math.abs(Math.sin(time*7))*1.8; snTrail(ri(rbl.a.x*32+16),ri(rbl.a.y*32+28),ra); snTrail(ri(rbl.b.x*32+16),ri(rbl.b.y*32+28),rb); m.l1=0; m.jt=0;
+    } else if(t<2.5){ a.moving=false; a.hop=0; b.moving=false; b.hop=0; snGo(a,S.x-1.25,S.y+.1,1.6,dt); a.face=-1; b.face=1; if(!m.l1){ m.l1=1; snSay(b,"よいしょ！",1.3); snSay(a,"がんばれ！",1.3); }
+      const e=E((t-1.6)/.9); rbl.b.x=b.x-.18*e; rbl.b.y=b.y+.02; rbl.b.lift=28*e; b.hop=-2*Math.sin(e*Math.PI);
+    } else if(t<4.0){ const e=E((t-2.5)/1.5); if(m.bx0==null||t<2.6) m.bx0=b.x; b.x=m.bx0+((S.x+1.0)-m.bx0)*e; b.y=PB.y; b.moving=true; b.face=1; b.hop=Math.abs(Math.sin(time*7))*1.4; rbl.b.x=b.x-.18; rbl.b.y=b.y+.02; rbl.b.lift=28; a.face=-1;
+    } else { const e=E((t-4.0)/.8); b.moving=false; b.hop=0; a.hop=0; if(!m.jt){ m.jt=1; snJump(b,6); snJump(a,4); } const sx=m.bx0==null?b.x:b.x-.18; rbl.b.x=sx+(S.x-sx)*e; rbl.b.y=b.y+(S.y-b.y)*e; rbl.b.lift=28+((45-SNR.rb)-28)*e+Math.sin(e*Math.PI)*10;
+      if(e>=1){ SN.sm=true; SN.pulse=1; SN.rb=null; m.jt=0; m.bx0=null; snBurst(S.x,S.y-.7,12); snSay(a,"やったー♡",1.8); snSay(b,"ち♡ち♡！",1.8); m.mode="cheer"; m.t=0; } }
   } else if(m.mode==="cheer"){
     a.face=-1; b.face=1; m.cj=(m.cj||0)-dt; if(m.cj<=0){ m.cj=.45; snJump(a,8); snJump(b,8); burst(a.x,a.y-.5,1,0); burst(b.x,b.y-.5,1,0); }
     if(m.t>2.8){ m.mode="toCU"; m.t=0; a.hop=b.hop=0; }
@@ -3407,13 +3464,19 @@ function sn1(dt){
     if(toCU()){ m.mode="tea"; m.t=0; a.face=-1; b.face=1; a.lift=b.lift=-3; snSay(a,"ふぅ…",1.6); snSay(b,"あったか…",1.6); }
   } else if(m.mode==="angel"){      // 雪天使：各自找位置躺下抖 3 秒→起身留下輪廓→互看對方的、冒愛心
     if(m.as===0){ const r1=snGo(a,AP[0][0],AP[0][1],1.7,dt), r2=snGo(b,AP[1][0],AP[1][1],1.7,dt); if(r1&&r2){ m.as=1; m.t=0; a.face=b.face=1; } }
-    else if(m.as===1){ const k=Math.min(1,m.t/.35); a.lieK=b.lieK=k; a.shk=b.shk=m.t>.35; if(m.t>3.4){ m.as=2; m.t=0; a.shk=b.shk=false; const life=70+Math.random()*20; for(const [o,i] of [[a,0],[b,1]]) SN.angels.push({x:AP[i][0],y:AP[i][1],img:mkAngel(o),t0:time,life}); snBurst(AP[0][0],AP[0][1]-.1,8); snBurst(AP[1][0],AP[1][1]-.1,8); snJump(a,8); snJump(b,8); } }
+    else if(m.as===1){      // 跳起來往後跌倒，躺在雪裡慢慢滑動手腳玩一陣子，起身前才印出雪天使（兩隻角度不同）
+      if(!m.fl){ m.fl=1; m.im=0; m.ly=0; a.lieA=SNLIE; b.lieA=-Math.PI*.3; snSay(a,"わっ！",1.1); snSay(b,"きゃっ！",1.1); snJump(a,7); snJump(b,7); }
+      const T=m.t, fa=T<.25?0:Math.min(1,(T-.25)/.5), fb=T<.5?0:Math.min(1,(T-.5)/.5), ws=(k,ph)=>k<1?0:(T>1.1?.16*Math.sin((T-1.1)*2.6+ph)*Math.min(1,(T-1.1)/.6):0);
+      a.lieK=fa+ws(fa,0); b.lieK=fb+ws(fb,2.2); a.shk=b.shk=false;
+      if(T>1.9&&!m.ly){ m.ly=1; snSay(a,"ふふっ♪",1.4); snSay(b,"きゃは♪",1.4); }
+      if(T>=3.4&&!m.im){ m.im=1; const life=70+Math.random()*20; for(const [o,i] of [[a,0],[b,1]]) SN.angels.push({x:AP[i][0],y:AP[i][1],img:mkAngel(o),t0:time,life}); snBurst(AP[0][0],AP[0][1]-.1,12); snBurst(AP[1][0],AP[1][1]-.1,12); }
+      if(T>3.9){ m.as=2; m.t=0; m.fl=0; m.im=0; a.shk=b.shk=false; a.lieK=b.lieK=1; } }
     else if(m.as===2){ const k=Math.max(0,1-m.t/.35); a.lieK=b.lieK=k; if(m.t>.35){ a.lieK=b.lieK=0; const r1=snGo(a,AP[0][0]-.1,AP[0][1]+1.25,1.6,dt), r2=snGo(b,AP[1][0]+.1,AP[1][1]+1.25,1.6,dt); if(r1&&r2){ m.as=3; m.t=0; } } }
-    else if(m.as===3){ a.face=-1; b.face=1; if(!m.lk){ m.lk=1; burst(a.x,a.y-.6,3,0); burst(b.x,b.y-.6,3,0); snSay(a,"ち♡",1.8); snSay(b,"み♡",1.8); } if(m.t>3){ m.lk=0; m.as=0; if(m.reb){ m.mode="toRoll"; m.t=0; m.reb=false; } else { m.mode="toCU"; m.t=0; } } }
+    else if(m.as===3){ a.face=-1; b.face=1; if(!m.lk){ m.lk=1; burst(a.x,a.y-.6,3,0); burst(b.x,b.y-.6,3,0); snSay(a,"ち♡",1.8); snSay(b,"み♡",1.8); } if(m.t>3){ m.lk=0; m.as=0; m.mode="toCU"; m.t=0; } }
   }
   for(let i=SN.angels.length-1;i>=0;i--){ if(time-SN.angels[i].t0>SN.angels[i].life) SN.angels.splice(i,1); }
-  for(let i=SN.deb.length-1;i>=0;i--){ if(time-SN.deb[i].t0>40) SN.deb.splice(i,1); }
-  while(SN.trail.length&&time-SN.trail[0].t0>85) SN.trail.shift();
+  for(let i=SN.deb.length-1;i>=0;i--){ const d=SN.deb[i]; if(d.fade&&time-d.fade>3||time-d.t0>240) SN.deb.splice(i,1); }
+  while(SN.trail.length&&time-SN.trail[0].t0>3) SN.trail.shift();
 }
 function snMarsh(t,off){      // 烤棉花糖：每隻交錯烤兩次；回傳 {p:烤焦程度0~1, eat:是否在吃}
   const u=t-off; if(u<0) return null; const k=u%20; if(k>=2&&k<10) return {p:(k-2)/8,eat:false}; if(k>=10&&k<11.6) return {p:1,eat:true};
@@ -3423,7 +3486,7 @@ const RIDE={on:false,lift:0,hop:0,sx:0,sy:0};      // 玩家坐在雪橇上、�
 function sledRide(){
   const m=SN.m2; if(!SN.ready||RIDE.on||SN.carry||ORG.carry) return;
   if(["gotoSled","mount","pull","ending","dismount"].includes(m.mode)) return;
-  askYN({eye:"雪橇",title:"要坐上雪橇嗎？",text:"兩隻小精靈會一起拉著你，繞雪地跑三圈。",yes:"坐上去",no:"先不要"},()=>{
+  askYN({eye:"雪橇",title:DT.sled.title,text:DT.sled.text,yes:DT.sled.btns[0],no:DT.sled.btns[1]},()=>{
     achAdd("fun","sled"); achPlayCheck();
     RIDE.on=true; RIDE.lift=0; RIDE.hop=0; RIDE.sx=player.x; RIDE.sy=player.y; clearKeys(); const c=SN.c, d=SN.d;
     SN.wallK=0; SN.pileK[0]=SN.pileK[1]=0; c.ammo=d.ammo=0; c.wind=d.wind=0; c.rt=d.rt=null; c.hop=d.hop=0; c.lift=d.lift=0; c.duck=d.duck=0; SN.sl.flip=1; m.off=null; m.empty=false; m.mode="rideGo"; m.t=0; snSay(c,"ち！",1.2); snSay(d,"み♡",1.2); PLB.b={t0:time,txt:"わーい♪",life:2.2,mute:1};
@@ -3513,10 +3576,11 @@ function sn2(dt){
     } else if(m.mode==="pull"){
       const WP=SN.routeN||(SN.routeN=snRoute(true));      // 小精靈自己拉雪橇：路線會經過雪人（把它撞壞）；玩家坐的路線不變
       const sp=(2.2+2.0*(.5+.5*Math.sin(m.wi*.16+m.lr*1.3)))*1.3*Math.min(1,.35+m.t*.3)*(m.wi>WP.length-12?.75:1)*sledBoost(WP[Math.min(m.wi,WP.length-1)]);      // 起步慢慢加速、直線快、彎道慢，每圈節奏不同
-      if(snGo(pl,WP[m.wi][0],WP[m.wi][1],sp,dt)){ m.wi++; if(m.wi>=WP.length){ m.lr++; if(m.lr<3){ m.wi=0; snSay(pl,"もう一周！",1.4); } else { m.mode="ending"; m.t=0; } } }
+      if(snGo(pl,WP[m.wi][0],WP[m.wi][1],sp,dt)){ m.wi++; if(m.wi>=WP.length){ m.lr++; if(m.lr<2){ m.wi=0; snSay(pl,"もう一周！",1.4); } else { m.mode="ending"; m.t=0; } } }
       if(m.mode==="pull"){
         const dx=pl.x-sl.x, dy=pl.y-sl.y, dd=Math.hypot(dx,dy); if(dd>1.4){ const k=(dd-1.4)/dd; sl.x+=dx*k; sl.y+=dy*k; } if(Math.abs(dx)>.2) sl.flip=dx>0?1:-1;
         if(SN.sm&&Math.hypot(sl.x-SN.S.x,sl.y-SN.S.y)<.95) snSmash();
+        for(let di=SN.deb.length-1;di>=0;di--){ const d=SN.deb[di], dd2=Math.hypot(sl.x-d.x,sl.y-d.y); if(dd2>1.7) d.lock=false; else if(dd2<.9&&!d.lock&&!d.fade){ d.lock=true; d.n++; snBurst(d.x,d.y-.2,10); snSfx("snowHitP",d.x,d.y); if(d.n>=3) SN.deb.splice(di,1); } }      // 雪橇再輾過：雪堆越來越小，第 3 次輾過就不見
         rd.x=sl.x; rd.y=sl.y+.02; rd.face=pl.face; rd.hop=Math.abs(Math.sin(time*12))*2.6; rd.hj=null; pl.hop=Math.max(pl.hop||0,Math.abs(Math.sin(time*13))*2.4); m.spd=sp; snIdle(pl,["ち！","ち♡","ち♪"],dt); snIdle(rd,["み♡","きゃっ♪","み♪"],dt);
         m.nt=(m.nt||0)-dt; if(m.nt<=0){ m.nt=.22+Math.random()*.12; for(const q of [pl,rd]) if(Math.random()<.7) SN.notes.push({x:q.x+(Math.random()-.5)*.4,y:q.y-1.1,vx:(Math.random()-.5)*.7-(sl.flip||1)*.5,vy:-1.1-Math.random()*.6,t:0,k:Math.random()<.5?0:1,c:["#ee9fb6","#7fb2dc","#f4c24a","#f8c4d4"][Math.floor(Math.random()*4)]}); } }
     } else if(m.mode==="ending"){
@@ -3530,7 +3594,7 @@ function sn2(dt){
 }
 function sledBoost(p){ const sat=v=>Math.max(0,Math.min(1,v)); return 1+.35*sat((6.8-p[0])/2.2)*sat((-.3-p[1])/.7); }      // 左邊彎道慢慢加速、慢慢放掉（不要突然變速）
 function snRoute(npc){      // 雪橇路線：繞過右邊雪地、沿著房子上方的長條雪地往左滑到快到盡頭再折回，用曲線平滑連起來
-  const P=[[24.8,.3],[24.8,-1.2],[24.6,-2.6],[24.8,-4.2],[25.0,-5.6],[24.0,-6.3],[22.5,-6.3],[20.4,-6.4],[18.6,-6.45],[16.5,-6.45],[14.3,-6.4],[13.0,-7.0],[12.6,-7.7],[11.5,-8.2],[9.2,-8.2],[6.9,-8.2],[4.0,-7.8],[2.8,-6.9],[2.0,-5.7],[2.4,-4.5],[2.0,-3.3],[2.3,-2.0],[3.2,-.8],...(npc?[[4.8,-1.1],[6.3,-1.6],[7.5,-1.7],[8.6,-1.1],[10,-.5]]:[[4.8,-.5],[8,-.5]]),[11,-.5],[14.5,-.5],[18,-.5],[20.6,-.4],[22.4,.2],[24.0,.7]], n=P.length, out=[];
+  const P=[[24.8,.3],[24.8,-1.2],[24.6,-2.6],[24.8,-4.2],[25.0,-5.6],[24.0,-6.3],[22.5,-6.3],[20.4,-6.4],[18.6,-6.45],[16.5,-6.45],[14.3,-6.4],[13.0,-7.0],[12.6,-7.7],[11.5,-8.2],[9.2,-8.2],[6.9,-8.2],[4.0,-7.8],[2.8,-6.9],[2.0,-5.7],[2.4,-4.5],[2.0,-3.3],[2.3,-2.0],[3.2,-.8],...(npc?[[SN.S.x-2.7,Math.min(-.5,SN.S.y+.6)],[SN.S.x-1.2,SN.S.y+.1],[SN.S.x,SN.S.y],[SN.S.x+1.1,Math.min(-.5,SN.S.y+.6)],[SN.S.x+2.5,-.5]]:[[4.8,-.5],[8,-.5]]),[Math.max(11,npc?SN.S.x+4.3:0),-.5],[Math.max(14.5,npc?SN.S.x+7.8:0),-.5],[18,-.5],[20.6,-.4],[22.4,.2],[24.0,.7]], n=P.length, out=[];
   for(let i=0;i<n;i++){ const p0=P[(i+n-1)%n], p1=P[i], p2=P[(i+1)%n], p3=P[(i+2)%n];
     for(let k=0;k<8;k++){ const t=k/8, t2=t*t, t3=t2*t, f=(a,b,c,d)=>.5*((2*b)+(-a+c)*t+(2*a-5*b+4*c-d)*t2+(-a+3*b-3*c+d)*t3); out.push([f(p0[0],p1[0],p2[0],p3[0]),f(p0[1],p1[1],p2[1],p3[1])]); } }
   return out;
@@ -3541,7 +3605,8 @@ function snLaunch(from,tg,th,res,pt){      // pt＝玩家指定的落點 {x,y}
   let x1=e.x, y1=e.y;
   if(!fromP&&res==="duck"){ x1=SN.WALL[tg===SN.c?0:1]; y1=SN.WYS[tg===SN.c?0:1]; }
   if(!fromP&&res==="dodge"){ x1=e.x+(e.x>from.x?.5:-.5); }
-  SN.balls.push({x0:from.x,y0:from.y,x1,y1,t:0,dur:fromP?Math.min(1,.3+dist*.08):.75,tg,th,fromP,res:res||"hit",hz:fromP?Math.min(30,8+dist*3):24,rs:false});
+  let pdg=null; if(fromP&&Math.random()<.35){ let bd=.85; for(const o of snowList()){ const [ex,ey]=snEff(o), d=Math.hypot(ex-x1,ey-y1); if(d<bd&&!(o.duck>.5)){ bd=d; pdg=o; } } }      // 玩家丟雪球：小精靈有機率閃開
+  SN.balls.push({pdg,x0:from.x,y0:from.y,x1,y1,t:0,dur:fromP?Math.min(1,.3+dist*.08):.75,tg,th,fromP,res:res||"hit",hz:fromP?Math.min(30,8+dist*3):24,rs:false});
 }
 function snEff(o){ return [o.x+(o.ox||0),o.y-(o.lift||0)/32-.4]; }
 function snBallLand(b){
@@ -3549,6 +3614,7 @@ function snBallLand(b){
   if(b.fromP){      // 玩家丟的：看落點附近有沒有小精靈
     let hit=null,bd=.85; for(const o of snowList()){ const [ex,ey]=snEff(o), d=Math.hypot(ex-b.x1,ey-b.y1); if(d<bd){ bd=d; hit=o; } }
     if(!hit){ snBurst(b.x1,b.y1-.1,6); snSfx("snowLand",b.x1,b.y1); return; }
+    if(b.pdg&&hit===b.pdg){ snBurst(b.x1+(b.x1>b.x0?.5:-.5),b.y1-.1,6); snSfx("snowLand",b.x1,b.y1); return; }      // 閃過了
     if(hit.duck>.5){ snBurst(hit.x,hit.y-.2,6); snSay(hit,"ガード！",1.1); snSfx("snowLand",hit.x,hit.y); return; }
     if(SN.m2.mode==="fight"&&(hit===SN.c||hit===SN.d)){ SN.m2.rp=Math.min(2,(SN.m2.rp||0)+1); SN.m2.rw=hit; }      // 被玩家打到：反擊（最多兩顆）
     hit.hit=.4; snJump(hit,6); snBurst(hit.x,hit.y-.5-(hit.lift||0)/32,8); snSay(hit,snPick(["ぷっ！","み！","ち！？","やったな〜！"]),1.2); snSfx("snowHitS",hit.x,hit.y); try{ achAward("snowHit"); }catch(_){ } return;
@@ -3579,8 +3645,8 @@ function onSnowBridge(){ const tx=Math.floor(player.x+.5), ty=Math.floor(player.
 function snowGuard(dt){      // 櫻花小精靈、女僕照都不能帶上雪地：走到橋上就會自己回去
   if(!onSnowBridge()) return;
   let said=0;
-  if(PILE.carry&&!PILE.sc){ pileSnowDrop(); toast("上面太冷了，ちみ沒有穿保暖衣服沒辦法上去呦～"); said=1; }
-  if(PH.st===1){ phSnowFly(); if(said) setTimeout(()=>toast("這麼珍貴的女僕照沾到雪會濕掉的"),2800); else toast("這麼珍貴的女僕照沾到雪會濕掉的"); }
+  if(PILE.carry&&!PILE.sc){ pileSnowDrop(); tt("cold_up"); said=1; }
+  if(PH.st===1){ phSnowFly(); if(said) setTimeout(()=>tt("photo_wet"),2800); else tt("photo_wet"); }
 }
 function pileSnowDrop(){
   const B=PILE.bow, o=PILE.sp, src=PILE.from||"pile";
@@ -3688,11 +3754,12 @@ function qpBiteOn(base){      // 巨大石像左耳中間，多一圈虛線的�
   QP_BIG={b:base,c}; return c;
 }
 function statueSprite(){ const I=art(QP.st>=2?"bigDone":"bigPre"); if(ready(I)) return I; return statueSpriteBase(); }      // 一開始沒圍巾→交出情書後耳朵出現牙印→任務完成戴圍巾      // 任務完成後：用妳畫的帶圍巾版本，原尺寸不縮放
+const FATX=[1,1.17,1.27,1.37,1.47,1.67], FATY=[1,1.12,1.20,1.28,1.38,1.56];      // 小石雕吃毛豆喜久福：第 1~3 次每次一小步、第 4、5 次變化最大
 function fountainSprite(){ if(QP.scarf){ const I=art("smallDone"); if(ready(I)) return I; } const P=art("smallPre"); if(ready(P)) return P; const b=fountainSpriteBase(); return (!QP.scarf&&b)?(qpScarfOff(b)||b):b; }
 const QDIVE=4.4;      // 潛水時間（秒）
 const QPST=[8.0,24.1,.82];      // 小石雕的位置＋半徑：小精靈潛水不穿過他
 const QPW={L:[],R:[]};      // 水裡可以游的點：離岸一點、離木橋至少半格（左 x≤4.95、右 x≥7.05）、避開小石雕
-(function(){ for(let y=22.5;y<=27.4;y+=.4) for(let x=1.5;x<=9.4;x+=.4){ if(pondD(x*32+16,y*32+22)>-13) continue; if(Math.hypot(x-QPST[0],y-QPST[1])<QPST[2]+.4) continue; if(x<=4.95) QPW.L.push([+x.toFixed(2),+y.toFixed(2)]); else if(x>=7.05) QPW.R.push([+x.toFixed(2),+y.toFixed(2)]); } })();
+(function(){ for(let y=22.5;y<=27.4;y+=.4) for(let x=1.5;x<=9.4;x+=.4){ if(pondD(x*32+16,y*32+22)>-13) continue; if(Math.hypot(x-QPST[0],y-QPST[1])<QPST[2]+.4) continue; if(x<=4.95) QPW.L.push([+x.toFixed(2),+y.toFixed(2)]); else if(x>=7.2) QPW.R.push([+x.toFixed(2),+y.toFixed(2)]); } })();
 function qpHit(x,y,m){ const r=QPST[2]+(m||0); return (x-QPST[0])*(x-QPST[0])+(y-QPST[1])*(y-QPST[1])<r*r; }
 function qpSegHit(ax,ay,bx,by){ for(let i=0;i<=14;i++){ const u=i/14; if(qpHit(ax+(bx-ax)*u,ay+(by-ay)*u,.12)) return true; } return false; }
 function qpPick(q,other){ q.viaDone=false; q.via=null; const pool=QPW[QP.side]; let best=null; for(let k=0;k<8;k++){ const w=pool[Math.floor(Math.random()*pool.length)]; if(other&&(other.mode==="swim"||other.mode==="wade")&&(Math.hypot(w[0]-other.o.x,w[1]-other.o.y)<1.3||(other.tg&&Math.hypot(w[0]-other.tg[0],w[1]-other.tg[1])<1.3))) continue; best=w; break; } return best||pool[Math.floor(Math.random()*pool.length)]; }
@@ -3701,7 +3768,13 @@ function qpInit(){
   QP.sp=[{o:snMk(s1,QPHOME[0][0],QPHOME[0][1],1,71),w:QPW.L},{o:snMk(s2,QPHOME[1][0],QPHOME[1][1],-1,72)}]; QP.sp.forEach((q,i)=>{ q.t=Math.random()*3; q.nx=2; q.mode="shore"; q.wi=0; q.dv=-1; q.nd=3+i*2.5; q.nr=9+i*6; q.gog=0; q.wet=false; }); return true;
 }
 function qpBack(q){ if(q.bkS===undefined){ const d=DATA.find(d=>d.type==="spirit"&&d.size===32&&(q===QP.sp[0]?/ちびちみご/:/ちびちみゆ/).test(d.name||"")); q.bkS=d&&d.back?mkBack(d):null; if(q.bkS) q.bkS.k=32/48; } return q.bkS; }
-function qpMove(o,tx,ty,v,dt){ if(time<(o.ckU||0)){ o.moving=false; return false; } const dx=tx-o.x, dy=ty-o.y, d=Math.hypot(dx,dy); if(d<.06){ o.moving=false; return true; } const s=Math.min(d,v*dt); o.x+=dx/d*s; o.y+=dy/d*s; o.moving=true; o.face=dx>0?-1:1; return false; }
+function qpMove(o,tx,ty,v,dt){ if(time<(o.ckU||0)){ o.moving=false; return false; } if(o.jb&&qpJump(o)>0) v*=2.4; const dx=tx-o.x, dy=ty-o.y, d=Math.hypot(dx,dy); if(d<.06){ o.moving=false; return true; } const s=Math.min(d,v*dt); o.x+=dx/d*s; o.y+=dy/d*s; o.moving=true; o.face=dx>0?-1:1; return false; }
+function qpDetour(ax,ay,bx,by){      // 小石雕擋在路上：沿著石雕外圈繞過去（不走橋邊那一側）
+  const cx=QPST[0], cy=QPST[1], R=QPST[2]+.2, a1=Math.atan2(ay-cy,ax-cx), a2=Math.atan2(by-cy,bx-cx); let best=null, bl=1e9;
+  for(const dir of [1,-1]){ let da=(a2-a1)*dir; da=((da%6.2832)+6.2832)%6.2832; const n=Math.max(1,Math.ceil(da/.4)), L=[]; let ok=true, px=ax, py=ay;
+    for(let i=1;i<=n;i++){ const a=a1+dir*da*i/n, x=cx+Math.cos(a)*R, y=cy+Math.sin(a)*R; if(x<7.25) continue; if(pondD(x*32+16,y*32+22)>-4||qpSegHit(px,py,x,y)){ ok=false; break; } L.push([x,y]); px=x; py=y; }
+    if(ok&&!qpSegHit(px,py,bx,by)&&da<bl){ bl=da; best=L.length?L:null; } }
+  return best||[[9.0,(ay+by)/2<cy?23.2:25.0]]; }
 function qpSwimTo(q,tx,ty,v,dt){      // 潛水移動：左右半池之間，要先在橋邊潛下去、從木橋底下游過去，再浮起來；同一邊內繞過小石雕
   const o=q.o;
   if(q.xs!=null){      // 0＝游到橋邊　1＝往下潛　2＝水下游過橋底　3＝浮起來
@@ -3712,67 +3785,95 @@ function qpSwimTo(q,tx,ty,v,dt){      // 潛水移動：左右半池之間，要
     q.sub=Math.max(0,q.sub-dt/.7); o.moving=false; if(q.sub<=0){ q.xs=null; q.under=false; q.sub=0; o.b={t0:time,txt:"ぷはっ♡",life:1.3}; } return false; }
   if(q.viaDone&&!qpSegHit(o.x,o.y,tx,ty)){ if(qpMove(o,tx,ty,v,dt)){ q.viaDone=false; return true; } return false; }      // 橋底游過來之後，若直線會撞到小石雕就照一般的繞路
   if((o.x-6.0)*(tx-6.0)<0){ const yy=o.y<24.5?23.2:25.9, left=o.x<6.0; q.xA=[left?4.85:7.15,yy]; q.xB=[left?7.15:4.85,yy]; q.xs=0; q.sub=0; q.viaDone=true; return false; }
-  if(qpSegHit(o.x,o.y,tx,ty)){ const ny=(o.y+ty)/2<24.1?23.0:25.6; if(!q.via) q.via=[o.x<8?7.0:8.6,ny]; if(qpMove(o,q.via[0],q.via[1],v,dt)) q.via=null; return false; }
+  if(qpSegHit(o.x,o.y,tx,ty)){ if(!q.via||!q.via.length) q.via=qpDetour(o.x,o.y,tx,ty); const w=q.via[0]; if(qpMove(o,w[0],w[1],v,dt)) q.via.shift(); return false; }
+  q.via=null;
   return qpMove(o,tx,ty,v,dt);
 }
-const QREST={L:[[2.2,20.75],[3.4,20.75]],R:[[7.5,20.75],[10.0,23.3]]};      // 休息的岸邊（都在草地上，不碰池邊石子）
-function qpRest(q){ const o=q.o, side=o.x<6?"L":"R", C=QREST[side].filter(p=>!qpSegHit(o.x,o.y,p[0],p[1])); if(!C.length||q.xs!=null) return false; const p=C[Math.floor(Math.random()*C.length)], pool=QPW[side]; let best=pool[0], bd=1e9; for(const w of pool){ const d=Math.hypot(w[0]-p[0],w[1]-p[1]); if(d<bd){ bd=d; best=w; } }
-  q.rp=p; q.re=best; q.rs=0; q.rrnd=Math.random()*4; q.mode="rest"; q.tg=null; q.via=null; q.viaDone=false; q.dv=-1; return true; }
+const QREST={L:[[2.2,20.75],[3.4,20.75]],R:[[7.5,20.75],[8.4,20.75]]};      // 休息的岸邊（都在草地上，不碰池邊石子）
+const QCHAT=["ちみ？","ち〜！","みみっ","ちちち♪","み〜ち！","ちみちみ","ぽかぽか〜","ち！ち！"];
+function qpChat(q,P,dt){ const o=q.o; if(!P||P.xs!=null||o.b) return; q.cn=(q.cn==null?q.t+1+Math.random()*2:q.cn); if(q.t<q.cn) return; if(P.o.b&&P.o.b.txt&&time-P.o.b.t0<1.6) return; q.cn=q.t+2.4+Math.random()*2; o.face=P.o.x>o.x?-1:1; o.hop=0; o.b={t0:time,txt:QCHAT[Math.floor(Math.random()*QCHAT.length)],life:1.5}; q.ch=q.t; }
+function qpSplash(q,P,dt,i){      // 兩隻在水裡互相潑水：先游近、面對面，輪流往對方潑
+  const o=q.o, S=q.spl;
+  if(!P||P.mode!=="swim"||!P.spl||QP.spray||P.dv>=0||q.dv>=0||time-S.t0>14){ o.hit=0; o.ox=0; o.oy=0; q.dgo=null; q.spl=null; return; }
+  const d=Math.hypot(P.o.x-o.x,P.o.y-o.y);
+  if(S.ph===0){ if(d<2.1||time-S.t0>7){ S.ph=1; S.t1=time; S.lk=-1; o.moving=false; } else { qpMove(o,P.o.x,P.o.y,.9,dt); return; } }
+  o.moving=false; o.face=P.o.x>o.x?-1:1;
+  let dgx=0,dgy=0; if(q.dgo){ const t=(time-q.dgo.t0)/q.dgo.dur; if(t>=1){ q.dgo=null; } else { const f=Math.sin(Math.PI*Math.min(1,t*1.15)); dgx=q.dgo.dx*f; dgy=q.dgo.dy*f; if(q.dgo.dive){ q.sub=f*.95; if(!q.dgo.bb){ q.dgo.bb=1; o.b={t0:time,txt:"ぶくぶく…",life:1.0}; } if(Math.random()<dt*10) QP.bub.push({x:o.x*32+16+(Math.random()*8-4),y:o.y*32+14,t0:time,vx:Math.random()*6-3}); } } } if(!q.dgo&&q.xs==null) q.sub=0; o.ox=dgx; o.oy=dgy;      // 閃躲：往上下左右其中一邊移開再回來
+  if(P.spl.ph!==1) return; const e=time-Math.max(S.t1,P.spl.t1), base=i?.9:.2, k=Math.floor((e-base)/1.6), u=(e-base)-k*1.6;
+  if(k>=0&&k<3&&S.dk!==k){ S.dk=k; S.dr=P.o.x>o.x?1:-1; if(S.hk==null) S.hk=Math.floor(Math.random()*3); P.dodged=k!==S.hk; if(P.dodged){ const ds=[[.55,0],[-.55,0],[0,.45],[0,-.45]].filter(d=>pondD((P.o.x+d[0])*32+16,(P.o.y+d[1])*32+20)<-12&&!(P.o.x+d[0]>4.8&&P.o.x+d[0]<7.2)); const d=ds.length?ds[Math.floor(Math.random()*ds.length)]:[0,-.3]; P.dgo=Math.random()<.45?{t0:time+.35,dx:0,dy:0,dur:1.4,dive:1}:{t0:time+.4,dx:d[0],dy:d[1],dur:1.0}; } } const dir=S.dr||(P.o.x>o.x?1:-1);      // 兩隻共用同一個計時（輪流、一次一隻），每一下的方向在那一下開始時固定
+  let h=0; if(k>=0&&k<3&&u<.45){ h=Math.sin(u/.45*Math.PI)*3.5; { const ln=dir*.28*Math.sin(Math.min(1,u/.45)*Math.PI); if(pondD((o.x+o.ox+ln)*32+16,(o.y+o.oy)*32+20)<-12) o.ox+=ln; } if(u>.18&&S.lk<k){ S.lk=k; const sx0=o.x*32+16+dir*9, dist=(P.o.x*32+16)-sx0; const dy0=(P.o.y*32+10)-(o.y*32+10); for(let n=0;n<9;n++) QP.bub.push({x:sx0,y:o.y*32+10+Math.random()*2-1,t0:time+n*.055,vx:dist*(.95+Math.random()*.1),vy:dy0*(.95+Math.random()*.1),sp:1,d:.62,k:8,sc:.8}); for(let n=0;n<4;n++) QP.bub.push({x:sx0,y:o.y*32+10,t0:time+n*.03,vx:dir*(6+Math.random()*10),sp:1,d:.45,k:6,sc:.55}); sfxAt("pSplash",o.x,o.y); S.pend=time+.8; o.b={t0:time,txt:["ぱしゃっ！","えいっ！","それっ♪"][Math.floor(Math.random()*3)],life:1.1}; } }
+  if(S.pend&&time>=S.pend){ S.pend=0; P.hitT=time; if(P.dodged){ P.o.b={t0:time,txt:"ひょい！",life:1.0}; } else { P.o.hit=.5; emote(P.o,"sweat",1.5); sfxAt("pHit",P.o.x,P.o.y); for(let n=0;n<6;n++) QP.bub.push({x:P.o.x*32+16,y:P.o.y*32+6,t0:time,vx:(Math.random()*2-1)*24,sp:1,d:.8,sc:.5}); P.o.b={t0:time,txt:["きゃっ！","ぷわっ♪","ち〜！"][Math.floor(Math.random()*3)],life:1.0}; } }
+  if(o.hit>0) o.hit-=dt; if(q.hitT&&time-q.hitT<.3) h+=Math.sin((time-q.hitT)/.3*Math.PI)*(q.dodged?6:2.5); o.hop=h;
+  if(e>5.9){ S.pend=0; o.hit=0; o.ox=0; o.oy=0; q.dgo=null; q.spl=null; q.tg=null; q.hold=0; o.b={t0:time,txt:"あはは♪",life:1.3}; }
+}
+function qpJump(o){ const d=pondD(o.x*32+16,o.y*32+20); return (d>-17&&d<13)?Math.sin(Math.PI*(d+17)/30)*14:0; }      // 走過池邊那一段：用跳的（跳進去、跳上岸）
+function qpRest(q,avoid){ const o=q.o, side=o.x<6?"L":"R", C=QREST[side].filter(p=>!qpSegHit(o.x,o.y,p[0],p[1])&&!(avoid&&Math.hypot(p[0]-avoid[0],p[1]-avoid[1])<.5)); if(!C.length||q.xs!=null) return false; const p=C[Math.floor(Math.random()*C.length)], pool=QPW[side]; let best=pool[0], bd=1e9; for(const w of pool){ const d=Math.hypot(w[0]-p[0],w[1]-p[1]); if(d<bd){ bd=d; best=w; } }
+  q.rp=p; q.re=best; q.rs=0; q.rrnd=(avoid&&avoid.rr!=null)?avoid.rr:Math.random()*4; q.mode="rest"; q.tg=null; q.via=null; q.viaDone=false; q.dv=-1; return true; }
+function qpRestBoth(q,P){ if(!P||P.spl||P.xs!=null||P.dv>=0||(P.mode!=="swim"&&P.mode!=="wade")||q.xs!=null) return false; if(!qpRest(q)) return false; q.rr=q.rrnd; qpRest(P,{0:q.rp[0],1:q.rp[1],length:2,rr:q.rrnd}); return true; }      // 兩隻一起上岸休息、一起下水
 function qpGiveSp(i){ const q=QP.sp[i]; if(!q||q.mode!=="shore"||QP.gogN<=0) return; QP.gogN--; QP.st=5; q.mode="wait"; QP.fly.push({q,t0:time,dur:.9,sx:player.x*32+16,sy:player.y*32-14}); }
 function qpStartPlay(){ QP.st=5; QP.t0=time; const sx=8*32+16, sy=24.2*32+10; QP.sp.forEach((q,i)=>{ q.mode="wait"; QP.fly.push({q,t0:time+i*.25,dur:.9,sx,sy}); }); }
 function qpUpdate(dt){
   if(!qpInit()) return; const S=QP.sp;
+  { const sp9=qpSpot(930); if(sp9){ const c=qpRestC(); sp9.x=c.x; sp9.y=c.y; } }
+  { const b2=QP.st>=2, s2=!!QP.scarf; if(!paused){ if(QP._b!==undefined&&b2&&!QP._b) stChg("big"); if(QP._s!==undefined&&s2&&!QP._s) stChg("small"); QP._b=b2; QP._s=s2; } else if(QP._b===undefined){ QP._b=b2; QP._s=s2; } }      // 石雕換圖（大：交出情書；小：戴上圍巾）→ 冒小花＋閃亮亮
   QP.fly=QP.fly.filter(f=>{ if(time-f.t0>=f.dur){ f.q.gog=1; f.q.mode="wade"; achAdd("fun","gog"); achPlayCheck(); f.q.o.b={t0:time,txt:"わぁ♡",life:1.6}; return false; } return true; });
-  { const a=S[0], b=S[1]; if(a&&b&&(a.mode==="swim"||a.mode==="wade")&&(b.mode==="swim"||b.mode==="wade")&&!a.under&&!b.under){ const dx=b.o.x-a.o.x, dy=b.o.y-a.o.y, d=Math.hypot(dx,dy)||.01; if(d<.9){ const k=(.9-d)/2; a.o.x-=dx/d*k; a.o.y-=dy/d*k; b.o.x+=dx/d*k; b.o.y+=dy/d*k; } } }
+  { const a=S[0], b=S[1]; if(a&&b&&(a.mode==="swim"||a.mode==="wade")&&(b.mode==="swim"||b.mode==="wade")&&!a.under&&!b.under){ const dx=b.o.x-a.o.x, dy=b.o.y-a.o.y, d=Math.hypot(dx,dy)||.01; if(d<.9){ const k=Math.min((.9-d)/2,.4*dt), ux=(d<.03?1:dx/d), uy=(d<.03?0:dy/d); a.o.x-=ux*k; a.o.y-=uy*k; b.o.x+=ux*k; b.o.y+=uy*k; } } }
+  S.forEach(q=>{ const o=q.o; if(q.xs!=null||q.under||(q.mode!=="swim"&&q.mode!=="wade"&&q.mode!=="rest")||o.y<22.2||o.y>27.8) return; if(o.x>4.88&&o.x<7.12) o.x=o.x<6?4.88:7.12; });      // 在水面上時不能蓋到木橋（只有潛水穿越時才會在橋下）
   QP.sideT-=dt; if(QP.sideT<=0){ if(QP.side==="L"){ if(Math.random()<.65){ QP.side="R"; QP.sideT=11+Math.random()*7; } else QP.sideT=7+Math.random()*5; } else { QP.side="L"; QP.sideT=10+Math.random()*8; } }      // 右半邊常常去、待比較久
-  if(QP.spray){ const SP=QP.spray, el=time-SP.t0; if(el<SP.dur&&el>.3){ const sx=8, sy=24.2-.4, tx=player.x, ty=player.y-.5; S.forEach((q,i)=>{ if((q.mode!=="swim"&&q.mode!=="wade"&&q.mode!=="rest")||SP.hit[i]) return; for(let k=0;k<=16;k++){ const u=k/16, x=sx+(tx-sx)*u, y=sy+(ty-sy)*u-Math.sin(u*Math.PI)*.5; if(Math.hypot(x-q.o.x,y-(q.o.y-.3))<.95){ SP.hit[i]=1; emote(q.o,"sweat",2.4,16,-14); break; } } }); } }
-  S.forEach((q,i)=>{ const o=q.o; q.t+=dt;
-    if(q.mode==="shore"){ o.moving=false; o.face=i?-1:1; o.hop=(q.t%5.3<.25)?Math.abs(Math.sin(q.t*14))*2:0; if(Math.hypot(player.x-o.x,player.y-o.y)<3.2&&!o.b&&q.t>q.nx){ q.nx=q.t+5+Math.random()*3; o.b={t0:time,txt:["ち…","み…","ち？ちみ…","み〜…"][Math.floor(Math.random()*4)],life:1.8}; } }
+  if(QP.spray){ const SP=QP.spray, el=time-SP.t0; if(el<SP.dur&&el>.3){ const sx=8, sy=24.2-.4, tx=player.x, ty=player.y-.5; S.forEach((q,i)=>{ if((q.mode!=="swim"&&q.mode!=="wade"&&q.mode!=="rest")||SP.hit[i]) return; for(let k=0;k<=16;k++){ const u=k/16, x=sx+(tx-sx)*u, y=sy+(ty-sy)*u-Math.sin(u*Math.PI)*.5; if(Math.hypot(x-q.o.x,y-(q.o.y-.3))<1.3){ SP.hit[i]=1; emote(q.o,"sweat",2.4,16,-14); break; } } }); } }
+  S.forEach((q,i)=>{ const o=q.o; q.t+=dt; if(q.dv>=0||q.sub>.3){ q.bsT=(q.bsT||0)-dt; if(q.bsT<=0){ q.bsT=.8+Math.random()*.5; sfxAt("pDive",o.x,o.y); } } else q.bsT=0;      // 潛水中一直有悶悶的泡泡聲
+  if(o.b&&!o.b.keep&&time-o.b.t0>(o.b.life||2.1)) o.b=null; o.jb=(q.mode==="wade"||q.mode==="rest"); if(q.mode!=="swim") q.spl=null;
+    if(q.mode==="shore"){ o.moving=false; o.face=i?1:-1; o.hop=(q.t%5.3<.25)?Math.abs(Math.sin(q.t*14))*2:0; { const P=S[1-i]; if(P&&P.mode==='shore'){ qpChat(q,P,dt); if(q.ch!=null&&q.t-q.ch<1.2) o.hop=Math.abs(Math.sin((q.t-q.ch)*12))*3; } } if(Math.hypot(player.x-o.x,player.y-o.y)<3.2&&!o.b&&q.t>q.nx){ q.nx=q.t+5+Math.random()*3; o.b={t0:time,txt:["ち…","み…","ち？ちみ…","み〜…"][Math.floor(Math.random()*4)],life:1.8}; } }
     else if(q.mode==="wait"){ o.moving=false; o.hop=0; }
     else if(q.mode==="rest"){ o.hop=0;      // 爬上岸休息一下，再下水
-      if(q.rs===0){ if(qpMove(o,q.rp[0],q.rp[1],.9,dt)){ q.rs=1; q.rt0=q.t; o.moving=false; o.face=q.rp[0]>9?1:(o.x<6?-1:1); o.b={t0:time,txt:["ふぅ…","ち〜","ぽかぽか…"][Math.floor(Math.random()*3)],life:1.6}; } }
-      else if(q.rs===1){ o.moving=false; o.hop=(q.t%2.6<.22)?Math.abs(Math.sin(q.t*14))*2:0; if(q.t-q.rt0>6+q.rrnd){ q.rs=2; o.b={t0:time,txt:"ちみっ！",life:1.2}; } }
-      else if(qpMove(o,q.re[0],q.re[1],.9,dt)){ q.mode="swim"; q.tg=null; q.hold=0; q.nr=q.t+16+Math.random()*12; } }
-    else if(q.mode==="wade"){ o.hop=0; if(!q.tg) q.tg=qpPick(q,S[1-i]); if(qpSwimTo(q,q.tg[0],q.tg[1],1.5,dt)){ q.mode="swim"; q.hold=0; q.tg=null; } }
-    else if(q.mode==="swim"){ o.hop=0; if(q.dv>=0){ q.dv+=dt; if(q.dv>QDIVE){ q.dv=-1; q.nd=q.t+6+Math.random()*4; o.b={t0:time,txt:"ぷはっ♡",life:1.4}; } }
+      if(q.rs===0){ if(qpMove(o,q.rp[0],q.rp[1],1.1,dt)){ q.rs=1; q.rt0=q.t; o.moving=false; o.face=q.rp[0]>9?1:(o.x<6?-1:1); o.b={t0:time,txt:["ふぅ…","ち〜","ぽかぽか…"][Math.floor(Math.random()*3)],life:1.6}; } }
+      else if(q.rs===1){ o.moving=false; o.hop=(q.t%2.6<.22)?Math.abs(Math.sin(q.t*14))*2:0; { const P=S[1-i]; if(P&&P.mode==='rest'&&P.rs===1){ qpChat(q,P,dt); if(q.ch!=null&&q.t-q.ch<1.2) o.hop=Math.abs(Math.sin((q.t-q.ch)*12))*3; } } if(q.t-q.rt0>6+q.rrnd){ q.rs=2; o.b={t0:time,txt:"ちみっ！",life:1.2}; } }
+      else if(qpMove(o,q.re[0],q.re[1],1.1,dt)){ q.mode="swim"; q.tg=null; q.hold=0; q.nr=q.t+14+Math.random()*8; }
+      if(q.rs!==1) o.hop=qpJump(o); }
+    else if(q.mode==="wade"){ o.hop=0; if(!q.tg) q.tg=qpPick(q,S[1-i]); if(qpSwimTo(q,q.tg[0],q.tg[1],1.5,dt)){ q.mode="swim"; q.hold=0; q.tg=null; } if(q.xs==null) o.hop=qpJump(o); }
+    else if(q.mode==="swim"){ o.hop=0; if(q.spl){ qpSplash(q,S[1-i],dt,i); } else if(q.dv>=0){ q.dv+=dt; if(q.dv>QDIVE){ q.dv=-1; q.nd=q.t+6+Math.random()*4; o.b={t0:time,txt:"ぷはっ♡",life:1.4}; } }
       else { if(!q.tg) q.tg=qpPick(q,S[1-i]); const sideOk=QPW[QP.side].includes(q.tg)||q.via; if(!sideOk&&!q.via) q.tg=qpPick(q,S[1-i]);
-        if(qpSwimTo(q,q.tg[0],q.tg[1],.8,dt)){ q.hold=(q.hold||0)+dt; if(q.hold>1.2){ q.hold=0; q.tg=null; if(q.t>q.nr&&S[1-i].mode!=="rest"&&!QP.spray) qpRest(q); } } if(q.t>q.nd){ q.dv=0; o.moving=false; o.b={t0:time,txt:"ぼこぼこ…",life:1.6}; } } }
-    q.wet=(q.mode==="swim"||q.mode==="wade"||q.mode==="rest")&&pondD(o.x*32+16,o.y*32+20)<-3;
+        if(qpSwimTo(q,q.tg[0],q.tg[1],.8,dt)){ q.hold=(q.hold||0)+dt; if(q.hold>.6){ q.hold=0; q.tg=null; { const P=S[1-i]; if(q.t>(q.ns==null?(q.ns=q.t+2+Math.random()*3):q.ns)&&q.t<q.nr&&!QP.spray&&P.mode==="swim"&&P.dv<0&&P.xs==null&&!P.spl&&q.xs==null&&(o.x-6)*(P.o.x-6)>0&&!qpSegHit(o.x,o.y,P.o.x,P.o.y)&&Math.hypot(P.o.x-o.x,P.o.y-o.y)<7){ q.spl={t0:time,ph:0}; P.spl={t0:time,ph:0}; q.ns=P.ns=q.t+6+Math.random()*5; return; } if(q.ns!=null&&q.t>q.ns&&QP.side==="R"&&(o.x-6)*(P.o.x-6)>0&&qpSegHit(o.x,o.y,P.o.x,P.o.y)) QP.sideT=Math.min(QP.sideT,.05); } if(q.t>q.nr&&S[1-i].mode!=="rest"&&!QP.spray) qpRestBoth(q,S[1-i]); } } if(q.t>q.nd){ q.dv=0; o.moving=false; o.b={t0:time,txt:"ぼこぼこ…",life:1.6}; } } }
+    if((q.mode==="swim"||q.mode==="wade")&&q.xs==null&&!q.spl&&!(q.dv>=0)){ if(q.wt==null||Math.hypot(o.x-q.wx,o.y-q.wy)>.25){ q.wt=q.t; q.wx=o.x; q.wy=o.y; } else if(q.t-q.wt>4){ q.wt=q.t; q.tg=null; q.via=null; q.viaDone=false; } } else q.wt=null;      // 卡住（4 秒沒移動）就換個目標
+    { const w0=q.wet; q.wet=(q.mode==="swim"||q.mode==="wade"||q.mode==="rest")&&pondD(o.x*32+16,o.y*32+20)<-3; if(w0!==undefined&&w0!==q.wet&&q.xs==null&&!(q.dv>=0)) { sfxAt(q.wet?"pIn":"pOut",o.x,o.y); for(let k=0;k<6;k++) QP.bub.push({x:o.x*32+16+(Math.random()*16-8),y:o.y*32+22,t0:time,vx:Math.random()*30-15,sp:1,d:.7,hi:1,sc:.55}); } }      // 入水／出水：濺起幾顆水珠
     if(q.dv>=0&&Math.random()<dt*6) QP.bub.push({x:o.x*32+16+(Math.random()*8-4),y:o.y*32+14,t0:time,vx:Math.random()*6-3}); });
-  QP.bub=QP.bub.filter(b=>time-b.t0<1.4);
+  QP.bub=QP.bub.filter(b=>time-b.t0<(b.d||1.4));
 }
-function drawGoggles(g,cx,fy,ht,face,dive){      // 泳鏡＋呼吸管
+function drawGoggles(g,cx,fy,ht,face,dive){      // dive 0~1：潛下去時呼吸管接長
+  const L=22;      // 呼吸管固定長度（加長、不會變化）      // 泳鏡＋呼吸管
   const ey=fy-ht+14, sx=face<0?1:-1;
   R(g,"#2d6fb0",cx-9,ey,18,1); R(g,"#2d6fb0",cx-10,ey+1,1,2);  R(g,"#2d6fb0",cx+9,ey+1,1,2);
   for(const dx of [-5,5]){ E(g,"#2d6fb0",cx+dx,ey+2,4.2,3.2); E(g,"#bfe9f5",cx+dx,ey+2,3.2,2.4); R(g,"#fff",cx+dx-2,ey+1,2,1); }
-  R(g,"#f2a33a",cx+9*sx-(sx>0?0:1),ey-12,2,13); R(g,"#f7c36a",cx+9*sx-(sx>0?0:1),ey-12,1,13); R(g,"#e0742a",cx+9*sx-(sx>0?0:1)-(sx>0?0:1),ey-13,3,2);
+  R(g,"#f2a33a",cx+9*sx-(sx>0?0:1),ey-L+1,2,L); R(g,"#f7c36a",cx+9*sx-(sx>0?0:1),ey-L+1,1,L); R(g,"#e0742a",cx+9*sx-(sx>0?0:1)-(sx>0?0:1),ey-L,3,2);
 }
-const QBR=[192,704,32,192];      // 木橋的範圍（像素）：水痕、露在水面的頭不能蓋到橋面上
-function qpSink(q,o){ const ht=headTop(o), k=Math.max(q.dv>=0?Math.min(1,q.dv/.7,(QDIVE-q.dv)/.7):0,q.sub||0); return {ht,k,sink:ri(Math.max(0,k)*Math.max(8,ht-14))}; }      // 潛得淺一點：頭頂還露出一點，泳鏡管子才不會跟身體分家
+const QBR=[192,704,32,182];      // 木橋的範圍（像素）：水痕、露在水面的頭不能蓋到橋面上
+function qpSink(q,o){ const ht=headTop(o), k=Math.max(q.dv>=0?Math.min(1,q.dv/.7,(QDIVE-q.dv)/.7):0,q.sub||0); return {ht,k,sink:ri(Math.max(0,k)*Math.max(8,ht-3))}; }      // 潛得淺一點：頭頂還露出一點，泳鏡管子才不會跟身體分家
 function qpDrawSp(g,q){
-  const o=q.o, cx=ri(o.x*32+16)+ckJit(o), gy=ri(o.y*32+28), hop=ri(o.hop||0)+ri(jumpH(o)), {ht,k,sink}=qpSink(q,o), fy=gy-hop+sink;
-  if(q.xs===2&&Math.abs(o.x-6.0)<.95) return;      // 正在木橋底下游過去：水面上完全看不到
+  const o=q.o, cx=ri((o.x+(o.ox||0))*32+16)+ckJit(o), gy=ri((o.y+(o.oy||0))*32+28), hop=ri(o.hop||0)+ri(jumpH(o)), {ht,k,sink}=qpSink(q,o), fy=gy-hop+sink;
+  const bc=q.xs===2;      // 正在木橋底下游過去：橋面蓋到的那一部分身體看不到，橋外的部分照常露出來
+  if(bc){ g.save(); g.beginPath(); g.rect(cx-70,gy-150,140,220); g.rect(QBR[0],QBR[1],QBR[2],QBR[3]); g.clip("evenodd"); }
   if(!q.wet) shadowAt32(g,cx,gy+1,10,3,o.sheet);
   g.save(); if(q.wet){ g.beginPath(); g.rect(cx-40,gy-120,80,120-6+ (k>0?0:6)); g.clip(); }
-  { const bk=qpBack(q), useB=o.dir==="up"&&bk&&ready(bk.a)&&q.mode==="gather"; drawSheet(g,useB?bk:o.sheet,"down",(o.moving||o.cheerF)?(Math.floor(time*6)%2):0,cx,fy,1,null,time+o.id,o.face); } if(q.gog) drawGoggles(g,cx,fy,ht,o.face);
+  { const bk=qpBack(q), useB=o.dir==="up"&&bk&&ready(bk.a)&&q.mode==="gather"; drawSheet(g,useB?bk:o.sheet,"down",(o.moving||o.cheerF)?(Math.floor(time*6)%2):0,cx,fy,1,null,time+o.id,o.face); } if(q.gog) drawGoggles(g,cx,fy,ht,o.face,k);
   g.restore();
-  if(q.wet){ g.save(); g.beginPath(); g.rect(cx-30,gy-30,60,60); g.rect(QBR[0],QBR[1],QBR[2],QBR[3]); g.clip("evenodd"); waterBand(g,cx,gy-6,gy+6,15,.5); g.restore();      // 水痕不蓋到橋上
+  if(q.wet){ g.save(); g.beginPath(); g.rect(cx-30,gy-30,60,90); g.rect(QBR[0],QBR[1],QBR[2],QBR[3]); g.clip("evenodd"); if(!(k>.02)&&!(q.sub>0)&&!(q.dv>=0)){ waterBand(g,cx,gy-3,gy+9,15,.5,true); } g.restore();      // 水痕不蓋到橋上（用池塘的藍）
     if(k>.4){ for(let i=0;i<2;i++){ const fxp=cx+Math.cos(time*2.2+i*3)*(16+i*6), fyp=gy-2+i*3; if(fxp>QBR[0]-4&&fxp<QBR[0]+QBR[2]+4) continue; g.save(); g.globalAlpha=.55; E(g,i?"#7a5a78":"#8a7430",fxp,fyp,4,2); R(g,i?"#7a5a78":"#8a7430",fxp-(Math.cos(time*2.2+i*3)>0?-4:6),fyp-1,3,3); R(g,"#1a2030",fxp+(Math.cos(time*2.2+i*3)>0?-2:1),fyp-1,1,1); g.restore(); } } }
+  if(bc) g.restore();
 }
 function qpUnder(g){      // 水面下的樣子：半透明、偏藍；畫在木橋底下（橋面蓋在上面）；只畫在水面範圍內
   if(!QP.sp) return; pondImg(); if(!QP.tc){ QP.tc=document.createElement("canvas"); QP.tc.width=96; QP.tc.height=112; }
   const ox=PB.x0*32, oy=PB.y0*32;
   QP.sp.forEach(q=>{ const o=q.o; if(!(q.wet||q.sub>0)||q.mode==="gather") return; const tg=QP.tc.getContext("2d"); tg.globalCompositeOperation="source-over"; tg.clearRect(0,0,96,112); tg.imageSmoothingEnabled=false;
     const gy=ri(o.y*32+28), cx=ri(o.x*32+16), {ht,k,sink}=qpSink(q,o), fy=gy-ri(o.hop||0)+sink;
-    drawSheet(tg,o.sheet,"down",(o.moving?(Math.floor(time*6)%2):0),48,100,1,null,time+o.id,o.face); if(q.gog) drawGoggles(tg,48,100,ht,o.face);
+    drawSheet(tg,o.sheet,"down",(o.moving?(Math.floor(time*6)%2):0),48,100,1,null,time+o.id,o.face); if(q.gog) drawGoggles(tg,48,100,ht,o.face,k);
     tg.globalCompositeOperation="source-atop"; tg.fillStyle="rgba(34,92,160,.6)"; tg.fillRect(0,0,96,112);      // 水下：偏藍偏暗
     tg.globalCompositeOperation="destination-in"; tg.drawImage(POND_MASK,ox-(cx-48),oy-(fy-100)); tg.globalCompositeOperation="source-over";      // 超出水面的部分切掉（不會漏到岸上的草地）
     g.save(); g.beginPath(); g.rect(cx-48,gy-6,96,70); g.clip(); g.globalAlpha=.6; g.drawImage(QP.tc,cx-48,fy-100); g.restore(); });
   const F=[[4.1,24.5,.7,.8,.4,0],[7.7,25.7,.45,.3,-.5,2],[8.4,22.9,.4,.25,.45,4],[4.5,23.0,.5,.3,-.35,1],[2.7,25.9,.8,.4,.5,3],[3.4,23.3,.6,.3,-.4,5]];      // 潛在水底的小魚（深色的影子）
-  F.forEach(([cx0,cy0,rx,ry,sp,ph])=>{ const a=time*sp+ph, x=ri((cx0+Math.cos(a)*rx)*32+16), y=ri((cy0+Math.sin(a)*ry)*32+20), f=(-Math.sin(a)*Math.sign(sp))>=0?1:-1; if(pondD(x,y)>-14) return; g.save(); g.globalAlpha=.6; E(g,"#16305a",x,y,4,2); R(g,"#16305a",x-f*6-(f>0?1:0),y-2+(Math.floor(time*5+ph)%2),2,3); g.restore(); });
+  F.forEach(([cx0,cy0,rx,ry,sp,ph],fi)=>{ const A=fishStep("s"+fi,cx0,cy0,6+Math.abs(sp)*8), x=ri(A.x), y=ri(A.y+4), f=Math.cos(A.ang)>=0?1:-1; g.save(); g.globalAlpha=.6; E(g,"#16305a",x,y,4,2); R(g,"#16305a",x-f*6-(f>0?1:0),y-2+(Math.floor(time*5+ph)%2),2,3); g.restore(); });
 }
 function drawFloatGoggles(g){      // 掉進池塘裡、漂著的泳鏡（有呼吸管）
-  const cx=ri(5.3*32+16), cy=ri(24.9*32)+ri(Math.sin(time*1.6)*1.2); g.save(); g.globalAlpha=.95;
+  const cx=ri(4.3*32+16), cy=ri(24.9*32)+ri(Math.sin(time*1.6)*1.2); g.save(); g.globalAlpha=.95;
   R(g,"#2d6fb0",cx-8,cy,16,1); for(const dx of [-4,4]){ E(g,"#2d6fb0",cx+dx,cy+2,4.2,3); E(g,"#bfe9f5",cx+dx,cy+2,3.2,2.2); R(g,"#fff",cx+dx-2,cy+1,2,1); }
   R(g,"#f2a33a",cx+8,cy-11,2,12); R(g,"#e0742a",cx+7,cy-12,3,2); g.restore();
   g.save(); g.strokeStyle="rgba(232,246,251,.8)"; g.lineWidth=1; g.beginPath(); g.ellipse(cx,cy+5,12+(time*5%4),3+(time*3%2),0,0,6.283); g.stroke(); g.restore();
@@ -3795,16 +3896,55 @@ function qpGogItem(g,cx,by){      // 泳鏡（20×9）＋呼吸管
   R(g,"#f2a33a",x+18,by-17,2,11); R(g,"#f7c36a",x+18,by-17,1,11); R(g,"#e0742a",x+17,by-18,3,2); return 8; }
 function qpCarryList(){ const L=[]; if(QP.st===1){ L.push("gift","zunda","letter"); } else if(QP.st===2) L.push("reply"); for(let i=0;i<(QP.gogN||0);i++) L.push("gog"); return L; }
 function drawQpCarry(g,cx,by){
+  if(QP.cs&&QP.cs.t0>1e8&&$("modal").hidden) QP.cs.t0=time;      // 對話被關掉沒按按鈕，東西也要飛到頭上
   const L=qpCarryList(), bob=reduceMotion()?0:Math.round(Math.sin(time*4)*1); let y=by+bob;
-  for(const k of L){ y-=k==="gift"?qpGift(g,cx,y):k==="zunda"?qpZunda(g,cx,y):k==="gog"?qpGogItem(g,cx,y):qpLetter(g,cx,y,k==="reply"); }
+  const cs=QP.cs, D=(k,x,b)=>k==="gift"?qpGift(g,x,b):k==="zunda"?qpZunda(g,x,b):k==="gog"?qpGogItem(g,x,b):qpLetter(g,x,b,k==="reply");
+  L.forEach((k,i)=>{      // 石雕一個一個把東西放到玩家頭上：從石雕那邊飛過來、落在最上面
+    let t=1; if(cs&&i>=cs.n0) t=(time-cs.t0-(i-cs.n0)*.75)/.55; if(t<0) return;
+    if(t<1){ const e=t*t*(3-2*t), x=cx+(cs.sx-cx)*(1-e), yy=cs.sy+(y-cs.sy)*e-Math.sin(t*Math.PI)*16; D(k,ri(x),ri(yy)); }
+    else y-=D(k,cx,y); });
+}
+function qpHand(sx,sy,n0){ QP.cs={t0:time,sx,sy,n0:n0||0}; }
+const STFX=[];      // 石雕換裝時的小花＋閃亮亮
+function stChg(kind){ const b=kind==="big"?{cx:20.5*32+16,cy:22.4*32+26-52,w:46,h:84,top:22.4*32+26-106}:{cx:8*32+16,cy:24.2*32+27-16,w:26,h:36,top:24.2*32+27-33}; STFX.push({...b,t0:time,dur:7.6});
+  try{ sfx(kind==="big"?"chgBig":"chgSmall"); for(let i=0;i<6;i++) setTimeout(()=>sfx("glint"),1200+i*900+Math.random()*500); for(let i=0;i<6;i++) setTimeout(()=>sfx("pop"),500+i*800+Math.random()*400); }catch(e){} }
+function stFlower(g,x,y,i){ const cols=[["#ffe3ec","#ff9fba"],["#fff","#ffd3e0"],["#ffd0de","#f27fa3"],["#e6efff","#a9c4f5"],["#ffe9a8","#ffb4cb"],["#ffd8b0","#ffa86b"]][i%6], c=cols[0], d=cols[1]; R(g,d,x-1,y-3,3,2); R(g,d,x-1,y+1,3,2); R(g,d,x-3,y-1,2,3); R(g,d,x+1,y-1,2,3); R(g,c,x-1,y-1,3,3); R(g,"#f7c948",x,y,1,1); }
+function drawStFx(g){
+  for(let n=STFX.length-1;n>=0;n--){ const F=STFX[n], el=time-F.t0; if(el>F.dur){ STFX.splice(n,1); continue; }
+    const hs=(i,m)=>{ const v=Math.sin(i*12.9898+m*78.233)*43758.5453; return v-Math.floor(v); };
+    const gl=Math.max(0,1-el/.9); if(gl>0){ g.save(); g.globalAlpha=gl*.55; const r=g.createRadialGradient(F.cx,F.cy,2,F.cx,F.cy,F.h*.8); r.addColorStop(0,"rgba(255,255,255,.9)"); r.addColorStop(1,"rgba(255,255,255,0)"); g.fillStyle=r; g.beginPath(); g.arc(F.cx,F.cy,F.h*.8,0,7); g.fill(); g.restore(); }
+    for(let i=0;i<9;i++){ const st=i*.55+hs(i,1)*.2, life=5, t=el-st; if(t<0||t>life) continue; const f=t/life, a=f<.1?f/.1:Math.min(1,(1-f)/.35);
+      const col=i%3, row=Math.floor(i/3), bx=F.cx+((col-1)/1)*F.w*.8+(hs(i,2)-.5)*4, by0=F.cy+(row-1)*F.h*.3, rise=(by0-(F.top-64))*f;     // 格狀散開、各自間隔，一路飄到頭頂上方才消失
+      const x=ri(bx+Math.sin(t*2.4+i)*2), y=ri(by0-rise);
+      g.save(); g.globalAlpha=a;
+      if(i%3!==0) { const tw=.6+.4*Math.sin(t*14+i*2), L=Math.round(3*tw)+1; g.fillStyle="#fffbe0"; g.fillRect(x,y-L,1,L*2+1); g.fillRect(x-L,y,L*2+1,1); g.fillStyle="#fff"; g.fillRect(x,y,1,1); }
+      else stFlower(g,x,y,i);
+      g.restore(); }
+    if(el<F.dur-2){ const fadeIn=Math.min(1,el/.5), fadeOut=Math.min(1,(F.dur-2-el)/1.2);      // 頭上慢慢冒出幾朵小花，往上飄高淡出
+      for(let j=0;j<3;j++){ const ph=((el*.3+j/3)%1), x=ri(F.cx+(j-1)*F.w*.35+Math.sin(el*2+j)*2), y=ri(F.top-ph*60);
+        g.save(); g.globalAlpha=fadeIn*fadeOut*Math.min(1,ph*5)*Math.min(1,(1-ph)*2.5); stFlower(g,x,y,j*2); g.restore(); } }
+  }
 }
 function qpFx(g){
-  for(const b of QP.bub){ const u=(time-b.t0)/1.4; g.save(); g.globalAlpha=(1-u)*.9; g.strokeStyle="#e8f6fb"; g.lineWidth=1; g.beginPath(); g.arc(ri(b.x+b.vx*u),ri(b.y-u*26),1.5+u,0,6.283); g.stroke(); g.restore(); }
+  drawStFx(g);
+  for(const b of QP.bub){ const u=(time-b.t0)/(b.d||1.4);
+    if(b.sp){      // 水珠：一邊圓、一邊尖的水滴形，順著飛行方向；落到水面時變成漣漪
+      const k=b.k!=null?b.k:(b.hi?22:15), bx=b.x+b.vx*u, by=b.y+(b.vy||0)*u-Math.sin(u*Math.PI)*k+u*5, vx=b.vx, vy=(b.vy||0)-Math.PI*k*Math.cos(u*Math.PI)+5; if(u<0) continue;
+      if(u<.86){ g.save(); g.translate(ri(bx),ri(by)); g.rotate(Math.atan2(vy,vx)); if(b.sc) g.scale(b.sc,b.sc); g.beginPath(); g.moveTo(-5.5,0); g.quadraticCurveTo(-2.4,-2.2,0,-2); g.arc(0,0,2,-Math.PI/2,Math.PI/2); g.quadraticCurveTo(-2.4,2.2,-5.5,0); g.closePath(); g.fillStyle="#cfeefa"; g.fill(); g.lineWidth=.8; g.strokeStyle="#7fc2dd"; g.stroke(); g.fillStyle="#fff"; g.fillRect(-.5,-1.5,1,1); g.restore(); }
+      else { const w=(u-.86)/.14; g.save(); g.globalAlpha=.85*(1-w); g.strokeStyle="#cfeaf4"; g.lineWidth=1; g.beginPath(); g.ellipse(ri(bx),ri(by+1),(3+w*8)*(b.sc||1),(1.2+w*3)*(b.sc||1),0,0,6.283); g.stroke(); g.restore(); }
+      continue; }
+    const bx2=ri(b.x+Math.round(b.vx*u)), by2=ri(b.y-Math.floor(u*13)*2), big=u>=.5; g.save(); g.globalAlpha=u<.7?.95:.55; g.fillStyle="#e8f6fb";      // 潛水的泡泡：圓圈（像素圓，固定大小不閃）
+    if(!big){ g.fillRect(bx2+1,by2,1,1); g.fillRect(bx2,by2+1,1,1); g.fillRect(bx2+2,by2+1,1,1); g.fillRect(bx2+1,by2+2,1,1); }
+    else { g.fillRect(bx2+1,by2,3,1); g.fillRect(bx2+1,by2+4,3,1); g.fillRect(bx2,by2+1,1,3); g.fillRect(bx2+4,by2+1,1,3); }
+    g.restore(); }
   for(const f of QP.fly){ const u=Math.max(0,Math.min(1,(time-f.t0)/f.dur)), e=u*u*(3-2*u), tx=f.q.o.x*32+16, ty=f.q.o.y*32+28-34; const x=f.sx+(tx-f.sx)*e, y=f.sy+(ty-f.sy)*e-Math.sin(u*Math.PI)*34; drawGoggles(g,ri(x),ri(y)+34,34,1); }
   if(QP.heart){ const A=[8*32+16,24.2*32-26], B=[20.5*32+16,22.4*32-52], u=(1-Math.cos((time-QP.heart)*.22))/2, x=A[0]+(B[0]-A[0])*u, y=A[1]+(B[1]-A[1])*u-Math.sin(u*Math.PI)*46+Math.sin(time*2.6)*3; drawWingHeart(g,ri(x),ri(y),time*11); }
-  if(QP.spray){ const S=QP.spray, el=time-S.t0; if(el>S.dur+.9){ QP.spray=null; } else { const sx=8*32+16, sy=24.2*32+27-(S.hip?9:19), tx=player.x*32+16, ty=player.y*32+28-24, n=S.hip?26:14;
-      for(let i=0;i<n;i++){ const u=((el*(S.hip?1.5:2.2)+i/n)%1); if(el>S.dur) continue; const x=sx+(tx-sx)*u, y=sy+(ty-sy)*u-Math.sin(u*Math.PI)*(S.hip?26:18)+(S.hip?Math.sin(i*5.1)*2:0); g.fillStyle="#bfe6f4"; g.fillRect(ri(x),ri(y),2,2); g.fillStyle="#fff"; g.fillRect(ri(x),ri(y),1,1); }
-      if(el>.5&&el<S.dur+.8){ for(let i=0;i<9;i++){ const u=((el*1.25+i*.37)%1), xo=Math.sin(i*2.7)*9, yy=ty-8+u*30; g.globalAlpha=1-u*.6; g.fillStyle="#bfe6f4"; g.fillRect(ri(tx+xo),ri(yy),2,3); g.fillStyle="#fff"; g.fillRect(ri(tx+xo),ri(yy),1,1); g.globalAlpha=1; } } } }
+  if(QP.scarf&&!reduceMotion()){ for(const [hx,hy,k] of [[20.5*32+16,22.4*32+26-112,0],[8*32+16,24.2*32+27-48,1]]) for(let j=0;j<3;j++){ const ph=((time*.16+j/3+k*.17)%1), x=ri(hx+Math.sin(j*2.1+k*1.3+time*.9)*9+(j-1)*8), y=ri(hy-ph*30), a=Math.min(1,ph*6)*Math.min(1,(1-ph)*2.2);
+      g.save(); g.globalAlpha=a*.9; pxHeart(g,x,y,j%2?"#cc7186":"#f29bb0"); g.restore(); } }      // 情書送達後：兩尊石雕頭上慢慢飄著少少的愛心
+  if(QP.spray){ const S=QP.spray, el=time-S.t0; if(el>S.dur+.9){ QP.spray=null; } else { const sx=8*32+16, sy=24.2*32+27-(S.hip?9:19), tx=player.x*32+16, ty=player.y*32+28-24, n=S.hip?7:4;
+      for(let i=0;i<n;i++){ const u=((el*(S.hip?1.5:2.2)+i/n)%1); if(el>S.dur) continue; const pt=v=>[sx+(tx-sx)*v, sy+(ty-sy)*v-Math.sin(v*Math.PI)*(S.hip?26:18)+(S.hip?Math.sin(i*5.1)*2:0)], A=pt(Math.max(0,u-.05)), B=pt(u);      // 水柱的水滴：順著弧線的細長條（圓頭）
+        g.save(); g.lineCap="round"; g.lineJoin="round"; g.strokeStyle="#bfe6f4"; g.lineWidth=2.4; g.beginPath(); g.moveTo(ri(A[0]),ri(A[1])); g.quadraticCurveTo(ri((A[0]+B[0])/2),ri((A[1]+B[1])/2-1),ri(B[0]),ri(B[1])); g.stroke(); g.strokeStyle="#fff"; g.lineWidth=1; g.beginPath(); g.moveTo(ri(A[0]),ri(A[1])-.5); g.lineTo(ri(B[0]),ri(B[1])-.5); g.stroke(); g.restore(); }
+      if(el>.5&&el<S.dur+.8){ for(let i=0;i<9;i++){ const u=((el*1.25+i*.37)%1), xo=Math.sin(i*2.7)*9, yy=ty-8+u*30; g.globalAlpha=1-u*.6; g.fillStyle="#bfe6f4"; { const dx=ri(tx+xo), dy=ri(yy); g.beginPath(); g.moveTo(dx,dy-2.5); g.quadraticCurveTo(dx-1.8,dy+.4,dx-1.5,dy+1.5); g.arc(dx,dy+1.5,1.5,Math.PI,0,true); g.quadraticCurveTo(dx+1.8,dy+.4,dx,dy-2.5); g.fill(); } g.globalAlpha=1; } } } }
   if(QP.flash&&time-QP.flash<.5){ const a=1-(time-QP.flash)/.5, px=player.x*32+16, py=player.y*32+10; g.save(); g.globalAlpha=a*.8; g.strokeStyle="#fff3a6"; g.lineWidth=2; g.beginPath(); g.moveTo(px+2,py-60); g.lineTo(px-4,py-34); g.lineTo(px+3,py-34); g.lineTo(px-3,py-8); g.stroke(); g.restore(); }
 }
 function qpItems(){ const L=[]; if(QP.sp){ QP.sp.forEach(q=>L.push({y:q.o.y+.05,f:()=>qpDrawSp(ctx,q)})); if(QP.st<4) L.push({y:24.9,f:()=>drawFloatGoggles(ctx)}); } L.push({y:999,f:()=>qpFx(ctx)}); return L; }
@@ -3812,50 +3952,54 @@ function qpBubbleList(){ return QP.sp?QP.sp.map(q=>q.o):[]; }
 const UW_RE=/內褲|內衣褲|褌|ふんどし|パンツ|ぱんつ|underwear|briefs|pants/i;
 const UW={on:false};      // 被神力變成內褲：衣服脫掉，疊上你畫的內褲圖（48×48，跟角色同一格）
 function qpUnderwear(){ let i=accs.cloth.findIndex(a=>UW_RE.test(String(a.name||"")+" "+String(a.note||a.desc||""))); chosenAcc.cloth=i; UW.on=i<0; applyOutfit(); achAward("uncle"); return true; }
-function drawUW(g,cx,fy,dir){ if(!UW.on||dir==="up") return; const im=art("uwU"); if(!ready(im)) return; g.save(); g.imageSmoothingEnabled=false; g.drawImage(im,cx-24,fy+1-48); g.restore(); }
+function drawUW(g,cx,fy,dir){ if(!UW.on) return; const im=art("uwU"); if(!ready(im)) return; g.save(); g.imageSmoothingEnabled=false; g.drawImage(im,cx-24,fy+1-48); g.restore(); }
+function qpRestC(){ const a=(QP.sp||[]).filter(q=>q.mode==="rest"||q.mode==="shore"); if(!a.length) return {x:4.5,y:20.75}; return {x:a.reduce((t,q)=>t+q.o.x,0)/a.length,y:Math.max(...a.map(q=>q.o.y))}; }      // 岸上休息的小精靈中心（互動按鈕跟著他們）
+function qpAngry(){ const D=3; QP.stObj=QP.stObj||{x:8,y:24.2,fy:24.2*32+27,bsz:30}; emote(QP.stObj,"angry",D,0,0); QP.spray={t0:time,dur:D,hip:false,hit:[]}; }      // 拒絕幫忙送信：小石雕生氣冒氣泡、用嘴巴噴玩家（秒數同氣泡）
 function qpSpot(id){ return spots.find(s=>s.id===id); }
 function qpSay(s,eye,text,acts){ openModal(Object.assign({},s,{eye,text,acts,popup:""})); }
 function qpGive(kind){
   const s=qpSpot(905), eye="池塘的小石雕";
-  if(kind==="gog") return qpSay(s,eye,"哦哦——！就是這副！\n有呼吸管的泳鏡，這下可以放心潛下去了。\n你很誠實，我很欣賞你。\n兩副都拿去吧，親手交給池邊的小精靈們。",[{t:"太好了",cb:()=>{ QP.gotG=true; QP.gogN=2; QP.st=4; toast("拿到兩副泳鏡了，交給池邊的小精靈吧。"); }}]);
-  if(kind==="sun"){ QP.sunUsed=true; return qpSay(s,eye,"……魔法墨鏡？\n上面還寫著『可以看穿內褲』？！\n你居然拿這種東西給小孩子戴！！\n神明生氣了——罰你也嚐嚐被看光的滋味！",[{t:"等、等一下！",cb:()=>{ QP.flash=time; const ok=qpUnderwear(); emote(player,"sweat",2.6,16,-14); toast(ok?"身上的衣服被神力變成內褲了……（可以到屋裡的衣櫃換回來）":"身上的衣服被神力脫掉了……（可以到屋裡的衣櫃換回來）"); }}]); }
+  if(kind==="gog") return qpSay(s,eye,DT.qs_gog.text,[{t:DT.qs_gog.btns[0],cb:()=>{ qpHand(8*32+16,24.2*32+4,qpCarryList().length); QP.gotG=true; QP.gogN=2; QP.st=4; tt("gog_got"); }}]);
+  if(kind==="sun"){ QP.sunUsed=true; return qpSay(s,eye,DT.qs_sun.text,[{t:DT.qs_sun.btns[0],cb:()=>{ QP.flash=time; const ok=qpUnderwear(); emote(player,"sweat",2.6,16,-14); tt(ok?"sun_ok":"sun_strip"); }}]); }
   QP.uses++;
-  if(QP.uses<=3) return qpSay(s,eye,"這、這不是仙台特產的毛豆喜久福嗎！\n這是要供奉給神明的吧？才不能給小精靈！\n（噗——！）",[{t:"對不起！",cb:()=>{ QP.spray={t0:time,dur:10,hip:false,hit:[]}; emote(player,"awk",3,16,-14); }}]);
-  if(QP.gotG&&QP.uses>=5) QP.mute=true; if(QP.uses>=5) achAward("angry"); qpSay(s,eye,"……你很煩耶！！\n一直拿毛豆喜久福來是怎樣！\n給我——冷靜一下！！",[{t:"咿！",cb:()=>{ QP.spray={t0:time,dur:10,hip:true,hit:[]}; emote(player,"awk",3,16,-14); toast(QP.gotG&&QP.uses>=5?"小石雕從腰間噴出一大道水柱！他別過頭去，不想理你了。":"小石雕從腰間噴出一大道水柱！"); }}]);
+  if(QP.uses<=3) return qpSay(s,eye,DT.qs_zunda.text,[{t:DT.qs_zunda.btns[0],cb:()=>{ QP.spray={t0:time,dur:10,hip:false,hit:[]}; emote(player,"awk",3,16,-14); QP.fat=Math.min(5,QP.uses); }}]);
+  if(QP.gotG&&QP.uses>=5) QP.mute=true; if(QP.uses>=5) achAward("angry"); qpSay(s,eye,DT.qs_zunda2.text,[{t:DT.qs_zunda2.btns[0],cb:()=>{ QP.spray={t0:time,dur:10,hip:true,hit:[]}; emote(player,"awk",3,16,-14); QP.fat=Math.min(5,QP.uses); tt(QP.gotG&&QP.uses>=5?"zunda_mute":"zunda_ok"); }}]);
 }
 function qpMenu(s){
-  const acts=[]; if(!QP.gotG) acts.push({t:"普通的泳鏡（附呼吸管）",cb:()=>qpGive("gog")}); if(!QP.sunUsed) acts.push({t:"魔法墨鏡（可以看穿內褲）",cb:()=>qpGive("sun")}); if(QP.gotG||QP.uses<5) acts.push({t:"我也想吃毛豆喜久福",cb:()=>qpGive("zunda")}); acts.push({t:"先不要",cb:()=>{}});
-  qpSay(s,"池塘的小石雕",!QP.gotG?"圍巾也圍好了，心情真好……\n那麼，泳鏡的事就拜託你了。\n你身上有什麼可以給小精靈們用的東西嗎？":QP.gogN>0?"泳鏡就在你頭上喔，快拿去給小精靈們吧。\n……還有什麼事嗎？":"小精靈們玩得好開心呢，謝謝你。\n……還有什麼事嗎？",acts);
+  const acts=[]; if(!QP.gotG) acts.push({t:DT.qs_menu0.btns[0],cb:()=>qpGive("gog")}); if(!QP.sunUsed) acts.push({t:DT.qs_menu0.btns[1],cb:()=>qpGive("sun")}); if(QP.gotG||QP.uses<5) acts.push({t:DT.qs_menu0.btns[2],cb:()=>qpGive("zunda")}); acts.push({t:DT.qs_menu0.btns[3],cb:()=>{}});
+  qpSay(s,"池塘的小石雕",!QP.gotG?DT.qs_menu0.text:QP.gogN>0?DT.qs_menu1.text:DT.qs_menu2.text,acts);
 }
 function qpTrigger(s){
   if(s.id===930){      // 兩隻小精靈並排站在池邊左側，共用同一個互動
     const NM="ちびちみご＆ちびちみゆ", sh=QP.sp?QP.sp.map((q,i)=>({q,i})).filter(e=>e.q.mode==="shore"):[];
-    if(QP.gogN>0&&sh.length){ const acts=sh.map(e=>({t:e.i?"把泳鏡給ちびちみゆ":"把泳鏡給ちびちみご",cb:()=>qpGiveSp(e.i)})); acts.push({t:"先不要",cb:()=>{}});
-      return qpSay(s,NM,"『ち！？み〜！？（泳鏡！泳鏡だ！）』\n兩隻小精靈眼睛一亮，同時盯著你頭上的泳鏡。",acts), true; }
-    if(QP.st===0){ QP.heard=true; return qpSay(s,NM,"ちびちみご和ちびちみゆ並排趴在池塘邊，一直看著水裡游來游去的魚。\n『ち…ちみ、ち……（泳鏡……掉進池塘裡了……）』\n『み…みー、み……（好想下去玩水喔……）』\n是那種附呼吸管、可以潛水的泳鏡。水面上，漂著一根小小的呼吸管。",[{t:"我去想想辦法",cb:()=>{ if(!QP.hintT){ QP.hintT=1; toast("池塘中間的小石雕，或許幫得上忙。"); } }}]), true; }
-    qpSay(s,NM,"『ち、ちみ！み〜！（石雕說他會幫忙！好期待！）』\n兩隻小精靈期待地看著池子中間的小石雕。",[{t:"嗯，等我一下",cb:()=>{}}]); return true; }
+    if(QP.gogN>0&&sh.length){ const acts=sh.map(e=>({t:e.i?DT.sp_gog.btns[1]:DT.sp_gog.btns[0],cb:()=>qpGiveSp(e.i)})); acts.push({t:DT.sp_gog.btns[2],cb:()=>{}});
+      return qpSay(s,NM,DT.sp_gog.text,acts), true; }
+    if(QP.st===0){ QP.heard=true; return qpSay(s,NM,DT.sp_first.text,[{t:DT.sp_first.btns[0],cb:()=>{ if(!QP.hintT){ QP.hintT=1; tt("qs_hint"); } }}]), true; }
+    qpSay(s,NM,DT.sp_wait.text,[{t:DT.sp_wait.btns[0],cb:()=>{}}]); return true; }
   if(s.id===905){
-    if(QP.mute){ qpSay(s,"池塘的小石雕","……哼。\n我不想理你。\n（小石雕把臉別向一邊，擺明了不想跟你說話。）",[{t:"……",cb:()=>{}}]); return true; }
-    if(QP.st===0&&!QP.heard){ qpSay(s,"池塘的小石雕","唔……池邊那兩隻小精靈，好像有什麼心事。\n你可以先去跟他們聊聊嗎？",[{t:"好，我去問問",cb:()=>{}}]); return true; }
-    if(QP.st===0){ qpSay(s,"池塘的小石雕","唔……他們的泳鏡掉進水裡了，你也聽說了吧？\n（你看，水面上還漂著一根呼吸管）。\n我被釘在這個石座上動不了……可以拜託你嗎？\n請把這封信，和這份小小的禮物，送去給那邊的巨大石像。\n……那個，是情書啦。別偷看喔。",[{t:"好，我幫你送",cb:()=>{ QP.st=1; toast("拿到了情書和禮物，送去給巨大的石像吧。"); }},{t:"先不要",cb:()=>{}}]); return true; }
-    if(QP.st===1){ qpSay(s,"池塘的小石雕","信和禮物，就拜託你送去給巨大的石像了。\n他就站在花圃旁邊。……要親手交給他喔。",[{t:"知道了",cb:()=>{}}]); return true; }
-    if(QP.st===2){ qpSay(s,"池塘的小石雕","這是……他的回信？！\n（石雕的臉，紅得好像連石頭都要融化了。）",[{t:"把回信交給他",cb:()=>{ QP.st=3; QP.scarf=true; matchPart("statue"); QP.heart=time; toast("一顆長著翅膀的小愛心，慢慢飄了起來。"); }}]); return true; }
+    if(QP.mute){ qpSay(s,"池塘的小石雕",DT.qs_mute.text,[{t:DT.qs_mute.btns[0],cb:()=>{}}]); return true; }
+    if(QP.st===0&&!QP.heard){ qpSay(s,"池塘的小石雕",DT.qs_notheard.text,[{t:DT.qs_notheard.btns[0],cb:()=>{}}]); return true; }
+    if(QP.st===0){ qpSay(s,"池塘的小石雕",DT.qs_heard.text,[{t:DT.qs_heard.btns[0],cb:()=>{ QP.st=1; qpHand(8*32+16,24.2*32+4,0); tt("letter_got"); }},{t:DT.qs_heard.btns[1],cb:()=>qpAngry()}]); return true; }
+    if(QP.st===1){ qpSay(s,"池塘的小石雕",DT.qs_wait.text,[{t:DT.qs_wait.btns[0],cb:()=>{}}]); return true; }
+    if(QP.st===2){ qpSay(s,"池塘的小石雕",DT.qs_back.text,[{t:DT.qs_back.btns[0],cb:()=>{ QP.st=3; QP.scarf=true; matchPart("statue"); QP.heart=time; tt("heart"); }}]); return true; }
     qpMenu(s); return true; }
-  if(s.id===904&&QP.st===2){ qpSay(s,"巨大的石像","……回信，已經交到你手上了吧。\n快拿去給池塘裡的小石雕。\n（他的圍巾，在風裡輕輕晃了一下。）",[{t:"好",cb:()=>{}}]); return true; }
-  if(s.id===904&&QP.st>=3){ qpSay(s,"巨大的石像","紅色的圍巾，暖暖的。\n他望向池塘的方向，耳朵上的牙印還沒消。\n（……看來，兩個人都過得很好。）",[{t:"嗯",cb:()=>{}}]); return true; }
+  if(s.id===904&&QP.st===2){ qpSay(s,"巨大的石像",DT.gs_got.text,[{t:DT.gs_got.btns[0],cb:()=>{}}]); return true; }
+  if(s.id===904&&QP.st>=3){ qpSay(s,"巨大的石像",DT.gs_after.text,[{t:DT.gs_after.btns[0],cb:()=>{}}]); return true; }
   if(s.id===904&&QP.st===1){
-    qpSay(s,"巨大的石像","把石雕託你帶來的情書和禮物，交給巨大的石像嗎？",[{t:"交給他",cb:()=>{ QP.st=2; qpSay(qpSpot(904),"巨大的石像","巨大的石像看著信和禮物，沉默了很久。\n然後，他輕輕收下了。\n（左耳的中間，出現了一圈虛線一樣的小小牙印——好像是害羞到咬了自己的耳朵。）\n接著，他遞出了一封回信。",[{t:"收下回信",cb:()=>{ toast("拿到回信了，拿回去給池塘的小石雕吧。"); }}]); }},{t:"先不要",cb:()=>{}}]); return true; }
+    qpSay(s,"巨大的石像",DT.gs_ask.text,[{t:DT.gs_ask.btns[0],cb:()=>{ QP.st=2; QP.cs={t0:1e9,sx:20.5*32+16,sy:24.2*32-40,n0:0}; qpSay(qpSpot(904),"巨大的石像",DT.gs_done.text,[{t:DT.gs_done.btns[0],cb:()=>{ qpHand(20.5*32+16,24.2*32-40,0); tt("reply_got"); }}]); }},{t:DT.gs_ask.btns[1],cb:()=>{}}]); return true; }
   return false;
 }
 function springInit(){
   if(SPQ_OK) return true; const s1=snSheet(/ちびちみご/), s2=snSheet(/ちびちみゆ/), s3=mkSheet(ART.sp03spring,null); if(s3) s3.k=1; if(!s1||!s2) return false; SPQ_OK=true; if(!SPD.lg){ SPD.lg=1; SPD.lant.forEach(l=>LANTERNS.push({x:l.x*T+T/2,y:l.y*T+22,ph:l.x*1.7+l.y})); }
-  const mk=(kind,px,fy,sh,ring)=>({kind,sh,ring,px,fy,x:(px-16)/32,y:(fy-28)/32,size:32,bsz:34,hop:0,b:null,ph:Math.random()*6});
+  const mk=(kind,px,fy0,sh,ring)=>{ const fy=fy0+16; return {kind,sh,ring,px,fy,x:(px-16)/32,y:(fy-28)/32,size:32,bsz:34,hop:0,b:null,ph:Math.random()*6}; };
   SPQ.push(...[mk("tiger",422.8,-113.6,null,"#e0524a"),mk("n1",447,-88,s1,"#f08aa8"),mk("n2",505.2,-88,s2,"#7aa0ff"),(s3?mk("n3",476,-112,s3,"#ff6a2e"):null),mk("leo",524,-112,null,"#ffd34d")].filter(Boolean)); return true;
 }
-function waterBand(g,cx,wl,bot,hw,a){      // 水面：腰部以下蓋上一層半透明的水＋淺色水痕
-  const al=(a==null?.86:.55+a*.3), gr=g.createLinearGradient(0,wl,0,bot); gr.addColorStop(0,"rgba(118,192,168,"+al.toFixed(2)+")"); gr.addColorStop(.7,"rgba(118,192,168,"+(al*.8).toFixed(2)+")"); gr.addColorStop(1,"rgba(106,174,194,0)");
+function waterBandIn(g,cx,wl,bot,hw,a){      // 溫泉裡的水窪：只畫在池水範圍內（超出的部分被石頭／岸邊遮掉）
+  g.save(); g.beginPath(); g.ellipse(SPG.cx,SPG.cy,SPG.A-9,SPG.B-8,0,0,7); g.clip(); waterBand(g,cx,wl,bot,hw,a); g.restore(); }
+function waterBand(g,cx,wl,bot,hw,a,pc){      // 水面：腰部以下蓋上一層半透明的水＋淺色水痕
+  const al=(a==null?.86:.55+a*.3), gr=g.createLinearGradient(0,wl,0,bot); const wc=pc?"95,164,189":"118,192,168"; gr.addColorStop(0,"rgba("+wc+","+al.toFixed(2)+")"); gr.addColorStop(.7,"rgba("+wc+","+(al*.8).toFixed(2)+")"); gr.addColorStop(1,"rgba(106,174,194,0)");
   g.fillStyle=gr; g.beginPath(); g.roundRect(cx-hw,wl,hw*2,bot-wl,[0,0,hw,hw]); g.fill();
-  g.fillStyle="#b4e6d6"; const sh=ri((time*8)%10); g.fillRect(cx-hw+2+sh%6,wl+1,5,1); g.fillRect(cx+2+sh%5,wl+1,6,1); g.fillRect(cx-hw+5-sh%3,wl+4,4,1); g.fillRect(cx+hw-9,wl+3,4,1);
+  g.fillStyle=pc?"#9fd0e2":"#b4e6d6"; const sh=ri((time*8)%10); g.fillRect(cx-hw+2+sh%6,wl+1,5,1); g.fillRect(cx+2+sh%5,wl+1,6,1); g.fillRect(cx-hw+5-sh%3,wl+4,4,1); g.fillRect(cx+hw-9,wl+3,4,1);
 }
 function ringArc(g,cx,wl,rx,col,front){      // 泳圈（平視角：橢圓壓扁，前半圈有厚度）
   const cy=wl-2, ry=3, a0=front?0:Math.PI, a1=front?Math.PI:Math.PI*2; g.save();
@@ -3875,16 +4019,28 @@ function drawBeast(g,o,cx,fy){      // 暫代用的老虎／雪豹（程式畫�
   for(const dx of [-7,4]){ R(g,sp,cx+dx,fy-20,4,1); R(g,sp,cx+dx-1,fy-19,1,1); R(g,sp,cx+dx+4,fy-19,1,1); }      // 閉著眼睛：彎彎的線
   R(g,"#f4a3b3",cx-10,fy-15,3,2); R(g,"#f4a3b3",cx+8,fy-15,3,2);
 }
-function drawSpOcc(g,o){
+let SPTC=null;
+function drawSpOcc(g,o){      // 泡湯的人：若在松樹影子裡，身體、水窪也要被影子照到
+  if(o.kind==="leo") return drawSpOcc0(g,o);      // 雪豹不再疊松樹影
+  const sh=[]; for(const k in TREE) if(TREE[k]==="lpine"){ const [a,b]=k.split(",").map(Number); sh.push(...lpShd(a,b)); }
+  const ox=Math.round(o.px)-70, oy=Math.round(o.fy)-90, W=140, H=120;
+  if(!sh.some(e=>e[0]+e[2]>ox&&e[0]-e[2]<ox+W&&e[1]+e[3]>oy&&e[1]-e[3]<oy+H)) return drawSpOcc0(g,o);
+  if(!SPTC){ SPTC=document.createElement("canvas"); SPTC.width=W; SPTC.height=H; }
+  const tg=SPTC.getContext("2d"); tg.setTransform(1,0,0,1,0,0); tg.globalCompositeOperation="source-over"; tg.clearRect(0,0,W,H); tg.imageSmoothingEnabled=false;
+  tg.translate(-ox,-oy); drawSpOcc0(tg,o); tg.setTransform(1,0,0,1,0,0);
+  tg.globalCompositeOperation="source-atop"; tg.fillStyle="rgba(95,88,150,.27)"; for(const e of sh){ tg.beginPath(); tg.ellipse(e[0]-ox,e[1]-oy,e[2],e[3],0,0,7); tg.fill(); }
+  tg.globalCompositeOperation="source-over"; g.drawImage(SPTC,ox,oy);
+}
+function drawSpOcc0(g,o){
   const cx=o.px, bob=reduceMotion()?0:Math.round(Math.sin(time*1.4+o.ph)), fy=o.fy+bob-3, tk=o.kind==="tiger"?"tigerPool":o.kind==="leo"?"leoPool":null, tg=!!tk&&!o.sh&&art(tk).complete&&art(tk).naturalWidth>0, wl=tg?fy-25:fy-6, rx=o.sh?13:15;      // 身體抬高一點：水只淹到腰
   if(!tg) ringArc(g,cx,wl,rx,o.ring,false);
   if(o.sh){ FORCE_FRAME=2; drawSheet(g,o.sh,"down",0,cx,fy+1,1,null,time); FORCE_FRAME=null;
     R(g,"#e4eaf5",cx-7,fy-28,14,5); R(g,"#fff",cx-7,fy-28,14,3); R(g,"#c5cfe2",cx-6,fy-24,12,1); R(g,"#c5cfe2",cx-2,fy-26,1,2); R(g,"#c5cfe2",cx+3,fy-27,1,3);      // 頭上的毛巾
     if(o.orange) drawOrangeOnHead(g,cx,fy,-3); }
-  else if(tg){ g.save(); g.imageSmoothingEnabled=false; g.translate(ri(cx),0); if(o.kind==="tiger") g.scale(-1,1); g.drawImage(art(tk),-30,ri(fy-55),60,64); g.restore(); drawTowel(g,cx,fy-49,14); if(o.orange) drawOrangeOnHead(g,cx,fy-20,-2); }      // 老虎：妳畫的圖放大到 54×58，左右翻面（面朝右）
-  else { drawBeast(g,o,cx,fy); drawTowel(g,cx,fy-29,14); if(o.orange) drawOrangeOnHead(g,cx,fy,-2); }
+  else if(tg){ g.save(); g.imageSmoothingEnabled=false; g.translate(ri(cx),0); if(o.kind==="tiger") g.scale(-1,1); g.drawImage(art(tk),-30,ri(fy-55),60,64); g.restore(); drawTowel(g,cx+2,fy-49,14); if(o.orange) drawOrangeOnHead(g,cx+2,fy-20,-2); }      // 老虎：妳畫的圖放大到 54×58，左右翻面（面朝右）
+  else { drawBeast(g,o,cx,fy); drawTowel(g,cx-2,fy-29,14); if(o.orange) drawOrangeOnHead(g,cx-2,fy,-2); }
   if(!tg) ringArc(g,cx,wl,rx,o.ring,true);
-  waterBand(g,cx,wl+1,tg?fy+10:fy+6,o.sh?16:(tg?34:18));
+  waterBandIn(g,cx,wl+1,tg?fy+10:fy+6,o.sh?16:(tg?34:18));
 }
 function drawPoolFx(g){      // 池面偶爾閃一下小亮點（跟池塘一樣）
   const {cx,cy,A,B}=SPG; for(let i=0;i<30;i++){ const k=(Math.sin(time*2.2+i*1.9)+1)/2; if(k<.8) continue; const a=ph(i,3,5)*6.28, r=Math.sqrt(ph(i,4,5))*.85, x=ri(cx+Math.cos(a)*r*(A-10)), y=ri(cy+Math.sin(a)*r*(B-8));
@@ -3903,7 +4059,8 @@ function drawBarrel(g,px,py){
   R(g,"#6b7186",px-11,py-13,22,2); R(g,"#6b7186",px-11,py-5,22,2);
   E(g,N.woodDk,px,py-19,11,4); E(g,"#3d2f26",px,py-19,9,3);
   for(const [dx,dy] of [[-4,-21],[1,-22],[5,-20]]){ D(g,"#e8861c",px+dx,py+dy,3); D(g,"#f9a63a",px+dx-1,py+dy-1,2); R(g,"#ffd48a",px+dx-2,py+dy-2,1,1); }
-  R(g,"#fff",px+3,py-23,8,5); R(g,"#e4eaf5",px+9,py-19,3,14); R(g,"#fff",px+10,py-19,2,13); R(g,"#c5cfe2",px+9,py-8,3,1);
+  R(g,"#c5cfe2",px+3,py-22,9,4); R(g,"#fff",px+3,py-23,9,3); R(g,"#e4eaf5",px+3,py-21,9,1);      // 掛在桶邊的毛巾：摺起來的一小條＋垂下的一角（淡藍條紋）
+  R(g,"#c5cfe2",px+9,py-19,4,9); R(g,"#fff",px+9,py-19,3,8); R(g,"#9fb7e0",px+9,py-14,3,1); R(g,"#9fb7e0",px+9,py-12,3,1);
 }
 function drawBench(g,px,py){
   E(g,"rgba(70,90,130,.22)",px,py+1,30,4);
@@ -4009,7 +4166,7 @@ function decorItems(){
   L.push({y:Y0+.15,f:()=>{ for(const a of SPD.angel) drawSnowAngel(ctx,ri(a.x*32+16),ri(a.y*32+28),a.k,a.f,a.s); drawPrints(ctx); }});
   for(const o of SPD.deco){ const [x,y]=P(o.x,o.y); L.push({y:o.y,f:()=>({log:drawLogPile,lamp:drawSnowLamp})[o.k](ctx,x,y)}); }
   { const [x,y]=P(SPD.barrel.x,SPD.barrel.y); L.push({y:SPD.barrel.y,f:()=>drawBarrel(ctx,x,y)}); }
-  SPD.lant.forEach(l=>L.push({y:l.y+.6,f:()=>{ NOGND=true; try{ lantern32(ctx,l.x-0,l.y,l.x*32,l.y*32,time); }finally{ NOGND=false; } }}));
+  SPD.lant.forEach(l=>L.push({y:l.y+.1,f:()=>{ NOGND=true; try{ lantern32(ctx,l.x-0,l.y,l.x*32,l.y*32,time); }finally{ NOGND=false; } }}));
   SPD.bunny.forEach(b=>{ const [x,y]=P(b.x,b.y); L.push({y:b.y,f:()=>drawSnowBunny(ctx,x,y,b.f)}); });
   SPD.snowman.forEach(b=>{ const [x,y]=P(b.x,b.y); L.push({y:b.y,f:()=>drawMiniSnowman(ctx,x,y)}); });
   SPD.wtree.forEach(t=>{ const [x,y]=P(t.x,t.y); L.push({y:t.y,f:()=>drawWhiteTree(ctx,x,y,t.v)}); });
@@ -4167,7 +4324,7 @@ function bakeStairs(b){      // 雪地比較高：河邊接上來的左右兩段
 const SPSAY={n1:["ふぅ〜♡","ぽかぽか…♡"],n3:["ふぅ〜♡","ぽかぽか…♡"],n2:["ふぅ〜♡","ちゃぷちゃぷ♪"],tiger:["ごろごろ…♡"],leo:["ごろごろ…♡"]};
 function springUpdate(dt){ orgFlyUpdate();
   if(!springInit()||!(dt>0)) return; if(dt>.1) dt=.1;
-  const px=player.x*32+16, py=player.y*32+28, {cx,cy,A,B}=SPG, u=(px-cx)/(A+2), v=(py-cy)/(B+8), inW=!player.sit&&u*u+v*v<1;
+  const px=player.x*32+16, py=player.y*32+28, {cx,cy,A,B}=SPG, u=(px-cx)/(A-9), v=(py-cy)/(B-8), inW=!player.sit&&u*u+v*v<1;
   if(inW!==PW.in){ PW.in=inW; PW.hopT=.34; PLB.b=null; if(inW) emote(player,"shy",1e9); else if(player.emo&&player.emo.k==="shy"&&player.emo.life>1e8) player.emo=null; }
   if(PW.hopT>0) PW.hopT=Math.max(0,PW.hopT-dt);
   critUpdate(dt); dropUpdate(dt);
@@ -4197,22 +4354,22 @@ function snowUpdate(dt){
   }
   if(SN.pt){ SN.pt.t+=dt; if(SN.pt.t>=.26){ const q=SN.pt; SN.pt=null; snLaunch(player,null,null,"hit",{x:q.tx,y:q.ty}); snSfx("snowThrow",player.x,player.y); } }
   sn1(dt); sn2(dt); SN.grow=Math.max(0,SN.grow-dt); SN.pulse=Math.max(0,SN.pulse-dt*2.2);
-  for(const b of SN.balls){ b.t+=dt; if(!b.rs&&b.t>=b.dur*.45&&b.tg&&b.tg!==player&&!b.fromP){ b.rs=true; if(b.res==="duck") b.tg.duckT=1.0; else if(b.res==="dodge"){ b.tg.dodgeT=.7; b.tg.dsd=Math.random()<.5?1:-1; } } }
+  for(const b of SN.balls){ b.t+=dt; if(b.pdg&&!b.rs&&b.t>=b.dur*.4){ b.rs=true; b.pdg.dodgeT=.7; b.pdg.dsd=Math.random()<.5?1:-1; snSay(b.pdg,"ひょい！",1.1); } if(!b.rs&&b.t>=b.dur*.45&&b.tg&&b.tg!==player&&!b.fromP){ b.rs=true; if(b.res==="duck") b.tg.duckT=1.0; else if(b.res==="dodge"){ b.tg.dodgeT=.7; b.tg.dsd=Math.random()<.5?1:-1; } } }
   for(let i=SN.balls.length-1;i>=0;i--){ const b=SN.balls[i]; if(b.t>=b.dur){ SN.balls.splice(i,1); snBallLand(b); } }
-  if(SN.carry&&(player.y>6.05||(player.x>7.0&&player.x<20.5&&player.y>1.0))){ SN.carry=0; SN.pt=null; snBurst(player.x,player.y-.8,8); toast("似乎因為溫度過高的關係，雪球融化了"); }
+  if(SN.carry&&(player.y>6.05||(player.x>7.0&&player.x<20.5&&player.y>1.0))){ SN.carry=0; SN.pt=null; snBurst(player.x,player.y-.8,8); tt("snow_melt"); }
 }
 function snowPick(s){
-  if(SN.carry>=3){ toast("頭上最多只能放三顆雪球喔"); return; } SN.carry=(SN.carry|0)+1; snBurst(s?s.x:5.2,(s?s.y:4.9)-.3,6); toast(SN.carry<3?"撿起一顆雪球了（"+SN.carry+"／3）！點一下畫面，就能朝那個方向丟出去。也可以把雪球交給雪人旁的小精靈。":"頭上放滿三顆雪球了！點一下畫面就能丟出去。");
+  if(SN.carry>=3){ tt("snow_full"); return; } SN.carry=(SN.carry|0)+1; snBurst(s?s.x:5.2,(s?s.y:4.9)-.3,6); (SN.carry<3?tt("snow_pick",SN.carry):tt("snow_pick3"));
 }
 function snowGive(){
   if(!SN.carry||SN.m1.mode!=="home") return; SN.carry--; SN.got++; const a=SN.a, b=SN.b;
-  if(SN.got<2){ snSay(a,"ち！！♡",2); snJump(a,8); burst(a.x,a.y-.5,3,0); toast("雪交給腳邊的小精靈了（1／2）"); SN.m1.t=0; return; }
+  if(SN.got<2){ snSay(a,"ち！！♡",2); snJump(a,8); burst(a.x,a.y-.5,3,0); tt("snow_give1"); SN.m1.t=0; return; }
   snSay(b,"み！！♡",2); snJump(b,8); burst(b.x,b.y-1.5,3,0); SN.got=0; SN.stage=Math.min(2,SN.stage+1); SN.grow=3.4;
   SN.m1.mode="grow"; SN.m1.t=0; snBurst(SN.S.x,SN.S.y-.8,14); snSay(a,"ち♡ち♡！",2.4);
-  if(SN.stage>=2){ SN.done=true; toast("雪人長到最高了！"); } else toast("雪交給頭上的小精靈了（2／2），雪人長高了！");
+  if(SN.stage>=2){ SN.done=true; tt("snow_top"); } else tt("snow_give2");
 }
 function drawSnowmanN(g,px,gy,st,pl){
-  const B=[[[11,9,9],[8,8,24]],[[13,10,10],[10,8,27],[7,7,41]],[[16,11,11],[13,10,32],[10,9,55]]][st].map((q,i)=>i===0?[q[0]+ri((pl||0)*3),q[1],q[2]]:q);
+  const B=[[[19,16,17],[14,12,44]],[[13,10,10],[10,8,27],[7,7,41]],[[16,11,11],[13,10,32],[10,9,55]]][st].map((q,i)=>i===0?[q[0]+ri((pl||0)*3),q[1],q[2]]:q);
   E(g,"rgba(70,90,130,.25)",px+3,gy-1,B[0][0]+5,4);
   B.forEach(([rx,ry,cy])=>{ E(g,"#c7d7ec",px+1,gy-cy+1,rx,ry); E(g,"#f4f8fe",px,gy-cy,rx-1,ry-1); E(g,"#fff",px-ri(rx*.45),gy-cy-ri(ry*.55),ri(rx*.3)+1,2); });
   const n=B.length, hd=B[n-1], hy=gy-hd[2], neck=hy+hd[1]-2, md=B[n-2];
@@ -4288,10 +4445,10 @@ function snDrawSp(o,mode){
   const fy=gy-lift-hop+du, dir=o.face===-1?1:-1, ht=headTop(o);
   if(du){ g.save(); g.beginPath(); g.rect(cx-30,gy-90,60,90+1); g.clip(); }
   if(mode==="shovel") drawShovel(g,cx+dir*10,fy-9,dir,o.id);
-  if(o.lieK>0){ g.save(); g.translate(cx+jit,gy); g.scale(1+.2*o.lieK,1-.55*o.lieK); drawSheet(g,o.sheet,"down",0,0,0,1,null,time+o.id,o.face); g.restore(); }      // 躺在雪地上：壓扁
+  if(o.lieK>0){ g.save(); g.translate(cx+jit,gy-12); g.rotate(-o.lieK*(o.lieA||SNLIE)); g.translate(0,12); drawSheet(g,o.sheet,"down",0,0,0,1,null,time+o.id,o.face); g.restore(); }      // 摔倒臉朝下：整隻往左倒（逆時針 75°＝120°再往順時針轉 45°），不壓扁      // 躺在雪地上：壓扁
   else drawSheet(g,o.sheet,"down",o.moving?1:0,cx+jit,fy,1,null,time+o.id,o.face);
   if(du) g.restore();
-  if(mode==="tea"){ const ph=snMarsh(SN.m1.t,o===SN.a?0:4); if(ph&&!ph.eat) drawStickMarsh(g,cx+dir*8,fy-8,dir,ph.p); else drawMug(g,cx+dir*11,fy-9,o===SN.a?["#6f8fe8","#6382dc","#5272c8","#34468f"]:["#f5963f","#e58528","#d27424","#9a4f12"]); }
+  if(mode==="tea"){ const ph=snMarsh(SN.m1.t,o===SN.a?0:4); if(ph&&!ph.eat) drawStickMarsh(g,cx+dir*8,fy-8,dir,ph.p); else drawMug(g,cx+dir*11,fy-9,o===SN.a?["#63c3ff","#8fd6ff","#5772ad","#5090cf"]:["#ff9761","#ffb68f","#965040","#c2603a"]); }
   if(mode==="ball") drawSnowBall(g,cx,fy-ht-6+Math.round(Math.sin(time*6)),5);
   { const am=(SN.m2.mode==="fight"||SN.m2.mode==="ready")&&(o===SN.c||o===SN.d)?(o.ammo|0):0;
     if(am>0){ const hb=fy-ht-6, wd=Math.min(1,o.wind||0), n=wd>0?am-1:am; for(let i=0;i<n;i++) drawSnowBall(g,cx,hb-i*9,5);
@@ -4300,8 +4457,8 @@ function snDrawSp(o,mode){
 function snowItems(){
   if(!SN.ready) return []; const S=SN.S, m1=SN.m1, m2=SN.m2, sl=SN.sl, g=ctx, L=[];
   const md1=m1.mode==="tea"?"tea":null;
-  L.push({y:-99,f:()=>{ for(const q of SN.trail){ const age=time-q.t0, al=.34*(age>45?Math.max(0,1-(age-45)/40):1); if(al<=0) continue; g.save(); g.globalAlpha=al; E(g,"#7d92b8",q.x,q.y-1,Math.max(2,Math.round(q.r*.95)),Math.max(1,Math.round(q.r*.4))); g.restore(); }      // 滾雪球留下的深色痕跡（慢慢淡掉）
-    for(const d of SN.deb){ const age=time-d.t0, al=age>25?Math.max(0,1-(age-25)/15):1; const px=ri(d.x*32+16), gy=ri(d.y*32+28); g.save(); g.globalAlpha=al; for(const [dx,dy,r] of [[-10,0,5],[8,2,4],[0,4,6],[-3,-3,3],[13,-2,3]]) drawBigBall(g,px+dx,gy+dy,r); g.restore(); }      // 撞碎的雪塊
+  L.push({y:-99,f:()=>{ for(const q of SN.trail){ const age=time-q.t0, al=1*(age>.7?Math.max(0,1-(age-.7)/1.5):1); if(al<=0) continue; g.save(); g.globalAlpha=al; E(g,SHD_SNOW,q.x,q.y-1,Math.max(2,Math.round(q.r*.95)),Math.max(1,Math.round(q.r*.4))); g.restore(); }      // 滾雪球留下的深色痕跡（慢慢淡掉）
+    for(const d of SN.deb){ const al=d.fade?Math.max(0,1-(time-d.fade)/3):1, k=1-d.n/3; const px=ri(d.x*32+16), gy=ri(d.y*32+28); g.save(); g.globalAlpha=al; for(const [dx,dy,r] of [[-10,0,5],[8,2,4],[0,4,6],[-3,-3,3],[13,-2,3]]) drawBigBall(g,px+ri(dx*k),gy+ri(dy*k),Math.max(1,Math.round(r*k))); g.restore(); }      // 撞碎的雪塊
     for(const an of SN.angels){ const age=time-an.t0, f=an.life*.45, al=age<f?1:Math.max(0,1-(age-f)/(an.life-f)); g.save(); g.globalAlpha=.85*al; g.drawImage(an.img.cv,ri(an.x*32+16)-an.img.ox,ri(an.y*32+28)-an.img.oy); g.restore(); } }});      // 雪天使：慢慢淡掉
   if(SN.sm) L.push({y:S.y,f:()=>{ const px=ri(S.x*32+16), gy=ri(S.y*32+28); drawSnowmanN(g,px,gy,0,SN.pulse); }});
   if(SN.rb){ const rb=SN.rb; L.push({y:rb.a.y+.02,f:()=>drawBigBall(g,ri(rb.a.x*32+16),ri(rb.a.y*32+28),Math.round(rb.a.r))}); L.push({y:rb.b.y+.02+(rb.b.lift?.5:0),f:()=>drawBigBall(g,ri(rb.b.x*32+16),ri(rb.b.y*32+28)-ri(rb.b.lift||0),Math.round(rb.b.r))}); }
@@ -4352,6 +4509,7 @@ function drawCarriedSpirit(g,cx,fy,bob){
   pileSheets(); if(!PILE.sh) return; const y=fy-37+bob+Math.round(Math.sin(time*5)*1);
   drawSheet(g,PILE.sh,"down",0,cx,y,1,null,time);
   if(PILE.hasBq) drawBouquet(g,cx+9,y-9);
+  if(!PILE.hasBq&&!reduceMotion()){ for(let j=0;j<3;j++){ const ph=((time*.45+j/3)%1), r=1.6+j*.5+ph*.8, bx=cx+7+j*5+Math.sin(time*2+j*2)*2, by=y-30-ph*18; g.save(); g.globalAlpha=Math.min(1,ph*5)*Math.min(1,(1-ph)*2.5); g.beginPath(); g.arc(ri(bx),ri(by),r,0,Math.PI*2); g.fillStyle="rgba(255,255,255,.18)"; g.fill(); g.lineWidth=1; g.strokeStyle="#fff"; g.stroke(); g.restore(); } }      // 抱在頭上還想睡：頭頂一直冒兩三顆白框小圓圈
 }
 function drawBouquet(g,x,y){
   R(g,"#4f8a5a",x-1,y+2,2,4); R(g,"#4f8a5a",x-4,y+2,3,2); R(g,"#4f8a5a",x+2,y+2,3,2);
@@ -4420,27 +4578,27 @@ function drawBasket(){
 function pileModal(title,text){ openModal({kind:"clue",eye:"櫻花樹下",key:"pileM",name:title,text,popup:"",seen:true}); }
 function pileTrigger(s){
   PILE.jt=time; PILE.n=Math.min(5,PILE.n+1); const n=PILE.n;
-  if(n===1) return pileModal("櫻花瓣堆","樹上的櫻花瓣散落後，聚集成的普通小堆。");
-  if(n===2) return pileModal("櫻花瓣堆","感覺躺上去會很舒服呢。");
-  if(n===3){ burst(PILE.px,PILE.py-.2,0,3); return pileModal("櫻花瓣堆","再碰的話，櫻花瓣堆要散掉了！"); }
-  if(n===4){ burst(PILE.px,PILE.py-.2,0,6); return pileModal("櫻花瓣堆","不要再碰了啦！"); }
+  if(n===1) return pileModal("櫻花瓣堆",DT.pile1.text);
+  if(n===2) return pileModal("櫻花瓣堆",DT.pile2.text);
+  if(n===3){ burst(PILE.px,PILE.py-.2,0,3); return pileModal("櫻花瓣堆",DT.pile3.text); }
+  if(n===4){ burst(PILE.px,PILE.py-.2,0,6); return pileModal("櫻花瓣堆",DT.pile4.text); }
   PILE.reveal=true; PILE.sp.x=PILE.px; PILE.sp.y=PILE.py; PILE.sp.fy=ri(PILE.py*32+16+11); PILE.sp.b={t0:time,txt:"ち…ぷい",keep:true}; burst(PILE.px,PILE.py-.3,0,8);
   achAward("pileSur");
-  askYN({eye:"櫻花瓣堆",title:"發現了一隻小精靈！",text:"哇！發現了一隻小精靈，他似乎剛吃飽被吵醒了，不是很開心的樣子。",yes:"把他抱起來",no:"將櫻花瓣被被蓋回他身上"},
+  askYN({eye:"櫻花瓣堆",title:DT.pile5.title,text:DT.pile5.text,yes:DT.pile5.btns[0],no:DT.pile5.btns[1]},
     ()=>{ PILE.from="pile"; PILE.reveal=false; PILE.carry=true; PILE.sp.fy=null; PILE.sp.b={t0:time,txt:"ち！",life:1.6}; PILE.jt=time; burst(PILE.px,PILE.py-.3,0,6); },
     ()=>{ PILE.reveal=false; PILE.jt=time; PILE.sp.b={t0:time,txt:"Zzz…",life:2.2}; burst(PILE.px,PILE.py-.2,0,4); });
 }
-const BOW_SAD="ち…ちみ…\n這個小精靈看起來有點落寞，似乎在找誰的樣子。";
+const BOW_SAD=DT.bow_idle.text;
 function bowTrigger(s){
   const B=PILE.bow;
   if(PILE.carry&&!PILE.sc){
     return openModal({kind:"clue",eye:"小精靈",key:"bowM",name:"戴蝴蝶結的小精靈",text:BOW_SAD,popup:"",seen:true,
-      acts:[{t:"把櫻花瓣堆小精靈給他",cb:()=>pileReturn()},{t:"先不要",cb:()=>{ achAward("split"); if(B.mode!=="angry"){ B.mode="angry"; B.txtT=0; B.b={t0:time,txt:"ぷんぷん！",life:2.2}; B.fol=0; } }}]});
+      acts:[{t:DT.bow_carry.btns[0],cb:()=>pileReturn()},{t:DT.bow_carry.btns[1],cb:()=>{ achAward("split"); if(B.mode!=="angry"){ B.mode="angry"; B.txtT=0; B.b={t0:time,txt:"ぷんぷん！",life:2.2}; B.fol=0; } }}]});
   }
   openModal({kind:"clue",eye:"小精靈",key:"bowM",name:"戴蝴蝶結的小精靈",text:BOW_SAD,popup:"",seen:true});
 }
 function basketTrigger(s){
-  askYN({eye:"籃子",title:"呼……呼……",text:"兩個寶寶似乎睡的很熟，還流口水了呢。",yes:"不要打擾他們",no:"把粉色寶寶抱走"},null,()=>{
+  askYN({eye:"籃子",title:DT.basket.title,text:DT.basket.text,yes:DT.basket.btns[0],no:DT.basket.btns[1]},null,()=>{
     const B=PILE.bow, o=PILE.sp; PILE.from="basket"; PILE.st="idle"; PILE.carry=true; o.fy=null; o.b={t0:time,txt:"ち？",life:1.4};
     B.x=PILE.bk.x-.34; B.y=PILE.bk.y; B.mode="angry"; B.txtT=0; B.fol=0; B.wk=null; B.path=[]; B.hop=0; B.b={t0:time,txt:"！？",life:1.4}; burst(B.x,B.y-.4,0,3);
   });
@@ -4582,10 +4740,12 @@ function drawPlayer32(g){
   const wet=PW.in&&!sit, hp=PW.hopT>0?ri(Math.sin((1-PW.hopT/.34)*Math.PI)*7):0, fy2=fy-hp+(wet?1:0)-(RIDE.on?ri(RIDE.lift+RIDE.hop):0);
   if(!(sit&&sit.s.bench)&&!wet&&!RIDE.on) shadowAt32(g,cx,fy+1,11,3,player.sp);      // 坐沙發時沙發自己有影子，不再另外畫一個
   if(wet) FORCE_FRAME=2;      // 泡在溫泉裡：瞇眼開心的表情
+  if(wet){ g.save(); g.beginPath(); g.rect(cx-70,fy2-130,140,124); g.ellipse(SPG.cx,SPG.cy,SPG.A-9,SPG.B-8,0,0,7); g.clip(); }      // 泡湯：水面以下只留在池水範圍內（超出池邊的下半身被遮掉）
   if(player.sp && ready(player.sp.a)) drawSheet(g,player.sp,sit?(sit.s.row===1?"up":"down"):player.dir,player.moving?(Math.floor(time*6)%2):0,cx,fy2,player.face,wet?accLayers({cloth:-1,neck:-1}):player.acc,time,(!sit&&player.dir==="side")?(player.face>0?-1:1):0);
   else { g.save(); g.translate(cx,0); g.scale(player.face,1); g.drawImage(catSp(player.cat,fr),-20,fy2-37+bob); g.restore(); }
+  if(wet) g.restore();
   if(!wet&&!sit) drawUW(g,cx,fy2+bob,player.dir);
-  if(wet){ FORCE_FRAME=null; waterBand(g,cx,fy2-6,fy2+6,15,.5); drawTowel(g,cx,fy2-43,18); }      // 泡湯：衣服、頸飾脫掉，頭上放毛巾
+  if(wet){ FORCE_FRAME=null; waterBandIn(g,cx,fy2-10,fy2+6,27,.5); drawTowel(g,cx,fy2-43,18); }      // 泡湯：衣服、頸飾脫掉，頭上放毛巾
   if(PH.st===1&&!sit) drawHeldPhoto(g,cx,fy,bob);
   if(PILE.carry) drawCarriedSpirit(g,cx,fy,bob);
   if(SN.carry) drawSnowCarry(g,cx,fy,bob);
@@ -5087,7 +5247,7 @@ function drawAir(){        // 空中層：飄落花瓣
   if(reduceMotion()) return;
   const vx0=cam.x/1.5-8, vx1=(cam.x+view.w)/1.5+8, vy0=cam.y/1.5-8, vy1=(cam.y+view.h)/1.5+8;
   for(const p of SNOWF){ if(p.x<vx0||p.x>vx1||p.y<vy0||p.y>vy1) continue; const x=ri(p.x), y=ri(p.y); const a=p.s; R(ctx,"#b4c7e8",x+1,y+1,a,a); R(ctx,"#fff",x,y,a,a); R(ctx,"#fff",x-1,y+(a>>1),a+2,1); R(ctx,"#fff",x+(a>>1),y-1,1,a+2); if(a>2){ R(ctx,"#dbe6f6",x,y,1,1); R(ctx,"#dbe6f6",x+a-1,y+a-1,1,1); } }
-  for(const p of PETALS){ const x=ri(p.x*MM), y=ri(p.y*MM); if(snowAt(x,y)||snowAt(x,y+16)||y<(Y0+1)*32-18) continue; const bg=p.s>4.3; R(ctx,p.c,x,y,bg?6:5,bg?4:3); R(ctx,p.c,x+1,y+(bg?4:3),bg?4:3,1); R(ctx,"#fde3ec",x+1,y,2,1); R(ctx,"#e07d9d",x+(bg?4:3),y+(bg?2:1),1,1); }
+  for(const p of PETALS){ const x=ri(p.x*MM), y=ri(p.y*MM); if(x<2||x>COLS*T*MM-10||snowAt(x,y)||snowAt(x,y+16)||y<(Y0+1)*32-18) continue; const bg=p.s>4.3; R(ctx,p.c,x,y,bg?6:5,bg?4:3); R(ctx,p.c,x+1,y+(bg?4:3),bg?4:3,1); R(ctx,"#fde3ec",x+1,y,2,1); R(ctx,"#e07d9d",x+(bg?4:3),y+(bg?2:1),1,1); }
 }
 const toScreen=(X,Y)=>[view.ox+(X*MM-Math.round(cam.x*MM))*view.gpE, view.oy+(Y*MM-Math.round(cam.y*MM))*view.gpE];
 
@@ -5095,10 +5255,11 @@ const toScreen=(X,Y)=>[view.ox+(X*MM-Math.round(cam.x*MM))*view.gpE, view.oy+(Y*
 const SHD="#c3bfd4", SHD_SNOW="#b6c3e2"; let SHL=null, SHC=null;
 function snowAt(px,py){ const tx=Math.floor(px/32), ty=Math.floor(py/32), r=GRID[ty]; const ch=r?r[tx]:"g"; return (ch==="g"||ch==="S")&&isSnow(tx,ty)&&!cornerCut(px,py); }
 function cornerCut(X,Y){ const j=Y-(Y0+1)*32; if(j<0||j>=CUTR) return false; const i1=X-32, i2=(COLS-1)*32-X; return (i1>=0&&i1<CUTR&&Math.hypot(i1-CUTR,j-CUTR)>CUTR)||(i2>=0&&i2<CUTR&&Math.hypot(i2-CUTR,j-CUTR)>CUTR); }
+function lpShd(tx,ty){ return [[tx*32+6,ty*32+33,36,11],[tx*32-41,ty*32+32,46,14]]; }      // 偏斜松樹的影子（本體＋樹冠往左落在池面上）
 function shadowList(){
   if(SHL) return SHL; SHL=[]; const A=(x,y,rx,ry)=>SHL.push({x,y,rx,ry});
   A(SPD.barrel.x*32+17,SPD.barrel.y*32+29,15,4); SPD.lant.forEach(l=>A(l.x*32+19,l.y*32+30,12,4)); SPD.snowman.forEach(b=>A(b.x*32+18,b.y*32+29,9,3)); SPD.wtree.forEach(t=>A(t.x*32+16,t.y*32+30,17,5)); A(GZ.x*32+16,GZ.yf*32+30,58,6);
-  for(const tr of TREES){ if(TREE[tr.x+","+tr.y]==="bsakura") A(tr.x*32+30,tr.y*32+34,52,24); else if(TREE[tr.x+","+tr.y]==="lpine") A(tr.x*32+6,tr.y*32+33,36,11); else A(tr.x*32+20,tr.y*32+29,19,6); }                                              // 樹
+  for(const tr of TREES){ if(TREE[tr.x+","+tr.y]==="bsakura") A(tr.x*32+30,tr.y*32+34,52,24); else if(TREE[tr.x+","+tr.y]==="lpine") lpShd(tr.x,tr.y).forEach(e=>A(...e)); else A(tr.x*32+20,tr.y*32+29,19,6); }                                              // 樹
   for(let y=Y0;y<ROWS;y++) for(let x=0;x<COLS;x++){ const ch=GRID[y][x], px=x*32, py=y*32;
     if(ch==="L") A(px+19,py+30,12,4);                                                                // 石燈籠
     else if(ch==="K") A(px+19,py+30,11,3);                                                           // 鳥居柱
@@ -5139,7 +5300,7 @@ function draw(){
   drawGround(); drawGatherGround();
   drawShadows(tx,ty);
   const items=spots.map(s=>({y:s.kind==="photo"?2.95:s.y,f:()=>drawSpot32(s)})).concat(pileItems(),snowItems(),picnicItems(),springItems(),qpItems())
-    .concat(flowerItems(g,time),DECOR.filter(d=>d.k!=="koi").map(d=>({y:d.k==="statue"?d.y-.05:d.y-.2,f:()=>drawDecor32(d)})),SHRINES.map(s=>({y:s.y+.9,f:()=>drawShrine32(g,s.x,s.y)})),spots.filter(s=>s.kind==="npc").map(s=>({y:s.y+.05,f:()=>drawNpc32(g,s)})),[{y:player.sit?player.sit.s.sortY+.02:player.y+.05,f:()=>drawPlayer32(g)}],frontPosts(g)).concat([],TABLES.map(t=>({y:t.y+1.5,f:()=>drawTable32(g,t)})),SPIRITS.map(q=>({y:q.gone&&q.standOff?q.sortY+q.standOff.dy:q.sortY,f:()=>drawSpirit32(g,q)})),RUN.map(r=>({y:r.y+.05,f:()=>drawRunner32(g,r)})),(WOR?[{y:WOR.y+.05,f:()=>{ drawRunner32(g,WOR); drawWorExtras(g,WOR); }}]:[]),(ATT?[{y:ATT.y+(ATT.kind==="snack"?-.5:.05),f:()=>drawAtt(g)}]:[]),
+    .concat(flowerItems(g,time),DECOR.filter(d=>d.k!=="koi").map(d=>({y:d.k==="statue"?d.y-.05:d.y-.2,f:()=>drawDecor32(d)})),SHRINES.map(s=>({y:s.y+.9,f:()=>drawShrine32(g,s.x,s.y)})),spots.filter(s=>s.kind==="npc").map(s=>({y:s.y+.05,f:()=>drawNpc32(g,s)})),[{y:player.sit?player.sit.s.sortY+.02:player.y+.05,f:()=>drawPlayer32(g)}],frontPosts(g),[{y:ROWS-1-.001,f:()=>{ for(let x=1;x<COLS-1;x++){ if(GRID[ROWS-1][x]==='#'){ const px=x*32; wall32(g,x,ROWS-1,px,(ROWS-1)*32); } } }}]).concat([],TABLES.map(t=>({y:t.y+1.5,f:()=>drawTable32(g,t)})),SPIRITS.map(q=>({y:q.gone&&q.standOff?q.sortY+q.standOff.dy:q.sortY,f:()=>drawSpirit32(g,q)})),RUN.map(r=>({y:r.y+.05,f:()=>drawRunner32(g,r)})),(WOR?[{y:WOR.y+.05,f:()=>{ drawRunner32(g,WOR); drawWorExtras(g,WOR); }}]:[]),(ATT?[{y:ATT.y+(ATT.kind==="snack"?-.5:.05),f:()=>drawAtt(g)}]:[]),
       TREES.map(tr=>({y:tr.y+.08,f:()=>drawTree32(g,tr.x,tr.y,time)})),gBouquetItems()).sort((a,b)=>a.y-b.y);
   items.forEach(i=>i.f());
   drawAir();
@@ -5217,9 +5378,13 @@ function resize(){
 /* ---------- 移動與觸發 ---------- */
 function solidAt(x,y){
   const m=0.22, pts=[[x-m,y+0.05],[x+m,y+0.05],[x-m,y+0.35],[x+m,y+0.35]];
-  if(pts.some(([px,py])=>isBlocked(Math.floor(px+0.5),Math.floor(py+0.5),1))) return true;
+  const strip=(px,py)=>Math.floor(py+.5)===27&&px>=.6&&px<=9.9&&pondD(px*32+16,py*32+24)>6;      // 池塘南邊、橋頭兩側貼著牆的那一條草地：可以左右走
+  const botWall=(px,py)=>Math.floor(py+.5)===ROWS-1&&px>=.6&&px<=COLS-1.6&&py<ROWS-1.1&&GRID[ROWS-1][Math.floor(px+.5)]==='#';      // 最下面的庭園牆：可以貼著走進去一點點，下半身被牆遮住
+  const pondCorner=(px,py)=>{ const tx=Math.floor(px+.5), ty=Math.floor(py+.5); return GRID[ty]&&GRID[ty][tx]==='W'&&pondD(px*32+16,py*32+20)>(tx===1?8:11); };      // 池塘四角的草地：只擋真的在水邊的部分
+  const leftGap=(px,py)=>Math.floor(px+.5)===0&&py>=21.6&&py<=27.6&&px>=.18;      // 池塘左邊和牆之間的縫隙：可以貼著牆走（身體稍微蓋進牆一點）
+  if(pts.some(([px,py])=>isBlocked(Math.floor(px+0.5),Math.floor(py+0.5),1)&&!strip(px,py)&&!botWall(px,py)&&!pondCorner(px,py)&&!leftGap(px,py))) return true;
   if(pts.some(([px,py])=>py>=3.0&&py<3.5&&STAIRBLK.has(Math.floor(px+.5)+",4"))) return true;      // 岩壁上緣比格線再往下 0.5 格
-  { const {cx,cy,A,B,gap}=SPG; if(pts.some(([px,py])=>{ const u=(px*32+16-cx)/(A+4), v=(py*32+16-cy)/(B+4), r=Math.hypot(u,v); if(r<.84||r>1.12) return false; const a=Math.atan2(v,u)*180/Math.PI; return !(a>gap[0]-2&&a<gap[1]+2); })) return true; }      // 池邊石圈：用像素精準判斷，入口兩側不再有空氣牆
+  { const {cx,cy,A,B,gap}=SPG; if(pts.some(([px,py])=>{ const u=(px*32+16-cx)/(A+4), v=(py*32+16-cy)/(B+4), r=Math.hypot(u,v); if(r<.84||r>1.12) return false; const a=Math.atan2(v,u)*180/Math.PI; return false; })) return true; }      // 池邊石圈：用像素精準判斷，入口兩側不再有空氣牆
   if(SN.ready){ const F=SN.FIRE, I=SN.IG, yy=y+.2; if(Math.hypot(x-F.x,(yy-F.y)*1.4)<.7) return true; { const r=(I.y-yy)*32-2; if(yy<I.y+.15&&r<48){ const w=(r<=0?40.3:Math.sqrt(1-(r/48)*(r/48))*40.3)/32+.08; if(Math.abs(x-I.x)<w) return true; } } }
   if(pts.some(([px,py])=>px>=26.5&&py>=1.0&&py<3.0)) return true;
   if(pts.some(([qx,qy])=>{ const X=qx*32+16, Y=qy*32+14, T0=(Y0+1)*32, j=Y-T0; if(j<0||j>=CUTR) return false; const i1=X-32, i2=(COLS-1)*32-X; return (i1>=0&&i1<CUTR&&Math.hypot(i1-CUTR,j-CUTR)>CUTR)||(i2>=0&&i2<CUTR&&Math.hypot(i2-CUTR,j-CUTR)>CUTR); })) return true;      // 右邊石壁邊緣的缺口：不能走上去
@@ -5272,7 +5437,7 @@ function gStart(){
 function gRelease(){ GATH.cam=false;
   RUN.forEach(r=>{ if(r.spd0){ r.spd=r.spd0; } r.gc=false; r.gset=0; r.path=[]; r.t=9; r.holdT=0; r.chokeT=0; r.cheer=0; r.hop=0; r.tapHop=0; });
   RS.mode="run"; RS.grace=2.5; RS.help=null;
-  if(WOR){ WOR.cheer=0; gGo(WOR,20.5,23); WOR.mode="walk"; WOR.act="pray"; WOR.t=0; WOR.said=0; }
+  if(WOR){ WOR.cheer=0; gGo(WOR,20.5,22.75); WOR.mode="walk"; WOR.act="pray"; WOR.t=0; WOR.said=0; }
   GATH.busy=false; GATH.cheer=false; GATH.held=null; GATH.catcher=null; GATH.L=null;
   for(const o of gNpcList()){ o.hop=0; o.moving=false; }
   gxRelease(); try{ miniFinish(); }catch(_){ }
@@ -5306,11 +5471,11 @@ function drawHeldPhoto(g,cx,fy,bob){      // 頭頂上舉著的照片：小一�
 }
 function photoTrigger(s){
   if(PH.st===2) return;
-  if(GATH.busy||(GATH.ph&&GATH.ph!=="idle")){ toast("先到集合地點參加捧花儀式吧！"); return; }
+  if(GATH.busy||(GATH.ph&&GATH.ph!=="idle")){ tt("ritual_first"); return; }
   if(PH.st===2) return;
-  if(PH.st===1) return askYN({eye:"櫻髮男性的照片",title:"要把照片放回去嗎？",img:ART.maid,text:"要把「虎杖的女僕照片」放回貓咪身體底下嗎？",yes:"放回去",no:"再拿一下"},()=>phEnd("back"),()=>{ PH.cd=60; });
+  if(PH.st===1) return askYN({eye:"櫻髮男性的照片",title:DT.photo_back.title,img:ART.maid,text:DT.photo_back.text,yes:DT.photo_back.btns[0],no:DT.photo_back.btns[1]},()=>phEnd("back"),()=>{ PH.cd=60; });
   achAward("secret"); s.name="櫻髮男性的照片";
-  askYN({eye:"櫻髮男性的照片",title:"有東西……",img:ART.maid,text:"發現了一張照片，照片中似乎是一位穿著女僕裝的男性，照片背後似乎寫著「五條的寶物♡」\n\n奇怪，為什麼這麼重要的東西會被貓咪拿走了？",yes:"拿走",no:"放回去"},()=>phStart(),()=>achAward("good"));
+  askYN({eye:"櫻髮男性的照片",title:DT.photo_take.title,img:ART.maid,text:DT.photo_take.text,yes:DT.photo_take.btns[0],no:DT.photo_take.btns[1]},()=>phStart(),()=>achAward("good"));
 }
 function phStart(){
   PH.st=1; PH.cd=60; PH.t=0; PH.tf=PH.tf||[]; RS.help=null; RS.queue=null; RS.mode="run";
@@ -5326,7 +5491,7 @@ function phRelease(){
 }
 function phEnd(how){
   if(PH.st!==1) return; PH.st=0; phRelease(); const cd=$("phCd"); if(cd) cd.hidden=true;
-  if(how==="back"){ achAward("good"); toast("把照片放回貓咪身體底下了"); }
+  if(how==="back"){ achAward("good"); tt("photo_back"); }
 }
 function phTimeout(){      // 時間到：五條出現把照片拿走，不算成就
   PH.st=2; PH.t=0; PH.line=0; phRelease(); const cd=$("phCd"); if(cd) cd.hidden=true;
@@ -5402,10 +5567,9 @@ function tfHeart(q){      // 很喜歡：冒出愛心
   lookAt(q,player.x,3.2); sayS(q,"ちみ♡"); q.pat=.3; q.hopAmp=5; burst(q.x,q.y-.5,5,0);
 }
 const SC={hopDur:.3,hopAmp:8,shake:.9,t2:1.0};      // 桌邊小精靈被嚇到的參數（桌邊／野餐墊／池邊共用同一組）
-function spScare(q){      // 野餐墊、池邊小精靈：跟桌邊 tfShock 完全同一套節奏——「！」、原地跳（同曲線同高度）、抖動、1 秒後「あわわ…」，之後才噎到
-  achAward("share"); q.b={t0:time,txt:"！"}; cry(q.x,q.y,"！",800,"mi",true); q.jp=time; q.ckU=time+3.2; q.shk=time+SC.shake; burst(q.x,q.y-.5,2,0);
-  later(SC.t2,()=>{ if(q.rg) return; const t=["あわわ…","ち、ち…？"][Math.floor(Math.random()*2)]; q.b={t0:time,txt:t}; cry(q.x,q.y,t,800,"mi",true); emote(q,"sweat",2.2,16,-14); });
-  later(3.2,()=>{ if(!q.rg) q.b={t0:time,txt:"ぷはっ♡"}; });
+function spScare(q){      // 野餐墊、池邊小精靈：跟桌邊 tfShock 完全一樣——轉過來面向玩家 3.2 秒、「！」、原地跳（同曲線同高度）、抖 0.9 秒、1 秒後「あわわ…」，沒有別的動作
+  achAward("share"); q.face=player.x>q.x?-1:1; q.b={t0:time,txt:"！"}; cry(q.x,q.y,"！",800,"mi",true); q.jp=time; q.ckU=time+3.2; q.shk=time+SC.shake;
+  later(SC.t2,()=>{ if(q.rg) return; const t=["あわわ…","ち、ち…？"][Math.floor(Math.random()*2)]; q.b={t0:time,txt:t}; cry(q.x,q.y,t,800,"mi",true); });
 }
 function tfShock(q){      // 玩家拿著照片靠近：桌邊小精靈注意力被轉過來，「！」、原地跳一下，震驚得不知所措
   achAward("share"); lookAt(q,player.x,3.2); sayS(q,"！"); q.pat=SC.hopDur; q.hopAmp=SC.hopAmp; q.shake=SC.shake;
@@ -5413,7 +5577,7 @@ function tfShock(q){      // 玩家拿著照片靠近：桌邊小精靈注意力
 }
 function lookAt0(o){ }
 function jumpH(o){ const e=time-(o.jp||-9); return e>=0&&e<SC.hopDur?Math.round(Math.sin(e/SC.hopDur*Math.PI)*SC.hopAmp):0; }
-function ckJit(o){ return ((time<(o.shk||0))||(time<(o.ckU||0)&&time>(o.jp||0)+1.0))?((Math.floor(time*30)%2)?1:-1):0; }
+function ckJit(o){ return (time<(o.shk||0))?((Math.floor(time*30)%2)?1:-1):0; }
 function updateTF(dt){
   PH.tf=PH.tf||[];
   if(PH.st===1&&!HT&&!player.sit){
@@ -5667,7 +5831,7 @@ function askYN(o,yes,no){
   $("aYes").onclick=()=>done(yes); $("aNo").onclick=()=>done(no);
   showOv($("ask")); $("aYes").focus();
 }
-function wakeS(q,quiet){ if(!q||!q.zOk) return; q.zLast=time; if(q.zz){ q.zz=false; q.pat=.3; q.b={t0:time,txt:"！"}; if(!quiet&&achAdd("sr",q.name)>=SPIRITS.filter(x=>x.zOk).length) achAward("sr2"); } }      // 被叫醒：跳一下＋「！」
+function wakeS(q,quiet){ if(!q||!q.zOk) return; q.zLast=time; if(q.zz){ q.zz=false; q.pat=.3; q.b={t0:time,txt:"！"}; if(!quiet) napAdd(q.name); } }      // 被叫醒：跳一下＋「！」
 /* ---------- 成就系統：進度存在玩家自己的瀏覽器（localStorage），換裝置或清除資料就會歸零 ---------- */
 const ACH=[
   {id:"feed1",t:"b",ic:"fish",title:"點心試吃員",text:"收下桌邊ちみ遞來的點心，馬上開動囉！",hint:"桌邊的ちみ們好像很樂意分你一點點心"},
@@ -5677,8 +5841,8 @@ const ACH=[
   {id:"talkAll",t:"s",ic:"chat",open:1,title:"社交達人",text:"和每一桌有空聊天的ちみ都打過了招呼",hint:"每桌都有一位有空陪你聊天的ちみ"},
   {id:"toast",t:"b",ic:"cup",title:"一起乾杯！",text:"趕上了ちみ們的乾杯時間！",hint:"桌邊偶爾會有熱鬧的乾杯時間\n記得留意他們的動靜"},
   {id:"fountain",t:"s",ic:"drop",title:"噓！尿尿小童",text:"難道這就是傳說中的……\n親眼目睹池塘邊ちみ石雕的詭異模仿秀！",hint:"池塘邊的ちみ石雕，偶爾會有特別的表演"},
-  {id:"statue",t:"s",ic:"moon",title:"午睡時間結束！",text:"把石像旁睡得正香的ちみ叫醒了",hint:"石像旁的ちみ有時候會不小心睡著\n一定正做著美夢吧？"},
-  {id:"sr2",t:"s",ic:"moon2",title:"起床囉！",text:"成功叫醒走廊上睡著的兩隻ちみ！",hint:"走廊上的兩隻ちみ好像睡得有點久了"},
+  {id:"statue",t:"s",ic:"moon",title:"午睡時間結束",text:"糟糕，不小心吵醒了正在睡覺的ちみ們\n你真的不是故意的嗎？",hint:"ちみ有時候會不小心睡著\n一定正做著美夢吧？",},      // 石像旁 1 隻＋走廊 2 隻，三隻都叫醒才給（原「起床囉！」已併入）
+
   {id:"hosts",t:"b",ic:"heart",open:1,title:"今天的主角",text:"終於和今天的兩位主角都打過招呼了！",hint:"今天的主角就在屋子裡等著你哦"},
   {id:"sign",t:"b",ic:"sign",title:"守規矩的人",text:"認真看完了入口的告示牌\n真是個守規矩的好賓客！",hint:"入口附近有一塊告示牌\n記得看一下"},
   {id:"pileSur",t:"s",ic:"petal",title:"櫻花堆下的小懶貓",text:"原來有隻ちみ吃飽後跑到花瓣堆裡睡著了！",hint:"庭院右上角的櫻花樹下有一小堆花瓣\n試著多碰碰看？"},
@@ -5740,6 +5904,18 @@ let ACHS={done:{},sets:{},cnt:{}};
 try{ if(/[?&]resetach\b/.test(location.search)) localStorage.removeItem("wg_ach_v3"); const r=JSON.parse(localStorage.getItem("wg_ach_v3")||"null"); if(r&&r.done){ ACHS={done:r.done||{},sets:r.sets||{},cnt:r.cnt||{}}; } }catch(_){ }
 const achSave=()=>{ try{ localStorage.setItem("wg_ach_v3",JSON.stringify(ACHS)); }catch(_){ } };
 function matchPart(k){ if(achAdd("match",k)>=2) achAward("match"); }      // 月老兼職：藍蝶結小精靈＋池塘石雕兩件都完成才給
+function napAdd(v){ if(achAdd("nap",v)>=3) achAward("statue"); }
+const ACHCF={      // 有計數的成就：id → [目前數, 總數]，文字最後自動加「(n/總數)」
+  statue:()=>[(ACHS.sets.nap||[]).length,3],
+  feedAll:()=>[(ACHS.sets.snack||[]).length,SNACKS.length],
+  talkAll:()=>[(ACHS.sets.talk||[]).length,Math.max(1,SPIRITS.filter(q=>q.seated&&q.spot).length)],
+  hosts:()=>[(ACHS.sets.host||[]).length,2],
+  match:()=>[(ACHS.sets.match||[]).length,2],
+  play:()=>{ const P=ACHS.sets.play||[], F=ACHS.sets.fun||[]; return [["snack","ball"].filter(x=>P.includes(x)).length+["sled","orange","gog"].filter(x=>F.includes(x)).length,5]; },
+  rookie:()=>{ const p=ACHS.sets.played||[]; return [["lot","catch"].filter(x=>p.includes(x)).length,2]; },
+  stalk:()=>[Math.min(3,ACHS.cnt.stalk||0),3]
+};
+function achFmt(t,d){ const f=d&&ACHCF[d.id]; if(!f) return t; let [n,tot]=f(); if(ACHS.done[d.id]) n=tot; return t+"("+Math.min(n,tot)+"/"+tot+")"; }
 function achAdd(name,val){ const a=(ACHS.sets[name]=ACHS.sets[name]||[]); if(!a.includes(val)){ a.push(val); achSave(); } return a.length; }
 function achInc(name){ ACHS.cnt[name]=(ACHS.cnt[name]||0)+1; achSave(); return ACHS.cnt[name]; }
 const ACHQ=[]; let achBusy=false;
@@ -5753,7 +5929,7 @@ function achPump(){
   if(achBusy||!ACHQ.length) return; const d=ACHQ.shift(); achBusy=true;
   const el=document.createElement("div"); el.className="achToast"; el.setAttribute("role","status");
   el.innerHTML='<span class="ai">'+achSvg(d)+'</span><span class="at"><small>成就達成・'+ACH_TIER[d.t].n+'牌</small><b></b><em></em></span>';
-  el.querySelector("b").textContent=d.title; el.querySelector("em").textContent=d.text;
+  el.querySelector("b").textContent=d.title; el.querySelector("em").textContent=achFmt(d.text,d);
   $("achHost").append(el); requestAnimationFrame(()=>el.classList.add("in"));
   try{ if($("musicChk").checked&&audioCtx()) { voiceSyl("mi",actx.currentTime+.02,1040,true,.4,0,false); voiceSyl("chi",actx.currentTime+.16,1320,true,.4,0,false); } }catch(_){ }
   setTimeout(()=>{ el.classList.remove("in"); el.classList.add("out"); setTimeout(()=>{ el.remove(); achBusy=false; achPump(); },420); },6000);
@@ -5770,7 +5946,7 @@ function achOpen(){
     for(const d of ACH.filter(a=>a.t===k)){
       const got=!!ACHS.done[d.id], show=got||d.open, li=document.createElement("div"); li.className="achRow"+(got?" got":"");
       li.innerHTML='<span class="ai">'+achSvg(d,!got)+'</span><span class="at"><b></b><i class="note"></i><em></em></span>';
-      li.querySelector("b").textContent=(show||ACHV.peek)?d.title:"？？？"; li.querySelector("em").textContent=ACHV.peek?("未達成時的提示：\n"+d.hint+"\n\n達成後的說明：\n"+d.text):(got?d.text:d.hint); { const nt=li.querySelector(".note"); if(d.note) nt.textContent=d.note; else nt.remove(); }
+      li.querySelector("b").textContent=(show||ACHV.peek)?d.title:"？？？"; li.querySelector("em").textContent=ACHV.peek?("未達成時的提示：\n"+achFmt(d.hint,d)+"\n\n達成後的說明：\n"+achFmt(d.text,d)):achFmt(got?d.text:d.hint,d); { const nt=li.querySelector(".note"); if(d.note) nt.textContent=d.note; else nt.remove(); }
       if(got){ const t=document.createElement("small"); t.textContent=new Date(ACHS.done[d.id]).toLocaleDateString(); li.append(t); }
       box.append(li);
     }
@@ -5794,7 +5970,7 @@ function trigger(s){
   if(s.kind==="sledride") return sledRide();
   if(s.kind==="orangebarrel") return orgPick();
   if(s.kind==="springsp") return orgGive(s);
-  if(s.kind==="snowman") return askYN({eye:"雪人",title:"手上有一顆雪球",text:"要把雪球交給小精靈，幫忙把雪人堆得更高嗎？",yes:"交給他們",no:"先不要"},()=>snowGive(),null);
+  if(s.kind==="snowman") return askYN({eye:"雪人",title:DT.snowman.title,text:DT.snowman.text,yes:DT.snowman.btns[0],no:DT.snowman.btns[1]},()=>snowGive(),null);
   if(s.kind==="pile") return pileTrigger(s);
   if(s.kind==="bow") return bowTrigger(s);
   if(s.kind==="basket") return basketTrigger(s);
@@ -5803,8 +5979,8 @@ function trigger(s){
   if(s.kind==="npc"){ if(/五條|五条/.test(s.name)) achAdd("host","go"); if(/虎杖|悠仁/.test(s.name)) achAdd("host","ky"); const h=ACHS.sets.host||[]; if(h.includes("go")&&h.includes("ky")) achAward("hosts"); }
   if(s.kind==="spirit"&&s.q&&s.q.seated){ const n=achAdd("talk",s.key), tot=SPIRITS.filter(q=>q.seated&&q.spot).length; if(tot>0&&n>=tot) achAward("talkAll"); }
   if(s.kind==="photo") return photoTrigger(s);
-  if(s.kind==="wardrobe") return askYN({eye:"衣櫃",title:"要換衣服嗎？",text:"要不要打開衣櫃，換一套打扮呢？",yes:"好呀",no:"先不要"},()=>openWardrobe());
-  if(s.game==="watch"){ markSeen(s); return askYN({eye:"紅色沙發",title:"坐下來休息一下？",text:"要不要坐下來休息一下，跟ちびちみ們玩耍呢？",yes:"好呀",no:"先不要"},()=>enterWatch(s)); }
+  if(s.kind==="wardrobe") return askYN({eye:"衣櫃",title:DT.wardrobe.title,text:DT.wardrobe.text,yes:DT.wardrobe.btns[0],no:DT.wardrobe.btns[1]},()=>openWardrobe());
+  if(s.game==="watch"){ markSeen(s); return askYN({eye:"紅色沙發",title:DT.sofa_ask.title,text:DT.sofa_ask.text,yes:DT.sofa_ask.btns[0],no:DT.sofa_ask.btns[1]},()=>enterWatch(s)); }
   if(s.game==="lot" && lotList().length) return wipeTo(()=>openLot(s));
   if(s.game==="catch") return wipeTo(()=>openCatch(s));
   openModal(s);
@@ -5847,7 +6023,8 @@ function finishType(el){ clearInterval(typeTimer); el.classList.remove("tw"); if
 /* 畫面轉場：淡入／淡出（有「減少動態效果」設定時直接切換） */
 const RMQ = matchMedia("(prefers-reduced-motion: reduce)");
 const reduceMotion = () => RMQ.matches;
-function showOv(el){ clearTimeout(el._t); el.classList.remove("out"); el.hidden=false; }
+let OVT=0; document.addEventListener("click",ev=>{ if(performance.now()-OVT<450&&ev.target.closest&&ev.target.closest(".overlay")){ ev.stopPropagation(); ev.preventDefault(); } },true);      // 彈窗剛跳出的 0.45 秒內，手指放開產生的「點擊」不算（避免自動按到按鈕）
+function showOv(el){ OVT=performance.now(); clearTimeout(el._t); el.classList.remove("out"); el.hidden=false; }
 function hideOv(el){
   if(el.hidden) return;
   if(reduceMotion()){ el.hidden=true; return; }
@@ -6106,17 +6283,24 @@ function playStep(kind,vm){
 }
 
 /* ---------- 小遊戲的音效與音樂（全部用瀏覽器內建合成，不需要音檔） ---------- */
+let SFXV=1;      // 依距離縮小的音量倍率（sfxAt 暫時設定）
 function tone(freq,t0,dur,type,vol,to,dest){
-  const c=actx; if(!c) return; const o=c.createOscillator(), g=c.createGain();
+  vol=Math.max(.0002,vol*SFXV); const c=actx; if(!c) return; const o=c.createOscillator(), g=c.createGain();
   o.type=type||"sine"; o.frequency.setValueAtTime(freq,t0); if(to) o.frequency.exponentialRampToValueAtTime(to,t0+dur);
   g.gain.setValueAtTime(.0001,t0); g.gain.exponentialRampToValueAtTime(vol,t0+.012); g.gain.exponentialRampToValueAtTime(.0001,t0+dur);
   o.connect(g); g.connect(dest||sfxOut(c)); o.start(t0); o.stop(t0+dur+.03);
 }
 const NOTE=n=>523.25*Math.pow(2,n/12);
-function snNoise(c,t0,dur,f,q,v){ const n=stepNoiseSrc(c), bp=c.createBiquadFilter(); bp.type="bandpass"; bp.frequency.value=f; bp.Q.value=q; const h=c.createGain(); h.gain.setValueAtTime(.0001,t0); h.gain.exponentialRampToValueAtTime(v,t0+.01); h.gain.exponentialRampToValueAtTime(.0001,t0+dur); n.connect(bp); bp.connect(h); h.connect(sfxOut(c)); n.start(t0); n.stop(t0+dur+.03); }
+function snNoise(c,t0,dur,f,q,v){ v=Math.max(.0002,v*SFXV); const n=stepNoiseSrc(c), bp=c.createBiquadFilter(); bp.type="bandpass"; bp.frequency.value=f; bp.Q.value=q; const h=c.createGain(); h.gain.setValueAtTime(.0001,t0); h.gain.exponentialRampToValueAtTime(v,t0+.01); h.gain.exponentialRampToValueAtTime(.0001,t0+dur); n.connect(bp); bp.connect(h); h.connect(sfxOut(c)); n.start(t0); n.stop(t0+dur+.03); }
+function sfxAt(name,x,y){ try{ const {vol}=distVol(x,y); if(vol<.03) return; SFXV=Math.min(1,vol*1.3); sfx(name); }catch(_){ } SFXV=1; }
 function sfx(name){
   if(!MUSIC.on) return; const c=audioCtx(); if(!c) return; const n=c.currentTime;
   switch(name){
+    case "pSplash": snNoise(c,n,.22,1500,.8,.2); snNoise(c,n+.03,.16,3200,1,.1); tone(620,n,.1,"sine",.08,260); tone(380,n+.05,.1,"sine",.05,180); break;      // 潑水：嘩啦一聲＋小水花
+    case "pHit": snNoise(c,n,.18,1100,.7,.22); tone(260,n,.14,"sine",.1,110); tone(520,n+.04,.08,"sine",.05,300); break;      // 水珠打到身上
+    case "pIn": tone(300,n,.2,"sine",.2,90); snNoise(c,n,.3,900,.6,.26); snNoise(c,n+.05,.2,2400,.9,.12); tone(700,n+.1,.07,"sine",.06,300); break;      // 跳進水裡：噗通
+    case "pOut": snNoise(c,n,.22,1800,.8,.16); tone(180,n,.12,"sine",.1,420); [0,.09,.17].forEach((d,i)=>tone(900+i*130,n+.12+d,.06,"sine",.05,500)); break;      // 跳上岸：嘩啦＋滴滴答答
+    case "pDive": { let t=0; for(let k=0;k<7;k++){ t+=.07+Math.random()*.12; const f=210+Math.random()*130; tone(f,n+t,.16,"sine",.2-k*.016,f*1.55); tone(f*.5,n+t,.2,"sine",.12,f*.8); } snNoise(c,n,.7,320,1.6,.07); } break;      // 潛水：隔著一層水、低低悶悶的「咕嚕咕嚕」
     case "snowThrow": snNoise(c,n,.16,1400,.8,.1); tone(520,n,.12,"sine",.05,300); break;
     case "snowLand": snNoise(c,n,.13,1800,.7,.22); tone(170,n,.1,"sine",.12,80); break;
     case "snowHitP": snNoise(c,n,.2,1100,.6,.34); snNoise(c,n+.02,.12,2600,.8,.16); tone(150,n,.16,"sine",.2,60); break;
@@ -6130,6 +6314,10 @@ function sfx(name){
     case "pick": tone(420,n,.09,"sine",.2,900); tone(NOTE(4),n+.08,.12,"sine",.1); break;
     case "reveal": [0,4,7,12].forEach((s,i)=>tone(NOTE(s),n+i*.08,.45,"sine",.15)); tone(NOTE(16),n+.34,.6,"triangle",.1); break;
     case "tap": tone(NOTE(9),n,.06,"sine",.12); break;
+    case "chgBig": [-12,-8,-5,0,4].forEach((st,i)=>{ tone(NOTE(st),n+i*.13,.95,"sine",.15); tone(NOTE(st+12),n+i*.13,.5,"triangle",.05); }); tone(NOTE(-24),n,1.3,"sine",.1); tone(NOTE(11),n+.65,1.1,"sine",.07); break;      // 大石像換裝：低一點、溫暖的鐘琴音
+    case "chgSmall": [12,16,19,24,28].forEach((st,i)=>{ tone(NOTE(st),n+i*.075,.55,"sine",.13); tone(NOTE(st+12),n+i*.075,.25,"triangle",.04); }); tone(NOTE(31),n+.42,.8,"sine",.07); break;      // 小石雕換裝：高一點、細碎的小水晶音
+    case "glint": { const f=NOTE([19,24,28,31,36][Math.floor(Math.random()*5)]); tone(f,n,.22,"sine",.05); tone(f*1.5,n+.05,.16,"sine",.025); break; }      // 閃亮亮的一小聲
+    case "pop": tone(520+Math.random()*120,n,.07,"sine",.045,860); break;      // 小花冒出來的輕輕「噗」
   }
 }
 const MINI={mode:null,timer:0,next:0,step:0,bus:null};
@@ -6160,7 +6348,7 @@ function miniTick(S){ S=S||MINI;
   }
 }
 function miniFinish(){      // 結婚曲：盡量播到這一輪結束再收；剩太久就淡出
-  if(MINI.want==="wedding"&&FCH.wedding&&!FCH.wedding.bad){ fileSet("wedding",0,1,3); setTimeout(()=>{ if(MINI.want==="wedding") miniMusic(null); },3300); return; }      // 音樂檔版：儀式結束後約 3 秒淡出
+  if(MINI.want==="wedding"&&FCH.wedding&&!FCH.wedding.bad){ const tk=MINI.finTk; setTimeout(()=>{ if(MINI.want!=="wedding"||MINI.finTk!==tk) return; fileSet("wedding",0,1,4); setTimeout(()=>{ if(MINI.want==="wedding"&&MINI.finTk===tk) miniMusic(null); },4400); },5000); return; }      // 音樂檔版：儀式結束後再播 5 秒，然後用 4 秒慢慢淡出
   if(MINI.mode!=="wedding"||!actx){ miniMusic(null); return; }
   const P=MINIPAT.wedding, beat=60/P.bpm/2, left=(P.mel.length-(MINI.step%P.mel.length))%P.mel.length*beat;
   if(left<=11){ MINI.fin=true; return; }
@@ -6171,15 +6359,16 @@ function miniStop(){ clearInterval(MINI.timer); MINI.timer=0; MINI.mode=null; if
 function miniStopBg(){ const b=MINI.bg; MINI.bg=null; if(b){ clearInterval(b.timer); try{ b.bus.disconnect(); }catch(_){ } } }
 /* ---------- 音樂檔版 BGM：捧花／雪地／雪橇／沙發／追擊／女僕照／混亂；各自一個 audio，用淡入淡出切換（載入失敗就退回合成器版） ---------- */
 const FM={wedding:["audio/canon.mp3"],snow:["audio/snow1.mp3","audio/snow2.mp3"],sled:["audio/sled.mp3"],watch:["audio/sofa.mp3"],chase:["audio/chase.mp3"],photo:["audio/photo.mp3"],chaos:["audio/chaos.mp3"]};
-const FBASE={sled:2.5,wedding:2.4,watch:2.4,photo:2.4,chase:2.4,chaos:1.6}, FDEF=.35, FCH={}; let FT=0;
+const FOLD={sled:2.5,wedding:2.4,watch:2.4,photo:2.4,chase:2.4,chaos:1.6};      // 舊的音量（只拿來換算沒有 WebAudio 時的 audio.volume）
+const FBASE={sled:2.375,wedding:2.4,watch:2.16,photo:2.16,chase:2.16,chaos:1.44}, FDEF=.35, FCH={}; let FT=0;
 function fch(m){
-  let c=FCH[m]; if(c) return c; const el=new Audio(); c=FCH[m]={el,i:0,v:0,t:0,bad:0,up:.15,dn:.08,g:null,want:false}; el.preload="auto"; el.src=FM[m][0];
+  let c=FCH[m]; if(c) return c; const el=new Audio(); c=FCH[m]={el,i:0,v:0,t:0,bad:0,up:.15,dn:.08,g:null,want:false,sc:1/(FOLD[m]||1)}; el.preload="auto"; el.src=FM[m][0];
   try{ if(/^https?:/.test(location.protocol)){ const x=audioCtx(); if(x){ c.g=x.createGain(); c.g.gain.value=0; x.createMediaElementSource(el).connect(c.g); c.g.connect(bgmOut(x)); } } }catch(_){ c.g=null; }
   el.onended=()=>{ if(m==="wedding"){ if(MINI.want==="wedding"){ try{ el.currentTime=0; }catch(_){ } el.play().catch(()=>{}); } return; } c.i=(c.i+1)%FM[m].length; el.src=FM[m][c.i]; if(c.want||c.v>0) el.play().catch(()=>{}); };
   el.onerror=()=>{ c.bad=1; if(MINI.want===m&&m!=="snow"&&m!=="sled"){ try{ miniMusicSynth(m); }catch(_){ } } };
   return c;
 }
-function fSetVol(c,v){ v=Math.max(0,Math.min(c.g?3:1,v)); try{ if(c.g) c.g.gain.value=v; else c.el.volume=Math.min(1,v*VOL.bgm); }catch(_){ } }
+function fSetVol(c,v){ v=Math.max(0,Math.min(c.g?3:1,v)); try{ if(c.g) c.g.gain.value=v; else c.el.volume=Math.min(1,v*VOL.bgm*c.sc); }catch(_){ } }
 function fileTick(){
   const dt=.05; let any=false;
   for(const m in FCH){ const c=FCH[m]; if(c.bad) continue;
@@ -6189,8 +6378,10 @@ function fileTick(){
     else if(!c.el.paused) c.el.pause(); }
   if(!any&&FT){ clearInterval(FT); FT=0; }
 }
+const RESTART={watch:1,photo:1,chase:1,chaos:1};
 function fileSet(m,vol,secUp,secDn){
   const c=fch(m); if(c.bad) return false; const b=FBASE[m]||FDEF;
+  if(vol>0&&!c.want&&RESTART[m]){ try{ c.el.currentTime=0; }catch(_){ } }      // 這幾首每次觸發都從頭開始播
   c.t=vol; c.up=b/(secUp||2.4); c.dn=b/(secDn||4.2); c.want=vol>0;
   if(vol>0&&c.el.paused&&!document.hidden) c.el.play().catch(()=>{});
   if(!FT) FT=setInterval(fileTick,50); return true;
@@ -6199,6 +6390,7 @@ function fileStopAll(){ for(const m in FCH){ const c=FCH[m]; c.t=0; c.v=0; c.wan
 function preloadFM(){ try{ for(const m in FM) fch(m); }catch(_){ } }
 ["pointerdown","keydown","touchstart"].forEach(e=>addEventListener(e,preloadFM,{once:true,passive:true}));
 function miniMusic(mode,fastOut){
+  MINI.finTk=(MINI.finTk||0)+1;
   if(mode&&FM[mode]&&!(FCH[mode]&&FCH[mode].bad)){
     miniStop(); MINI.want=mode; MINI.mode=mode; MINI.fin=false; MINI.hold=false;
     if(MUSIC.el) MUSIC.el.pause();
@@ -6210,7 +6402,7 @@ function miniMusic(mode,fastOut){
   miniMusicSynth(mode);
 }
 function miniMusicSynth(mode){        // （合成器版）進入小遊戲：主旋律暫停、換小遊戲專用的曲子；離開再接回去
-  const prevMode=MINI.mode, OUT=4.2, IN=2.4, FLOOR=.07, LV={snow:.7,sled:1.25}, lv=LV[mode]||.7;      // 雪橇曲比雪地曲大約 5 分貝
+  const prevMode=MINI.mode, OUT=4.2, IN=2.4, FLOOR=.07, LV={snow:.7,sled:1.25,catch:.77,lot:.77}, lv=LV[mode]||.7;      // 雪橇曲比雪地曲大約 5 分貝
   const ramp=(bus,to,sec)=>{ try{ const gp=bus.gain,t=actx.currentTime; gp.cancelScheduledValues(t); gp.setValueAtTime(gp.value,t); gp.linearRampToValueAtTime(to,t+sec); }catch(_){ } };
   const retire=(ob,sec)=>{ ramp(ob.bus,0,sec); ob.timer=setInterval(()=>miniTick(ob),90); setTimeout(()=>{ clearInterval(ob.timer); try{ ob.bus.disconnect(); }catch(_){ } },sec*1000+400); };
   const swap=!!(actx&&MINI.bus&&MINI.timer&&((prevMode==="snow"&&mode==="sled")||(prevMode==="sled"&&mode==="snow"))); let promote=null;
@@ -6546,10 +6738,11 @@ function autoVoice(o){      // 每隻小精靈說話（冒泡泡）時都會發�
   const b=o.b; if(!b||b.mute) return; const txt=String(b.txt||""); if(/^[zZ…\s.!！?？·]+$/.test(txt)) return;
   if(time-LASTCRY.t<.5&&Math.hypot(LASTCRY.x-o.x,LASTCRY.y-o.y)<1.5) return; if(time-(o.vt||-9)<.9) return; o.vt=time;
   const f0=(o.size>40?560:800)+(((o.id|0)*53+(o===SN.a?20:o===SN.b?70:o===SN.c?40:o===SN.d?90:0))%130);
-  cry(o.x,o.y,/[ちみ]/.test(txt)?txt:"み",f0,"mi",true);
+  let vt=txt; if(!/[ちみ]/.test(txt)){ const n=Math.max(1,Math.min(3,Math.ceil([...txt.replace(/[\s…・〜～♪♡♥！？!?]/g,"")].length/3))); vt=["み","ち","み"].slice(0,n).join("")+(/[！!]/.test(txt)?"！":""); }      // 沒有ち／み的台詞：依字數發 1～3 個音，跟桌邊小精靈一樣聽得到
+  cry(o.x,o.y,vt,f0,"mi",true,1.6);
 }
-function cry(x,y,text,f0,kind,forceMi){
-  if(!$("musicChk").checked||!audioCtx()) return; const {vol,pan}=distVol(x,y); if(vol<.02) return; LASTCRY={t:time,x,y};
+function cry(x,y,text,f0,kind,forceMi,boost){
+  if(!$("musicChk").checked||!audioCtx()) return; let {vol,pan}=distVol(x,y); vol=Math.min(1,vol*(boost||1)); if(vol<.02) return; LASTCRY={t:time,x,y};
   const chars=[...text]; let k=0; const t=actx.currentTime+.01;
   chars.forEach((ch,i)=>{ if(ch==="ち"||ch==="み"){ const nx=chars[i+1], acc=nx==="！"||nx==="!", fall=nx==="〜"||nx==="ー"?false:(Math.random()<.28&&!acc);
     voiceSyl(forceMi||ch==="み"?"mi":"chi",t+k*.17,f0*(1+k*.06),acc,vol,pan,fall); k++; } });
@@ -6614,7 +6807,7 @@ $("cClose").addEventListener("click",closeCatch);
 $("cStart").addEventListener("click",()=>{
   if(lbOn()){
     const n=$("cName").value.trim();
-    if(!n){ toast("先輸入名字才能開始喔"); $("cName").focus(); return; }
+    if(!n){ tt("need_name"); $("cName").focus(); return; }
     lbName=n; saveName(n);
   }
   startCatch();
@@ -6713,8 +6906,141 @@ function dexEntries(){
   return DEXL=L;
 }
 function dexDraw(cv,sh,dir,ff){ let tries=0; const go=()=>{ const g=cv.getContext("2d"); g.setTransform(1,0,0,1,0,0); g.clearRect(0,0,cv.width,cv.height); g.imageSmoothingEnabled=false; g.scale(2,2); let ok=false; try{ ok=drawSheet(g,sh,dir,0,36,68,ff,null,-1,ff); }catch(_){ } if(!ok&&++tries<25) setTimeout(go,300); }; go(); }
+function dexActRow(m){      // 動作一覽：用 ちびちみゆ（32）示範小精靈目前會的動作（跟遊戲裡用同一份圖、同樣的角度）
+  const row=document.createElement("div"); row.className="dexRow"; row.innerHTML='<h4>動作一覽（ちびちみゆ 32 示範）</h4><p>小精靈在遊戲裡會做的動作，會一直循環播放。</p><div class="dexImgs"></div>';
+  const im=row.querySelector(".dexImgs"), sh=m.sh, bk=m.bk, R2=(g,t)=>0;
+  const DS=(g,t,dir,st,x,y,ff,s2)=>drawSheet(g,s2||sh,dir,st,x,y,1,null,t,ff);
+  const lie=(g,t,k)=>{ g.save(); g.translate(36,48); g.rotate(-k*SNLIE); g.translate(0,12); DS(g,t,"down",0,0,0,1); g.restore(); };
+  const txt=(g,s2,x,y,col)=>{ g.save(); g.font="bold 9px sans-serif"; g.textAlign="center"; g.fillStyle="#fff"; g.strokeStyle=col||"#cc7186"; g.lineWidth=2; g.strokeText(s2,x,y); g.fillText(s2,x,y); g.restore(); };
+  const A=[
+    ["待機（呼吸、眨眼）",(g,t)=>DS(g,t,"down",0,36,62,1)],
+    ["走路（正面）",(g,t)=>DS(g,t,"down",1,36,62,1)],
+    ["走路（向左）",(g,t)=>DS(g,t,"side",1,36+Math.sin(t*2)*8,62,1)],
+    ["走路（向右）",(g,t)=>DS(g,t,"side",1,36+Math.sin(t*2)*8,62,-1)],
+    ["走路（背面）",(g,t)=>bk?DS(g,t,"down",1,36,62,1,bk):0],
+    ["跳起來",(g,t)=>{ DS(g,t,"down",0,36,62-Math.abs(Math.sin(t*5))*12,1); }],
+    ["說話",(g,t)=>{ DS(g,t,"down",0,36,62-((t%2.4)<.25?Math.abs(Math.sin(t*12))*3:0),1); if(t%2.4<1.5) txt(g,["ち！","み〜","ちみ！"][Math.floor(t/2.4)%3],36,18); }],
+    ["睡覺",(g,t)=>{ FORCE_FRAME=2; try{ DS(g,t,"down",0,36,62+Math.round(2+Math.sin(t*1.6)*1.2),1); }finally{ FORCE_FRAME=null; } txt(g,["z z z","Zzz…","z…"][Math.floor(t/2.6)%3],44,20,"#7a8fc0"); }],
+    ["被嚇到",(g,t)=>{ const c=t%3.2, j=c<.35?Math.abs(Math.sin(c/.35*Math.PI))*9:0, sk=(c>.35&&c<1.25)?Math.sin(t*60)*1.2:0; DS(g,t,"down",0,36+sk,62-j,1); if(c<2.4) txt(g,c<1.4?"！":"あわわ…",36,16); }],
+    ["噎到",(g,t)=>{ const c=t%3, on=c<2; DS(g,t,"down",0,36+(on?Math.sin(t*50)*1.5:0),62,1); if(on) txt(g,"ち…！？",36,16); else txt(g,"ぷはっ♡",36,16); }],
+    ["摔倒趴下",(g,t)=>{ const c=t%4, k=c<.3?0:c<.7?(c-.3)/.4:c<3.2?1:Math.max(0,1-(c-3.2)/.5); k?lie(g,t,k):DS(g,t,"down",0,36,62,1); }],
+    ["躺在雪地玩（雪天使）",(g,t)=>{ const c=t%5, k=c<.4?0:c<.9?(c-.4)/.5:c<4.3?1+.16*Math.sin((c-.9)*2.6):Math.max(0,1-(c-4.3)/.5); k?lie(g,t,k):DS(g,t,"down",0,36,62,1); }],
+    ["泡水（水到腰）",(g,t)=>{ g.save(); g.beginPath(); g.rect(0,0,72,55); g.clip(); DS(g,t,"down",0,36,62,1); g.restore(); waterBand(g,36,54,68,15,.5,true); }],
+    ["潛水（泳鏡＋呼吸管）",(g,t)=>{ const c=t%4, k=c<.7?c/.7:c<3.3?1:Math.max(0,1-(c-3.3)/.7), fy=62+Math.round(k*22); g.save(); g.beginPath(); g.rect(0,0,72,55); g.clip(); DS(g,t,"down",0,36,fy,1); drawGoggles(g,36,fy,26,1,k); g.restore(); if(k<.02) waterBand(g,36,54,68,15,.5,true); }]
+  ];
+  A.forEach(([nm,fn])=>{ const f=document.createElement("figure"), cv=document.createElement("canvas"); cv.width=144; cv.height=144; f.append(cv, nm); im.append(f); cv._fn=fn; });
+  const T0=performance.now(); const loop=()=>{ if($("dex").hidden||!row.isConnected) return; const t=(performance.now()-T0)/1000; row.querySelectorAll("canvas").forEach(cv=>{ const g=cv.getContext("2d"); g.setTransform(1,0,0,1,0,0); g.clearRect(0,0,144,144); g.imageSmoothingEnabled=false; g.scale(2,2); try{ cv._fn(g,t); }catch(_){} }); requestAnimationFrame(loop); };
+  requestAnimationFrame(loop); return row;
+}
+function dexDlgBuild(){      // 彈窗文字清單：先列程式寫死的（依角色／物品分組），再列試算表裡各角色的對話
+  const box=$("dexDlg"); box.innerHTML=""; const KL={npc:"來賓",sign:"告示牌",clue:"線索",spirit:"小精靈",event:"活動",spot:"景點"};
+  const groups=new Map(), push=(who,o)=>{ if(!groups.has(who)) groups.set(who,[]); groups.get(who).push(o); };
+  for(const k in DT){ const {who,cond,title,text,btns,note}=DT[k]; let tx=text; if(tx.startsWith("SHEET:")){ const sp=spots.find(x=>x.id===+tx.slice(6)); tx=sp&&sp.text||""; if(!tx) continue; } push(who,{cond:cond+(note?"　"+note:""),title,text:tx,btns}); }
+  for(const sp of spots){ if(!sp.text||sp.game||sp.id===904||sp.id===905||sp.id===930) continue; const nm=sp.name||"？", k=KL[sp.kind]||"景點";
+    const lab=sp.kind==="spirit"?"小精靈・"+nm+(sp.size?"（"+sp.size+"）":""):nm; push(lab,{cond:"點開"+k+"的互動泡泡（試算表文字）",title:"",text:sp.text,btns:[]});
+    if(sp.kind==="npc"){ const g=/五條|五条/.test(nm)?"go":/虎杖|悠仁/.test(nm)?"ky":""; if(g&&GOT_TEXT[g]) push(lab,{cond:"丟捧花儀式結束後再對話",title:"",text:GOT_TEXT[g],btns:[]}); } }
+  let total=0; for(const [who,list] of groups){ const h=document.createElement("div"); h.className="dlgSec"; h.textContent=who; box.append(h);
+    for(const o of list){ total++; const d=document.createElement("div"); d.className="dlgItem"; const c=document.createElement("div"); c.className="cond"; c.textContent=o.cond; d.append(c);
+      if(o.title){ const t=document.createElement("div"); t.className="tt"; t.textContent=o.title; d.append(t); }
+      const x=document.createElement("div"); x.className="tx"; x.textContent=o.text; d.append(x);
+      if(o.btns.length){ const b=document.createElement("div"); b.className="bt"; o.btns.forEach(t=>{ const sp=document.createElement("span"); sp.textContent=t; b.append(sp); }); d.append(b); }
+      box.append(d); } }
+  return total;
+}
+
+const SPTALK=[
+ {who:"桌邊的小精靈（ちみご／ちみゆ／めかくし）",sp:["ちみご（48）","ちみゆ（48）","めかくし（48）"],rows:[
+  ["平常偶爾自己冒泡泡（每隻間隔約 10～26 秒）",["ちみ","ち","み！","（可在試算表參數「小精靈泡泡」改）"]],
+  ["追逐小精靈跑過桌邊時",["ち！","ちー！"]],
+  ["玩家靠近，整桌輪流轉頭看你",["ち？","み？"]],
+  ["連點同一隻 5 下，他噎到／鄰座來拍背",["ち…！？","ぽん！","ぷはっ♡"]],
+  ["拿著女僕照片靠近桌邊（依種類不同）",["！","あわわ…","ち、ち…？","ちみ♡（ちみご／めかくし 愛心；ちみゆ 被嚇到）"]],
+  ["整桌乾杯",["み！","み！","みー！！"]]]},
+ {who:"草地追逐的ちびちみご＆ちびちみゆ",sp:["ちびちみご（32）","ちびちみゆ（32）"],rows:[
+  ["追的（ちびちみご）追逐時",["ち！","ちみ！","ち！ち！"]],
+  ["被追的（ちびちみゆ）逃跑時",["み！","みー！","みみ！"]],
+  ["抓到的瞬間",["ち！","み！","ちみ！（兩隻）"]],
+  ["被嚇到（躲樹後跳出）",["ひっ！？","もうー！","みっ！"]],
+  ["玩家一直跟著，他們回頭",["ち？","み？"]]]},
+ {who:"大石像前的小信徒（ちびめかくし・藍帽子）",sp:["ちびめかくし・藍帽子"],rows:[
+  ["虔誠鞠躬",["ち……♡"]],
+  ["開心跳",["ち！","み！","ちみ！","ちみ♡"]],
+  ["靠著石座休息",["ふぅ…♪"]],
+  ["睡覺（氣泡一直在，只換字）",["z z z","Zzz…","z…"]],
+  ["睡醒",["！"]],
+  ["摘花／拿供品",["ち？／み？","えいっ！"]],
+  ["拋上頭頂、擺供品",["ち！","ちみ♡","みー♪","ち♡"]],
+  ["繞石像跑一圈",["ちー♪"]]]},
+ {who:"野餐墊的小精靈（ちびちみゆ・紅帽子）",sp:["ちびちみゆ・紅帽子"],rows:[
+  ["吃飽後睡覺",["z z z","Zzz…","z…"]],
+  ["被女僕照嚇到",["！","あわわ…","ち、ち…？"]],
+  ["捧花儀式整場歡呼",["ち！","ち！","ちー！！"]]]},
+ {who:"走廊的さくらちみゆ＆あおちみご（SR）",sp:["さくらちみゆ（64）","あおちみご（64）"],rows:[
+  ["睡著時",["z z z","Zzz…","z…"]],
+  ["被叫醒",["！"]],
+  ["捧花儀式歡呼（右邊那隻）",["ち！","ち！","ちー！！"]]]},
+ {who:"雪地左邊：堆雪人組（雪地小精靈 1／2）",sp:["雪地小精靈 1","雪地小精靈 2"],rows:[
+  ["開始滾雪球（新）",["ん〜しょ！","ごろごろ〜","ち！","み！","よいしょ♪","ころころ…"]],
+  ["雪球滾完、準備組裝",["ち♡","み♡"]],
+  ["組裝雪人",["よいしょ！","がんばれ！"]],
+  ["雪人完成",["やったー♡","ち♡ち♡！"]],
+  ["去火堆喝熱奶茶／烤棉花糖",["ふぅ…","あったか…","ち♡","あつっ！","ほっ…","もぐもぐ","もぐ♡"]],
+  ["做雪天使",["わっ！","きゃっ！","ふふっ♪","きゃは♪","ち♡","み♡"]],
+  ["雪人被雪橇撞壞",["ち…！？","み…！","あっ！"]]]},
+ {who:"雪地右邊：打雪仗＋拉雪橇（雪地小精靈 3／4）",sp:["雪地小精靈 3","雪地小精靈 4"],rows:[
+  ["蓋雪牆、補雪球",["ざくっ","ぺたぺた","ち！"]],
+  ["開戰口號",["よーい…","せーの…","スタート！","どん！"]],
+  ["丟雪球",["ち！","えいっ！","くらえ！"]],
+  ["被打中",["ぷっ！","み！","ち！？","やったな〜！"]],
+  ["躲開／擋住",["ひょい！","よけた！","ガード！"]],
+  ["打中玩家／沒打中",["ち♡！","やった！","ち！ち！","ち…"]],
+  ["打完收工",["あはは♡","ち♡","たのしかった♪"]],
+  ["拉雪橇",["ち！","もう一周！","み♡","ち♡","あはは♡","ごめん！"]],
+  ["平常閒聊",["ち！","ち♡","ち♪","み♡","きゃっ♪","み♪","ち…","ち？"]]]},
+ {who:"藍蝴蝶結小精靈＆櫻花ちみ",sp:["ちびめかくし・藍蝴蝶結","ちびちみゆ（32）"],rows:[
+  ["藍蝴蝶結難過時",["ぐすん…","ち…ち…","…うぅ…"]],
+  ["藍蝴蝶結生氣追玩家時",["ぷんぷん！","ぐすっ…ち！","うぅー！","ち！ち！"]],
+  ["發現櫻花ちみ被帶走／被還回",["…！？","！？","！"]],
+  ["櫻花ちみ從花瓣堆出現／被抱起",["ち…ぷい","ち！","ち？"]],
+  ["被抱在玩家頭上偶爾自言自語",["ちみ…","ふぁ…","ち？"]],
+  ["牽手回籃子、送花",["ち！","ち…","ち♡","ちみ♡","ち…♡"]]]},
+ {who:"池塘邊的ちびちみご＆ちびちみゆ",sp:["ちびちみご（32）","ちびちみゆ（32）"],rows:[
+  ["拿到泳鏡",["わぁ♡"]],
+  ["在池裡游泳互相聊天",["ちみ？","ち〜！","みみっ","ちちち♪","み〜ち！","ちみちみ","ぽかぽか〜","ち！ち！"]],
+  ["玩家靠近岸邊時",["ち…","み…","ち？ちみ…","み〜…"]],
+  ["上岸休息",["ふぅ…","ち〜","ぽかぽか…","ちみっ！（休息結束）"]],
+  ["互相潑水",["ぱしゃっ！","えいっ！","それっ♪","きゃっ！","ぷわっ♪","ち〜！","ひょい！","あはは♪"]],
+  ["潛水",["すぅ…","ぼこぼこ…","ぶくぶく…","ぷはっ♡"]]]},
+ {who:"露天溫泉的小精靈、老虎、雪豹",sp:["ちびちみご（32）","ちびちみゆ（32）","ちびめかくし・溫泉"],rows:[
+  ["泡湯時偶爾冒泡泡",["ふぅ〜♡","ぽかぽか…♡","ちゃぷちゃぷ♪","ごろごろ…♡（老虎、雪豹）"]],
+  ["拿橘子給他們",["みかん♪（玩家）","ち♡！／ごろごろ♡","もう持てない！（玩家拿滿 4 顆）"]]]},
+];
+function dexTalkBuild(){      // 小精靈會說的話：哪一隻（附圖）、在什麼情況下、說什麼
+  const box=$("dexTalk"); box.innerHTML=""; let total=0; const L=dexEntries();
+  for(const G of SPTALK){ const h=document.createElement("div"); h.className="dlgSec"; h.textContent=G.who; box.append(h);
+    const pic=document.createElement("div"); pic.className="talkPics";
+    for(const nm of G.sp){ const e=L.find(x=>x.name===nm); const f=document.createElement("figure"); if(e&&e.sh){ const cv=document.createElement("canvas"); cv.width=144; cv.height=144; cv.style.width=cv.style.height="72px"; f.append(cv); dexDraw(cv,e.sh,"down",1); } f.append(nm.replace(/（\d+）$/,"")); pic.append(f); }
+    box.append(pic);
+    for(const [cond,lines] of G.rows){ total++; const d=document.createElement("div"); d.className="dlgItem"; const c=document.createElement("div"); c.className="cond"; c.textContent=cond; d.append(c);
+      const b=document.createElement("div"); b.className="bt"; lines.forEach(t=>{ const sp=document.createElement("span"); sp.textContent=t; b.append(sp); }); d.append(b); box.append(d); } }
+  return total;
+}
+function dexTipBuild(){      // 提示文字清單：跟遊戲畫面下方的提示用同一份 TT
+  const box=$("dexTip"); box.innerHTML=""; let total=0;
+  for(const k in TT){ total++; const d=document.createElement("div"); d.className="dlgItem"; const c=document.createElement("div"); c.className="cond"; c.textContent=TT[k].cond; d.append(c);
+    const x=document.createElement("div"); x.className="tx"; x.textContent=TT[k].text.replace("{n}","1"); d.append(x); box.append(d); }
+  return total;
+}
+function dexTab(n){ $("dexList").hidden=n!==1; $("dexDlg").hidden=n!==2; $("dexTip").hidden=n!==3; $("dexTalk").hidden=n!==4;
+  for(let i=1;i<=4;i++){ $("dexT"+i).classList.toggle("on",n===i); $("dexT"+i).setAttribute("aria-selected",String(n===i)); }
+  if(n===2){ const n2=dexDlgBuild(); $("dexSum").textContent="共 "+n2+" 則彈窗（標題＝彈窗上的粗體字；藍色小標＝觸發條件；粉色框＝按鈕）"; $("dexT").textContent="彈窗文字"; }
+  else if(n===4){ const n4=dexTalkBuild(); $("dexSum").textContent="共 "+n4+" 種情境（上方是會說這些話的小精靈；粉色框＝他頭上浮出的泡泡文字，同一格裡是隨機挑一句）"; $("dexT").textContent="小精靈說的話"; }
+  else if(n===3){ const n3=dexTipBuild(); $("dexSum").textContent="共 "+n3+" 則畫面下方提示（藍色小標＝出現的情況；（1／3）的數字會依撿到的顆數變化）"; $("dexT").textContent="提示文字"; }
+  else { $("dexSum").textContent="共 "+(DEXL?DEXL.length:0)+" 種（跟遊戲裡同一份圖；左右是同一張圖左右翻轉）"; $("dexT").textContent="小精靈圖鑑"; }
+  $("dex").querySelector(".dlg-body").scrollTop=0; }
 function dexOpen(){
   const box=$("dexList"); box.innerHTML=""; const L=dexEntries(); $("dexSum").textContent="共 "+L.length+" 種（跟遊戲裡同一份圖；左右是同一張圖左右翻轉）";
+  { const m=L.find(e=>/^ちびちみゆ（32）/.test(e.name)); if(m) box.append(dexActRow(m)); }
   for(const e of L){ const row=document.createElement("div"); row.className="dexRow";
     row.innerHTML='<h4></h4><code></code><p></p><div class="dexImgs"></div>'; row.querySelector("h4").textContent=e.name; row.querySelector("code").textContent=e.code+"　尺寸 "+e.size; row.querySelector("p").textContent="出現處："+e.where;
     const im=row.querySelector(".dexImgs");
@@ -6722,10 +7048,10 @@ function dexOpen(){
       if(!sh){ f.innerHTML='<div class="none">無</div>'; } else { const cv=document.createElement("canvas"); cv.width=144; cv.height=144; f.append(cv); dexDraw(cv,sh,dir,ff); }
       f.append(lb); im.append(f); }
     box.append(row); }
-  showOv($("dex")); $("dex").querySelector(".dlg-body").scrollTop=0;
+  dexTab(1); showOv($("dex")); $("dex").querySelector(".dlg-body").scrollTop=0;
 }
 function dexClose(){ hideOv($("dex")); }
-$("dexBtn").addEventListener("click",dexOpen); $("dexClose").addEventListener("click",dexClose); $("dex").addEventListener("pointerdown",ev=>{ if(ev.target===$("dex")) dexClose(); });
+$("dexT1").addEventListener("click",()=>dexTab(1)); $("dexT2").addEventListener("click",()=>dexTab(2)); $("dexT3").addEventListener("click",()=>dexTab(3)); $("dexT4").addEventListener("click",()=>dexTab(4)); $("dexBtn").addEventListener("click",dexOpen); $("dexClose").addEventListener("click",dexClose); $("dex").addEventListener("pointerdown",ev=>{ if(ev.target===$("dex")) dexClose(); });
 $("achEye").addEventListener("click",()=>{ ACHV.peek=!ACHV.peek; const sc=$("ach").querySelector(".dlg-body").scrollTop; achOpen(); $("ach").querySelector(".dlg-body").scrollTop=sc; });
 /* ---------- 小地圖 ---------- */
 let MAPRAF=0;
@@ -6736,7 +7062,9 @@ function mapDraw(){
   const sx=W/(COLS*32), sy=H/(NR*32);
   for(const k in TREE){ const [tx,ty]=k.split(",").map(Number); g.fillStyle="rgba(60,110,80,.55)"; g.beginPath(); g.arc((tx*32+16)*sx,(ty-Y0)*32*sy+8*sy,5*sx*1.6,0,7); g.fill(); }
   const px=(player.x*32+16)*sx, py=((player.y-Y0)*32+16)*sy, pu=(Math.sin(time*6)+1)/2;
-  g.fillStyle="rgba(255,255,255,.9)"; g.beginPath(); g.arc(px,py,6+pu*3,0,7); g.fill(); g.fillStyle="#cc7186"; g.beginPath(); g.arc(px,py,4.2,0,7); g.fill(); g.strokeStyle="#363859"; g.lineWidth=1.5; g.beginPath(); g.arc(px,py,4.2,0,7); g.stroke();
+  const kk=(W/(parseFloat(cv.style.width)||W))*1.5; g.save(); g.translate(Math.min(Math.max(px,12*kk),W-12*kk),Math.min(Math.max(py,12*kk),H-12*kk)); g.scale(kk,kk); const pr=(time*1.4)%1; g.lineWidth=3; g.strokeStyle="rgba(204,113,134,"+(.8*(1-pr))+")"; g.beginPath(); g.arc(0,0,10+pr*16,0,7); g.stroke();
+  g.fillStyle="rgba(255,255,255,.95)"; g.beginPath(); g.arc(0,0,11,0,7); g.fill(); g.fillStyle="#cc7186"; g.beginPath(); g.arc(0,0,8,0,7); g.fill(); g.strokeStyle="#363859"; g.lineWidth=2.5; g.beginPath(); g.arc(0,0,8,0,7); g.stroke();
+  g.font="bold 13px sans-serif"; g.textAlign="center"; g.textBaseline="middle"; const lbY=py>40*kk?-24:24; g.lineWidth=4; g.strokeStyle="#fff"; g.strokeText("你在這裡",0,lbY); g.fillStyle="#363859"; g.fillText("你在這裡",0,lbY); g.restore();
   if(!$("mapDlg").hidden) MAPRAF=requestAnimationFrame(mapDraw);
 }
 function mapOpen(){
